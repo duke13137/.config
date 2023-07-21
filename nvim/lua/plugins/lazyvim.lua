@@ -1,0 +1,165 @@
+-- stylua: ignore
+
+-- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
+--
+-- In your plugin files, you can:
+-- * add extra plugins
+-- * disable/enabled LazyVim plugins
+-- * override the configuration of LazyVim plugins
+return {
+  { "rcarriga/nvim-dap-ui", pin = true },
+  { "theHamsta/nvim-dap-virtual-text", pin = true },
+
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-cmdline",
+      "PaterJason/cmp-conjure",
+    },
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
+        { name = "conjure" },
+      }))
+      opts.mapping["<CR>"] = nil
+      opts.mapping["<Tab>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        })
+    end
+  },
+
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "mason.nvim" },
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      opts.sources = {
+        nls.builtins.formatting.stylua,
+        nls.builtins.formatting.deno_fmt,
+        nls.builtins.code_actions.gitsigns,
+        nls.builtins.code_actions.shellcheck,
+        nls.builtins.formatting.shfmt,
+        nls.builtins.diagnostics.deadnix,
+        nls.builtins.formatting.nixfmt,
+        require('plugins.haskell').ghcid(),
+        require('plugins.haskell').hlint(),
+      }
+    end,
+  },
+
+  -- change trouble config
+  {
+    "folke/trouble.nvim",
+    -- opts will be merged with the parent spec
+    opts = { use_diagnostic_signs = true },
+  },
+
+  -- add symbols-outline
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    config = true,
+  },
+
+  -- change surround mappings
+  {
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = "gsa",
+        delete = "gsd",
+        find = "gsf",
+        find_left = "gsF",
+        highlight = "gsh",
+        replace = "gsr",
+        update_n_lines = "gsn",
+      },
+    },
+  },
+
+  -- add telescope-fzf-native and change layout
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
+    opts = {
+      defaults = {
+        layout_strategy = "flex",
+        layout_config = {
+          width = 0.95,
+          height = 0.85,
+          preview_cutoff = 20,
+          prompt_position = "bottom",
+          horizontal = {
+            preview_width = function(_, cols, _)
+              if cols > 200 then
+                return math.floor(cols * 0.4)
+              else
+                return math.floor(cols * 0.6)
+              end
+            end,
+          },
+          vertical = { width = 0.9, height = 0.95, preview_height = 0.5 },
+          flex = { horizontal = { preview_width = 0.9 } },
+        },
+        winblend = 0,
+      },
+    },
+  },
+
+  -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
+  -- would overwrite `ensure_installed` with the new value.
+  -- If you'd rather extend the default config, use the code below instead:
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "clojure",
+        "fennel",
+        "haskell",
+        "nix",
+      })
+    end,
+  },
+
+  { "echasnovski/mini.pairs", enabled = false },
+
+  {
+    "windwp/nvim-autopairs",
+    opts = {
+      enable_check_bracket_line = false, -- Don't add pairs if it already has a close pair in the same line
+      ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+      check_ts = true, -- use treesitter to check for a pair.
+      ts_config = {
+        lua = { "string" }, -- it will not add pair on that treesitter node
+        javascript = { "template_string" },
+      },
+    }
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      setup = {
+        clangd = function(_, opts)
+          opts.capabilities.offsetEncoding = { "utf-16" }
+        end,
+      },
+    },
+  },
+
+  {
+    "mbbill/undotree",
+    dependencies = {
+      "tpope/vim-repeat",
+    }
+  },
+}
