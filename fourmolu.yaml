@@ -1,0 +1,10 @@
+indentation: 2
+indent-wheres: true
+comman-style: leading
+function-arrows: trailing
+import-export-style: diff-friendly
+record-brace-space: false
+respectful: true
+haddock-style: single-line
+newlines-between-decls: 1
+fixities: []

@@ -1,0 +1,33 @@
+:seti -XNoImplicitPrelude
+:m + Prelude
+
+:set prompt-function \modules _ -> pure (mconcat [case modules of topmost:_ -> topmost; [] -> "", " \ESC[0;36mλ> \ESC[m"] )
+:set prompt-cont "\ESC[0;36m|  \ESC[m"
+
+:set -package pretty-simple
+:def pp   \_ -> pure (":set -interactive-print Text.Pretty.Simple.pPrint")
+:def nopp \_ -> pure (":set -interactive-print System.IO.print")
+
+dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" else [c]) arg ++ "'"
+:def! doc return . (":!hoogle --database .haskell.hoo -q --color --info " ++) . dotGHCI_escapeShellArg
+:def hoogle return . (":!hoogle --database .haskell.hoo -q --count=10 --color " ++) . dotGHCI_escapeShellArg
+:def doctest return . (":!cabal repl -w doctest " ++) . dotGHCI_escapeShellArg
+
+:m - Prelude
+
+:set -fhide-source-paths
+:set -fmax-relevant-binds=0
+:set -fno-show-error-context
+:set -fprint-expanded-synonyms
+:set -fprint-unicode-syntax
+:set -funclutter-valid-hole-fits
+:set -freverse-errors
+
+:set -Wall
+:set -Wcompat
+:set -Widentities
+
+:seti -XGHC2021
+:seti -XPartialTypeSignatures
+:seti -fno-warn-partial-type-signatures
+:seti -Wno-type-defaults

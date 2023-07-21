@@ -1,0 +1,112 @@
+{
+  "debug.internalConsoleOptions": "openOnSessionStart",
+  "debug.openDebug": "openOnDebugBreak",
+  "diffEditor.wordWrap": "off",
+  "editor.fontFamily": "'JetBrains Mono', 'Cascadia Code', 'Fira Code Retina'",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.formatOnSave": true,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.tabCompletion": "on",
+  "editor.minimap.autohide": true,
+  "editor.scrollBeyondLastLine": false,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.wordWrap": "off",
+  "emmet.includeLanguages": {
+    "haskell": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "markdown.preview.fontSize": 16,
+  "markdown.preview.lineHeight": 1.4,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.calva": true,
+    "**/.classpath": true,
+    "**/.clj-kondo": true,
+    "**/.cpcache": true,
+    "**/.factorypath": true,
+    "**/.lsp": true,
+    "**/.project": true,
+    "**/.settings": true
+  },
+  "search.exclude": {
+    "**/.clj-kondo": true,
+    "**/.cpcache": true,
+    "**/.hie": true,
+    "**/.stack-work": true,
+    "**/*.class": true
+  },
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.sendKeybindingsToShell": false,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.fontSize": 15,
+  "workbench.activityBar.visible": false,
+  "workbench.colorTheme": "One Monokai",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.list.automaticKeyboardNavigation": false,
+  "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f"
+  },
+  // extentions
+  "calva.enableJSCompletions": false,
+  "calva.fmt.configPath": "CLOJURE-LSP",
+  "calva.showCalvaSaysOnStart": false,
+  "calva.customREPLCommandSnippets": [
+    {
+      "name": "tap> current form",
+      "key": "c",
+      "snippet": "(tap> $current-form)"
+    },
+    {
+      "name": "tap> enclosing form",
+      "key": "e",
+      "snippet": "(tap> $enclosing-form)"
+    },
+    {
+      "name": "tap> top level form",
+      "key": "t",
+      "snippet": "(tap> $top-level-form)"
+    },
+  ],
+  "calva.prettyPrintingOptions": {
+    "enabled": true,
+    "width": 120,
+    "maxLength": 50,
+    "printEngine": "pprint"
+  },
+  "haskell.formattingProvider": "fourmolu",
+  "haskell.plugin.ghcide-completions.config.snippetsOn": false,
+  "haskell.plugin.importLens.codeLensOn": false,
+  "haskell.plugin.haddockComments.globalOn": false,
+  "haskell.plugin.retrie.globalOn": false,
+  "haskell.plugin.splice.globalOn": false,
+  "nixEnvSelector.suggestion": false,
+  "java.debug.settings.console": "internalConsole",
+  "java.debug.settings.forceBuildBeforeLaunch": false,
+  "java.silentNotification": true,
+  "luahelper.base.report": false,
+  "luahelper.base.ignoreFileOrDir": [
+    ".vscode/",
+    "lib/"
+  ],
+  "luahelper.base.ignoreFileOrDirError": [
+    ".vscode/",
+    "lib/"
+  ],
+  "Lua.telemetry.enable": false,
+  "Lua.workspace.ignoreDir": [
+    ".vscode/",
+    "lib/"
+  ],
+  "redhat.telemetry.enabled": false,
+  "telemetry.telemetryLevel": "crash",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
+  "vscode-neovim.useWSL": true,
+}
