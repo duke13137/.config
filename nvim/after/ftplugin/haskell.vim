@@ -48,6 +48,8 @@ augroup Haskell
 augroup END
 
 " cabal install hasktags
+nnoremap g[ <cmd>TagbarToggle<cr>
+
 let g:tagbar_width = max([40, winwidth(0) / 4])
 let g:tagbar_type_haskell = {
     \ 'ctagsbin'    : 'hasktags',

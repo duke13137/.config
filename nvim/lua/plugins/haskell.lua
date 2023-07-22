@@ -4,6 +4,7 @@ local M = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
     "jose-elias-alvarez/null-ls.nvim",
+    "preservim/tagbar",
   },
   branch = "1.x.x",
 }
