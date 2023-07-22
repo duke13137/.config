@@ -7,7 +7,7 @@ local wk = require("which-key")
 wk.register({
   c = { "connect" },
   e = { "eval" },
-  g = { "godo" },
+  g = { "goto" },
   l = { "log" },
   r = { "reload" },
   t = { "test" },

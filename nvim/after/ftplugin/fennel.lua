@@ -5,7 +5,7 @@ vim.opt.iskeyword:append(".,:")
 local wk = require("which-key")
 wk.register({
   e = { "eval" },
-  g = { "godo" },
+  g = { "goto" },
   l = { "log" },
   r = { "reload" },
   t = { "test" },
