@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 require "lspconfig".clojure_lsp.setup {}
 
 local wk = require("which-key")

@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 local ht = require("haskell-tools")
 local def_opts = { noremap = true, silent = true }
 ht.start_or_attach {
