@@ -13,8 +13,6 @@ wk.register({
   e = { "eval" },
   g = { "goto" },
   l = { "log" },
-  r = { "reload" },
-  t = { "test" },
   v = { "view" },
 }, { prefix = "<localleader>", mode = "n", silent = true })
 
@@ -26,10 +24,10 @@ local map = vim.keymap.set
 map("n", ",i", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("ipython %info"))
 map("v", ",i", 'y :Repl %pinfo <C-r>=@"<CR><CR>', options("ipython %info"))
 map("n", ",r", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("ipython %run"))
-map("n", ",t", ":Repl !pytest -v --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest current file"))
+map("n", ",t", ":Repl !pytest -v --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest file"))
 map(
   "n",
   ",d",
   ":Repl !pytest --trace --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb <C-r>=expand('%:p')<CR>::<C-r>=expand('<cword>')<CR><CR>",
-  options("pytest debug test")
+  options("pytest debug")
 )
