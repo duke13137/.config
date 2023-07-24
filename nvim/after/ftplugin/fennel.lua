@@ -1,6 +1,8 @@
-require("lspconfig").fennel_ls.setup({})
+if vim.g.vscode then
+  return
+end
 
-vim.opt.iskeyword:append(".,:")
+require("lspconfig").fennel_ls.setup {}
 
 local wk = require("which-key")
 wk.register({
@@ -12,7 +14,9 @@ wk.register({
   v = { "view" },
 }, { prefix = "<localleader>", mode = "n", silent = true })
 
--- need <Left>...<Right> here to expand <cexpr> in lisp parens
+-- have <cexpr> expand to . and :
+vim.opt.iskeyword:append(".,:")
+-- have <cexpr> not expand to Right )
 vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r>=expand('<cexpr>')<CR><CR><Right>")
 
 local command = vim.api.nvim_create_user_command
