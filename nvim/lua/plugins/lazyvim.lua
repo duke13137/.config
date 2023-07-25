@@ -72,7 +72,6 @@ return {
       local nls = require("null-ls")
       opts.sources = {
         nls.builtins.formatting.stylua,
-        nls.builtins.formatting.deno_fmt,
         nls.builtins.code_actions.gitsigns,
         nls.builtins.code_actions.shellcheck,
         nls.builtins.formatting.shfmt,
