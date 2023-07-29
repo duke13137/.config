@@ -1,5 +1,28 @@
 setlocal iskeyword+=.
 
+inoremap <buffer> ' '
+inoremap <buffer> ` `
+
+lua <<END
+
+local wk = require("which-key")
+local keys = {
+  h = "ghci :doc",
+  i = "ghci :info",
+  j = "ghci :instances",
+  k = "ghci :kind",
+  l = "ghci :load",
+  r = "ghci :reload",
+  R = "ghci :main",
+  t = "ghci :type",
+  T = "ghci :doctest",
+}
+
+wk.register(keys, { mode = "n", prefix = "<localleader>", silent = true })
+wk.register(keys, { mode = "v", prefix = "<localleader>", silent = true })
+
+END
+
 nnoremap <silent><nowait> <localleader>l :w <bar>:Repl :load! *<C-r>=expand('%:p:.')<CR><CR>
 nnoremap <silent><nowait> <localleader>r :w <bar>:Repl :reload!<CR>
 

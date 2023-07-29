@@ -19,6 +19,9 @@ vim.opt.iskeyword:append(".,:")
 -- have <cexpr> not expand to Right )
 vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r>=expand('<cexpr>')<CR><CR><Right>")
 
+vim.cmd "inoremap <buffer> '  '"
+vim.cmd "inoremap <buffer> `  `"
+
 local command = vim.api.nvim_create_user_command
 command("FnlApropos", "ConjureEval ,apropos <args>", { nargs = 1 })
 command("FnlComplete", "ConjureEval ,complete <args>", { nargs = 1 })

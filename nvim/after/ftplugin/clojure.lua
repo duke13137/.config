@@ -50,6 +50,9 @@ map("v", ",e", 'y :<C-u>ConjureEval #sc/letsc <C-r>=@"<CR><CR>', options("letsc 
 map("v", ",t", 'y :<C-u>ConjureEval (flow-storm.api/instrument* {} <C-r>=@"<CR>)<CR>', options("trace form"))
 map("v", ",r", 'y :<C-u>ConjureEval (flow-storm.api/runi {} <C-r>=@"<CR>)<CR>', options("rtrace form"))
 
+vim.cmd "inoremap <buffer> '  '"
+vim.cmd "inoremap <buffer> `  `"
+
 local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufEnter", {
   pattern = "*.clj",
@@ -64,7 +67,3 @@ autocmd("BufEnter", {
     vim.g["conjure#client#clojure#nrepl#connection#auto_repl#cmd"] = "npx nbb nrepl-server :port $port"
   end,
 })
-
-local autopairs = require("nvim-autopairs")
-autopairs.remove_rule("'")
-autopairs.remove_rule("`")

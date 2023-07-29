@@ -53,22 +53,6 @@ local bufnr = vim.api.nvim_get_current_buf()
 -- (requires nvim-dap and haskell-debug-adapter)
 ht.dap.discover_configurations(bufnr)
 
-local wk = require("which-key")
-local keys = {
-  h = "ghci :doc",
-  i = "ghci :info",
-  j = "ghci :instances",
-  k = "ghci :kind",
-  l = "ghci :load",
-  r = "ghci :reload",
-  R = "ghci :main",
-  t = "ghci :type",
-  T = "ghci :doctest",
-}
-
-wk.register(keys, { mode = "n", prefix = "<localleader>", silent = true })
-wk.register(keys, { mode = "v", prefix = "<localleader>", silent = true })
-
 vim.api.nvim_create_user_command("HlintApply", function()
   local bufname = vim.api.nvim_buf_get_name(0)
   local c = vim.api.nvim_win_get_cursor(0)
@@ -81,7 +65,3 @@ vim.api.nvim_create_user_command("HlintApplyAll", function()
   local bufname = vim.api.nvim_buf_get_name(0)
   vim.cmd(string.format("silent !hlint %s --refactor --refactor-options='--inplace' ", bufname))
 end, { nargs = 0 })
-
-local autopairs = require("nvim-autopairs")
-autopairs.remove_rule("'")
-autopairs.remove_rule("`")
