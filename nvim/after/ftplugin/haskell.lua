@@ -65,3 +65,19 @@ vim.api.nvim_create_user_command("HlintApplyAll", function()
   local bufname = vim.api.nvim_buf_get_name(0)
   vim.cmd(string.format("silent !hlint %s --refactor --refactor-options='--inplace' ", bufname))
 end, { nargs = 0 })
+
+local wk = require("which-key")
+local keys = {
+  h = "ghci :doc",
+  i = "ghci :info",
+  j = "ghci :instances",
+  k = "ghci :kind",
+  l = "ghci :load",
+  r = "ghci :reload",
+  R = "ghci :main",
+  t = "ghci :type",
+  T = "ghci :doctest",
+}
+
+wk.register(keys, { mode = "n", prefix = "<localleader>", silent = true })
+wk.register(keys, { mode = "v", prefix = "<localleader>", silent = true })
