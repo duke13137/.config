@@ -4,9 +4,12 @@ end
 
 local enabled = {
   "mini.ai",
+  "mini.comment",
+  "mini.pairs",
   "mini.surround",
   "nvim-treesitter",
   "nvim-treesitter-textobjects",
+  "nvim-ts-context-commentstring",
   "vim-repeat",
   "LazyVim",
 }
@@ -28,6 +31,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 return {
+  { "folke/flash.nvim", enabled = false },
   {
     "LazyVim/LazyVim",
     config = function(_, opts)
