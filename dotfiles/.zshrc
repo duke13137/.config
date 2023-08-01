@@ -321,7 +321,7 @@ export FZF_DEFAULT_OPTS="\
   --height=80% --delimiter=':'\
   --prompt='❱ ' --pointer='▶' --marker='✓' \
   --preview '([[ -f {1} ]] && (bat --number --color=always {1} || cat {1})) 2>/dev/null || ([[ -d {} ]] && (tree -C {} || ls -laF {})) 2>/dev/null || echo {}' \
-  --preview-window='up,60%,border-sharp,+{2}-5/5:hidden' \
+  --preview-window='down,60%,+{2}-5/5:hidden' \
   --bind '?:toggle-preview' \
   --bind 'ctrl-a:select-all' \
 "

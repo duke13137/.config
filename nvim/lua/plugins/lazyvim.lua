@@ -10,6 +10,8 @@ return {
   { "rcarriga/nvim-dap-ui", pin = true },
   { "theHamsta/nvim-dap-virtual-text", pin = true },
 
+  { "ibhagwan/fzf-lua" },
+
   {
     "L3MON4D3/LuaSnip",
     keys = function() return {} end,
