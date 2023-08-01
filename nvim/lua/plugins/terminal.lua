@@ -4,6 +4,11 @@ local M = {
     "akinsho/nvim-toggleterm.lua",
     "mtikekar/nvim-send-to-term",
     "fonghou/tmuxjump.vim",
+    { "junegunn/fzf", build = "./install --bin" },
+  },
+  keys = {
+    { "[f", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
+    { "[F", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
   },
 }
 
