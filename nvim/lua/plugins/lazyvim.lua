@@ -12,13 +12,13 @@ return {
 
   {
     "ibhagwan/fzf-lua",
-     opts = {
+    opts = {
       tags = {
         path_shorten = 1
       },
       git = {
         commits = {
-          fzf_opts = { ["--delimiter"] = "'[ ]'" },
+          fzf_opts = { ["--delimiter"] = "'[ ]'" }
         },
         bcommits = {
           fzf_opts = { ["--delimiter"] = "'[ ]'" }

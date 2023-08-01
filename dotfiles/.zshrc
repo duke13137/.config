@@ -317,8 +317,8 @@ export FZF_DEFAULT_COMMAND='fd'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --type f"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 export FZF_DEFAULT_OPTS="\
-  --layout=reverse --info=inline --multi \
-  --height=80% --delimiter=':'\
+  --info=inline --multi \
+  --layout=reverse --height=80% \
   --prompt='❱ ' --pointer='▶' --marker='✓' \
   --preview '([[ -f {1} ]] && (bat --number --color=always {1} || cat {1})) 2>/dev/null || ([[ -d {} ]] && (tree -C {} || ls -laF {})) 2>/dev/null || echo {}' \
   --preview-window='down,60%,+{2}-5/5:hidden' \
