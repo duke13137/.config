@@ -10,7 +10,22 @@ return {
   { "rcarriga/nvim-dap-ui", pin = true },
   { "theHamsta/nvim-dap-virtual-text", pin = true },
 
-  { "ibhagwan/fzf-lua" },
+  {
+    "ibhagwan/fzf-lua",
+     opts = {
+      tags = {
+        path_shorten = 1
+      },
+      git = {
+        commits = {
+          fzf_opts = { ["--delimiter"] = "'[ ]'" },
+        },
+        bcommits = {
+          fzf_opts = { ["--delimiter"] = "'[ ]'" }
+        },
+      }
+    }
+  },
 
   {
     "L3MON4D3/LuaSnip",
