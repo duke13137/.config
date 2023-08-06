@@ -11,23 +11,6 @@ return {
   { "theHamsta/nvim-dap-virtual-text", pin = true },
 
   {
-    "ibhagwan/fzf-lua",
-    opts = {
-      tags = {
-        path_shorten = 1
-      },
-      git = {
-        commits = {
-          fzf_opts = { ["--delimiter"] = "'[ ]'" }
-        },
-        bcommits = {
-          fzf_opts = { ["--delimiter"] = "'[ ]'" }
-        },
-      }
-    }
-  },
-
-  {
     "L3MON4D3/LuaSnip",
     keys = function() return {} end,
   },
@@ -189,6 +172,34 @@ return {
           opts.capabilities.offsetEncoding = { "utf-16" }
         end,
       },
+    },
+  },
+
+  {
+    "ibhagwan/fzf-lua",
+    opts = {
+      tags = {
+        path_shorten = 1
+      },
+      git = {
+        commits = {
+          fzf_opts = { ["--delimiter"] = "'[ ]'" }
+        },
+        bcommits = {
+          fzf_opts = { ["--delimiter"] = "'[ ]'" }
+        },
+      }
+    }
+  },
+
+  {
+    "fonghou/tmuxjump.vim",
+    dependencies = {
+      { "junegunn/fzf", build = "./install --bin" },
+    },
+    keys = {
+      { "[f", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
+      { "[F", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
     },
   },
 

@@ -1,3 +1,32 @@
+vim.g.haskell_tools = {
+  hls = {
+    default_settings = {
+      haskell = { -- haskell-language-server options
+        -- Setting this to true could have a performance impact on large mono repos.
+        checkProject = false,
+        formattingProvider = "fourmolu",
+        plugin = {
+          importLens = { codeLensOn = false },
+          hlint = { globalOn = false },
+          retrie = { globalOn = false },
+          splice = { globalOn = false },
+          tactics = { globalOn = false },
+        },
+      },
+    },
+  },
+  tools = {
+    hover = {
+      enable = true,
+      auto_focus = false,
+      stylize_markdown = true,
+    },
+    definition = {
+      hoogle_signature_fallback = true,
+    },
+  },
+}
+
 local M = {
   "mrcjkb/haskell-tools.nvim",
   dependencies = {
@@ -6,7 +35,7 @@ local M = {
     "jose-elias-alvarez/null-ls.nvim",
     "preservim/tagbar",
   },
-  branch = "1.x.x",
+  branch = "2.x.x",
 }
 
 function M.ghcid()
