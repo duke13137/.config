@@ -17,12 +17,14 @@ vim.g.haskell_tools = {
   },
   tools = {
     hover = {
-      enable = true,
       auto_focus = false,
       stylize_markdown = true,
     },
-    definition = {
-      hoogle_signature_fallback = true,
+    repl = {
+      handler = "toggleterm",
+      prefer = function()
+        return vim.fn.executable("stack") == 1 and "stack" or "cabal"
+      end,
     },
   },
 }
