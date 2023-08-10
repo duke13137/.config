@@ -1,34 +1,3 @@
-vim.g.haskell_tools = {
-  hls = {
-    default_settings = {
-      haskell = { -- haskell-language-server options
-        -- Setting this to true could have a performance impact on large mono repos.
-        checkProject = false,
-        formattingProvider = "fourmolu",
-        plugin = {
-          importLens = { codeLensOn = false },
-          hlint = { globalOn = false },
-          retrie = { globalOn = false },
-          splice = { globalOn = false },
-          tactics = { globalOn = false },
-        },
-      },
-    },
-  },
-  tools = {
-    hover = {
-      auto_focus = false,
-      stylize_markdown = true,
-    },
-    repl = {
-      handler = "toggleterm",
-      prefer = function()
-        return vim.fn.executable("stack") == 1 and "stack" or "cabal"
-      end,
-    },
-  },
-}
-
 local M = {
   "mrcjkb/haskell-tools.nvim",
   dependencies = {
@@ -38,7 +7,41 @@ local M = {
     "preservim/tagbar",
   },
   branch = "2.x.x",
+  lazy = false,
 }
+
+function M.init()
+  vim.g.haskell_tools = {
+    hls = {
+      default_settings = {
+        haskell = { -- haskell-language-server options
+          -- Setting this to true could have a performance impact on large mono repos.
+          checkProject = false,
+          formattingProvider = "fourmolu",
+          plugin = {
+            importLens = { codeLensOn = false },
+            hlint = { globalOn = false },
+            retrie = { globalOn = false },
+            splice = { globalOn = false },
+            tactics = { globalOn = false },
+          },
+        },
+      },
+    },
+    tools = {
+      hover = {
+        auto_focus = false,
+        stylize_markdown = true,
+      },
+      repl = {
+        handler = "toggleterm",
+        prefer = function()
+          return vim.fn.executable("stack") == 1 and "stack" or "cabal"
+        end,
+      },
+    },
+  }
+end
 
 function M.ghcid()
   local helpers = require("null-ls.helpers")

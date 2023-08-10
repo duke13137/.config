@@ -7,8 +7,8 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  { "rcarriga/nvim-dap-ui", pin = true },
-  { "theHamsta/nvim-dap-virtual-text", pin = true },
+  { "rcarriga/nvim-dap-ui", pin = true, lazy = true },
+  { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
 
   {
     "L3MON4D3/LuaSnip",
@@ -177,6 +177,7 @@ return {
 
   {
     "ibhagwan/fzf-lua",
+    cmd = "FzfLua",
     opts = {
       tags = {
         path_shorten = 1
