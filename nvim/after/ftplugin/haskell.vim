@@ -3,12 +3,13 @@ setlocal iskeyword+=.
 inoremap <buffer> ' '
 inoremap <buffer> ` `
 
-nnoremap <buffer><silent><nowait> <localleader>c   <bar>:Repl :!clear<CR>
-nnoremap <buffer><silent><nowait> <localleader>L   <bar>:Repl :load! *<C-r>=expand('%:p:.')<CR><CR>
-nnoremap <buffer><silent><nowait> <localleader>l   <bar>:Repl :reload<CR>
+nnoremap <buffer><silent><nowait> <localleader>c   :Repl :!clear<CR>
 
-nnoremap <buffer><silent><nowait> <localleader>m   <bar>:Repl :main<CR>
-nnoremap <buffer><silent><nowait> <localleader>E   <bar>:Repl :doctest <C-r>=expand('%:p:.')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%:p:.')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>l   :Repl :reload<CR>
+
+nnoremap <buffer><silent><nowait> <localleader>m   :Repl :main<CR>
+nnoremap <buffer><silent><nowait> <localleader>E   :Repl :doctest <C-r>=expand('%:p:.')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>h   :Repl :doc <C-r>=expand('<cword>')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r>=expand('<cexpr>')<CR><CR>
