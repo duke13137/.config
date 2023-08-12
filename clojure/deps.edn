@@ -83,6 +83,9 @@
    :extra-paths ["dev" "test"]
    :extra-deps  {com.github.jpmonettas/flow-storm-dbg {:mvn/version "RELEASE"}
                  com.github.jpmonettas/clojure        {:mvn/version "RELEASE"}
+                 com.clojure-goes-fast/clj-java-decompiler {:mvn/version "RELEASE"}
+                 com.clojure-goes-fast/clj-async-profiler  {:mvn/version "RELEASE"}
+                 com.clojure-goes-fast/virgil {:mvn/version "RELEASE"}
                  com.brunobonacci/mulog       {:mvn/version "RELEASE"}
                  criterium/criterium          {:mvn/version "RELEASE"}
                  integrant/repl               {:mvn/version "RELEASE"}

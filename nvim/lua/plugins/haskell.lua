@@ -20,7 +20,7 @@ function M.init()
           formattingProvider = "fourmolu",
           plugin = {
             importLens = { codeLensOn = false },
-            hlint = { globalOn = false },
+            -- hlint = { globalOn = false },
             retrie = { globalOn = false },
             splice = { globalOn = false },
             tactics = { globalOn = false },

@@ -12,16 +12,16 @@ end
 -- so auto-refresh (see advanced configuration) is enabled by default
 vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, def_opts("Codelens"))
 -- Evaluate all code snippets
-vim.keymap.set("n", "<localleader>e", ht.lsp.buf_eval_all, def_opts("Eval test"))
+vim.keymap.set("n", "<localleader>e", ht.lsp.buf_eval_all, def_opts("eval-all"))
 -- Hoogle search for the type signature of the definition under the cursor
-vim.keymap.set("n", "<localleader>s", ht.hoogle.hoogle_signature, def_opts("Hoogle search"))
+vim.keymap.set("n", "<localleader>s", ht.hoogle.hoogle_signature, def_opts("search hoogle"))
 -- Toggle a GHCi repl for the current package
-vim.keymap.set("n", "<localleader>cr", ht.repl.toggle, def_opts("Repl project"))
+vim.keymap.set("n", "<localleader>rr", ht.repl.toggle, def_opts("Repl project"))
 -- Toggle a GHCi repl for the current buffer
-vim.keymap.set("n", "<localleader>cf", function()
+vim.keymap.set("n", "<localleader>rf", function()
   ht.repl.toggle(vim.api.nvim_buf_get_name(0))
 end, def_opts("Repl buffer"))
-vim.keymap.set("n", "<localleader>cq", ht.repl.quit, def_opts("Repl quit"))
+vim.keymap.set("n", "<localleader>rq", ht.repl.quit, def_opts("Repl quit"))
 
 -- Detect nvim-dap launch configurations
 -- (requires nvim-dap and haskell-debug-adapter)
@@ -44,15 +44,17 @@ end, { nargs = 0 })
 
 local wk = require("which-key")
 local keys = {
+  E = "doctest",
+  c = "ghci :!clear",
   h = "ghci :doc",
   i = "ghci :info",
   j = "ghci :instances",
   k = "ghci :kind",
-  l = "ghci :load",
-  r = "ghci :reload",
-  R = "ghci :main",
+  L = "ghci :load",
+  l = "ghci :reload",
+  m = "ghci :main",
   t = "ghci :type",
-  T = "ghci :doctest",
+  r = "repl",
 }
 
 wk.register(keys, { mode = "n", prefix = "<localleader>", silent = true })

@@ -3,23 +3,24 @@ setlocal iskeyword+=.
 inoremap <buffer> ' '
 inoremap <buffer> ` `
 
-nnoremap <silent><nowait> <localleader>l   <bar>:Repl :load! *<C-r>=expand('%:p:.')<CR><CR>
-nnoremap <silent><nowait> <localleader>r   <bar>:Repl :reload!<CR>
+nnoremap <buffer><silent><nowait> <localleader>c   <bar>:Repl :!clear<CR>
+nnoremap <buffer><silent><nowait> <localleader>L   <bar>:Repl :load! *<C-r>=expand('%:p:.')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>l   <bar>:Repl :reload<CR>
 
-nnoremap <silent><nowait> <localleader>R   <bar>:Repl :main<CR>
-nnoremap <silent><nowait> <localleader>T   <bar>:Repl :doctest <C-r>=expand('%:p:.')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>m   <bar>:Repl :main<CR>
+nnoremap <buffer><silent><nowait> <localleader>E   <bar>:Repl :doctest <C-r>=expand('%:p:.')<CR><CR>
 
-nnoremap <silent><nowait> <localleader>h   :Repl :doc <C-r>=expand('<cword>')<CR><CR>
-nnoremap <silent><nowait> <localleader>i   :Repl :info <C-r>=expand('<cexpr>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>h   :Repl :doc <C-r>=expand('<cword>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r>=expand('<cexpr>')<CR><CR>
 
-nnoremap <silent><nowait> <localleader>j   :Repl :instances <C-r>=expand('<cexpr>')<CR><CR>
-vnoremap <silent><nowait> <localleader>j y :Repl :instances <C-r>=@"<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>j   :Repl :instances <C-r>=expand('<cexpr>')<CR><CR>
+vnoremap <buffer><silent><nowait> <localleader>j y :Repl :instances <C-r>=@"<CR><CR>
 
-nnoremap <silent><nowait> <localleader>k   :Repl :kind <C-r>=expand('<cexpr>')<CR><CR>
-vnoremap <silent><nowait> <localleader>k y :Repl :kind! <C-r>=@"<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>k   :Repl :kind <C-r>=expand('<cexpr>')<CR><CR>
+vnoremap <buffer><silent><nowait> <localleader>k y :Repl :kind! <C-r>=@"<CR><CR>
 
-nnoremap <silent><nowait> <localleader>t   :Repl :type +d <C-r>=expand('<cexpr>')<CR><CR>
-vnoremap <silent><nowait> <localleader>t   <Cmd>call GHC_type_at()<CR>
+nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type +d <C-r>=expand('<cexpr>')<CR><CR>
+vnoremap <buffer><silent><nowait> <localleader>t   <Cmd>call GHC_type_at()<CR>
 
 inoremap <buffer><silent><C-x><C-j>  <Left><C-o>:HaskComplete import <C-r>=expand('<cexpr>')<CR><CR><Right>
 inoremap <buffer><silent><C-j>       <Left><C-o>:HaskComplete <C-r>=expand('<cexpr>')<CR><CR><Right>

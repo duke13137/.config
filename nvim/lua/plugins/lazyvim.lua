@@ -78,7 +78,7 @@ return {
         nls.builtins.diagnostics.deadnix,
         nls.builtins.formatting.nixfmt,
         require('plugins.haskell').ghcid(),
-        require('plugins.haskell').hlint(),
+        -- require('plugins.haskell').hlint(),
       }
     end,
   },
