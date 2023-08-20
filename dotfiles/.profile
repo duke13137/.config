@@ -37,6 +37,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 export GOPATH="$HOME/.gopath"
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
+export PATH="/opt/cosmo/bin:/opt/cosmos/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/home/hacker/.local/share/pnpm"

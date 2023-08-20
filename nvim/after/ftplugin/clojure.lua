@@ -50,6 +50,7 @@ map("v", ",e", 'y :<C-u>ConjureEval #sc/letsc <C-r>=@"<CR><CR>', options("letsc 
 map("v", ",t", 'y :<C-u>ConjureEval (flow-storm.api/instrument* {} <C-r>=@"<CR>)<CR>', options("trace form"))
 map("v", ",r", 'y :<C-u>ConjureEval (flow-storm.api/runi {} <C-r>=@"<CR>)<CR>', options("rtrace form"))
 
+vim.cmd "inoremap <buffer> (  ("
 vim.cmd "inoremap <buffer> '  '"
 vim.cmd "inoremap <buffer> `  `"
 
