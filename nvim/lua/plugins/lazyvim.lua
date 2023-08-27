@@ -7,8 +7,26 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
+  { "folke/noice.nvim", enabled = false },
   { "rcarriga/nvim-dap-ui", pin = true, lazy = true },
   { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
+
+  {
+    "mfussenegger/nvim-dap",
+    keys = {
+      { "<leader>dc",
+        function()
+          vim.fn.sign_define('DapStopped', {text='🛑', texthl='DapBreakpoint'})
+          local dap = require('dap')
+          dap.adapters.lldb = dap.adapters.codelldb
+          if vim.fn.filereadable('.vscode/launch.json') then
+            require('dap.ext.vscode').load_launchjs(nil, { lldb = { "c", "cpp"} })
+          end
+          dap.continue()
+        end, desc = "Continue"
+      },
+    }
+  },
 
   {
     "L3MON4D3/LuaSnip",

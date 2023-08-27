@@ -19,8 +19,9 @@ function M.init()
           checkProject = false,
           formattingProvider = "fourmolu",
           plugin = {
-            importLens = { codeLensOn = false },
+            eval = { globalOn = false },
             -- hlint = { globalOn = false },
+            importLens = { codeLensOn = false },
             retrie = { globalOn = false },
             splice = { globalOn = false },
             tactics = { globalOn = false },
