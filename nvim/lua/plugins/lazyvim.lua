@@ -88,7 +88,7 @@ return {
     dependencies = { "mason.nvim" },
     opts = function(_, opts)
       local nls = require("null-ls")
-      opts.sources = {
+      vim.list_extend(opts.sources, {
         nls.builtins.formatting.stylua,
         nls.builtins.code_actions.gitsigns,
         nls.builtins.code_actions.shellcheck,
@@ -97,7 +97,7 @@ return {
         nls.builtins.formatting.nixfmt,
         require('plugins.haskell').ghcid(),
         -- require('plugins.haskell').hlint(),
-      }
+      })
     end,
   },
 
@@ -144,12 +144,13 @@ return {
     },
     opts = {
       defaults = {
+        sorting_strategy = "ascending",
         layout_strategy = "flex",
         layout_config = {
           width = 0.95,
           height = 0.85,
           preview_cutoff = 20,
-          prompt_position = "bottom",
+          prompt_position = "top",
           horizontal = {
             preview_width = function(_, cols, _)
               if cols > 200 then
@@ -180,6 +181,31 @@ return {
         "nix",
       })
     end,
+  },
+
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "clangd",
+        "codelldb",
+        "clojure-lsp",
+        "debugpy",
+        "delve",
+        "gopls",
+        "emmet-language-server",
+        "json-lsp",
+        "lua-language-server",
+        "pyright",
+        "ruff",
+        "ruff-lsp",
+        "rust-analyzer",
+        "shellcheck",
+        "shfmt",
+        "stylua",
+        "taplo",
+      },
+    },
   },
 
   {

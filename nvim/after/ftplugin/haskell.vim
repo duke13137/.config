@@ -11,6 +11,7 @@ nnoremap <buffer><silent><nowait> <localleader>l   :Repl :reload<CR>
 nnoremap <buffer><silent><nowait> <localleader>m   :Repl :main<CR>
 nnoremap <buffer><silent><nowait> <localleader>E   :Repl :doctest <C-r>=expand('%:p:.')<CR><CR>
 
+nnoremap <buffer><silent><nowait> <localleader>f   :Hoogle <C-r>=expand('<cexpr>')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>h   :Repl :doc <C-r>=expand('<cword>')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r>=expand('<cexpr>')<CR><CR>
 

@@ -11,10 +11,8 @@ end
 -- haskell-language-server relies heavily on codeLenses,
 -- so auto-refresh (see advanced configuration) is enabled by default
 vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, def_opts("Codelens"))
--- Evaluate all code snippets
-vim.keymap.set("n", "<localleader>e", ht.lsp.buf_eval_all, def_opts("eval-all"))
 -- Hoogle search for the type signature of the definition under the cursor
-vim.keymap.set("n", "<localleader>s", ht.hoogle.hoogle_signature, def_opts("search hoogle"))
+vim.keymap.set("n", "<leader>ch", ht.hoogle.hoogle_signature, def_opts("Search hoogle"))
 -- Toggle a GHCi repl for the current package
 vim.keymap.set("n", "<localleader>rr", ht.repl.toggle, def_opts("Repl project"))
 -- Toggle a GHCi repl for the current buffer
@@ -45,6 +43,7 @@ end, { nargs = 0 })
 local wk = require("which-key")
 local keys = {
   E = "doctest",
+  f = "find hoogle",
   c = "ghci :!clear",
   h = "ghci :doc",
   i = "ghci :info",

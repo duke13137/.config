@@ -1,13 +1,14 @@
 local M = {
   "mrcjkb/haskell-tools.nvim",
+  branch = "2.x.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
+    { "fonghou/fzf-hoogle.vim", dependencies = "junegunn/fzf" },
     "jose-elias-alvarez/null-ls.nvim",
     "preservim/tagbar",
   },
-  branch = "2.x.x",
-  lazy = false,
+  ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
 }
 
 function M.init()
