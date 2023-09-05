@@ -95,6 +95,8 @@ return {
         nls.builtins.formatting.shfmt,
         nls.builtins.diagnostics.deadnix,
         nls.builtins.formatting.nixfmt,
+        nls.builtins.formatting.cabal_fmt,
+        nls.builtins.formatting.fourmolu,
         require('plugins.haskell').ghcid(),
         -- require('plugins.haskell').hlint(),
       })

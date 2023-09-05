@@ -8,41 +8,44 @@ local M = {
     "jose-elias-alvarez/null-ls.nvim",
   },
   ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-}
-
-function M.init()
-  vim.g.haskell_tools = {
-    hls = {
-      default_settings = {
-        haskell = { -- haskell-language-server options
-          -- Setting this to true could have a performance impact on large mono repos.
-          checkProject = false,
-          formattingProvider = "fourmolu",
-          plugin = {
-            eval = { globalOn = false },
-            -- hlint = { globalOn = false },
-            importLens = { codeLensOn = false },
-            retrie = { globalOn = false },
-            splice = { globalOn = false },
-            tactics = { globalOn = false },
+  init = function()
+    vim.g.haskell_tools = {
+      hls = {
+        default_settings = {
+          haskell = { -- haskell-language-server options
+            -- Setting this to true could have a performance impact on large mono repos.
+            checkProject = false,
+            formattingProvider = "fourmolu",
+            plugin = {
+              eval = { globalOn = false },
+              -- hlint = { globalOn = false },
+              importLens = { codeLensOn = false },
+              retrie = { globalOn = false },
+              splice = { globalOn = false },
+              tactics = { globalOn = false },
+            },
           },
         },
       },
-    },
-    tools = {
-      hover = {
-        auto_focus = false,
-        stylize_markdown = true,
+      tools = {
+        codeLens = {
+          autoRefresh = false,
+        },
+        hover = {
+          enable = false,
+          auto_focus = false,
+          stylize_markdown = true,
+        },
+        repl = {
+          handler = "toggleterm",
+          prefer = function()
+            return vim.fn.executable("stack") == 1 and "stack" or "cabal"
+          end,
+        },
       },
-      repl = {
-        handler = "toggleterm",
-        prefer = function()
-          return vim.fn.executable("stack") == 1 and "stack" or "cabal"
-        end,
-      },
-    },
-  }
-end
+    }
+  end,
+}
 
 function M.ghcid()
   local helpers = require("null-ls.helpers")
