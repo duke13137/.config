@@ -220,31 +220,18 @@ return {
   },
 
   {
-    "ibhagwan/fzf-lua",
-    cmd = "FzfLua",
-    opts = {
-      tags = {
-        path_shorten = 1
-      },
-      git = {
-        commits = {
-          fzf_opts = { ["--delimiter"] = "'[ ]'" }
-        },
-        bcommits = {
-          fzf_opts = { ["--delimiter"] = "'[ ]'" }
-        },
-      }
-    }
-  },
-
-  {
-    "fonghou/tmuxjump.vim",
-    dependencies = {
-      { "junegunn/fzf", build = "./install --bin" },
-    },
+    "junegunn/fzf.vim",
     keys = {
-      { "[f", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
-      { "[F", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
+      { "gt", "<Cmd>Tags<CR>", "FZF tags"},
+    },
+    dependencies = {
+      { "junegunn/fzf" },
+      { "fonghou/tmuxjump.vim",
+        keys = {
+          { "[f", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
+          { "[F", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
+        },
+      },
     },
   },
 
