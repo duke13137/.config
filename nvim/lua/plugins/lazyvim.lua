@@ -236,11 +236,13 @@ return {
 
   {
     "fonghou/tmuxjump.vim",
+    init = function()
+      vim.g.tmuxjump_telescope = true
+    end,
     keys = {
       { "[f", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
       { "[F", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
     },
-    dependencies = { "junegunn/fzf" },
   },
 
   {
