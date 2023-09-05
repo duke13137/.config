@@ -3,16 +3,38 @@ setlocal iskeyword+=.
 inoremap <buffer> ' '
 inoremap <buffer> ` `
 
-nnoremap <buffer><silent><nowait> <localleader>c   :Repl :!clear<CR>
+lua <<END
 
-nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%:p:.')<CR><CR>
+local wk = require("which-key")
+local keys = {
+  h = "hoogle",
+  b = "ghci load",
+  c = "ghci clear",
+  d = "ghci doc",
+  i = "ghci info",
+  j = "ghci instances",
+  k = "ghci kind",
+  l = "ghci reload",
+  m = "ghci main",
+  t = "ghci type",
+  T = "doctest",
+  r = "repl",
+}
+
+wk.register(keys, { mode = "n", prefix = "<localleader>", silent = true })
+wk.register(keys, { mode = "v", prefix = "<localleader>", silent = true })
+
+END
+
+nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r>=expand('<cexpr>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>b   :Repl :load! *<C-r>=expand('%:p')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>c   :Repl :!clear<CR>
 nnoremap <buffer><silent><nowait> <localleader>l   :Repl :reload<CR>
 
 nnoremap <buffer><silent><nowait> <localleader>m   :Repl :main<CR>
-nnoremap <buffer><silent><nowait> <localleader>E   :Repl :doctest <C-r>=expand('%:p:.')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>T   :Repl :doctest <C-r>=expand('%:p')<CR><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>f   :Hoogle <C-r>=expand('<cexpr>')<CR><CR>
-nnoremap <buffer><silent><nowait> <localleader>h   :Repl :doc <C-r>=expand('<cword>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r>=expand('<cword>')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r>=expand('<cexpr>')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>j   :Repl :instances <C-r>=expand('<cexpr>')<CR><CR>
@@ -30,7 +52,7 @@ inoremap <buffer><silent><C-j>       <Left><C-o>:HaskComplete <C-r>=expand('<cex
 command -nargs=1 -complete=tag HaskComplete Repl :complete repl 1-15 "<args>"
 
 function! GHC_type_at()
-  let file = expand('%:p:.')
+  let file = expand('%:p')
   let [startln, startcol] = getpos('v')[1:2]
   let [endln, endcol] = getcursorcharpos()[1:2]
   if startln > endln
