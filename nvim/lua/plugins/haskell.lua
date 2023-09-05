@@ -6,7 +6,6 @@ local M = {
     "nvim-telescope/telescope.nvim",
     { "fonghou/fzf-hoogle.vim", dependencies = "junegunn/fzf" },
     "jose-elias-alvarez/null-ls.nvim",
-    "preservim/tagbar",
   },
   ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
 }
@@ -93,7 +92,7 @@ function M.ghcid()
       end,
     }),
     cwd = helpers.cache.by_bufnr(function(params)
-      return utils.root_pattern(".ghci*")(params.bufname)
+      return utils.root_pattern(".ghcid")(params.bufname)
     end),
   }
 end

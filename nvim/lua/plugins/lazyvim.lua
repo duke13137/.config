@@ -222,17 +222,25 @@ return {
   {
     "junegunn/fzf.vim",
     keys = {
-      { "gt", "<Cmd>Tags<CR>", "FZF tags"},
+      { "gT", "<Cmd>Tags<CR>", desc = "Tags" },
     },
-    dependencies = {
-      { "junegunn/fzf" },
-      { "fonghou/tmuxjump.vim",
-        keys = {
-          { "[f", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
-          { "[F", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
-        },
-      },
+    dependencies = { "junegunn/fzf" },
+  },
+
+  {
+    "preservim/tagbar",
+    keys = {
+      {"gt", "<Cmd>TagbarToggle<CR>", desc = "Tagbar"}
+    }
+  },
+
+  {
+    "fonghou/tmuxjump.vim",
+    keys = {
+      { "[f", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
+      { "[F", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
     },
+    dependencies = { "junegunn/fzf" },
   },
 
   {
