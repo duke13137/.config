@@ -67,10 +67,10 @@ function! GHC_type_at()
   :execute 'Repl :type-at ' . join([file, startln, startcol, endln, endcol], ' ')
 endfunction
 
-setlocal tags+=.haskell.tags
+setlocal tags+=.hackage.tags
 
 " cabal install fast-tags
-command HaskTags silent !find ~/.hackage .hackage -name '*.cabal' -print0 | xargs -0 fast-tags --cabal --qualified -o .haskell.tags
+command HaskTags silent !find . ~/.hackage -name '*.cabal' -print0 | xargs -0 fast-tags --cabal --qualified -o .hackage.tags
 
 " cabal install ghc-tags
 augroup Haskell
