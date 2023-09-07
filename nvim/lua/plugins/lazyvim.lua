@@ -224,7 +224,7 @@ return {
   {
     "junegunn/fzf.vim",
     keys = {
-      { "gT", "<Cmd>Tags<CR>", desc = "Tags" },
+      { "gt", ":Tags <C-r><C-w><CR>", desc = "Tags" },
     },
     dependencies = { "junegunn/fzf" },
   },
@@ -232,7 +232,7 @@ return {
   {
     "preservim/tagbar",
     keys = {
-      {"gt", "<Cmd>TagbarToggle<CR>", desc = "Tagbar"}
+      {"<leader>ut", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar"}
     }
   },
 

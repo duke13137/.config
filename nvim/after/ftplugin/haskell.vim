@@ -1,8 +1,3 @@
-setlocal iskeyword+=.
-
-inoremap <buffer> ' '
-inoremap <buffer> ` `
-
 lua <<END
 
 local wk = require("which-key")
@@ -26,7 +21,15 @@ wk.register(keys, { mode = "v", prefix = "<localleader>", silent = true })
 
 END
 
-nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r>=expand('<cexpr>')<CR><CR>
+
+" disable autopairs
+inoremap <buffer> ' '
+inoremap <buffer> ` `
+
+" <cword> includes .
+setlocal iskeyword+=.
+
+nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r>=expand('<cword>')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>b   :Repl :load! *<C-r>=expand('%:p')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>c   :Repl :!clear<CR>
 nnoremap <buffer><silent><nowait> <localleader>l   :Repl :reload<CR>
@@ -35,19 +38,19 @@ nnoremap <buffer><silent><nowait> <localleader>m   :Repl :main<CR>
 nnoremap <buffer><silent><nowait> <localleader>T   :Repl :doctest <C-r>=expand('%:p')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r>=expand('<cword>')<CR><CR>
-nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r>=expand('<cexpr>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r>=expand('<cword>')<CR><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>j   :Repl :instances <C-r>=expand('<cexpr>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>j   :Repl :instances <C-r>=expand('<cword>')<CR><CR>
 vnoremap <buffer><silent><nowait> <localleader>j y :Repl :instances <C-r>=@"<CR><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>k   :Repl :kind <C-r>=expand('<cexpr>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>k   :Repl :kind <C-r>=expand('<cword>')<CR><CR>
 vnoremap <buffer><silent><nowait> <localleader>k y :Repl :kind! <C-r>=@"<CR><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type +d <C-r>=expand('<cexpr>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type +d <C-r>=expand('<cword>')<CR><CR>
 vnoremap <buffer><silent><nowait> <localleader>t   <Cmd>call GHC_type_at()<CR>
 
-inoremap <buffer><silent><C-x><C-j>  <Left><C-o>:HaskComplete import <C-r>=expand('<cexpr>')<CR><CR><Right>
-inoremap <buffer><silent><C-j>       <Left><C-o>:HaskComplete <C-r>=expand('<cexpr>')<CR><CR><Right>
+inoremap <buffer><silent><C-x><C-j>  <Left><C-o>:HaskComplete import <C-r>=expand('<cword>')<CR><CR><Right>
+inoremap <buffer><silent><C-j>       <Left><C-o>:HaskComplete <C-r>=expand('<cword>')<CR><CR><Right>
 
 command -nargs=1 -complete=tag HaskComplete Repl :complete repl 1-15 "<args>"
 

@@ -14,11 +14,12 @@ wk.register({
   v = { "view" },
 }, { prefix = "<localleader>", mode = "n", silent = true })
 
--- have <cexpr> expand to . and :
+-- <cword> . and :
 vim.opt.iskeyword:append(".,:")
--- have <cexpr> not expand to Right )
-vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r>=expand('<cexpr>')<CR><CR><Right>")
+-- have <cword> not expand to Right )
+vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r>=expand('<cword>')<CR><CR><Right>")
 
+-- disable autopairs
 vim.cmd "inoremap <buffer> (  ("
 vim.cmd "inoremap <buffer> '  '"
 vim.cmd "inoremap <buffer> `  `"
