@@ -232,7 +232,7 @@ return {
   {
     "preservim/tagbar",
     keys = {
-      {"<leader>ut", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar"}
+      {"<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar"}
     }
   },
 

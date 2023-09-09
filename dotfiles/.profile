@@ -39,15 +39,7 @@ export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
 export PATH="/opt/cosmo/bin:/opt/cosmos/bin:$PATH"
 
-# pnpm
-export PNPM_HOME="/home/hacker/.local/share/pnpm"
-export PATH="$PATH:$PNPM_HOME"
-# pnpm end
-
-export DENO_INSTALL="/home/hacker/.deno"
-export PATH="$PATH:$DENO_INSTALL/bin"
-
-export PATH="$PATH:$HOME/.babashka/bbin/bin"
+export PATH="$PATH:$HOME/.bun/bin"
 
 . "$HOME/.cargo/env"
 

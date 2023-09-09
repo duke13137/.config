@@ -17,7 +17,7 @@ wk.register({
 -- <cword> . and :
 vim.opt.iskeyword:append(".,:")
 -- have <cword> not expand to Right )
-vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r>=expand('<cword>')<CR><CR><Right>")
+vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r><C-w><CR><Right>")
 
 -- disable autopairs
 vim.cmd "inoremap <buffer> (  ("

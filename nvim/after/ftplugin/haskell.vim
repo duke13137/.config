@@ -29,7 +29,7 @@ inoremap <buffer> ` `
 " <cword> includes .
 setlocal iskeyword+=.
 
-nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r>=expand('<cword>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r><C-w><CR>
 nnoremap <buffer><silent><nowait> <localleader>b   :Repl :load! *<C-r>=expand('%:p')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>c   :Repl :!clear<CR>
 nnoremap <buffer><silent><nowait> <localleader>l   :Repl :reload<CR>
@@ -37,22 +37,22 @@ nnoremap <buffer><silent><nowait> <localleader>l   :Repl :reload<CR>
 nnoremap <buffer><silent><nowait> <localleader>m   :Repl :main<CR>
 nnoremap <buffer><silent><nowait> <localleader>T   :Repl :doctest <C-r>=expand('%:p')<CR><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r>=expand('<cword>')<CR><CR>
-nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r>=expand('<cword>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r><C-w><CR>
+nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r><C-w><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>j   :Repl :instances <C-r>=expand('<cword>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>j   :Repl :instances <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>j y :Repl :instances <C-r>=@"<CR><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>k   :Repl :kind <C-r>=expand('<cword>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>k   :Repl :kind <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>k y :Repl :kind! <C-r>=@"<CR><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type +d <C-r>=expand('<cword>')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type +d <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>t   <Cmd>call GHC_type_at()<CR>
 
-inoremap <buffer><silent><C-x><C-j>  <Left><C-o>:HaskComplete import <C-r>=expand('<cword>')<CR><CR><Right>
-inoremap <buffer><silent><C-j>       <Left><C-o>:HaskComplete <C-r>=expand('<cword>')<CR><CR><Right>
+inoremap <buffer><silent><C-x><C-j>  <Left><C-o>:HaskComplete import <C-r><C-w><CR><Right>
+inoremap <buffer><silent><C-j>       <Left><C-o>:HaskComplete <C-r><C-w><CR><Right>
 
-command -nargs=1 -complete=tag HaskComplete Repl :complete repl 1-15 "<args>"
+command -nargs=1 -complete=tag HaskComplete call g:send_target.send([':complete repl 1-15 "<args>"'])
 
 function! GHC_type_at()
   let file = expand('%:p')
