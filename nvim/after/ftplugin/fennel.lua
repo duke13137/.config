@@ -6,12 +6,9 @@ require("lspconfig").fennel_ls.setup {}
 
 local wk = require("which-key")
 wk.register({
+  c = { "connect" },
   e = { "eval" },
-  g = { "goto" },
   l = { "log" },
-  r = { "reload" },
-  t = { "test" },
-  v = { "view" },
 }, { prefix = "<localleader>", mode = "n", silent = true })
 
 -- <cword> . and :
