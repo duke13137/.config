@@ -31,7 +31,7 @@ export BASH_ENV="$HOME/.bash_env"
 
 export PATH=/usr/lib/postgresql/15/bin:$PATH
 
-export JAVA_HOME=/opt/jdk-20.0.1
+export JAVA_HOME=/opt/java
 export PATH="$JAVA_HOME/bin:$PATH"
 
 export GOPATH="$HOME/.gopath"
