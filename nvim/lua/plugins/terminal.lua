@@ -32,7 +32,6 @@ function M.config()
       down = "<C-j>",
       up = "<C-k>",
       right = "<C-l>",
-      last_active = "<M-;>",
     },
   })
 
