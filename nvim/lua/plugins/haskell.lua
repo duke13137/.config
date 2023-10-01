@@ -5,7 +5,7 @@ local M = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
     { "fonghou/fzf-hoogle.vim", dependencies = "junegunn/fzf" },
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
   },
   ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
   init = function()
