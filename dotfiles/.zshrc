@@ -330,6 +330,9 @@ export FZF_DEFAULT_OPTS="\
 export EDITOR=vi
 export CGO_LDFLAGS_ALLOW='.*'
 
+export ASAN_OPTIONS=abort_on_error=1:halt_on_error=1
+export UBSAN_OPTIONS=abort_on_error=1:halt_on_error=1
+
 if [ -e /home/hacker/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hacker/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 eval "$(direnv hook zsh)"

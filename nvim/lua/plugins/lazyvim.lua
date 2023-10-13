@@ -142,13 +142,6 @@ return {
   -- add telescope-fzf-native and change layout
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
-    },
     opts = {
       defaults = {
         sorting_strategy = "ascending",
