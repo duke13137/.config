@@ -55,7 +55,7 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
       ["<CR>"] = cmp.config.disable,
       ["<Tab>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
+          behavior = cmp.ConfirmBehavior.Insert,
           select = true,
         }),
       ["<C-l>"] = cmp.mapping(function(fallback)
