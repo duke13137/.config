@@ -187,7 +187,6 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "clangd",
         "codelldb",
         "clojure-lsp",
         "debugpy",
