@@ -208,18 +208,6 @@ return {
   },
 
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      setup = {
-        clangd = function(_, opts)
-          opts.capabilities.offsetEncoding = { "utf-16" }
-          opts.capabilities.semanticTokensProvider = nil
-        end,
-      },
-    },
-  },
-
-  {
     "junegunn/fzf.vim",
     keys = {
       { "gt", ":Tags <C-r><C-w><CR>", desc = "Tags" },
