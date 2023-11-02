@@ -228,8 +228,8 @@ return {
       vim.g.tmuxjump_telescope = true
     end,
     keys = {
-      { "[f", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
-      { "[F", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
+      { "<leader>fj", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
+      { "<leader>fJ", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
     },
   },
 
