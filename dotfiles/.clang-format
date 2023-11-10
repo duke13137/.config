@@ -10,7 +10,7 @@ AllowShortFunctionsOnASingleLine: false
 AllowAllArgumentsOnNextLine: false
 BinPackArguments: true
 AllowAllParametersOfDeclarationOnNextLine: false
-BinPackParameters: true
+BinPackParameters: false
 
 AlignConsecutiveMacros: true
-AlignAfterOpenBracket: AlwaysBreak
+AlignAfterOpenBracket: false

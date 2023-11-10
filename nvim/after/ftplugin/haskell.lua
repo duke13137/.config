@@ -27,6 +27,10 @@ ht.dap.discover_configurations(bufnr)
 
 require("telescope").load_extension("ht")
 
+local luasnip = require("luasnip")
+local haskell_snippets = require("haskell-snippets").all
+luasnip.add_snippets("haskell", haskell_snippets, { key = "haskell" })
+
 vim.api.nvim_create_user_command("HlintApply", function()
   local bufname = vim.api.nvim_buf_get_name(0)
   local c = vim.api.nvim_win_get_cursor(0)

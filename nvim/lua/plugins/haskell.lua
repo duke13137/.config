@@ -2,6 +2,7 @@ local M = {
   "mrcjkb/haskell-tools.nvim",
   version = "^3",
   dependencies = {
+    "mrcjkb/haskell-snippets.nvim",
     "nvim-telescope/telescope.nvim",
     "nvimtools/none-ls.nvim",
     { "fonghou/fzf-hoogle.vim", dependencies = "junegunn/fzf" },
