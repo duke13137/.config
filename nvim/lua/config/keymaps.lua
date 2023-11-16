@@ -167,3 +167,9 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- Increment/descrement
+map("n", "+", "<C-a>")
+map("n", "-", "<C-x>")
+
+map("n", "<C-a>", "gg<S-v>G", { desc = "Select all"})

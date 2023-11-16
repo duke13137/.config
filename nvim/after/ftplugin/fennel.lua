@@ -11,10 +11,11 @@ wk.register({
   l = { "log" },
 }, { prefix = "<localleader>", mode = "n", silent = true })
 
--- <cword> . and :
+-- <cword>
 vim.opt.iskeyword:append(".,:")
--- have <cword> not expand to Right )
-vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r><C-w><CR><Right>")
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r><C-w><CR><Right>", opts)
 
 -- disable autopairs
 vim.cmd "inoremap <buffer> (  ("
