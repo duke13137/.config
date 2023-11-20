@@ -1,29 +1,50 @@
 {
-  "launch": {
-    "configurations": [
-      {
-        "name": "Debug core",
-        "type": "lldb",
-        "request": "custom",
-        "targetCreateCommands": [
-          "target create -c ${relativeFileDirname}/core"
-        ]
-      },
-      {
-        "name": "Debug replay",
-        "type": "lldb",
-        "request": "custom",
-        "breakpointMode": "file",
-        "targetCreateCommands": [
-          "target create ${relativeFileDirname}/${fileBasenameNoExtension}"
-        ],
-        "processCreateCommands": [
-          "gdb-remote 127.0.0.1:9876"
-        ],
-        "reverseDebugging": true
-      }
-    ]
+  "debug.internalConsoleOptions": "openOnSessionStart",
+  "debug.console.fontSize": 15,
+  "debug.focusEditorOnBreak": false,
+  "debug.openDebug": "openOnDebugBreak",
+  "diffEditor.wordWrap": "off",
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.tabCompletion": "on",
+  "editor.fontFamily": "'JetBrains Mono', 'Cascadia Code', 'Fira Code Retina'",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "off",
+  "editor.minimap.autohide": true,
+  "editor.scrollBeyondLastLine": false,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.wordWrap": "off",
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.calva": true,
+    "**/.classpath": true,
+    "**/.clj-kondo": true,
+    "**/.cpcache": true,
+    "**/.factorypath": true,
+    "**/.lsp": true,
+    "**/.project": true,
+    "**/.settings": true
   },
+  "search.exclude": {
+    "**/.clj-kondo": true,
+    "**/.cpcache": true,
+    "**/.hie": true,
+    "**/.stack-work": true,
+    "**/*.class": true
+  },
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.sendKeybindingsToShell": true,
+  "workbench.colorTheme": "One Monokai",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  // extentoins
   "calva.enableJSCompletions": false,
   "calva.fmt.configPath": "CLOJURE-LSP",
   "calva.showCalvaSaysOnStart": false,
@@ -50,6 +71,10 @@
     "maxLength": 50,
     "printEngine": "pprint"
   },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "haskell": "html"
+  },
   "haskell.formattingProvider": "fourmolu",
   "haskell.plugin.ghcide-completions.config.snippetsOn": false,
   "haskell.plugin.importLens.codeLensOn": false,
@@ -61,74 +86,43 @@
   "java.debug.settings.forceBuildBeforeLaunch": false,
   "java.silentNotification": true,
   "jdk.jdkhome": "C:/Program Files/Java/jdk-21",
-  "Lua.telemetry.enable": false,
-  "Lua.workspace.ignoreDir": [
-    ".vscode/",
-    "lib/"
-  ],
-  "redhat.telemetry.enabled": false,
-  "debug.internalConsoleOptions": "openOnSessionStart",
-  "debug.console.fontSize": 15,
-  "debug.focusEditorOnBreak": false,
-  "debug.openDebug": "openOnDebugBreak",
-  "diffEditor.wordWrap": "off",
-  "editor.acceptSuggestionOnEnter": "off",
-  "editor.tabCompletion": "on",
-  "editor.fontFamily": "'JetBrains Mono', 'Cascadia Code', 'Fira Code Retina'",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 15,
-  "editor.formatOnSave": true,
-  "editor.inlayHints.enabled": "off",
-  "editor.minimap.autohide": true,
-  "editor.scrollBeyondLastLine": false,
-  "editor.semanticHighlighting.enabled": true,
-  "editor.unicodeHighlight.ambiguousCharacters": false,
-  "editor.wordWrap": "off",
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "haskell": "html"
+  "launch": {
+    "configurations": [
+      {
+        "name": "Debug core",
+        "type": "lldb",
+        "request": "custom",
+        "targetCreateCommands": [
+          "target create -c ${relativeFileDirname}/core"
+        ]
+      },
+      {
+        "name": "Debug replay",
+        "type": "lldb",
+        "request": "custom",
+        "breakpointMode": "file",
+        "targetCreateCommands": [
+          "target create ${relativeFileDirname}/${fileBasenameNoExtension}"
+        ],
+        "processCreateCommands": [
+          "gdb-remote 127.0.0.1:9876"
+        ],
+        "reverseDebugging": true
+      }
+    ]
   },
-  "files.eol": "\n",
-  "files.exclude": {
-    "**/.calva": true,
-    "**/.classpath": true,
-    "**/.clj-kondo": true,
-    "**/.cpcache": true,
-    "**/.factorypath": true,
-    "**/.lsp": true,
-    "**/.project": true,
-    "**/.settings": true
-  },
-  "search.exclude": {
-    "**/.clj-kondo": true,
-    "**/.cpcache": true,
-    "**/.hie": true,
-    "**/.stack-work": true,
-    "**/*.class": true
-  },
-  "telemetry.telemetryLevel": "off",
-  "terminal.integrated.allowChords": false,
-  "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.defaultProfile.linux": "zsh",
-  "terminal.integrated.fontSize": 15,
-  "terminal.integrated.sendKeybindingsToShell": false,
-  "workbench.colorTheme": "One Monokai",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
   "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
   "vscode-neovim.useWSL": true,
   "vscode-neovim.ctrlKeysForInsertMode": [
-    "c",
     "o",
     "r",
     "u"
   ],
   "vscode-neovim.ctrlKeysForNormalMode": [
-    "c",
+    "d",
     "i",
     "o",
     "r",
@@ -140,6 +134,6 @@
     "up",
     "down",
     "backspace",
-    "delete"
+    "delete",
   ],
 }
