@@ -67,11 +67,6 @@
     "lib/"
   ],
   "redhat.telemetry.enabled": false,
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
-  "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
-  "vscode-neovim.useWSL": true,
   "debug.internalConsoleOptions": "openOnSessionStart",
   "debug.console.fontSize": 15,
   "debug.focusEditorOnBreak": false,
@@ -121,4 +116,30 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
+  "vscode-neovim.useWSL": true,
+  "vscode-neovim.ctrlKeysForInsertMode": [
+    "c",
+    "o",
+    "r",
+    "u"
+  ],
+  "vscode-neovim.ctrlKeysForNormalMode": [
+    "c",
+    "i",
+    "o",
+    "r",
+    "t",
+    "u",
+    "v",
+    "right",
+    "left",
+    "up",
+    "down",
+    "backspace",
+    "delete"
+  ],
 }
