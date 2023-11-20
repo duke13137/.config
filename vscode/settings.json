@@ -6,7 +6,7 @@
         "type": "lldb",
         "request": "custom",
         "targetCreateCommands": [
-          "target create -c ${workspaceFolder}/core"
+          "target create -c ${relativeFileDirname}/core"
         ]
       },
       {
@@ -15,7 +15,7 @@
         "request": "custom",
         "breakpointMode": "file",
         "targetCreateCommands": [
-          "target create ${workspaceFolder}/${fileBasenameNoExtension}"
+          "target create ${relativeFileDirname}/${fileBasenameNoExtension}"
         ],
         "processCreateCommands": [
           "gdb-remote 127.0.0.1:9876"
@@ -60,6 +60,7 @@
   "java.debug.settings.console": "internalConsole",
   "java.debug.settings.forceBuildBeforeLaunch": false,
   "java.silentNotification": true,
+  "jdk.jdkhome": "C:/Program Files/Java/jdk-21",
   "Lua.telemetry.enable": false,
   "Lua.workspace.ignoreDir": [
     ".vscode/",
@@ -72,25 +73,26 @@
   "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
   "vscode-neovim.useWSL": true,
   "debug.internalConsoleOptions": "openOnSessionStart",
+  "debug.console.fontSize": 15,
+  "debug.focusEditorOnBreak": false,
   "debug.openDebug": "openOnDebugBreak",
   "diffEditor.wordWrap": "off",
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.tabCompletion": "on",
   "editor.fontFamily": "'JetBrains Mono', 'Cascadia Code', 'Fira Code Retina'",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.formatOnSave": true,
-  "editor.acceptSuggestionOnEnter": "off",
-  "editor.tabCompletion": "on",
+  "editor.inlayHints.enabled": "off",
   "editor.minimap.autohide": true,
   "editor.scrollBeyondLastLine": false,
   "editor.semanticHighlighting.enabled": true,
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "editor.wordWrap": "off",
+  "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "haskell": "html"
   },
-  "emmet.triggerExpansionOnTab": true,
-  "markdown.preview.fontSize": 16,
-  "markdown.preview.lineHeight": 1.4,
   "files.eol": "\n",
   "files.exclude": {
     "**/.calva": true,
@@ -109,18 +111,14 @@
     "**/.stack-work": true,
     "**/*.class": true
   },
-  "telemetry.telemetryLevel": "crash",
+  "telemetry.telemetryLevel": "off",
   "terminal.integrated.allowChords": false,
-  "terminal.integrated.sendKeybindingsToShell": false,
-  "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontSize": 15,
+  "terminal.integrated.sendKeybindingsToShell": false,
   "workbench.colorTheme": "One Monokai",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.activityBar.visible": false,
+  "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "workbench.colorCustomizations": {
-    "editor.lineHighlightBackground": "#1073cf2d",
-    "editor.lineHighlightBorder": "#9fced11f"
-  },
 }

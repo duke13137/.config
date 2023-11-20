@@ -7,10 +7,12 @@ ColumnLimit: 100
 
 AllowShortIfStatementsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: false
+
 AllowAllArgumentsOnNextLine: false
 BinPackArguments: true
+
 AllowAllParametersOfDeclarationOnNextLine: false
 BinPackParameters: false
 
 AlignConsecutiveMacros: true
-AlignAfterOpenBracket: false
+AlignAfterOpenBracket: Align
