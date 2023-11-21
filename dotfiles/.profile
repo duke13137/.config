@@ -29,24 +29,26 @@ fi
 # expand aliases needed by nvim
 export BASH_ENV="$HOME/.bash_env"
 
-export PATH=/usr/lib/postgresql/15/bin:$PATH
-
 export JAVA_HOME=/opt/java
 export PATH="$JAVA_HOME/bin:$PATH"
 
 export GOPATH="$HOME/.gopath"
 export GOBIN="$GOPATH/bin"
-export PATH="$PATH:$GOBIN"
+export PATH="$GOBIN:$PATH"
+
+export PATH="/usr/lib/postgresql/16/bin:$PATH"
+
 export PATH="/opt/cosmocc/bin:$PATH"
 
-export PATH="$PATH:$HOME/.bun/bin"
+export EMSDK_QUIET=1
+test -f /opt/emsdk/emsdk_env.sh && source /opt/emsdk/emsdk_env.sh
 
-. "$HOME/.cargo/env"
+test -f ~/.cargo/env && source ~/.cargo/env
 
-[ -f "/home/hacker/.ghcup/env" ] && source "/home/hacker/.ghcup/env"
+test -f ~/.ghcup/env && source ~/.ghcup/env
+
+test -f ~/.xmake/profile && source ~/.xmake/profile
 
 if [ -e /home/hacker/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hacker/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-eval "$(direnv hook bash)"
 
 exec zsh
