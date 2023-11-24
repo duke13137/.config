@@ -3,13 +3,12 @@ lua <<END
 local wk = require("which-key")
 local keys = {
   h = "hoogle",
-  b = "ghci load",
   c = "ghci clear",
   d = "ghci doc",
   i = "ghci info",
-  j = "ghci instances",
   k = "ghci kind",
   l = "ghci reload",
+  L = "ghci load",
   m = "ghci main",
   t = "ghci type",
   T = "doctest",
@@ -30,18 +29,16 @@ inoremap <buffer> ` `
 setlocal iskeyword+=.
 
 nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r><C-w><CR>
-nnoremap <buffer><silent><nowait> <localleader>b   :Repl :load! *<C-r>=expand('%:p')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>c   :Repl :!clear<CR>
 nnoremap <buffer><silent><nowait> <localleader>l   :Repl :reload<CR>
+nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%:p')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>m   :Repl :main<CR>
 nnoremap <buffer><silent><nowait> <localleader>T   :Repl :doctest <C-r>=expand('%:p')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r><C-w><CR>
 nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r><C-w><CR>
-
-nnoremap <buffer><silent><nowait> <localleader>j   :Repl :instances <C-r><C-w><CR>
-vnoremap <buffer><silent><nowait> <localleader>j y :Repl :instances <C-r>=@"<CR><CR>
+vnoremap <buffer><silent><nowait> <localleader>i y :Repl :instances <C-r>=@"<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>k   :Repl :kind <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>k y :Repl :kind! <C-r>=@"<CR><CR>

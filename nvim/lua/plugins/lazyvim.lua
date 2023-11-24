@@ -7,6 +7,7 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
+  {"lukas-reineke/indent-blankline.nvim", enabled = false},
   { "folke/noice.nvim", enabled = false },
   { "rcarriga/nvim-dap-ui", pin = true, lazy = true },
   { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },

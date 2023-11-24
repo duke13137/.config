@@ -6,3 +6,8 @@ vim.g.maplocalleader = ","
 local opt = vim.opt
 opt.relativenumber = false
 opt.exrc = true
+opt.list = true
+opt.listchars = {
+  leadmultispace = "│ ",
+  tab = "│ ",
+}
