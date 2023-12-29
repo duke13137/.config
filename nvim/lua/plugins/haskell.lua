@@ -18,10 +18,12 @@ local M = {
             formattingProvider = "fourmolu",
             plugin = {
               eval = { globalOn = false },
+              fourmolu = { config = { external = true } },
               -- hlint = { globalOn = false },
               importLens = { codeLensOn = false },
               retrie = { globalOn = false },
               splice = { globalOn = false },
+              stan = { globalOn = false },
               tactics = { globalOn = false },
             },
           },
@@ -29,7 +31,7 @@ local M = {
       },
       tools = {
         codeLens = {
-          autoRefresh = false,
+          autoRefresh = true,
         },
         hover = {
           enable = false,

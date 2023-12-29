@@ -38,7 +38,7 @@ export PATH="$GOBIN:$PATH"
 
 export PATH="/usr/lib/postgresql/16/bin:$PATH"
 
-export PATH="/opt/cosmocc/bin:$PATH"
+export PATH="$PATH:/opt/cosmocc/bin"
 
 export EMSDK_QUIET=1
 test -f /opt/emsdk/emsdk_env.sh && source /opt/emsdk/emsdk_env.sh
