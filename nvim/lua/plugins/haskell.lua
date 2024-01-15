@@ -18,8 +18,8 @@ local M = {
             formattingProvider = "fourmolu",
             plugin = {
               eval = { globalOn = false },
-              fourmolu = { config = { external = true } },
-              -- hlint = { globalOn = false },
+              -- fourmolu = { config = { external = true } },
+              hlint = { globalOn = false },
               importLens = { codeLensOn = false },
               retrie = { globalOn = false },
               splice = { globalOn = false },

@@ -1,0 +1,2 @@
+" disable autopairs
+inoremap <buffer> ' '
