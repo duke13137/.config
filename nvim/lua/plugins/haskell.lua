@@ -19,7 +19,7 @@ local M = {
             plugin = {
               eval = { globalOn = false },
               -- fourmolu = { config = { external = true } },
-              hlint = { globalOn = false },
+              -- hlint = { globalOn = false },
               importLens = { codeLensOn = false },
               retrie = { globalOn = false },
               splice = { globalOn = false },

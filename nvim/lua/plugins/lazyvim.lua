@@ -128,7 +128,7 @@ return {
         nls.builtins.formatting.cabal_fmt,
         -- nls.builtins.formatting.fourmolu,
         require('plugins.haskell').ghcid(),
-        require('plugins.haskell').hlint(),
+        -- require('plugins.haskell').hlint(),
       })
     end,
   },
