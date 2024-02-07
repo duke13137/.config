@@ -1,6 +1,4 @@
 CompileFlags:
-  Add: [-xc, -Wall, -Wextra, -Wconversion, -Wdouble-promotion, -Wno-sign-conversion, -Wno-unused-parameter, -Wno-unused-function, -D_CLANGD, -D_COSMO_SOURCE, -include/opt/cosmocc/include/libc/normalize.inc, -fmacro-backtrace-limit=1]
+  Add: [-D_CLANGD, -D_COSMO_SOURCE, -Wall, -Wextra, -Wconversion, -Wdouble-promotion, -Wno-sign-conversion, -Wno-unused-parameter, -Wno-unused-function, -fmacro-backtrace-limit=1]
 Diagnostics:
-  ClangTidy:
-    Add: [performance*, modernize*]
   Suppress: []
