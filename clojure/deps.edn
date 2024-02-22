@@ -90,6 +90,7 @@
                  criterium/criterium          {:mvn/version "RELEASE"}
                  integrant/repl               {:mvn/version "RELEASE"}
                  io.aviso/pretty              {:mvn/version "RELEASE"}
+                 io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
                  io.github.matthewdowney/rich-comment-tests {:mvn/version "RELEASE"}
                  lambdaisland/kaocha          {:mvn/version "RELEASE"}
                  org.clojure/test.check       {:mvn/version "RELEASE"}
