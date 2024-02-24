@@ -123,9 +123,8 @@ return {
         nls.builtins.code_actions.gitsigns,
         nls.builtins.diagnostics.deadnix,
         nls.builtins.formatting.nixfmt,
-        -- nls.builtins.formatting.fourmolu,
         require('plugins.haskell').ghcid(),
-        -- require('plugins.haskell').hlint(),
+        require('plugins.haskell').hlint(),
       })
     end,
   },
