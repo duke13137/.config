@@ -121,11 +121,8 @@ return {
       vim.list_extend(opts.sources, {
         nls.builtins.formatting.stylua,
         nls.builtins.code_actions.gitsigns,
-        nls.builtins.code_actions.shellcheck,
-        nls.builtins.formatting.shfmt,
         nls.builtins.diagnostics.deadnix,
         nls.builtins.formatting.nixfmt,
-        nls.builtins.formatting.cabal_fmt,
         -- nls.builtins.formatting.fourmolu,
         require('plugins.haskell').ghcid(),
         -- require('plugins.haskell').hlint(),
