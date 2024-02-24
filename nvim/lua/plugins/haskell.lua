@@ -97,7 +97,7 @@ function M.ghcid()
       end,
     }),
     cwd = helpers.cache.by_bufnr(function(params)
-      return utils.root_pattern(".ghcid")(params.bufname)
+      return utils.root_pattern("ghcid.log")(params.bufname)
     end),
   }
 end
