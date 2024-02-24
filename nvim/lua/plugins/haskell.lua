@@ -1,52 +1,10 @@
 local M = {
-  "mrcjkb/haskell-tools.nvim",
-  version = "^3",
+  "fonghou/fzf-hoogle.vim",
   dependencies = {
+    "junegunn/fzf",
     "mrcjkb/haskell-snippets.nvim",
-    "nvim-telescope/telescope.nvim",
     "nvimtools/none-ls.nvim",
-    { "fonghou/fzf-hoogle.vim", dependencies = "junegunn/fzf" },
   },
-  ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-  init = function()
-    vim.g.haskell_tools = {
-      hls = {
-        default_settings = {
-          haskell = { -- haskell-language-server options
-            -- Setting this to true could have a performance impact on large mono repos.
-            checkProject = false,
-            formattingProvider = "fourmolu",
-            plugin = {
-              eval = { globalOn = false },
-              -- fourmolu = { config = { external = true } },
-              -- hlint = { globalOn = false },
-              importLens = { codeLensOn = false },
-              retrie = { globalOn = false },
-              splice = { globalOn = false },
-              stan = { globalOn = false },
-              tactics = { globalOn = false },
-            },
-          },
-        },
-      },
-      tools = {
-        codeLens = {
-          autoRefresh = true,
-        },
-        hover = {
-          enable = false,
-          auto_focus = false,
-          stylize_markdown = true,
-        },
-        repl = {
-          handler = "toggleterm",
-          prefer = function()
-            return vim.fn.executable("stack") == 1 and "stack" or "cabal"
-          end,
-        },
-      },
-    }
-  end,
 }
 
 function M.ghcid()

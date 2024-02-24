@@ -2,31 +2,6 @@ if vim.g.vscode then
   return
 end
 
-local ht = require("haskell-tools")
-local bufnr = vim.api.nvim_get_current_buf()
-local function def_opts(desc)
-  return { noremap = true, silent = true, buffer = bufnr, desc = desc }
-end
-
--- haskell-language-server relies heavily on codeLenses,
--- so auto-refresh (see advanced configuration) is enabled by default
-vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, def_opts("Codelens"))
--- Hoogle search for the type signature of the definition under the cursor
-vim.keymap.set("n", "<leader>ch", ht.hoogle.hoogle_signature, def_opts("Search hoogle"))
--- Toggle a GHCi repl for the current package
-vim.keymap.set("n", "<localleader>rr", ht.repl.toggle, def_opts("Repl project"))
--- Toggle a GHCi repl for the current buffer
-vim.keymap.set("n", "<localleader>rf", function()
-  ht.repl.toggle(vim.api.nvim_buf_get_name(0))
-end, def_opts("Repl buffer"))
-vim.keymap.set("n", "<localleader>rq", ht.repl.quit, def_opts("Repl quit"))
-
--- Detect nvim-dap launch configurations
--- (requires nvim-dap and haskell-debug-adapter)
-ht.dap.discover_configurations(bufnr)
-
-require("telescope").load_extension("ht")
-
 local luasnip = require("luasnip")
 local haskell_snippets = require("haskell-snippets").all
 luasnip.add_snippets("haskell", haskell_snippets, { key = "haskell" })

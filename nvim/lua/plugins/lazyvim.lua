@@ -113,13 +113,22 @@ return {
   },
 
   {
+    "stevearc/conform.nvim",
+    opts = {
+        formatters_by_ft = {
+        -- haskell = { "fourmolu" },
+        sh = { "shellcheck" },
+      },
+    }
+  },
+
+  {
     "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim" },
     opts = function(_, opts)
       local nls = require("null-ls")
       vim.list_extend(opts.sources, {
-        nls.builtins.formatting.stylua,
         nls.builtins.code_actions.gitsigns,
         nls.builtins.diagnostics.deadnix,
         nls.builtins.formatting.nixfmt,
