@@ -17,13 +17,16 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 
 :set -fprefer-byte-code
 :set -fbyte-code-and-object-code
+
+:set -ferror-spans
+:set -freverse-errors
 :set -fhide-source-paths
 :set -fmax-relevant-binds=0
 :set -fno-show-error-context
 :set -fprint-expanded-synonyms
 :set -fprint-unicode-syntax
+:set -frefinement-level-hole-fits=1
 :set -funclutter-valid-hole-fits
-:set -freverse-errors
 
 :set -Wall
 :set -Wcompat
