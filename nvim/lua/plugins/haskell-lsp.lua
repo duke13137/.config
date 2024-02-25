@@ -25,7 +25,7 @@ return {
             formattingProvider = "fourmolu",
             plugin = {
               eval = { globalOn = false },
-              -- fourmolu = { globalOn = false, config = { external = true } },
+              -- fourmolu = { config = { external = true } },
               -- hlint = { globalOn = false },
               importLens = { codeLensOn = false },
               retrie = { globalOn = false },
