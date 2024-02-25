@@ -115,10 +115,15 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
-        formatters_by_ft = {
-        -- haskell = { "fourmolu" },
+      formatters_by_ft = {
+        haskell = { "stylishhaskell" },
         sh = { "shellcheck" },
       },
+      formatters = {
+        stylishhaskell = {
+          command = "stylish-haskell", args = { "-i" },
+        }
+      }
     }
   },
 
