@@ -15,22 +15,6 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 
 :m - Prelude
 
-:set -fprefer-byte-code
-:set -fbyte-code-and-object-code
-
-:set -ferror-spans
-:set -freverse-errors
-:set -fhide-source-paths
-:set -fno-show-error-context
-:set -fprint-expanded-synonyms
-:set -fprint-unicode-syntax
-:set -funclutter-valid-hole-fits
-
-:set -fmax-valid-hole-fits=3
-:set -fmax-refinement-hole-fits=3
-:set -frefinement-level-hole-fits=1
-:set -fsort-by-subsumption-hole-fits
-
 :set -Wall
 :set -Wcompat
 :set -Wincomplete-record-updates
@@ -42,3 +26,19 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 :seti -Wno-partial-type-signatures
 :seti -Wno-type-defaults
 :set -Wno-missing-home-modules
+
+:set -fmax-valid-hole-fits=3
+:set -fmax-refinement-hole-fits=3
+:set -frefinement-level-hole-fits=1
+:set -fsort-by-subsumption-hole-fits
+
+:set -ferror-spans
+:set -freverse-errors
+:set -fhide-source-paths
+:set -fprint-expanded-synonyms
+:set -fprint-unicode-syntax
+:set -funclutter-valid-hole-fits
+
+:set -fno-show-error-context
+:set -fprefer-byte-code
+:set -fbyte-code-and-object-code
