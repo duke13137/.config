@@ -32,8 +32,8 @@ noremap <buffer><silent><nowait> <localleader>c   <Cmd>Repl :!clear<CR>
 noremap <buffer><silent><nowait> <localleader>l   <Cmd>Repl :reload<CR>
 noremap <buffer><silent><nowait> <localleader>m   <Cmd>Repl :main<CR>
 
-nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%:p')<CR><CR>
-nnoremap <buffer><silent><nowait> <localleader>T   :Repl :doctest <C-r>=expand('%:p')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>T   :Repl :doctest <C-r>=expand('%')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r><C-w><CR>
 nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r><C-w><CR>
@@ -53,7 +53,7 @@ inoremap <buffer><silent><C-l>  <Left><C-o>:HaskComplete import <C-r><C-w><CR><R
 command -nargs=1 -complete=tag HaskComplete call g:send_target.send([':complete repl 1-15 "<args>"'])
 
 function! GHC_type_at()
-  let file = expand('%:p')
+  let file = expand('%')
   let [startln, startcol] = getpos('v')[1:2]
   let [endln, endcol] = getcursorcharpos()[1:2]
   if startln > endln
