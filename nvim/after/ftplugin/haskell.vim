@@ -29,8 +29,8 @@ inoremap <buffer> ` `
 setlocal iskeyword+=.
 
 noremap <buffer><silent><nowait> <localleader>c   <Cmd>Repl :!clear<CR>
-noremap <buffer><silent><nowait> <localleader>l   <Cmd>Repl :reload<CR>
 noremap <buffer><silent><nowait> <localleader>m   <Cmd>Repl :main<CR>
+noremap <buffer><silent><nowait> <localleader>l   <Cmd>w <bar> Repl :reload<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%')<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>T   :Repl :doctest <C-r>=expand('%')<CR><CR>

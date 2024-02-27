@@ -27,7 +27,7 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 :seti -Wno-type-defaults
 :set -Wno-missing-home-modules
 
-:set -fmax-valid-hole-fits=3
+:set -fmax-valid-hole-fits=6
 :set -fmax-refinement-hole-fits=3
 :set -frefinement-level-hole-fits=1
 :set -fsort-by-subsumption-hole-fits

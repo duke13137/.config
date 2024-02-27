@@ -6,7 +6,6 @@
            dom-top.core/loopr clojure.core/loop
            libpython-clj2.require/require-python clojure.core/require
            libpython-clj2.python/with clojure.core/with-open
-           pod.huahaiy.datalevin/defpodfn clojure.core/defn
            promesa.core/do! clojure.core/do
            promesa.core/let clojure.core/let
            promesa.core/plet clojure.core/let}
