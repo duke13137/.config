@@ -29,6 +29,7 @@ fi
 # expand aliases needed by nvim
 export BASH_ENV="$HOME/.bash_env"
 
+export GRAALVM_HOME=/opt/graalvm
 export JAVA_HOME=/opt/java
 export PATH="$JAVA_HOME/bin:$PATH"
 
