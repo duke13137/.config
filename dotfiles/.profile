@@ -37,12 +37,15 @@ export GOPATH="$HOME/.gopath"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 
+export DENO_INSTALL="/home/hacker/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 export PATH="/usr/lib/postgresql/16/bin:$PATH"
 
 export PATH="$PATH:/opt/cosmocc/bin"
 
-export EMSDK_QUIET=1
-test -f /opt/emsdk/emsdk_env.sh && source /opt/emsdk/emsdk_env.sh
+# export EMSDK_QUIET=1
+# test -f /opt/emsdk/emsdk_env.sh && source /opt/emsdk/emsdk_env.sh
 
 test -f ~/.cargo/env && source ~/.cargo/env
 
