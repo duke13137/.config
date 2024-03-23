@@ -7,9 +7,8 @@ return {
   },
   config = function()
     require("go").setup({
-      goimport = "gopls", -- if set to 'gopls' will use golsp format
-      gofmt = "gopls", -- if set to gopls will use golsp format
-      max_line_len = 120,
+      goimports = "goimports",
+      gofmt = "gofumpt",
       tag_transform = false,
       test_dir = "",
       comment_placeholder = "   ",
