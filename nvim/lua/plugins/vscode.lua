@@ -41,6 +41,10 @@ return {
     end,
   },
   {
+    "folke/flash.nvim",
+    vscode = false,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = { highlight = { enable = false } },
   },
