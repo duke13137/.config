@@ -88,11 +88,10 @@
                  com.clojure-goes-fast/virgil {:mvn/version "RELEASE"}
                  com.brunobonacci/mulog       {:mvn/version "RELEASE"}
                  criterium/criterium          {:mvn/version "RELEASE"}
-                 integrant/repl               {:mvn/version "RELEASE"}
-                 io.aviso/pretty              {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
                  io.github.matthewdowney/rich-comment-tests {:mvn/version "RELEASE"}
                  lambdaisland/kaocha          {:mvn/version "RELEASE"}
+                 org.clj-commons/pretty       {:mvn/version "RELEASE"}
                  org.clojure/test.check       {:mvn/version "RELEASE"}
                  org.clojure/tools.namespace  {:mvn/version "RELEASE"}
                  org.clojure/tools.trace      {:mvn/version "RELEASE"}
