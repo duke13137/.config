@@ -28,13 +28,13 @@ map(
   ":<C-u>ConjureEval ((requiring-resolve 'clj-reload.core/reload))<CR>",
   options("reload changed namespaces")
 )
-
+map("n", ",ie", ":<C-u>ConjureEval ((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))<CR>", options("pst"))
 map("n", ",i1", ":ConjureEval (tap> *1)<CR>", options("tap *1"))
-map("n", ",ie", ":ConjureEval (tap> (Throwable->map *e))<CR>", options("tap *e"))
+map("n", ",i2", ":ConjureEval (tap> *2)<CR>", options("tap *2"))
 map("n", ",in", ":ConjureEval (tap> (-> *ns* (clojure.datafy/datafy) :publics))<CR>", options("tap *ns*"))
 map("n", ",is", ":ConjureEval (tap> (eval `(sc.api/defsc ~(sc.api/last-ep-id))))<CR>", options("sc/defsc"))
 map("n", ",iu", ":ConjureEval (eval `(sc.api/undefsc ~(sc.api/last-ep-id)))<CR>", options("sc/undefsc"))
-map("n", ",ix", ":ConjureEval (sc.api/dispose-all!)<CR>", options("sc/dispose-all!"))
+map("n", ",ix", ":ConjureEval ((requiring-resolve 'sc.api/dispose-all!))<CR>", options("sc/dispose-all!"))
 
 -- prepare portal
 -- scope-capture data_readers.clj {sc/letsc user/read-letsc}
