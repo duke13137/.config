@@ -22,7 +22,12 @@ local function options(desc)
 end
 
 local map = vim.keymap.set
-map("n", ",rr", ":<C-u>ConjureEval (clj-reload.core/reload)<CR>", options("rtrace form"))
+map(
+  "n",
+  ",rr",
+  ":<C-u>ConjureEval ((requiring-resolve 'clj-reload.core/reload))<CR>",
+  options("reload changed namespaces")
+)
 
 map("n", ",i1", ":ConjureEval (tap> *1)<CR>", options("tap *1"))
 map("n", ",ie", ":ConjureEval (tap> (Throwable->map *e))<CR>", options("tap *e"))
