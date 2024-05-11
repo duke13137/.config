@@ -72,7 +72,12 @@
  ;; User alias definitions
 
  :aliases
- {;; ---------------------------------------------------
+ {;; A CLI to add common aliases and features to deps.edn-based projects.
+  :neil
+  {:deps {io.github.babashka/neil {:git/tag "v0.3.65" :git/sha "9a79582"}}
+   :main-opts ["-m" "babashka.neil"]}
+
+  ;; ---------------------------------------------------
   ;; Development environment
 
   ;; Include `dev` directory on the class path to auto-load `dev/user.clj` on REPL startup
@@ -127,7 +132,7 @@
   ;; clojure -M:repl/connect --host hostname --port 12345
   ;; replace --host and --port values with that of remote nREPL server
   :repl/connect
-  {:extra-deps {nrepl/nrepl {:mvn/version "1.0.0"}}
+  {:extra-deps {nrepl/nrepl {:mvn/version "RELEASE"}}
    :main-opts ["--main" "nrepl.cmdline" "--connect"]}
 
   ;; End of REPL and nREPL connections

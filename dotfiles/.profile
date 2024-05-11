@@ -53,6 +53,8 @@ test -f ~/.ghcup/env && source ~/.ghcup/env
 
 test -f ~/.xmake/profile && source ~/.xmake/profile
 
+. $HOME/.local/share/swiftly/env.sh
+
 if [ -e /home/hacker/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hacker/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 exec zsh
