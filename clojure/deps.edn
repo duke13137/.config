@@ -90,7 +90,6 @@
                  com.github.jpmonettas/clojure        {:mvn/version "RELEASE"}
                  com.clojure-goes-fast/clj-java-decompiler {:mvn/version "RELEASE"}
                  com.clojure-goes-fast/clj-async-profiler  {:mvn/version "RELEASE"}
-                 com.clojure-goes-fast/virgil {:mvn/version "RELEASE"}
                  com.brunobonacci/mulog       {:mvn/version "RELEASE"}
                  criterium/criterium          {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
@@ -102,6 +101,7 @@
                  org.clojure/tools.trace      {:mvn/version "RELEASE"}
                  org.slf4j/slf4j-nop          {:mvn/version "RELEASE"}
                  ring/ring-mock               {:mvn/version "RELEASE"}
+                 virgil/virgil                {:mvn/version "RELEASE"}
                  vvvvalvalval/scope-capture   {:mvn/version "RELEASE"}}
    :jvm-opts ["-Dclojure.storm.instrumentEnable=true"
               "-Dclojure.storm.instrumentOnlyPrefixes=user"
@@ -122,7 +122,7 @@
                 djblue/portal                 {:mvn/version "RELEASE"}}
    :main-opts  ["-e" "(apply require clojure.main/repl-requires)"
                 "--main" "nrepl.cmdline" "--interactive"
-                "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware,portal.nrepl/wrap-portal]"
+                "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"
                 "-f" "rebel-readline.main/-main"]}
 
   ;; ---------------------------------------------------

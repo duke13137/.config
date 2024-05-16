@@ -63,7 +63,6 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-cmdline",
-      "PaterJason/cmp-conjure",
     },
     opts = function(_, opts)
       local has_words_before = function()
@@ -75,9 +74,6 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
-        { name = "conjure" },
-      }))
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
       ["<CR>"] = cmp.config.disable,
       ["<Tab>"] = cmp.mapping.confirm({
