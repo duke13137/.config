@@ -80,7 +80,7 @@ return {
           behavior = cmp.ConfirmBehavior.Insert,
           select = true,
         }),
-      ["<C-l>"] = cmp.mapping(function(fallback)
+      ["<C-k>"] = cmp.mapping(function(fallback)
           if luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           else
