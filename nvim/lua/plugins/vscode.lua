@@ -4,7 +4,6 @@ end
 
 local enabled = {
   "mini.ai",
-  "mini.comment",
   "mini.pairs",
   "mini.surround",
   "nvim-treesitter",
