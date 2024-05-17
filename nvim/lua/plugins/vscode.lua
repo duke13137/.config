@@ -41,7 +41,7 @@ return {
   },
   {
     "folke/flash.nvim",
-    vscode = false,
+    vscode = true,
   },
   {
     "nvim-treesitter/nvim-treesitter",

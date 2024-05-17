@@ -1,5 +1,6 @@
 local M = {
   "fonghou/fzf-hoogle.vim",
+  ft = "haskell",
   dependencies = {
     "junegunn/fzf",
     "mrcjkb/haskell-snippets.nvim",
