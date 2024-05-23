@@ -21,6 +21,7 @@ alias lj='rlwrap -cr -pyellow luajit -e "require([[batteries]])()" -i'
 alias cabal-install='cabal install --overwrite-policy=always --install-method=copy'
 alias cabal-repl='cabal repl --repl-options="-fexternal-interpreter -prof"'
 alias cabal-test='cabal test -O0 --enable-tests --test-show-details=direct'
+alias ghciw='ghciwatch --error-file ghcid.log --clear'
 
 alias code='/mnt/c/Users/houfe/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
 alias clip=/mnt/c/Windows/System32/clip.exe
