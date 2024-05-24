@@ -330,3 +330,4 @@ export FZF_DEFAULT_OPTS="\
 export EDITOR=vi
 
 eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"

@@ -17,6 +17,7 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 
 :set -Wall
 :set -Wcompat
+:set -Wincomplete-record-selectors
 :set -Wincomplete-record-updates
 :set -Wincomplete-uni-patterns
 :set -Wredundant-constraints
