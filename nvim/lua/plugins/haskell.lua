@@ -22,7 +22,7 @@ function M.ghcid()
       args = {
         "-c",
         [[ sleep 1 && [ -f ghcid.log ] && cat ghcid.log \
-          | grep -A2 -E '.*: (error|warning):' \
+          | grep -A2 -E '.*[^>]: (error|warning):' \
           | grep -v '\--' \
           | paste -s -d'\0\t\n' - \
           | tr -s '\t' ' '
