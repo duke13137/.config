@@ -3,12 +3,14 @@ if not vim.g.vscode then
 end
 
 local enabled = {
+  "lazy.nvim",
   "mini.ai",
+  "mini.comment",
   "mini.pairs",
   "mini.surround",
   "nvim-treesitter",
   "nvim-treesitter-textobjects",
-  "nvim-ts-context-commentstring",
+  "ts-comments.nvim",
   "vim-repeat",
   "LazyVim",
 }
