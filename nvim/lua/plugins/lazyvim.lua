@@ -7,23 +7,9 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
-  { "lukas-reineke/indent-blankline.nvim", enabled = false},
   { "folke/noice.nvim", enabled = false },
-  { "folke/neodev.nvim", enabled = false },
-
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        vim.env.LAZY .. "/luvit-meta/library", -- see below
-        -- You can also add plugins you always want to have loaded.
-        -- Useful if the plugin has globals or types you want to use
-        -- vim.env.LAZY .. "/LazyVim", -- see below
-      },
-    },
-  },
+  { "lukas-reineke/indent-blankline.nvim", enabled = false},
+  { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
 
   {
     "mfussenegger/nvim-dap",
@@ -69,11 +55,6 @@ return {
   },
 
   {
-    "L3MON4D3/LuaSnip",
-    keys = function() return {} end,
-  },
-
-  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-cmdline",
@@ -85,22 +66,11 @@ return {
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
-      local luasnip = require("luasnip")
       local cmp = require("cmp")
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
       ["<CR>"] = cmp.config.disable,
-      ["<Tab>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Insert,
-          select = true,
-        }),
-      ["<C-k>"] = cmp.mapping(function(fallback)
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-      end, {"i", "s"}),
+      ["<Tab>"] = LazyVim.cmp.confirm(),
       ["<C-n>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -113,8 +83,8 @@ return {
       ["<C-p>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
+        elseif has_words_before() then
+          cmp.complete()
         else
           fallback()
         end
