@@ -7,9 +7,23 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  {"lukas-reineke/indent-blankline.nvim", enabled = false},
-  { "folke/noice.nvim", enabled = false },
   { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
+  { "lukas-reineke/indent-blankline.nvim", enabled = false},
+  { "folke/noice.nvim", enabled = false },
+  { "folke/neodev.nvim", enabled = false },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        vim.env.LAZY .. "/luvit-meta/library", -- see below
+        -- You can also add plugins you always want to have loaded.
+        -- Useful if the plugin has globals or types you want to use
+        -- vim.env.LAZY .. "/LazyVim", -- see below
+      },
+    },
+  },
 
   {
     "mfussenegger/nvim-dap",
