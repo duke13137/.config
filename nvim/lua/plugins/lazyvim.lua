@@ -9,7 +9,53 @@
 return {
   { "folke/noice.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false},
-  { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
+
+  -- change surround mappings
+  {
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = "gsa",
+        delete = "gsd",
+        replace = "gsr",
+        find = "gsf",
+        find_left = "gsF",
+        highlight = "gsh",
+        update_n_lines = "gsn",
+      },
+    },
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        haskell = { "stylishhaskell" },
+        sh = { "shellcheck" },
+      },
+      formatters = {
+        stylishhaskell = {
+          command = "stylish-haskell", args = { "-i" },
+        }
+      }
+    }
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "mason.nvim" },
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      vim.list_extend(opts.sources, {
+        nls.builtins.code_actions.gitsigns,
+        nls.builtins.diagnostics.deadnix,
+        nls.builtins.formatting.nixfmt,
+        require('plugins.haskell').ghcid(),
+        require('plugins.haskell').hlint(),
+      })
+    end,
+  },
 
   {
     "mrcjkb/haskell-tools.nvim",
@@ -18,6 +64,7 @@ return {
     end,
   },
 
+  { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
   {
     "mfussenegger/nvim-dap",
     keys = {
@@ -100,37 +147,6 @@ return {
     end
   },
 
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        haskell = { "stylishhaskell" },
-        sh = { "shellcheck" },
-      },
-      formatters = {
-        stylishhaskell = {
-          command = "stylish-haskell", args = { "-i" },
-        }
-      }
-    }
-  },
-
-  {
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "mason.nvim" },
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      vim.list_extend(opts.sources, {
-        nls.builtins.code_actions.gitsigns,
-        nls.builtins.diagnostics.deadnix,
-        nls.builtins.formatting.nixfmt,
-        require('plugins.haskell').ghcid(),
-        require('plugins.haskell').hlint(),
-      })
-    end,
-  },
-
   -- change trouble config
   {
     "folke/trouble.nvim",
@@ -144,22 +160,6 @@ return {
     cmd = "SymbolsOutline",
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     config = true,
-  },
-
-  -- change surround mappings
-  {
-    "echasnovski/mini.surround",
-    opts = {
-      mappings = {
-        add = "gsa",
-        delete = "gsd",
-        find = "gsf",
-        find_left = "gsF",
-        highlight = "gsh",
-        replace = "gsr",
-        update_n_lines = "gsn",
-      },
-    },
   },
 
   -- add telescope-fzf-native and change layout
