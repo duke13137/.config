@@ -44,7 +44,7 @@ function M.config()
         return vim.o.columns * 0.45
       end
     end,
-    open_mapping = "<M-q>",
+    open_mapping = "<M-o>",
     hide_numbers = true, -- hide the number column in toggleterm buffers
     shade_filetypes = {},
     shade_terminals = true,

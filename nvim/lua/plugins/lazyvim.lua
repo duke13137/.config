@@ -12,6 +12,13 @@ return {
   { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
 
   {
+    "mrcjkb/haskell-tools.nvim",
+    cond = function()
+      return vim.fn.filereadable("hls.json") ~= 0 and true
+    end,
+  },
+
+  {
     "mfussenegger/nvim-dap",
     keys = {
       { "<leader>dc",

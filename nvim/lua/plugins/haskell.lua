@@ -1,10 +1,18 @@
 local M = {
-  "fonghou/fzf-hoogle.vim",
-  ft = "haskell",
-  dependencies = {
-    "junegunn/fzf",
-    "mrcjkb/haskell-snippets.nvim",
-    "nvimtools/none-ls.nvim",
+  {
+    "fonghou/fzf-hoogle.vim",
+    ft = "haskell",
+    dependencies = {
+      "junegunn/fzf",
+      "mrcjkb/haskell-snippets.nvim",
+      "nvimtools/none-ls.nvim",
+    },
+  },
+  {
+    "mrcjkb/haskell-tools.nvim",
+    cond = function()
+      return vim.fn.filereadable("hls.json") ~= 0 and true
+    end,
   },
 }
 
