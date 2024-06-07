@@ -14,10 +14,6 @@ local M = {
       return vim.fn.filereadable("hls.json") ~= 0 and true
     end,
   },
-  {
-    "mfussenegger/nvim-dap",
-    optional = false,
-  },
 }
 
 function M.ghcid()
