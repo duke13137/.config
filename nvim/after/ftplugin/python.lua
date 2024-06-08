@@ -12,7 +12,6 @@ wk.register({
   c = { "connect" },
   e = { "eval" },
   l = { "log" },
-  v = { "view" },
 }, { prefix = "<localleader>", mode = "n", silent = true })
 
 local function options(desc)
@@ -20,7 +19,7 @@ local function options(desc)
 end
 
 local map = vim.keymap.set
-map("n", ",c", ":Repl %clear<CR>", options("ipython clear"))
+map("n", ",C", ":Repl %clear<CR>", options("ipython clear"))
 map("n", ",i", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("ipython info"))
 map("n", ",s", ":Repl %psource <C-r>=expand('<cexpr>')<CR><CR>", options("ipython source"))
 map("n", ",r", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("ipython run"))
