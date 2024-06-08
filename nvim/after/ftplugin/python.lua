@@ -20,9 +20,10 @@ local function options(desc)
 end
 
 local map = vim.keymap.set
-map("n", ",i", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("ipython %info"))
-map("v", ",i", 'y :Repl %pinfo <C-r>=@"<CR><CR>', options("ipython %info"))
-map("n", ",r", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("ipython %run"))
+map("n", ",c", ":Repl %clear<CR>", options("ipython clear"))
+map("n", ",i", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("ipython info"))
+map("n", ",s", ":Repl %psource <C-r>=expand('<cexpr>')<CR><CR>", options("ipython source"))
+map("n", ",r", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("ipython run"))
 map("n", ",t", ":Repl !pytest -v --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest file"))
 map(
   "n",
