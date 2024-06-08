@@ -2,17 +2,15 @@ lua <<END
 
 local wk = require("which-key")
 local keys = {
-  h = "hoogle",
-  c = "ghci clear",
+  C = "ghci clear",
   d = "ghci doc",
+  h = "hoogle",
   i = "ghci info",
   k = "ghci kind",
   l = "ghci reload",
   L = "ghci load",
   m = "ghci main",
   t = "ghci type",
-  T = "doctest",
-  r = "repl",
 }
 
 wk.register(keys, { mode = "n", prefix = "<localleader>", silent = true })
@@ -28,12 +26,12 @@ inoremap <buffer> ` `
 " <cword> includes .
 setlocal iskeyword+=.
 
-noremap <buffer><silent><nowait> <localleader>c   <Cmd>Repl :!clear<CR>
-noremap <buffer><silent><nowait> <localleader>m   <Cmd>Repl :main<CR>
+noremap <buffer><silent><nowait> <localleader>C   <Cmd>Repl :!clear<CR>
+
 noremap <buffer><silent><nowait> <localleader>l   <Cmd>w <bar> Repl :reload<CR><CR>
+noremap <buffer><silent><nowait> <localleader>m   <Cmd>Repl :main<CR>
 
 nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%')<CR><CR>
-nnoremap <buffer><silent><nowait> <localleader>T   :Repl :doctest <C-r>=expand('%')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r><C-w><CR>
 nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r><C-w><CR>

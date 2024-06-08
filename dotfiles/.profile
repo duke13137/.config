@@ -32,6 +32,7 @@ export BASH_ENV="$HOME/.bash_env"
 export GRAALVM_HOME=/opt/graalvm
 export JAVA_HOME=/opt/java
 export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="$HOME/.jbang/bin:$PATH"
 
 export GOPATH="$HOME/.gopath"
 export GOBIN="$GOPATH/bin"
@@ -53,8 +54,10 @@ test -f ~/.ghcup/env && source ~/.ghcup/env
 
 test -f ~/.xmake/profile && source ~/.xmake/profile
 
-. $HOME/.local/share/swiftly/env.sh
-
 if [ -e /home/hacker/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hacker/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 exec zsh
