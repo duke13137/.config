@@ -11,7 +11,6 @@ local wk = require("which-key")
 wk.register({
   c = { "connect" },
   e = { "eval" },
-  g = { "goto" },
   l = { "log" },
   v = { "view" },
 }, { prefix = "<localleader>", mode = "n", silent = true })

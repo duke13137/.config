@@ -2,13 +2,8 @@ return {
   {
     "Olical/conjure",
     branch = "develop",
-    ft = { "clojure", "fennel", "lua" },
-    dependencies = {
-      { "Olical/nfnl", ft = "fennel" },
-      "m00qek/baleia.nvim",
-      "harrygallagher4/nvim-parinfer-rust",
-      { "eraserhd/parinfer-rust", build = "cargo build --release" },
-    },
+    ft = { "clojure", "fennel" },
+    dependencies = { "m00qek/baleia.nvim" },
     init = function()
       vim.g["conjure#log#hud#width"] = 1.0
       vim.g["conjure#log#hud#enabled"] = true
@@ -23,15 +18,30 @@ return {
       vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
       vim.g["conjure#mapping#eval_motion"] = ","
       vim.g["conjure#mapping#eval_visual"] = ","
-      vim.g["conjure#mapping#doc_word"] = "vd"
+      vim.g["conjure#mapping#doc_word"] = "k"
+      vim.g["conjure#mapping#def_word"] = "g"
     end,
     config = function()
       local baleia = require("baleia").setup({ line_starts_at = 3 })
       vim.api.nvim_create_autocmd("BufWinEnter", {
         pattern = { "conjure-log-*" },
         callback = function()
-          vim.diagnostic.disable(0)
-          baleia.automatically(vim.api.nvim_get_current_buf())
+          local buffer = vim.api.nvim_get_current_buf()
+          vim.diagnostic.enable(false, { bufnr = buffer })
+          baleia.automatically(buffer)
+
+          vim.keymap.set(
+            { "n", "v" },
+            "[c",
+            "<CMD>call search('^; -\\+$', 'bw')<CR>",
+            { silent = true, buffer = true, desc = "Jumps to the begining of previous evaluation output." }
+          )
+          vim.keymap.set(
+            { "n", "v" },
+            "]c",
+            "<CMD>call search('^; -\\+$', 'w')<CR>",
+            { silent = true, buffer = true, desc = "Jumps to the begining of next evaluation output." }
+          )
         end,
       })
     end,
@@ -39,10 +49,7 @@ return {
 
   {
     "nvim-cmp",
-    dependencies = {
-      "PaterJason/cmp-conjure",
-      ft = { "clojure", "fennel", "lua" },
-    },
+    dependencies = { "PaterJason/cmp-conjure", ft = { "clojure", "fennel" } },
     opts = function(_, opts)
       local cmp = require("cmp")
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
@@ -50,4 +57,14 @@ return {
       }))
     end,
   },
+
+  { "Olical/nfnl", ft = "fennel" },
+
+  {
+    "harrygallagher4/nvim-parinfer-rust",
+    event = "LazyFile",
+    dependencies = { "eraserhd/parinfer-rust", build = "cargo build --release" },
+  },
+
+  { "PaterJason/nvim-treesitter-sexp", opts = {}, event = "LazyFile" },
 }

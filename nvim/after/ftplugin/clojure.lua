@@ -8,7 +8,6 @@ local wk = require("which-key")
 wk.register({
   c = { "connect" },
   e = { "eval" },
-  g = { "goto" },
   i = { "inspect" },
   l = { "log" },
   r = { "reload" },
