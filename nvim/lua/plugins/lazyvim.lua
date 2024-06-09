@@ -232,9 +232,11 @@ return {
   {
     "junegunn/fzf.vim",
     keys = {
-      { "gt", ":Tags <C-r><C-w><CR>", desc = "Tags" },
+      { "g<C-]>", ":Tags <C-r><C-w><CR>", desc = "Tags" },
     },
-    dependencies = { "junegunn/fzf" },
+    dependencies = {
+      { "junegunn/fzf", build = "./install --all" },
+    },
   },
 
   {
