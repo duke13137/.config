@@ -50,7 +50,6 @@ return {
       vim.list_extend(opts.sources, {
         nls.builtins.code_actions.gitsigns,
         nls.builtins.diagnostics.deadnix,
-        nls.builtins.formatting.nixfmt,
         require('plugins.haskell').ghcid(),
         require('plugins.haskell').hlint(),
       })
@@ -201,7 +200,6 @@ return {
         "clojure",
         "fennel",
         "haskell",
-        "nix",
       })
     end,
   },
