@@ -1,4 +1,6 @@
 return {
+  { "Olical/nfnl", ft = "fennel" },
+
   {
     "Olical/conjure",
     branch = "develop",
@@ -58,13 +60,22 @@ return {
     end,
   },
 
-  { "Olical/nfnl", ft = "fennel" },
-
   {
     "harrygallagher4/nvim-parinfer-rust",
     event = "LazyFile",
     dependencies = { "eraserhd/parinfer-rust", build = "cargo build --release" },
   },
 
-  { "PaterJason/nvim-treesitter-sexp", opts = {}, event = "LazyFile" },
+  {
+    "PaterJason/nvim-treesitter-sexp",
+    event = "LazyFile",
+    opts = {
+      keymaps = {
+        motions = {
+          prev_top_level = "][",
+          next_top_level = "[]",
+        },
+      },
+    },
+  },
 }

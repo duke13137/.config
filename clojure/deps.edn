@@ -77,13 +77,15 @@
   ;; Development environment
 
   ;; https://flow-storm.github.io/flow-storm-debugger/user_guide.html#_clojurestorm
-  :dbg
+  :flow
   {:classpath-overrides {org.clojure/clojure nil}
    :extra-deps {com.github.flow-storm/clojure        {:mvn/version "RELEASE"}
                 com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
-   :jvm-opts ["-Dclojure.storm.instrumentEnable=true"
-              ;"-Dclojure.storm.instrumentOnlyPrefixes=YOUR_INSTRUMENTATION_STRING"
-              "-Dflowstorm.styles=/home/hacker/.clojure/flowstorm-styles.css"]}
+   :jvm-opts ["-Dflowstorm.startRecording=false"
+              "-Dclojure.storm.instrumentEnable=true"
+              "-Dclojure.storm.instrumentAutoPrefixes=true"
+              "-Dflowstorm.theme=dark"
+              "-Dflowstorm.styles=.flowstorm.css"]}
 
   :reload
   {:extra-paths ["dev" "test"]
