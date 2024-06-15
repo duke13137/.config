@@ -91,7 +91,6 @@
   {:extra-paths ["dev" "test"]
    :extra-deps  {com.clojure-goes-fast/clj-java-decompiler  {:mvn/version "RELEASE"}
                  com.clojure-goes-fast/clj-async-profiler   {:mvn/version "RELEASE"}
-                 com.github.flow-storm/flow-storm-dbg       {:mvn/version "RELEASE"}
                  io.github.matthewdowney/rich-comment-tests {:mvn/version "RELEASE"}
                  criterium/criterium          {:mvn/version "RELEASE"}
                  com.brunobonacci/mulog       {:mvn/version "RELEASE"}
@@ -114,12 +113,10 @@
 
   :repl
   {:extra-deps {djblue/portal                 {:mvn/version "RELEASE"}
-                io.github.nextjournal/clerk   {:mvn/version "RELEASE"}
                 nrepl/nrepl                   {:mvn/version "RELEASE"}
                 cider/cider-nrepl             {:mvn/version "RELEASE"}
                 refactor-nrepl/refactor-nrepl {:mvn/version "RELEASE"}}
-   :main-opts  ["--eval" "(require '[nextjournal.clerk])(nextjournal.clerk/show! 'nextjournal.clerk.tap)(nextjournal.clerk/serve! {:browse? true})"
-                "--main" "nrepl.cmdline"
+   :main-opts  ["--main" "nrepl.cmdline"
                 "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"
                 "--interactive"]}
 
