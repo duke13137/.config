@@ -7,7 +7,6 @@ return {
   },
   config = function()
     require("go").setup({
-      goimports = "goimports",
       gofmt = "gofumpt",
       tag_transform = false,
       test_dir = "",
