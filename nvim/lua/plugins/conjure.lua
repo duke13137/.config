@@ -17,11 +17,13 @@ return {
       vim.g["conjure#client#clojure#nrepl#connection#auto_repl#enabled"] = true
       vim.g["conjure#client#clojure#nrepl#connection#auto_repl#hidden"] = true
       vim.g["conjure#client#clojure#nrepl#mapping#refresh_changed"] = "rR"
-      vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
+      vim.g["conjure#client#sql#stdio#command"] = "sqlite3"
+      vim.g["conjure#client#sql#stdio#prompt_pattern"] = "sqlite> "
       vim.g["conjure#mapping#eval_motion"] = ","
       vim.g["conjure#mapping#eval_visual"] = ","
       vim.g["conjure#mapping#doc_word"] = "k"
       vim.g["conjure#mapping#def_word"] = "g"
+      vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
     end,
     config = function()
       local baleia = require("baleia").setup({ line_starts_at = 3 })
