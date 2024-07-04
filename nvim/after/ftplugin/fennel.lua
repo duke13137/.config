@@ -15,7 +15,7 @@ wk.register({
 vim.opt.iskeyword:append(".,:")
 
 local opts = { noremap = true, silent = true }
-vim.keymap.set("i", "<C-j>", "<Left><C-o>:ConjureEval ,complete <C-r><C-w><CR><Right>", opts)
+vim.keymap.set("i", "<C-l>", "<Left><C-o>:ConjureEval ,complete <C-r><C-w><CR><Right>", opts)
 
 -- disable autopairs
 vim.cmd "inoremap <buffer> (  ("

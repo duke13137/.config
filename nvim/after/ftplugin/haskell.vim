@@ -24,8 +24,8 @@ vnoremap <buffer><silent><nowait> <localleader>k y :Repl :kind! <C-r>=@"<CR><CR>
 nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type +d <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>t   <Cmd>call GHC_type_at()<CR>
 
-inoremap <buffer><silent><C-j>  <Left><C-o>:HaskComplete <C-r><C-w><CR><Right>
-inoremap <buffer><silent><C-k>  <Left><C-o>:HaskComplete import <C-r><C-w><CR><Right>
+inoremap <buffer><silent><C-j>  <Left><C-o>:HaskComplete import <C-r><C-w><CR><Right>
+inoremap <buffer><silent><C-l>  <Left><C-o>:HaskComplete <C-r><C-w><CR><Right>
 
 command -nargs=1 -complete=tag HaskComplete call g:send_target.send([':complete repl 1-15 "<args>"'])
 
