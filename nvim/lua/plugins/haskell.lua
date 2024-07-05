@@ -40,7 +40,7 @@ function M.ghcid()
       multiple_files = true,
       on_output = function(line, _)
         local filename, row, end_row, col, end_col, severity, message =
-          line:match("([^:]+):%(?(%d+)[-,]?(%d*)%)?[:-]%(?(%d+)[-,]?(%d*)%)?:%s*(%w+):%s*(.*)")
+          line:match("([^:]+):%(?(%d+)[-,]?(%d*)%)?[:-]%(?(%d+)[-,]?(%d*)%)?:%s*(%w+):.+]%s*(.+)")
 
         if end_col == nil or end_col == "" then
           end_col = col
