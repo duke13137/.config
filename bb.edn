@@ -1,5 +1,18 @@
 {:paths ["."]
  :deps {org.clojure/clojure {:mvn/version "RELEASE"}
+        metosin/malli {:mvn/version "RELEASE"}
+        com.cognitect.aws/accessanalyzer {:mvn/version "RELEASE"}
+        com.cognitect.aws/config {:mvn/version "RELEASE"}
+        com.cognitect.aws/iam {:mvn/version "RELEASE"}
+        com.cognitect.aws/dynamodb {:mvn/version "RELEASE"}
+        com.cognitect.aws/ec2 {:mvn/version "RELEASE"}
+        com.cognitect.aws/s3 {:mvn/version "RELEASE"}
+        com.cognitect.aws/sns {:mvn/version "RELEASE"}
+        com.cognitect.aws/sqs {:mvn/version "RELEASE"}
+        com.cognitect.aws/ssm {:mvn/version "RELEASE"}
+        com.cognitect.aws/sts {:mvn/version "RELEASE"}
+        com.grzm/awyeah-api {:git/url "https://github.com/grzm/awyeah-api"
+                             :git/sha "e5513349a2fd8a980a62bbe0d45a0d55bfcea141"}
         djblue/portal {:mvn/version "RELEASE"}
         vvvvalvalval/scope-capture {:mvn/version "RELEASE"}}
   :pods {huahaiy/datalevin {:version "0.9.8"}
