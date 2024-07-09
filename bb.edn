@@ -1,6 +1,8 @@
 {:paths ["."]
  :deps {org.clojure/clojure {:mvn/version "RELEASE"}
         metosin/malli {:mvn/version "RELEASE"}
+        com.cognitect.aws/api {:mvn/version "RELEASE"}
+        com.cognitect.aws/endpoints {:mvn/version "RELEASE"}
         com.cognitect.aws/accessanalyzer {:mvn/version "RELEASE"}
         com.cognitect.aws/config {:mvn/version "RELEASE"}
         com.cognitect.aws/iam {:mvn/version "RELEASE"}
