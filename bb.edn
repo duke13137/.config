@@ -1,0 +1,6 @@
+{:paths ["."]
+ :deps {djblue/portal {:mvn/version "RELEASE"}
+        vvvvalvalval/scope-capture {:mvn/version "RELEASE"}}
+  :pods {huahaiy/datalevin {:version "0.9.8"}
+         org.babashka/go-sqlite3 {:version "0.2.3"}}
+  :tasks {}}
