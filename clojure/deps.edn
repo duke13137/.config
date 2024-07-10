@@ -94,6 +94,11 @@
                  io.github.matthewdowney/rich-comment-tests {:mvn/version "RELEASE"}
                  criterium/criterium          {:mvn/version "RELEASE"}
                  com.brunobonacci/mulog       {:mvn/version "RELEASE"}
+                 com.cognitect.aws/api        {:mvn/version "RELEASE"}
+                 com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
+                 dom-top/dom-top              {:mvn/version "RELEASE"}
+                 funcool/promesa              {:mvn/version "11.0.714"}
+                 instaparse/instaparse        {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
                  lambdaisland/kaocha          {:mvn/version "RELEASE"}
                  org.clj-commons/pretty       {:mvn/version "RELEASE"}
@@ -209,5 +214,5 @@
 
   ;; A CLI to add common aliases and features to deps.edn-based projects.
   :neil
-  {:deps {io.github.babashka/neil {:git/tag "v0.3.65" :git/sha "9a79582"}}}
-  :main-opts ["-m" "babashka.neil"]}}
+  {:deps {io.github.babashka/neil {:git/tag "v0.3.66" :git/sha "0fcf459"}}
+   :main-opts ["-m" "babashka.neil"]}}}
