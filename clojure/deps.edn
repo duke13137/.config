@@ -104,7 +104,7 @@
                  org.clojure/test.check       {:mvn/version "RELEASE"}
                  org.clojure/tools.namespace  {:mvn/version "RELEASE"}
                  org.clojure/tools.trace      {:mvn/version "RELEASE"}
-                 org.slf4j/slf4j-nop          {:mvn/version "RELEASE"}
+                 org.slf4j/slf4j-nop          {:mvn/version "1.7.36"}
                  ring/ring-mock               {:mvn/version "RELEASE"}
                  virgil/virgil                {:mvn/version "RELEASE"}
                  vvvvalvalval/scope-capture   {:mvn/version "RELEASE"}}}
