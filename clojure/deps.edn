@@ -85,7 +85,7 @@
               "-Dclojure.storm.instrumentEnable=true"
               "-Dclojure.storm.instrumentAutoPrefixes=true"
               "-Dflowstorm.theme=dark"
-              "-Dflowstorm.styles=.flowstorm.css"]}
+              "-Dflowstorm.styles=/tmp/flowstorm.css"]}
 
   :reload
   {:extra-paths ["dev" "test"]
@@ -136,6 +136,21 @@
 
   ;; End of REPL and nREPL connections
   ;; ---------------------------------------------------
+
+  :lib/aws
+  {:extra-deps  {com.cognitect.aws/api            {:mvn/version "RELEASE"}
+                 com.cognitect.aws/endpoints      {:mvn/version "RELEASE"}
+                 com.cognitect.aws/accessanalyzer {:mvn/version "RELEASE"}
+                 com.cognitect.aws/account        {:mvn/version "RELEASE"}
+                 com.cognitect.aws/organizations  {:mvn/version "RELEASE"}
+                 com.cognitect.aws/cloudtrail     {:mvn/version "RELEASE"}
+                 com.cognitect.aws/config         {:mvn/version "RELEASE"}
+                 com.cognitect.aws/iam            {:mvn/version "RELEASE"}
+                 com.cognitect.aws/dynamodb       {:mvn/version "RELEASE"}
+                 com.cognitect.aws/lambda         {:mvn/version "RELEASE"}
+                 com.cognitect.aws/ec2            {:mvn/version "RELEASE"}
+                 com.cognitect.aws/s3             {:mvn/version "RELEASE"}
+                 com.cognitect.aws/sts            {:mvn/version "RELEASE"}}}
 
   ;; ---------------------------------------------------
   ;; Test runners
