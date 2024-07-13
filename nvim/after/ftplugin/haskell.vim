@@ -5,7 +5,7 @@ inoremap <buffer> ` `
 " <cword> includes .
 setlocal iskeyword+=.
 
-nnoremap <buffer><silent><nowait> <localleader>C   <Cmd>Repl :!clear<CR>
+nnoremap <buffer><silent><nowait> <localleader>c   <Cmd>Repl :!clear<CR>
 nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r><C-w><CR>
 nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r><C-w><CR>
 nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%')<CR><CR>
