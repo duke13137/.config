@@ -4,7 +4,6 @@ end
 
 local wk = require("which-key")
 wk.add({
-  mode = { "n", "v" },
   { "<localleader>C", desc = "ghci clear" },
   { "<localleader>L", desc = "ghci load" },
   { "<localleader>d", desc = "ghci doc" },
@@ -14,6 +13,12 @@ wk.add({
   { "<localleader>l", desc = "ghci reload" },
   { "<localleader>m", desc = "ghci main" },
   { "<localleader>t", desc = "ghci type" },
+})
+wk.add({
+  mode = "v",
+  { "<localleader>i", desc = "ghci instances" },
+  { "<localleader>k", desc = "ghci kind!" },
+  { "<localleader>t", desc = "ghci type-at" },
 })
 
 local luasnip = require("luasnip")

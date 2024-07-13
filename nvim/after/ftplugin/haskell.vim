@@ -5,15 +5,12 @@ inoremap <buffer> ` `
 " <cword> includes .
 setlocal iskeyword+=.
 
-noremap <buffer><silent><nowait> <localleader>C   <Cmd>Repl :!clear<CR>
-
-noremap <buffer><silent><nowait> <localleader>l   <Cmd>w <bar> Repl :reload<CR><CR>
-noremap <buffer><silent><nowait> <localleader>m   <Cmd>Repl :main<CR>
-
-nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%')<CR><CR>
-
+nnoremap <buffer><silent><nowait> <localleader>C   <Cmd>Repl :!clear<CR>
 nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r><C-w><CR>
 nnoremap <buffer><silent><nowait> <localleader>h   :Hoogle <C-r><C-w><CR>
+nnoremap <buffer><silent><nowait> <localleader>L   :Repl :load! *<C-r>=expand('%')<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>l   <Cmd>w <bar> Repl :reload<CR><CR>
+nnoremap <buffer><silent><nowait> <localleader>m   <Cmd>Repl :main<CR>
 
 nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>i y :Repl :instances <C-r>=@"<CR><CR>
