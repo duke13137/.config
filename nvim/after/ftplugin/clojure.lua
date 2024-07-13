@@ -5,16 +5,16 @@ end
 require "lspconfig".clojure_lsp.setup {}
 
 local wk = require("which-key")
-wk.register({
-  c = { "connect" },
-  e = { "eval" },
-  i = { "inspect" },
-  l = { "log" },
-  r = { "reload" },
-  s = { "session" },
-  t = { "test" },
-  v = { "view" },
-}, { prefix = "<localleader>", mode = "n", silent = true })
+wk.add({
+  { "<localleader>c", group = "connect" },
+  { "<localleader>e", group = "eval" },
+  { "<localleader>i", group = "inspect" },
+  { "<localleader>l", group = "log" },
+  { "<localleader>r", group = "reload" },
+  { "<localleader>s", group = "session" },
+  { "<localleader>t", group = "test" },
+  { "<localleader>v", group = "view" },
+})
 
 local function options(desc)
   return { buffer = true, noremap = true, silent = true, desc = desc }

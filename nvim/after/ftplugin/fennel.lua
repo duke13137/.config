@@ -5,11 +5,11 @@ end
 require("lspconfig").fennel_ls.setup {}
 
 local wk = require("which-key")
-wk.register({
-  c = { "connect" },
-  e = { "eval" },
-  l = { "log" },
-}, { prefix = "<localleader>", mode = "n", silent = true })
+wk.add({
+  { "<localleader>c", group = "connect" },
+  { "<localleader>e", group = "eval" },
+  { "<localleader>l", group = "log" },
+})
 
 -- <cword>
 vim.opt.iskeyword:append(".,:")

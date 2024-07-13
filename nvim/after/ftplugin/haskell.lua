@@ -3,20 +3,18 @@ if vim.g.vscode then
 end
 
 local wk = require("which-key")
-local keys = {
-  C = "ghci clear",
-  d = "ghci doc",
-  h = "hoogle",
-  i = "ghci info",
-  k = "ghci kind",
-  l = "ghci reload",
-  L = "ghci load",
-  m = "ghci main",
-  t = "ghci type",
-}
-
-wk.register(keys, { mode = "n", prefix = "<localleader>", silent = true })
-wk.register(keys, { mode = "v", prefix = "<localleader>", silent = true })
+wk.add({
+  mode = { "n", "v" },
+  { "<localleader>C", desc = "ghci clear" },
+  { "<localleader>L", desc = "ghci load" },
+  { "<localleader>d", desc = "ghci doc" },
+  { "<localleader>h", desc = "hoogle" },
+  { "<localleader>i", desc = "ghci info" },
+  { "<localleader>k", desc = "ghci kind" },
+  { "<localleader>l", desc = "ghci reload" },
+  { "<localleader>m", desc = "ghci main" },
+  { "<localleader>t", desc = "ghci type" },
+})
 
 local luasnip = require("luasnip")
 local haskell_snippets = require("haskell-snippets").all

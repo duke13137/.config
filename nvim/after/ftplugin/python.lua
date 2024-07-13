@@ -8,11 +8,11 @@ vo.shiftwidth = 4
 vo.softtabstop = 4
 
 local wk = require("which-key")
-wk.register({
-  c = { "connect" },
-  e = { "eval" },
-  l = { "log" },
-}, { prefix = "<localleader>", mode = "n", silent = true })
+wk.add({
+  { "<localleader>c", group = "connect" },
+  { "<localleader>e", group = "eval" },
+  { "<localleader>l", group = "log" },
+})
 
 local function options(desc)
   return { buffer = true, noremap = true, silent = true, desc = desc }
