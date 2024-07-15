@@ -10,6 +10,15 @@ return {
   { "folke/noice.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false},
 
+  {
+    "folke/which-key.nvim",
+    opts = {
+      -- delay = 500,
+      preset = 'helix',
+      win = { no_overlap = true }
+    },
+  },
+
   -- change surround mappings
   {
     "echasnovski/mini.surround",
