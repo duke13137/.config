@@ -92,7 +92,6 @@
    :extra-deps  {;com.clojure-goes-fast/clj-java-decompiler  {:mvn/version "RELEASE"}
                  ;com.clojure-goes-fast/clj-async-profiler   {:mvn/version "RELEASE"}
                  io.github.matthewdowney/rich-comment-tests {:mvn/version "RELEASE"}
-                 com.cognitect.aws/api        {:mvn/version "RELEASE"}
                  com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
                  com.taoensso/telemere        {:mvn/version "RELEASE"}
                  dom-top/dom-top              {:mvn/version "RELEASE"}
@@ -104,7 +103,7 @@
                  org.clojure/test.check       {:mvn/version "RELEASE"}
                  org.clojure/tools.namespace  {:mvn/version "RELEASE"}
                  org.clojure/tools.trace      {:mvn/version "RELEASE"}
-                 org.slf4j/slf4j-nop          {:mvn/version "1.7.36"}
+                 org.slf4j/slf4j-nop          {:mvn/version "RELEASE"}
                  ring/ring-mock               {:mvn/version "RELEASE"}
                  virgil/virgil                {:mvn/version "RELEASE"}
                  vvvvalvalval/scope-capture   {:mvn/version "RELEASE"}}}
@@ -137,20 +136,6 @@
   ;; End of REPL and nREPL connections
   ;; ---------------------------------------------------
 
-  :lib/aws
-  {:extra-deps  {com.cognitect.aws/api            {:mvn/version "RELEASE"}
-                 com.cognitect.aws/endpoints      {:mvn/version "RELEASE"}
-                 com.cognitect.aws/accessanalyzer {:mvn/version "RELEASE"}
-                 com.cognitect.aws/account        {:mvn/version "RELEASE"}
-                 com.cognitect.aws/organizations  {:mvn/version "RELEASE"}
-                 com.cognitect.aws/cloudtrail     {:mvn/version "RELEASE"}
-                 com.cognitect.aws/config         {:mvn/version "RELEASE"}
-                 com.cognitect.aws/iam            {:mvn/version "RELEASE"}
-                 com.cognitect.aws/dynamodb       {:mvn/version "RELEASE"}
-                 com.cognitect.aws/lambda         {:mvn/version "RELEASE"}
-                 com.cognitect.aws/ec2            {:mvn/version "RELEASE"}
-                 com.cognitect.aws/s3             {:mvn/version "RELEASE"}
-                 com.cognitect.aws/sts            {:mvn/version "RELEASE"}}}
 
   ;; ---------------------------------------------------
   ;; Test runners
@@ -226,7 +211,55 @@
   ;; End of Test Coverage tools
   ;; ---------------------------------------------------
 
+  ;; ---------------------------------------------------
+  ;; Libraries
+
+  ;; - report project dependencies that have newer versions available:
+  ;; cd project-directory && clojure -T:search/outdated
+  ;; - update library versions in this deps.edn file:
+  ;; cd $XDG_CONFIG_HOME/clojure && clojure -T:search/outdated
+  :deps/outdated
+  {:replace-paths ["."]
+   :replace-deps  {com.github.liquidz/antq {:mvn/version "RELEASE"}
+                   org.slf4j/slf4j-nop     {:mvn/version "RELEASE"}}
+   :exec-fn antq.tool/outdated
+   :exec-args {:directory ["."] ; default
+               :exclude ["org.clojure/tools.deps.alpha"
+                         "org.clojure/clojurescript"]
+               ;; :focus ["com.github.liquidz/antq"]
+               :skip ["boot" "leiningen"]
+               :reporter "table" ; json edn format
+               :verbose false
+               :upgrade false
+               :force   false}}
+
+  ;; GraphViz of project dependencies
+  ;; https://github.com/clojure/tools.deps.graph
+  ;; clojure -T:graph/deps
+  :deps/graph
+  {:replace-paths []
+   :replace-deps  {org.clojure/tools.deps.graph {:mvn/version "RELEASE"}}
+   :ns-default    clojure.tools.deps.graph
+   :exec-fn       graph
+   :exec-args     {:output "project-dependencies-graph.png"
+                   :size   true}}
+
   ;; A CLI to add common aliases and features to deps.edn-based projects.
   :neil
   {:deps {io.github.babashka/neil {:git/tag "v0.3.66" :git/sha "0fcf459"}}
-   :main-opts ["-m" "babashka.neil"]}}}
+   :main-opts ["-m" "babashka.neil"]}
+
+  :lib/aws
+  {:extra-deps  {com.cognitect.aws/api            {:mvn/version "RELEASE"}
+                 com.cognitect.aws/endpoints      {:mvn/version "RELEASE"}
+                 com.cognitect.aws/accessanalyzer {:mvn/version "RELEASE"}
+                 com.cognitect.aws/account        {:mvn/version "RELEASE"}
+                 com.cognitect.aws/organizations  {:mvn/version "RELEASE"}
+                 com.cognitect.aws/cloudtrail     {:mvn/version "RELEASE"}
+                 com.cognitect.aws/config         {:mvn/version "RELEASE"}
+                 com.cognitect.aws/iam            {:mvn/version "RELEASE"}
+                 com.cognitect.aws/dynamodb       {:mvn/version "RELEASE"}
+                 com.cognitect.aws/lambda         {:mvn/version "RELEASE"}
+                 com.cognitect.aws/ec2            {:mvn/version "RELEASE"}
+                 com.cognitect.aws/s3             {:mvn/version "RELEASE"}
+                 com.cognitect.aws/sts            {:mvn/version "RELEASE"}}}}}
