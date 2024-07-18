@@ -204,6 +204,19 @@ return {
   },
 
   {
+    "neovim/nvim-lspconfig",
+    opts = {
+      codelens = {
+        enabled = true,
+      },
+      inlay_hints = {
+        enabled = true,
+        exclude = { "c" },
+      },
+    },
+  },
+
+  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
