@@ -206,11 +206,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      codelens = {
-        enabled = true,
-      },
       inlay_hints = {
-        enabled = true,
+        enabled = false,
         exclude = { "c" },
       },
     },
