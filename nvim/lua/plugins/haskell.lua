@@ -17,13 +17,13 @@ local M = {
 }
 
 function M.ghcid()
+  local null_ls = require("null-ls")
   local helpers = require("null-ls.helpers")
-  local methods = require("null-ls.methods")
   local utils = require("null-ls.utils")
   return {
     name = "ghcid",
     meta = { url = "https://github.com/ndmitchell/ghcid" },
-    method = methods.internal.DIAGNOSTICS_ON_SAVE,
+    method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
     filetypes = { "haskell" },
     generator = helpers.generator_factory({
       command = "bash",
@@ -70,12 +70,12 @@ function M.ghcid()
 end
 
 function M.hlint()
+  local null_ls = require("null-ls")
   local helpers = require("null-ls.helpers")
-  local methods = require("null-ls.methods")
   return {
     name = "hlint",
     meta = { url = "https://github.com/ndmitchell/hlint" },
-    method = methods.internal.DIAGNOSTICS_ON_SAVE,
+    method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
     filetypes = { "haskell" },
     generator = helpers.generator_factory({
       command = "hlint",
