@@ -8,7 +8,7 @@ local function checker()
     filetypes = { "java" },
     generator = helpers.generator_factory({
       command = "cat",
-      args = { "nullness.log" },
+      args = { "checker.log" },
       format = "json_raw",
       ignore_stderr = true,
       on_output = function(params)

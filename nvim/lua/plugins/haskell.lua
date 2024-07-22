@@ -1,4 +1,5 @@
 local M = {
+  { "mrcjkb/neotest-haskell", enabled = false },
   {
     "fonghou/fzf-hoogle.vim",
     ft = "haskell",
