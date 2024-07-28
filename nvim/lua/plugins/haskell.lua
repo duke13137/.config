@@ -1,6 +1,12 @@
 local M = {
   { "mrcjkb/neotest-haskell", enabled = false },
   {
+    "mrcjkb/haskell-tools.nvim",
+    cond = function()
+      return vim.fn.filereadable("hls.json") ~= 0 and true
+    end,
+  },
+  {
     "fonghou/fzf-hoogle.vim",
     ft = "haskell",
     dependencies = {
@@ -8,11 +14,10 @@ local M = {
       "mrcjkb/haskell-snippets.nvim",
       "nvimtools/none-ls.nvim",
     },
-  },
-  {
-    "mrcjkb/haskell-tools.nvim",
-    cond = function()
-      return vim.fn.filereadable("hls.json") ~= 0 and true
+    config = function()
+      if vim.fn.filereadable(".hiedb") ~= 0 then
+        require "lspconfig".hls.setup { cmd = { "static-ls" } }
+      end
     end,
   },
 }
