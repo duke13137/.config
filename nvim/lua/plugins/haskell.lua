@@ -35,7 +35,7 @@ function M.ghcid()
       command = "bash",
       args = {
         "-c",
-        [[ sleep 1 && [ -f ghcid.log ] && cat ghcid.log \
+        [[ sleep 1 && [ -f ghcid.txt ] && cat ghcid.txt \
           | grep -A2 -E '.*[^>]: (error|warning):' \
           | grep -v '\--' \
           | paste -s -d'\0\t\n' - \
@@ -70,7 +70,7 @@ function M.ghcid()
       end,
     }),
     cwd = helpers.cache.by_bufnr(function(params)
-      return utils.root_pattern("ghcid.log")(params.bufname)
+      return utils.root_pattern("ghcid.txt")(params.bufname)
     end),
   }
 end
