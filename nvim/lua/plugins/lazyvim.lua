@@ -59,7 +59,7 @@ return {
       vim.list_extend(opts.sources, {
         nls.builtins.code_actions.gitsigns,
         nls.builtins.diagnostics.deadnix,
-        require('plugins.haskell').ghcid(),
+        -- require('plugins.haskell').ghcid(),
         require('plugins.haskell').hlint(),
       })
     end,
