@@ -89,14 +89,12 @@
 
   :reload
   {:extra-paths ["dev" "test"]
-   :extra-deps  {;com.clojure-goes-fast/clj-java-decompiler  {:mvn/version "RELEASE"}
-                 ;com.clojure-goes-fast/clj-async-profiler   {:mvn/version "RELEASE"}
+   :extra-deps  {com.clojure-goes-fast/clj-java-decompiler  {:mvn/version "RELEASE"}
+                 com.clojure-goes-fast/clj-async-profiler   {:mvn/version "RELEASE"}
                  io.github.matthewdowney/rich-comment-tests {:mvn/version "RELEASE"}
                  com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
                  com.taoensso/telemere        {:mvn/version "RELEASE"}
                  dom-top/dom-top              {:mvn/version "RELEASE"}
-                 funcool/promesa              {:mvn/version "11.0.714"}
-                 instaparse/instaparse        {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
                  lambdaisland/kaocha          {:mvn/version "RELEASE"}
                  org.clj-commons/pretty       {:mvn/version "RELEASE"}

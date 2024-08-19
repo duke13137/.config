@@ -34,19 +34,12 @@ export JAVA_HOME=/opt/java
 export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$HOME/.jbang/bin:$PATH"
 
-export GOPATH="$HOME/sdk/go"
-export GOBIN="$GOPATH/bin"
-export PATH="$GOBIN:$PATH"
-
-export DENO_INSTALL="/home/hacker/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-export PATH="/usr/lib/postgresql/16/bin:$PATH"
+export GOPATH="$HOME/.gopath"
+export PATH="$GOPATH/bin:$GOPATH/go/bin:$PATH"
 
 export PATH="$PATH:/opt/cosmocc/bin"
 
-# export EMSDK_QUIET=1
-# test -f /opt/emsdk/emsdk_env.sh && source /opt/emsdk/emsdk_env.sh
+export PATH="/usr/lib/postgresql/16/bin:$PATH"
 
 test -f ~/.cargo/env && source ~/.cargo/env
 

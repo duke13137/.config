@@ -50,28 +50,6 @@ return {
     }
   },
 
-  {
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "mason.nvim" },
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      vim.list_extend(opts.sources, {
-        nls.builtins.code_actions.gitsigns,
-        nls.builtins.diagnostics.deadnix,
-        -- require('plugins.haskell').ghcid(),
-        require('plugins.haskell').hlint(),
-      })
-    end,
-  },
-
-  {
-    "mrcjkb/haskell-tools.nvim",
-    cond = function()
-      return vim.fn.filereadable("hls.json") ~= 0 and true
-    end,
-  },
-
   { "theHamsta/nvim-dap-virtual-text", pin = true, lazy = true },
   {
     "mfussenegger/nvim-dap",
@@ -160,35 +138,6 @@ return {
     config = true,
   },
 
-  -- add telescope-fzf-native and change layout
-  {
-    "nvim-telescope/telescope.nvim",
-    opts = {
-      defaults = {
-        sorting_strategy = "ascending",
-        layout_strategy = "flex",
-        layout_config = {
-          width = 0.95,
-          height = 0.85,
-          preview_cutoff = 20,
-          prompt_position = "top",
-          horizontal = {
-            preview_width = function(_, cols, _)
-              if cols > 200 then
-                return math.floor(cols * 0.4)
-              else
-                return math.floor(cols * 0.6)
-              end
-            end,
-          },
-          vertical = { width = 0.9, height = 0.95, preview_height = 0.5 },
-          flex = { horizontal = { preview_width = 0.9 } },
-        },
-        winblend = 0,
-      },
-    },
-  },
-
   -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
   -- would overwrite `ensure_installed` with the new value.
   -- If you'd rather extend the default config, use the code below instead:
@@ -233,16 +182,6 @@ return {
         "stylua",
         "taplo",
       },
-    },
-  },
-
-  {
-    "junegunn/fzf.vim",
-    keys = {
-      { "g<C-]>", ":Tags <C-r><C-w><CR>", desc = "Tags" },
-    },
-    dependencies = {
-      { "junegunn/fzf", build = "./install --all" },
     },
   },
 

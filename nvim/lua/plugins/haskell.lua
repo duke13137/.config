@@ -1,18 +1,34 @@
 local M = {
-  { "mrcjkb/neotest-haskell", enabled = false },
   {
     "mrcjkb/haskell-tools.nvim",
+    version = "^4",
+    dependencies = {
+      { "mrcjkb/neotest-haskell", enabled = false },
+    },
     cond = function()
       return vim.fn.filereadable("hls.json") ~= 0 and true
     end,
+    keys = {
+      { "<leader>ch", require("haskell-tools").hoogle.hoogle_signature, desc = "Hoogle Search" },
+    },
   },
   {
     "fonghou/fzf-hoogle.vim",
     ft = "haskell",
     dependencies = {
-      "junegunn/fzf",
+      { "junegunn/fzf", build = "./install --all" },
+      "junegunn/fzf.vim",
       "mrcjkb/haskell-snippets.nvim",
-      "nvimtools/none-ls.nvim",
+      {
+        "nvimtools/none-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        opts = function(_, opts)
+          vim.list_extend(opts.sources, {
+            -- require("plugins.haskell").ghcid(),
+            require("plugins.haskell").hlint(),
+          })
+        end,
+      },
     },
     config = function()
       if vim.fn.filereadable(".hiedb") ~= 0 then
