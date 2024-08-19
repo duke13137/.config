@@ -4,12 +4,12 @@ end
 
 local wk = require("which-key")
 wk.add({
-  { "<localleader>C", desc = "ghci clear" },
-  { "<localleader>L", desc = "ghci load" },
+  { "<localleader>c", desc = "ghci clear" },
   { "<localleader>d", desc = "ghci doc" },
   { "<localleader>h", desc = "hoogle" },
   { "<localleader>i", desc = "ghci info" },
   { "<localleader>k", desc = "ghci kind" },
+  { "<localleader>L", desc = "ghci load" },
   { "<localleader>l", desc = "ghci reload" },
   { "<localleader>m", desc = "ghci main" },
   { "<localleader>t", desc = "ghci type" },

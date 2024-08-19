@@ -2,9 +2,6 @@ local M = {
   {
     "mrcjkb/haskell-tools.nvim",
     version = "^4",
-    dependencies = {
-      { "mrcjkb/neotest-haskell", enabled = false },
-    },
     cond = function()
       return vim.fn.filereadable("hls.json") ~= 0 and true
     end,
