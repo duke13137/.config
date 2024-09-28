@@ -92,17 +92,15 @@
    :extra-deps  {com.clojure-goes-fast/clj-java-decompiler  {:mvn/version "RELEASE"}
                  com.clojure-goes-fast/clj-async-profiler   {:mvn/version "RELEASE"}
                  io.github.matthewdowney/rich-comment-tests {:mvn/version "RELEASE"}
+                 io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
                  com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
                  com.taoensso/telemere        {:mvn/version "RELEASE"}
-                 dom-top/dom-top              {:mvn/version "RELEASE"}
-                 io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
                  lambdaisland/kaocha          {:mvn/version "RELEASE"}
                  org.clj-commons/pretty       {:mvn/version "RELEASE"}
                  org.clojure/test.check       {:mvn/version "RELEASE"}
                  org.clojure/tools.namespace  {:mvn/version "RELEASE"}
                  org.clojure/tools.trace      {:mvn/version "RELEASE"}
                  org.slf4j/slf4j-nop          {:mvn/version "RELEASE"}
-                 ring/ring-mock               {:mvn/version "RELEASE"}
                  virgil/virgil                {:mvn/version "RELEASE"}
                  vvvvalvalval/scope-capture   {:mvn/version "RELEASE"}}}
 

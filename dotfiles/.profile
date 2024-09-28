@@ -35,7 +35,8 @@ export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$HOME/.jbang/bin:$PATH"
 
 export GOPATH="$HOME/.gopath"
-export PATH="$GOPATH/bin:$GOPATH/go/bin:$PATH"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOPATH/go/bin:$GOBIN:$PATH"
 
 export PATH="$PATH:/opt/cosmocc/bin"
 

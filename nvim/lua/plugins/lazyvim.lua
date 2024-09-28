@@ -9,7 +9,6 @@
 return {
   { "folke/noice.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false},
-  { "mrcjkb/neotest-haskell", enabled = false },
 
   {
     "folke/which-key.nvim",
