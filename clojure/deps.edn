@@ -259,6 +259,6 @@
                  com.cognitect.aws/ec2            {:mvn/version "RELEASE"}
                  com.cognitect.aws/s3             {:mvn/version "RELEASE"}
                  com.cognitect.aws/sts            {:mvn/version "RELEASE"}}}
+
   :lib/ml
-  {:extra-deps  {clj-python/libpython-clj         {:mvn/version "RELEASE"}
-                 com.techascent/tmducken          {:mvn/version "RELEASE"}}}}}
+  {:extra-deps  {com.techascent/tmducken          {:mvn/version "RELEASE"}}}}}

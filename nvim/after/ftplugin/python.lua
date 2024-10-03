@@ -12,6 +12,7 @@ wk.add({
   { "<localleader>c", group = "connect" },
   { "<localleader>e", group = "eval" },
   { "<localleader>l", group = "log" },
+  { "<localleader>r", group = "ipython" },
 })
 
 local function options(desc)
@@ -19,14 +20,19 @@ local function options(desc)
 end
 
 local map = vim.keymap.set
-map("n", ",C", ":Repl %clear<CR>", options("ipython clear"))
-map("n", ",i", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("ipython info"))
-map("n", ",s", ":Repl %psource <C-r>=expand('<cexpr>')<CR><CR>", options("ipython source"))
-map("n", ",r", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("ipython run"))
-map("n", ",t", ":Repl !pytest -v --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest file"))
+
+map("n", ",ra", ":Repl %load_ext autoreload<CR> | :Repl %autoreload<CR>", options("%autoreload on"))
+map("n", ",rc", ":Repl %clear<CR>", options("%clear"))
+map("n", ",ri", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("%info"))
+map("n", ",rj", ":Repl %autoreload 1 -p<CR> | :Repl %aimport<CR>", options("%aimport"))
+map("n", ",rl", ":Repl %autoreload 3 -p<CR>", options("%autoreload all"))
+map("n", ",ro", ":Repl %autoreload off<CR>", options("%autoreload off"))
+map("n", ",rs", ":Repl %psource <C-r>=expand('<cexpr>')<CR><CR>", options("%source"))
+map("n", ",rr", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("%run"))
+map("n", ",t", ":Repl !pytest -v --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest"))
 map(
   "n",
-  ",d",
-  ":Repl !pytest --trace --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb <C-r>=expand('%:p')<CR>::<C-r>=expand('<cword>')<CR><CR>",
+  ",rt",
+  ":Repl !pytest --trace --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb <C-r>=expand('%:p')<CR>::<C-r>=expand('<cword>')<CR> ",
   options("pytest debug")
 )
