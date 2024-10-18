@@ -261,4 +261,5 @@
                  com.cognitect.aws/sts            {:mvn/version "RELEASE"}}}
 
   :lib/ml
-  {:extra-deps  {com.techascent/tmducken          {:mvn/version "RELEASE"}}}}}
+  {:extra-deps  {com.techascent/tmducken          {:mvn/version "RELEASE"}
+                 io.github.nextjournal/clerk      {:mvn/version "RELEASE"}}}}}

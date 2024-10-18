@@ -42,6 +42,8 @@ export PATH="$PATH:/opt/cosmocc/bin"
 
 export PATH="/usr/lib/postgresql/16/bin:$PATH"
 
+test -f ~/.deno/env && source ~/.deno/env
+
 test -f ~/.cargo/env && source ~/.cargo/env
 
 test -f ~/.ghcup/env && source ~/.ghcup/env

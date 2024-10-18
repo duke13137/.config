@@ -21,18 +21,19 @@ end
 
 local map = vim.keymap.set
 
-map("n", ",ra", ":Repl %load_ext autoreload<CR> | :Repl %autoreload<CR>", options("%autoreload on"))
-map("n", ",rc", ":Repl %clear<CR>", options("%clear"))
-map("n", ",ri", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("%info"))
-map("n", ",rj", ":Repl %autoreload 1 -p<CR> | :Repl %aimport<CR>", options("%aimport"))
-map("n", ",rl", ":Repl %autoreload 3 -p<CR>", options("%autoreload all"))
-map("n", ",ro", ":Repl %autoreload off<CR>", options("%autoreload off"))
-map("n", ",rs", ":Repl %psource <C-r>=expand('<cexpr>')<CR><CR>", options("%source"))
-map("n", ",rr", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("%run"))
-map("n", ",t", ":Repl !pytest -v --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest"))
+map("n", ",L", ":Repl %clear<CR>", options("clear"))
+map("n", ",i", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("info"))
+map("n", ",s", ":Repl %psource <C-r>=expand('<cexpr>')<CR><CR>", options("source"))
+map("n", ",ra", ":Repl %load_ext autoreload<CR> | :Repl %autoreload<CR>", options("autoreload on"))
+map("n", ",ri", ":Repl %autoreload 1 -p<CR> | :Repl %aimport<CR>", options("aimport"))
+map("n", ",rl", ":Repl %autoreload 3 -p<CR>", options("autoreload all"))
+map("n", ",ro", ":Repl %autoreload off<CR>", options("autoreload off"))
+map("n", ",rr", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("run"))
+map("n", ",rR", ":Repl %reset -f<CR>", options("reset"))
+map("n", ",t", ":Repl !pytest -lsv --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest"))
 map(
   "n",
   ",rt",
   ":Repl !pytest --trace --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb <C-r>=expand('%:p')<CR>::<C-r>=expand('<cword>')<CR> ",
-  options("pytest debug")
+  options("debug")
 )
