@@ -52,10 +52,10 @@
   "terminal.integrated.fontWeightBold": 500,
   "terminal.integrated.allowChords": false,
   "terminal.integrated.sendKeybindingsToShell": true,
-  "workbench.startupEditor": "none",
+  "workbench.activityBar.location": "top",
   "workbench.colorTheme": "Night Owl",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.activityBar.location": "top",
+  "workbench.startupEditor": "none",
   // extentoins
   "calva.enableJSCompletions": false,
   "calva.fmt.configPath": "CLOJURE-LSP",
@@ -94,44 +94,17 @@
       {
         "type": "lldb",
         "request": "launch",
-        "name": "Debug",
+        "name": "Debug opened file",
         "cwd": "${workspaceFolder}",
-        "program": "${relativeFileDirname}/${fileBasenameNoExtension}",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
         "args": []
       },
-      {
-        "name": "Debug core",
-        "type": "lldb",
-        "request": "custom",
-        "targetCreateCommands": [
-          "target create -c ${relativeFileDirname}/core"
-        ]
-      },
-      {
-        "name": "Debug replay",
-        "type": "lldb",
-        "request": "custom",
-        "breakpointMode": "file",
-        "targetCreateCommands": [
-          "target create ${relativeFileDirname}/${fileBasenameNoExtension}"
-        ],
-        "processCreateCommands": [
-          "gdb-remote 127.0.0.1:9876"
-        ],
-        "reverseDebugging": true
-      }
     ]
-  },
-  "[racket]": {
-    "editor.rulers": [
-      102
-    ],
-    "editor.wordSeparators": "()[]{}\",'`;#|"
   },
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-  "vscode-neovim.neovimExecutablePaths.linux": "/opt/nvim-linux64/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
   "vscode-neovim.useWSL": true,
   "vscode-neovim.ctrlKeysForInsertMode": [
     "o",
@@ -146,6 +119,7 @@
     "t",
     "u",
     "v",
+    "w",
     "right",
     "left",
     "up",
