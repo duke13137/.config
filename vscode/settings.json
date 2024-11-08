@@ -3,7 +3,6 @@
   "chat.editor.fontSize": 15,
   "debug.internalConsoleOptions": "openOnSessionStart",
   "debug.console.fontSize": 15,
-  "debug.focusEditorOnBreak": false,
   "debug.openDebug": "openOnDebugBreak",
   "diffEditor.wordWrap": "off",
   "errorLens.delayMode": "debounce",
@@ -89,6 +88,7 @@
   "haskell.plugin.splice.globalOn": false,
   "java.debug.settings.forceBuildBeforeLaunch": false,
   "java.silentNotification": true,
+  "jdk.test.editor.enableShortcuts": true,
   "launch": {
     "configurations": [
       {
