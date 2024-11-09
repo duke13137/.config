@@ -118,6 +118,11 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 -- stylua: ignore start
 
+if vim.g.vscode then
+  return
+end
+
+
 -- toggle options
 LazyVim.format.snacks_toggle():map("<leader>uf")
 LazyVim.format.snacks_toggle(true):map("<leader>uF")
