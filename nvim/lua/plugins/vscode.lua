@@ -3,14 +3,16 @@ if not vim.g.vscode then
 end
 
 local enabled = {
+  "LazyVim",
   "lazy.nvim",
   "mini.ai",
+  "mini.pairs",
   "mini.surround",
   "nvim-treesitter",
   "nvim-treesitter-textobjects",
+  "snacks.nvim",
   "ts-comments.nvim",
   "vim-repeat",
-  "LazyVim",
 }
 
 local Config = require("lazy.core.config")
