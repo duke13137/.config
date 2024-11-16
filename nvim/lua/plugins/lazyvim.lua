@@ -167,7 +167,6 @@ return {
     opts = {
       ensure_installed = {
         "codelldb",
-        "clojure-lsp",
         "debugpy",
         "delve",
         "gopls",
