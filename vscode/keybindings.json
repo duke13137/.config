@@ -1,7 +1,7 @@
-// Place your key bindings in this file to overwrite the defaultsauto[]
+// Place your key bindings in this file to overwrite the defaults
 [
     {
-        "key": "ctrl+p",
+        "key": "cmd+p",
         "command": "workbench.action.showCommands"
     },
     {
@@ -10,17 +10,17 @@
         "when": "editorTextFocus && editorHasSelection && editorLangId != 'clojure'"
     },
     {
-        "key": "ctrl+/",
+        "key": "cmd+/",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+/",
+        "key": "cmd+/",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+alt+m",
+        "key": "cmd-m",
         "command": "workbench.action.toggleMaximizedPanel"
     },
     {
