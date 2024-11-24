@@ -5,11 +5,6 @@
         "command": "workbench.action.showCommands"
     },
     {
-        "key": "alt+enter",
-        "command": "workbench.action.terminal.runSelectedText",
-        "when": "editorTextFocus && editorHasSelection && editorLangId != 'clojure'"
-    },
-    {
         "key": "cmd+/",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
@@ -22,6 +17,11 @@
     {
         "key": "cmd-m",
         "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "alt+enter",
+        "command": "workbench.action.terminal.runSelectedText",
+        "when": "editorTextFocus && editorHasSelection && editorLangId != 'clojure'"
     },
     {
         "key": "shift+alt+'",

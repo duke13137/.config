@@ -3,7 +3,8 @@
         "asvetliakov.vscode-neovim": 1
     },
     "extensions.ignoreRecommendations": true,
-    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Menlo, Monaco",
+    "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, Monaco",
+    "editor.fontLigatures": true,
     "editor.fontSize": 16,
     "editor.acceptSuggestionOnEnter": "off",
     "editor.formatOnSave": true,
@@ -30,11 +31,15 @@
         "**/.stack-work": true,
         "**/*.class": true
     },
-    "terminal.integrated.fontSize": 16,
     "terminal.integrated.macOptionIsMeta": true,
     "terminal.integrated.sendKeybindingsToShell": true,
     "terminal.integrated.tabs.enabled": false,
-    "workbench.colorTheme": "Night Owl",
     "workbench.sideBar.location": "right",
-    "workbench.activityBar.location": "hidden",
+    "workbench.activityBar.location": "top",
+    "workbench.colorTheme": "Dracula Theme",
+    "haskell.manageHLS": "PATH",
+    "terminal.integrated.fontWeightBold": 600,
+    "terminal.integrated.fontWeight": 400,
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
 }
