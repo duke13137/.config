@@ -1,7 +1,5 @@
 {:paths ["."]
  :deps {org.clojure/clojure {:mvn/version "RELEASE"}
-        com.rpl/specter {:mvn/version "1.1.5-SNAPSHOT"}
-        metosin/malli {:mvn/version "RELEASE"}
         org.clojars.askonomm/ruuter {:mvn/version "RELEASE"}
 
         djblue/portal {:mvn/version "RELEASE"}
@@ -23,7 +21,7 @@
         com.cognitect.aws/ssm {:mvn/version "RELEASE"}
         com.cognitect.aws/sts {:mvn/version "RELEASE"}}
 
-  :pods {huahaiy/datalevin {:version "0.9.12"}
+  :pods {huahaiy/datalevin {:version "0.9.14"}
          org.babashka/go-sqlite3 {:version "0.2.4"}}
 
   :tasks {}}
