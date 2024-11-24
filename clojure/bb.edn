@@ -21,7 +21,7 @@
         com.cognitect.aws/ssm {:mvn/version "RELEASE"}
         com.cognitect.aws/sts {:mvn/version "RELEASE"}}
 
-  :pods {huahaiy/datalevin {:version "0.9.14"}
-         org.babashka/go-sqlite3 {:version "0.2.4"}}
+ :pods {huahaiy/datalevin {:version "0.9.14"}
+        org.babashka/go-sqlite3 {:version "0.2.4"}}
 
-  :tasks {}}
+ :tasks {}}
