@@ -1,10 +1,6 @@
 // Place your key bindings in this file to overwrite the defaults
 [
     {
-        "key": "cmd+p",
-        "command": "workbench.action.showCommands"
-    },
-    {
         "key": "cmd+/",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
@@ -140,4 +136,18 @@
         "key": "ctrl+alt+\\",
         "command": "vscode-neovim.restart"
     },
+    {
+        "key": "cmd+l",
+        "command": "-expandLineSelection",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift-tab",
+        "command": "editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+right",
+        "command": "editor.action.inlineSuggest.acceptNextLine"
+    }
 ]
