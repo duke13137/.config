@@ -58,7 +58,7 @@ local M = {
     },
     config = function()
       if vim.fn.filereadable(".hiedb") ~= 0 then
-        require "lspconfig".hls.setup { cmd = { "static-ls" } }
+        require "lspconfig".hls.setup { cmd = { "./static-ls" } }
       end
     end,
   },
