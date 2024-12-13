@@ -11,22 +11,9 @@ return {
     'saghen/blink.cmp',
     opts = {
       keymap = {
-        -- "super-tab" keymap
-        ['<Tab>'] = {
-          function(cmp)
-            if cmp.snippet_active() then
-              return cmp.accept()
-            else
-              return cmp.select_and_accept()
-            end
-          end,
-          'snippet_forward',
-          'fallback'
-        },
-        -- "enter" keymap
-        ['<CR>'] = { },
+        preset = "super-tab",
       },
-      signature = { enabled = true }
+      signature = { enabled = false }
     }
   },
 
@@ -148,10 +135,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = {
-        enabled = false,
-        exclude = { "c" },
-      },
+      inlay_hints = { enabled = false }
     },
   },
 
