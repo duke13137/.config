@@ -136,7 +136,10 @@ Snacks.toggle.diagnostics():map("<leader>ud")
 Snacks.toggle.line_number():map("<leader>ul")
 Snacks.toggle.option("conceallevel", {off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2}):map("<leader>uc")
 Snacks.toggle.treesitter():map("<leader>uT")
-Snacks.toggle.option("background", { off = "light", on = "dark" , name = "Dark Background"}):map("<leader>ub")
+Snacks.toggle.dim():map("<leader>uD")
+Snacks.toggle.animate():map("<leader>ua")
+Snacks.toggle.indent():map("<leader>ug")
+Snacks.toggle.scroll():map("<leader>uS")
 if vim.lsp.inlay_hint then
   Snacks.toggle.inlay_hints():map("<leader>uh")
 end
@@ -145,13 +148,16 @@ end
 if vim.fn.executable("lazygit") == 1 then
   map("n", "<leader>gg", function() Snacks.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
   map("n", "<leader>gG", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
-  map("n", "<leader>gb", function() Snacks.git.blame_line() end, { desc = "Git Blame Line" })
-  map("n", "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse" })
   map("n", "<leader>gf", function() Snacks.lazygit.log_file() end, { desc = "Lazygit Current File History" })
   map("n", "<leader>gl", function() Snacks.lazygit.log({ cwd = LazyVim.root.git() }) end, { desc = "Lazygit Log" })
   map("n", "<leader>gL", function() Snacks.lazygit.log() end, { desc = "Lazygit Log (cwd)" })
 end
 
+map("n", "<leader>gb", function() Snacks.git.blame_line() end, { desc = "Git Blame Line" })
+map({ "n", "x" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse (open)" })
+map({"n", "x" }, "<leader>gY", function()
+  Snacks.gitbrowse({ open = function(url) vim.fn.setreg("+", url) end, notify = false })
+end, { desc = "Git Browse (copy)" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
@@ -178,7 +184,8 @@ map("n", "<leader>w", "<c-w>", { desc = "Windows", remap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<c-w>d", "<C-W>c", { desc = "Delete Window", remap = true })
-LazyVim.ui.maximize():map("<leader>wm")
+Snacks.toggle.zoom():map("<leader>wm"):map("<leader>uZ")
+Snacks.toggle.zen():map("<leader>uz")
 
 -- tabs
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })

@@ -8,7 +8,6 @@
 -- * override the configuration of LazyVim plugins
 return {
   { "folke/noice.nvim", enabled = false },
-  { "lukas-reineke/indent-blankline.nvim", enabled = false},
 
   {
     "folke/which-key.nvim",
@@ -92,35 +91,6 @@ return {
         dapui.close({})
       end
     end,
-  },
-
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-cmdline",
-    },
-    opts = function(_, opts)
-      local cmp = require("cmp")
-
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-      ["<CR>"] = cmp.config.disable,
-      ["<Tab>"] = LazyVim.cmp.confirm(),
-      ["<C-n>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-      ["<C-p>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-      })
-    end
   },
 
   -- change trouble config
