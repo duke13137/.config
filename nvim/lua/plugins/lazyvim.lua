@@ -26,7 +26,7 @@ return {
         -- "enter" keymap
         ['<CR>'] = { },
       },
-      signature = { enabled = true }
+      signature = { enabled = false }
     }
   },
 
@@ -148,10 +148,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = {
-        enabled = false,
-        exclude = { "c" },
-      },
+      inlay_hints = { enabled = false }
     },
   },
 
