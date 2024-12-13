@@ -3,7 +3,7 @@ return {
 
   {
     "Olical/conjure",
-    branch = "develop",
+    branch = "main",
     ft = { "clojure", "fennel" },
     dependencies = { "m00qek/baleia.nvim" },
     init = function()
@@ -48,17 +48,6 @@ return {
           )
         end,
       })
-    end,
-  },
-
-  {
-    "nvim-cmp",
-    dependencies = { "PaterJason/cmp-conjure", ft = { "clojure", "fennel" } },
-    opts = function(_, opts)
-      local cmp = require("cmp")
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
-        { name = "conjure" },
-      }))
     end,
   },
 
