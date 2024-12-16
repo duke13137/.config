@@ -31,6 +31,7 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimKeymaps",
   callback = function()
     -- VSCode-specific keymaps for search and navigation
+<<<<<<< HEAD
     vim.keymap.set("n", "<leader><space>", function()
       vscode.action("workbench.action.quickOpen")
     end)
@@ -48,6 +49,15 @@ vim.api.nvim_create_autocmd("User", {
     vim.keymap.set("n", "<C-r>", function()
       vscode.call("redo")
     end)
+=======
+    vim.keymap.set("n", "<leader><space>", function() vscode.action("workbench.action.quickOpen") end)
+    vim.keymap.set("n", "<leader>/", function() vscode.action('workbench.action.findInFiles') end)
+    vim.keymap.set("n", "<leader>ss", function() vscode.action('workbench.action.gotoSymbol') end)
+
+    -- Keep undo/redo lists in sync with VsCode
+    vim.keymap.set("n", "u", function() vscode.action("undo") end)
+    vim.keymap.set("n", "<C-r>", function() vscode.action("redo") end)
+>>>>>>> 155c7c3 (fix lazyvim vscode)
   end,
 })
 
