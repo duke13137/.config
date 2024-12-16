@@ -35,8 +35,8 @@ vim.api.nvim_create_autocmd("User", {
     vim.keymap.set("n", "<leader>ss", function() vscode.action('workbench.action.gotoSymbol') end)
 
     -- Keep undo/redo lists in sync with VsCode
-    vim.keymap.set("n", "u", function() vscode.action("undo") end)
-    vim.keymap.set("n", "<C-r>", function() vscode.action("redo") end)
+    vim.keymap.set("n", "u", function() vscode.call("undo") end)
+    vim.keymap.set("n", "<C-r>", function() vscode.call("redo") end)
   end,
 })
 
