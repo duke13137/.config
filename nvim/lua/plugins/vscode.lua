@@ -2,6 +2,9 @@ if not vim.g.vscode then
   return {}
 end
 
+local vscode = require("vscode")
+vim.notify = vscode.notify
+
 local enabled = {
   "LazyVim",
   "lazy.nvim",
@@ -24,16 +27,16 @@ end
 
 -- Add some vscode specific keymaps
 vim.api.nvim_create_autocmd("User", {
-  pattern = "LazyVimKeymapsDefaults",
+  pattern = "LazyVimKeymaps",
   callback = function()
     -- VSCode-specific keymaps for search and navigation
-    vim.keymap.set("n", "<leader><space>", "<cmd>Find<cr>")
-    vim.keymap.set("n", "<leader>/", [[<cmd>lua require('vscode').action('workbench.action.findInFiles')<cr>]])
-    vim.keymap.set("n", "<leader>ss", [[<cmd>lua require('vscode').action('workbench.action.gotoSymbol')<cr>]])
+    vim.keymap.set("n", "<leader><space>", function() vscode.action("workbench.action.quickOpen") end)
+    vim.keymap.set("n", "<leader>/", function() vscode.action('workbench.action.findInFiles') end)
+    vim.keymap.set("n", "<leader>ss", function() vscode.action('workbench.action.gotoSymbol') end)
 
     -- Keep undo/redo lists in sync with VsCode
-    vim.keymap.set("n", "u", "<Cmd>call VSCodeNotify('undo')<CR>")
-    vim.keymap.set("n", "<C-r>", "<Cmd>call VSCodeNotify('redo')<CR>")
+    vim.keymap.set("n", "u", function() vscode.call("undo") end)
+    vim.keymap.set("n", "<C-r>", function() vscode.call("redo") end)
   end,
 })
 
