@@ -14,6 +14,7 @@ wk.add({
   { "<localleader>s", group = "session" },
   { "<localleader>t", group = "test" },
   { "<localleader>v", group = "view" },
+  { "<localleader>x", group = "macroexpand" },
 })
 
 local function options(desc)

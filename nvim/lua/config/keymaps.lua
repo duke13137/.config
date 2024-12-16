@@ -30,13 +30,17 @@ map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr =
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
--- Clear search with <esc>
-map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
-
 -- Disable rest in VSCode
 if vim.g.vscode then
   return
 end
+
+-- Clear search and stop snippet on escape
+map({ "i", "n", "s" }, "<esc>", function()
+  vim.cmd("noh")
+  LazyVim.cmp.actions.snippet_stop()
+  return "<esc>"
+end, { expr = true, desc = "Escape and Clear hlsearch" })
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
