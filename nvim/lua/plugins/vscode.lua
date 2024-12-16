@@ -12,6 +12,7 @@ local enabled = {
   "mini.pairs",
   "mini.surround",
   "nvim-treesitter",
+  "nvim-treesitter-sexp",
   "nvim-treesitter-textobjects",
   "snacks.nvim",
   "ts-comments.nvim",
@@ -30,13 +31,23 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimKeymaps",
   callback = function()
     -- VSCode-specific keymaps for search and navigation
-    vim.keymap.set("n", "<leader><space>", function() vscode.action("workbench.action.quickOpen") end)
-    vim.keymap.set("n", "<leader>/", function() vscode.action('workbench.action.findInFiles') end)
-    vim.keymap.set("n", "<leader>ss", function() vscode.action('workbench.action.gotoSymbol') end)
+    vim.keymap.set("n", "<leader><space>", function()
+      vscode.action("workbench.action.quickOpen")
+    end)
+    vim.keymap.set("n", "<leader>/", function()
+      vscode.action("workbench.action.findInFiles")
+    end)
+    vim.keymap.set("n", "<leader>ss", function()
+      vscode.action("workbench.action.gotoSymbol")
+    end)
 
     -- Keep undo/redo lists in sync with VsCode
-    vim.keymap.set("n", "u", function() vscode.call("undo") end)
-    vim.keymap.set("n", "<C-r>", function() vscode.call("redo") end)
+    vim.keymap.set("n", "u", function()
+      vscode.call("undo")
+    end)
+    vim.keymap.set("n", "<C-r>", function()
+      vscode.call("redo")
+    end)
   end,
 })
 
