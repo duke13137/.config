@@ -76,6 +76,22 @@
   ;; ---------------------------------------------------
   ;; Development environment
 
+  ;; ---------------------------------------------------
+  ;; deps-new and Practicalli Project Teamplates
+  ;; clojure -T:new :template template/name :name project/name
+  :new
+  {:replace-deps {io.github.seancorfield/deps-new         {:git/tag "v0.8.0" :git/sha "2f96530"}
+                  io.github.practicalli/project-templates {:git/tag "2024-09-09" :git/sha "0d11ca4"}}
+   :exec-fn      org.corfield.new/create
+   :exec-args    {:template practicalli/minimal
+                  :name practicalli/playground}}
+
+  ;; https://github.com/tonsky/uberdeps
+  :uberjar
+  {:replace-deps {uberdeps/uberdeps  {:mvn/version "RELEASE"}}
+     :replace-paths []
+     :main-opts ["-m" "uberdeps.uberjar"]}
+
   ;; https://flow-storm.github.io/flow-storm-debugger/user_guide.html#_clojurestorm
   :flow
   {:classpath-overrides {org.clojure/clojure nil}
@@ -91,31 +107,30 @@
   {:extra-paths ["dev" "test"]
    :extra-deps  {com.clojure-goes-fast/clj-java-decompiler  {:mvn/version "RELEASE"}
                  com.clojure-goes-fast/clj-async-profiler   {:mvn/version "RELEASE"}
-                 io.github.matthewdowney/rich-comment-tests {:mvn/version "RELEASE"}
-                 io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
+                 criterium/criterium          {:mvn/version "RELEASE"}
                  com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
                  com.taoensso/telemere        {:mvn/version "RELEASE"}
-                 lambdaisland/kaocha          {:mvn/version "RELEASE"}
                  nubank/matcher-combinators   {:mvn/version "RELEASE"}
-                 org.clj-commons/pretty       {:mvn/version "RELEASE"}
                  org.clojure/test.check       {:mvn/version "RELEASE"}
-                 org.clojure/tools.namespace  {:mvn/version "RELEASE"}
                  org.clojure/tools.trace      {:mvn/version "RELEASE"}
                  org.slf4j/slf4j-nop          {:mvn/version "RELEASE"}
-                 virgil/virgil                {:mvn/version "RELEASE"}
-                 vvvvalvalval/scope-capture   {:mvn/version "RELEASE"}}}
+                 virgil/virgil                {:mvn/version "RELEASE"}}}
 
   ;; End of Development environment
   ;; ---------------------------------------------------
-  
+
   ;; ---------------------------------------------------
   ;; Running a REPL
 
   :repl
-  {:extra-deps {djblue/portal                 {:mvn/version "RELEASE"}
-                nrepl/nrepl                   {:mvn/version "RELEASE"}
+  {:extra-deps {nrepl/nrepl                   {:mvn/version "RELEASE"}
                 cider/cider-nrepl             {:mvn/version "RELEASE"}
-                refactor-nrepl/refactor-nrepl {:mvn/version "RELEASE"}}
+                refactor-nrepl/refactor-nrepl {:mvn/version "RELEASE"}
+                io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
+                org.clojure/tools.namespace   {:mvn/version "RELEASE"}
+                org.clj-commons/pretty        {:mvn/version "RELEASE"}
+                djblue/portal                 {:mvn/version "RELEASE"}
+                vvvvalvalval/scope-capture    {:mvn/version "RELEASE"}}
    :main-opts  ["--main" "nrepl.cmdline"
                 "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"
                 "--interactive"]}
@@ -130,9 +145,29 @@
   {:extra-deps {nrepl/nrepl {:mvn/version "RELEASE"}}
    :main-opts ["--main" "nrepl.cmdline" "--connect"]}
 
+  ;; ---------------------------------------------------
+  ;; Socket REPL
+
+  ;; Clojure Socket REPL on port 55555:
+  ;; clojure -X:repl/socket
+  :repl/socket
+  {:exec-fn clojure.core.server/start-server
+   :exec-args {:name "socket-repl-server"
+               :port 55555
+               :accept clojure.core.server/repl
+               :server-daemon false}}
+
+  ;; tubular - socket repl client
+  ;; https://github.com/mfikes/tubular
+  ;; Connect to a socket repl, e.g. :repl/socket
+  ;; clojure -M:repl/socket-client
+  :repl/socket-client
+  {:extra-deps {tubular/tubular {:mvn/version "RELEASE"}}
+   :main-opts  ["--main" "tubular.core"
+                "-p" "55555"]}
+
   ;; End of REPL and nREPL connections
   ;; ---------------------------------------------------
-
 
   ;; ---------------------------------------------------
   ;; Test runners
@@ -179,10 +214,11 @@
                  lambdaisland/kaocha-cljs {:mvn/version "RELEASE"}}
    :main-opts   ["--main" "kaocha.runner" "unit-cljs"]}
 
-  ;; https://github.com/lambdaisland/kaocha-cucumbe
-  ;; - used for kaocha-runner.el to run Kaocha test runner in Emacs Cider
-  :lib/kaocha
-  {:extra-deps {lambdaisland/kaocha {:mvn/version "RELEASE"}}}
+  ;; Babashka cli - run any clojure function from the command line
+  ;; clojure -M:cli clojure.core/prn --flag --option 1
+  :cli
+  {:extra-deps {org.babashka/cli  {:mvn/version "RELEASE"}}
+   :main-opts ["-m" "babashka.cli.exec"]}
 
   ;; End of Test runners
   ;; ---------------------------------------------------
@@ -240,11 +276,6 @@
    :exec-fn       graph
    :exec-args     {:output "project-dependencies-graph.png"
                    :size   true}}
-
-  ;; A CLI to add common aliases and features to deps.edn-based projects.
-  :neil
-  {:deps {io.github.babashka/neil {:git/tag "v0.3.66" :git/sha "0fcf459"}}
-   :main-opts ["-m" "babashka.neil"]}
 
   :lib/aws
   {:extra-deps  {com.cognitect.aws/api            {:mvn/version "RELEASE"}

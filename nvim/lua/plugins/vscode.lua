@@ -69,4 +69,21 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = { highlight = { enable = false } },
   },
+  {
+    "PaterJason/nvim-treesitter-sexp",
+    vscode = true,
+    opts = {
+      keymaps = {
+        motions = {
+          prev_top_level = "][",
+          next_top_level = "[]",
+        },
+      },
+    },
+  },
+  {
+    "harrygallagher4/nvim-parinfer-rust",
+    dependencies = { "eraserhd/parinfer-rust", build = "cargo build --release", vscode = true },
+    vscode = true,
+  },
 }
