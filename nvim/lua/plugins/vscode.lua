@@ -12,7 +12,6 @@ local enabled = {
   "mini.pairs",
   "mini.surround",
   "nvim-treesitter",
-  "nvim-treesitter-sexp",
   "nvim-treesitter-textobjects",
   "snacks.nvim",
   "ts-comments.nvim",
