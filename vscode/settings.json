@@ -1,51 +1,129 @@
 {
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
+  "chat.editor.fontSize": 15,
+  "debug.internalConsoleOptions": "openOnSessionStart",
+  "debug.console.fontSize": 15,
+  "debug.openDebug": "openOnDebugBreak",
+  "diffEditor.wordWrap": "off",
+  "errorLens.delayMode": "debounce",
+  "errorLens.enabled": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.tabCompletion": "on",
+  "editor.fontFamily": "'Cascadia Code', 'JetBrainsMono NF'",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "markdown.preview.fontSize": 16,
+  "editor.fontWeight": 300,
+  "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "off",
+  "editor.minimap.autohide": true,
+  "editor.scrollBeyondLastLine": false,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.wordWrap": "off",
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.calva": true,
+    "**/.classpath": true,
+    "**/.clj-kondo": true,
+    "**/.cpcache": true,
+    "**/.factorypath": true,
+    "**/.lsp": true,
+    "**/.project": true,
+    "**/.settings": true
+  },
+  "git.openRepositoryInParentFolders": "never",
+  "remote.autoForwardPortsSource": "hybrid",
+  "search.exclude": {
+    "**/.clj-kondo": true,
+    "**/.cpcache": true,
+    "**/.hie": true,
+    "**/.stack-work": true,
+    "**/*.class": true
+  },
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.fontFamily": "JetBrainsMonoNL NFM",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.fontWeight": 300,
+  "terminal.integrated.fontWeightBold": 500,
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.sendKeybindingsToShell": true,
+  "workbench.activityBar.location": "top",
+  "workbench.colorTheme": "Night Owl",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none",
+  // extentoins
+  "calva.enableJSCompletions": false,
+  "calva.fmt.configPath": "CLOJURE-LSP",
+  "calva.showCalvaSaysOnStart": false,
+  "calva.customREPLCommandSnippets": [
+    {
+      "name": "tap> current form",
+      "key": "c",
+      "snippet": "(tap> $current-form)"
     },
-    "extensions.ignoreRecommendations": true,
-    "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, Monaco",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 14,
-    "editor.acceptSuggestionOnEnter": "off",
-    "editor.formatOnSave": true,
-    "editor.minimap.autohide": true,
-    "editor.scrollBeyondLastLine": false,
-    "editor.tabCompletion": "on",
-    "diffEditor.wordWrap": "off",
-    "debug.internalConsoleOptions": "openOnSessionStart",
-    "debug.openDebug": "openOnDebugBreak",
-    "files.exclude": {
-        "**/.calva": true,
-        "**/.classpath": true,
-        "**/.clj-kondo": true,
-        "**/.cpcache": true,
-        "**/.factorypath": true,
-        "**/.lsp": true,
-        "**/.project": true,
-        "**/.settings": true
+    {
+      "name": "tap> enclosing form",
+      "key": "e",
+      "snippet": "(tap> $enclosing-form)"
     },
-    "search.exclude": {
-        "**/.clj-kondo": true,
-        "**/.cpcache": true,
-        "**/.hie": true,
-        "**/.stack-work": true,
-        "**/*.class": true
+    {
+      "name": "tap> top level form",
+      "key": "t",
+      "snippet": "(tap> $top-level-form)"
     },
-    "terminal.integrated.enableMultiLinePasteWarning": "never",
-    "terminal.integrated.macOptionIsMeta": true,
-    "terminal.integrated.sendKeybindingsToShell": true,
-    "terminal.integrated.tabs.enabled": false,
-    "terminal.integrated.fontWeightBold": 600,
-    "terminal.integrated.fontWeight": 400,
-    "terminal.integrated.fontSize": 14,
-    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
-    "workbench.activityBar.location": "top",
-    "workbench.colorTheme": "Dracula Theme",
-    "workbench.iconTheme": "material-icon-theme",
-    "haskell.manageHLS": "PATH",
-    "continue.enableTabAutocomplete": true,
-    "continue.telemetryEnabled": false,
-    "codeium.enableConfig": {
-        "*": false
-    },
+  ],
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "haskell": "html"
+  },
+  "haskell.formattingProvider": "fourmolu",
+  "haskell.plugin.ghcide-completions.config.snippetsOn": false,
+  "haskell.plugin.importLens.codeLensOn": false,
+  "haskell.plugin.haddockComments.globalOn": false,
+  "haskell.plugin.retrie.globalOn": false,
+  "haskell.plugin.splice.globalOn": false,
+  "java.debug.settings.forceBuildBeforeLaunch": false,
+  "java.silentNotification": true,
+  "jdk.test.editor.enableShortcuts": true,
+  "launch": {
+    "configurations": [
+      {
+        "type": "lldb",
+        "request": "launch",
+        "name": "Debug opened file",
+        "cwd": "${workspaceFolder}",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
+        "args": []
+      },
+    ]
+  },
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
+  "vscode-neovim.useWSL": true,
+  "vscode-neovim.ctrlKeysForInsertMode": [
+    "o",
+    "r",
+    "u"
+  ],
+  "vscode-neovim.ctrlKeysForNormalMode": [
+    "d",
+    "i",
+    "o",
+    "r",
+    "t",
+    "u",
+    "v",
+    "w",
+    "right",
+    "left",
+    "up",
+    "down",
+    "backspace",
+    "delete",
+  ],
 }
