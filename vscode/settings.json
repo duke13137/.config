@@ -5,7 +5,10 @@
     "extensions.ignoreRecommendations": true,
     "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, Monaco",
     "editor.fontLigatures": true,
-    "editor.fontSize": 14,
+    "editor.fontSize": 15,
+    "debug.console.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
+    "chat.editor.fontSize": 13,
     "editor.acceptSuggestionOnEnter": "off",
     "editor.formatOnSave": true,
     "editor.minimap.autohide": true,
@@ -31,21 +34,27 @@
         "**/.stack-work": true,
         "**/*.class": true
     },
+    "git.openRepositoryInParentFolders": "never",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.macOptionIsMeta": true,
     "terminal.integrated.sendKeybindingsToShell": true,
     "terminal.integrated.tabs.enabled": false,
     "terminal.integrated.fontWeightBold": 600,
     "terminal.integrated.fontWeight": 400,
-    "terminal.integrated.fontSize": 14,
     "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
     "workbench.activityBar.location": "top",
-    "workbench.colorTheme": "Dracula Theme",
+    "workbench.colorTheme": "Night Owl (No Italics)",
     "workbench.iconTheme": "material-icon-theme",
+    "clangd.path": "/Users/duke/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/18.1.3/clangd_18.1.3/bin/clangd",
     "haskell.manageHLS": "PATH",
+    "jdk.test.editor.enableShortcuts": true,
     "continue.enableTabAutocomplete": true,
     "continue.telemetryEnabled": false,
-    "codeium.enableConfig": {
-        "*": false
+    "github.copilot.editor.enableAutoCompletions": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
     },
 }

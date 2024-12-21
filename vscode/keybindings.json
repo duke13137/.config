@@ -133,21 +133,30 @@
         "when": "!editorTextFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
     },
     {
-        "key": "ctrl+alt+\\",
-        "command": "vscode-neovim.restart"
-    },
-    {
         "key": "cmd+l",
         "command": "-expandLineSelection",
         "when": "textInputFocus"
     },
     {
-        "key": "shift-tab",
-        "command": "editor.action.smartSelect.expand",
+        "key": "cmd+right",
+        "command": "editor.action.inlineSuggest.acceptNextLine"
+    },
+    {
+        "key": "alt+cmd+k",
+        "command": "editor.action.insertCursorAbove",
         "when": "editorTextFocus"
     },
     {
-        "key": "cmd+right",
-        "command": "editor.action.inlineSuggest.acceptNextLine"
+        "key": "alt+cmd+j",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+[",
+        "command": "vscode-neovim.restart"
+    },
+    {
+        "key": "ctrl+alt+\\",
+        "command": "workbench.action.restartExtensionHost"
     }
 ]
