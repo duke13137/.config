@@ -1,4 +1,5 @@
 {
+  "chat.commandCenter.enabled": false,
   "chat.editor.fontSize": 15,
   "debug.internalConsoleOptions": "openOnSessionStart",
   "debug.console.fontSize": 15,
@@ -32,8 +33,6 @@
     "**/.project": true,
     "**/.settings": true
   },
-  "git.openRepositoryInParentFolders": "never",
-  "remote.autoForwardPortsSource": "hybrid",
   "search.exclude": {
     "**/.clj-kondo": true,
     "**/.cpcache": true,
@@ -54,27 +53,18 @@
   "workbench.colorTheme": "Night Owl",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
-  // extentoins
   "calva.enableJSCompletions": false,
   "calva.fmt.configPath": "CLOJURE-LSP",
   "calva.showCalvaSaysOnStart": false,
-  "calva.customREPLCommandSnippets": [
-    {
-      "name": "tap> current form",
-      "key": "c",
-      "snippet": "(tap> $current-form)"
-    },
-    {
-      "name": "tap> enclosing form",
-      "key": "e",
-      "snippet": "(tap> $enclosing-form)"
-    },
-    {
-      "name": "tap> top level form",
-      "key": "t",
-      "snippet": "(tap> $top-level-form)"
-    },
-  ],
+  "calva.prettyPrintingOptions": {
+    "printEngine": "calva",
+    "enabled": true,
+    "width": 120,
+    "maxLength": 50
+  },
+  "[clojure]": {
+    "editor.parameterHints.enabled": true
+  },
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "haskell": "html"
@@ -82,11 +72,8 @@
   "haskell.formattingProvider": "fourmolu",
   "haskell.plugin.ghcide-completions.config.snippetsOn": false,
   "haskell.plugin.importLens.codeLensOn": false,
-  "haskell.plugin.haddockComments.globalOn": false,
   "haskell.plugin.retrie.globalOn": false,
   "haskell.plugin.splice.globalOn": false,
-  "java.debug.settings.forceBuildBeforeLaunch": false,
-  "java.silentNotification": true,
   "jdk.test.editor.enableShortcuts": true,
   "launch": {
     "configurations": [
@@ -97,12 +84,15 @@
         "cwd": "${workspaceFolder}",
         "program": "${fileDirname}/${fileBasenameNoExtension}",
         "args": []
-      },
+      }
     ]
   },
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
+    "asvetliakov.vscode-neovim": 1,
+    "vscodevim.vim": 1
   },
+  "vim.sneak": true,
+  "vim.useCtrlKeys": false,
   "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
   "vscode-neovim.useWSL": true,
   "vscode-neovim.ctrlKeysForInsertMode": [
@@ -124,6 +114,6 @@
     "up",
     "down",
     "backspace",
-    "delete",
+    "delete"
   ],
 }
