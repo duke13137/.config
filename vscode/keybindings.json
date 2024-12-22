@@ -1,6 +1,14 @@
 // Place your key bindings in this file to overwrite the defaults
 [
     {
+        "key": "ctrl+alt+[",
+        "command": "vscode-neovim.restart"
+    },
+    {
+        "key": "ctrl+alt+\\",
+        "command": "workbench.action.restartExtensionHost"
+    },
+    {
         "key": "cmd+/",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
@@ -109,30 +117,6 @@
         "when": "notificationFocus || notificationToastsVisible"
     },
     {
-        "key": "ctrl+w",
-        "command": "-workbench.action.closeGroup",
-        "when": "activeEditorGroupEmpty && multipleEditorGroups"
-    },
-    {
-        "key": "ctrl+w",
-        "command": "-workbench.action.closeActiveEditor"
-    },
-    {
-        "key": "ctrl+w shift+-",
-        "command": "workbench.action.increaseViewHeight",
-        "when": "!editorTextFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
-    },
-    {
-        "key": "ctrl+w ]",
-        "command": "workbench.action.increaseViewWidth",
-        "when": "!editorTextFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
-    },
-    {
-        "key": "ctrl+w [",
-        "command": "workbench.action.decreaseViewWidth",
-        "when": "!editorTextFocus && !isAuxiliaryWindowFocusedContext && !terminalFocus && neovim.mode != 'cmdline'"
-    },
-    {
         "key": "cmd+l",
         "command": "-expandLineSelection",
         "when": "textInputFocus"
@@ -151,12 +135,4 @@
         "command": "editor.action.insertCursorBelow",
         "when": "editorTextFocus"
     },
-    {
-        "key": "ctrl+alt+[",
-        "command": "vscode-neovim.restart"
-    },
-    {
-        "key": "ctrl+alt+\\",
-        "command": "workbench.action.restartExtensionHost"
-    }
 ]

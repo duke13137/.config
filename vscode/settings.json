@@ -1,6 +1,7 @@
 {
     "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
+        "asvetliakov.vscode-neovim": 1,
+        "vscodevim.vim": 1
     },
     "extensions.ignoreRecommendations": true,
     "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, Monaco",
@@ -57,4 +58,6 @@
         "markdown": false,
         "scminput": false
     },
+    "vim.sneak": true,
+    "vim.useCtrlKeys": false,
 }
