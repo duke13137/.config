@@ -80,9 +80,4 @@ return {
       },
     },
   },
-  {
-    "harrygallagher4/nvim-parinfer-rust",
-    dependencies = { "eraserhd/parinfer-rust", build = "cargo build --release", vscode = true },
-    vscode = true,
-  },
 }

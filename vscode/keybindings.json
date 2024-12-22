@@ -1,26 +1,22 @@
 // Place your key bindings in this file to overwrite the defaults
 [
     {
-        "key": "ctrl+alt+[",
-        "command": "vscode-neovim.restart"
-    },
-    {
-        "key": "ctrl+alt+\\",
-        "command": "workbench.action.restartExtensionHost"
-    },
-    {
-        "key": "cmd+/",
+        "key": "ctrl+;",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
     },
     {
-        "key": "cmd+/",
+        "key": "ctrl+;",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
     {
-        "key": "cmd-m",
+        "key": "ctrl+alt+;",
         "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "ctrl+alt+[",
+        "command": "vscode-neovim.restart"
     },
     {
         "key": "alt+enter",
@@ -28,24 +24,9 @@
         "when": "editorTextFocus && editorHasSelection && editorLangId != 'clojure'"
     },
     {
-        "key": "shift+alt+'",
-        "command": "paredit.rewrapQuote",
-        "when": "editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|racket|scheme|lisp/ && paredit:keyMap =~ /original|strict/"
-    },
-    {
-        "key": "shift+alt+9",
-        "command": "paredit.rewrapParens",
-        "when": "editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|racket|scheme|lisp/ && paredit:keyMap =~ /original|strict/"
-    },
-    {
-        "key": "alt+[",
-        "command": "paredit.rewrapSquare",
-        "when": "editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|racket|scheme|lisp/ && paredit:keyMap =~ /original|strict/"
-    },
-    {
-        "key": "shift+alt+[",
-        "command": "paredit.rewrapCurly",
-        "when": "editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|racket|scheme|lisp/ && paredit:keyMap =~ /original|strict/"
+        "key": "shift+enter",
+        "command": "editor.action.inlineSuggest.acceptNextLine",
+        "when": "inlineSuggestionVisible && !editorReadonly"
     },
     {
         "key": "shift+9",
@@ -63,38 +44,13 @@
         "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|racket|scheme|lisp/ && paredit:keyMap =~ /original|strict/"
     },
     {
-        "key": "shift+alt+h",
-        "command": "paredit.slurpSexpBackward",
-        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
-        "key": "shift+alt+j",
-        "command": "paredit.barfSexpBackward",
-        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
-        "key": "shift+alt+k",
-        "command": "paredit.barfSexpForward",
-        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
-        "key": "shift+alt+l",
-        "command": "paredit.slurpSexpForward",
-        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
-        "key": "shift+alt+s",
-        "command": "paredit.raiseSexp",
-        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
         "key": "shift+escape",
         "command": "calva.clearInlineResults",
         "when": "calva:keybindingsEnabled && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadOnly && !hasOtherSuggestions && !parameterHintsVisible && !selectionAnchorSet && !suggestWidgetVisible && editorLangId == 'clojure'"
     },
     {
         "key": "escape",
-        "command": "-calva.clearInlineResults",
+        "command": "-calva.clearInlineResults"
     },
     {
         "key": "shift+alt+up",
@@ -107,32 +63,138 @@
         "when": "!calva:keybindingsEnabled && editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+b",
-        "command": "-markdown.extension.editing.toggleBold",
-        "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
+        "key": "shift+alt+enter",
+        "command": "calva.evaluateToCursor",
+        "when": "calva:keybindingsEnabled && editorTextFocus && !editorHasSelection && editorLangId == 'clojure'"
     },
     {
-        "key": "ctrl+shift+a",
-        "command": "-notification.acceptPrimaryAction",
-        "when": "notificationFocus || notificationToastsVisible"
+        "key": "shift+alt+enter",
+        "command": "calva.evaluateSelectionToSelectionEnd",
+        "when": "calva:keybindingsEnabled && editorHasSelection && editorTextFocus && editorLangId == 'clojure'"
     },
     {
-        "key": "cmd+l",
-        "command": "-expandLineSelection",
-        "when": "textInputFocus"
+        "key": "shift+alt+enter",
+        "command": "calva.evaluateEnclosingForm",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
     },
     {
-        "key": "cmd+right",
-        "command": "editor.action.inlineSuggest.acceptNextLine"
+        "key": "shift+ctrl+h",
+        "command": "paredit.slurpSexpBackward",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
     },
     {
-        "key": "alt+cmd+k",
-        "command": "editor.action.insertCursorAbove",
-        "when": "editorTextFocus"
+        "key": "shift+ctrl+j",
+        "command": "paredit.barfSexpBackward",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
     },
     {
-        "key": "alt+cmd+j",
-        "command": "editor.action.insertCursorBelow",
-        "when": "editorTextFocus"
+        "key": "shift+ctrl+k",
+        "command": "paredit.barfSexpForward",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+        "key": "shift+ctrl+l",
+        "command": "paredit.slurpSexpForward",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+        "key": "shift+alt+j",
+        "command": "paredit.joinSexp",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+        "key": "shift+alt+r",
+        "command": "paredit.raiseSexp",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+        "key": "shift+alt+s",
+        "command": "paredit.spliceSexp",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+        "key": "alt+x enter",
+        "command": "calva.sendCurrentTopLevelFormToOutputWindow",
+        "when": "calva:connected && calva:keybindingsEnabled && !calva:outputWindowActive && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x f",
+        "command": "-calva.sendCurrentFormToOutputWindow",
+        "when": "calva:connected && calva:keybindingsEnabled && !calva:outputWindowActive && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x l",
+        "command": "calva.loadFile",
+        "when": "calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x n",
+        "command": "calva.setOutputWindowNamespace",
+        "when": "calva:connected && calva:keybindingsEnabled && !calva:outputWindowActive && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x c",
+        "command": "calva.evaluateSelectionAsComment",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x shift-c",
+        "command": "calva.evaluateTopLevelFormAsComment",
+        "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x e",
+        "command": "calva.printLastStacktrace",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x i",
+        "command": "calva.debug.instrument",
+        "when": "calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt-x t",
+        "command": "calva.tapSelection",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x shift-t",
+        "command": "calva.tapCurrentTopLevelForm",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+y",
+        "command": "calva.copyLastResults",
+        "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+x ctrl+c",
+        "command": "calva.interruptAllEvaluations",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+; a",
+        "command": "calva.runAllTests",
+        "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+; c",
+        "command": "calva.runTestUnderCursor",
+        "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+; r",
+        "command": "calva.rerunTests",
+        "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+; n",
+        "command": "calva.runNamespaceTests",
+        "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "ctrl+alt+o p",
+        "command": "calva.togglePrettyPrint",
+        "when": "calva:keybindingsEnabled && editorLangId == 'clojure'"
     },
 ]
