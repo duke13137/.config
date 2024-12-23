@@ -27,7 +27,7 @@ end
 
 -- Add some vscode specific keymaps
 vim.api.nvim_create_autocmd("User", {
-  pattern = "LazyVimKeymapsDefaults",
+  pattern = "LazyVimKeymaps",
   callback = function()
     -- VSCode-specific keymaps for search and navigation
     vim.keymap.set("n", "<leader><space>", function()
