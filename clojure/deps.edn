@@ -110,6 +110,8 @@
                  criterium/criterium          {:mvn/version "RELEASE"}
                  com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
                  com.taoensso/telemere        {:mvn/version "RELEASE"}
+                 com.github.gnl/playback      {:mvn/version "RELEASE"}
+                 djblue/portal                {:mvn/version "RELEASE"}
                  nubank/matcher-combinators   {:mvn/version "RELEASE"}
                  org.clojure/test.check       {:mvn/version "RELEASE"}
                  org.clojure/tools.trace      {:mvn/version "RELEASE"}
@@ -129,7 +131,6 @@
                 io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
                 org.clojure/tools.namespace   {:mvn/version "RELEASE"}
                 org.clj-commons/pretty        {:mvn/version "RELEASE"}
-                djblue/portal                 {:mvn/version "RELEASE"}
                 vvvvalvalval/scope-capture    {:mvn/version "RELEASE"}}
    :main-opts  ["--main" "nrepl.cmdline"
                 "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"
