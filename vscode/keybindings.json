@@ -103,6 +103,16 @@
     "when": "calva:connected && calva:keybindingsEnabled && !calva:outputWindowActive && editorLangId == 'clojure'"
   },
   {
+    "key": "alt+x c",
+    "command": "calva.evaluateSelectionAsComment",
+    "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+  },
+  {
+    "key": "alt+x shift-c",
+    "command": "calva.evaluateTopLevelFormAsComment",
+    "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+  },
+  {
     "key": "alt+x f",
     "command": "calva.sendCurrentFormToOutputWindow",
     "when": "calva:connected && calva:keybindingsEnabled && !calva:outputWindowActive && editorLangId == 'clojure'"
@@ -118,16 +128,6 @@
     "when": "calva:connected && calva:keybindingsEnabled && !calva:outputWindowActive && editorLangId == 'clojure'"
   },
   {
-    "key": "alt+x c",
-    "command": "calva.evaluateSelectionAsComment",
-    "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
-  },
-  {
-    "key": "alt+x shift-c",
-    "command": "calva.evaluateTopLevelFormAsComment",
-    "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
-  },
-  {
     "key": "alt+x e",
     "command": "calva.printLastStacktrace",
     "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
@@ -136,11 +136,6 @@
     "key": "alt+x i",
     "command": "calva.debug.instrument",
     "when": "calva:keybindingsEnabled && editorLangId == 'clojure'"
-  },
-  {
-    "key": "alt+x r",
-    "command": "calva.runCustomREPLCommand",
-    "when": "calva:connected && calva:keybindingsEnabled"
   },
   {
     "key": "alt-x t",
@@ -153,32 +148,37 @@
     "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
   },
   {
-    "key": "alt+y",
-    "command": "calva.copyLastResults",
-    "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
-  },
-  {
     "key": "alt+x ctrl+c",
     "command": "calva.interruptAllEvaluations",
     "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
   },
   {
-    "key": "alt+; a",
+    "key": "alt+r",
+    "command": "calva.runCustomREPLCommand",
+    "when": "calva:connected && calva:keybindingsEnabled"
+  },
+  {
+    "key": "alt+y",
+    "command": "calva.copyLastResults",
+    "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+  },
+  {
+    "key": "alt+t a",
     "command": "calva.runAllTests",
     "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
   },
   {
-    "key": "alt+; c",
+    "key": "alt+t c",
     "command": "calva.runTestUnderCursor",
     "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
   },
   {
-    "key": "alt+; r",
+    "key": "alt+t r",
     "command": "calva.rerunTests",
     "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
   },
   {
-    "key": "alt+; n",
+    "key": "alt+t n",
     "command": "calva.runNamespaceTests",
     "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
   },

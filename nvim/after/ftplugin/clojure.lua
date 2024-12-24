@@ -41,7 +41,7 @@ map(
   [[ :ConjureEval (do (require 'sc.api) (in-ns 'user) (defn read-spy [form] (require 'sc.api) `(sc.api/spy ~form)) (defn read-letsc [form] `(sc.api/letsc ~((requiring-resolve 'sc.api/last-ep-id)) ~form)) (set! *data-readers* (assoc *data-readers* 'sc/letsc #'read-letsc 'sc/spy #'read-spy)))<CR> ]],
   options("setup capture")
 )
-map("n", ",di", ":ConjureEval (eval `(sc.api/defsc))<Left><Left>", options("def locals by id"))
+map("n", ",di", ":ConjureEval (tap> (sc.api/ep-info))<CR>", options("tap ep-info"))
 map("n", ",dl", ":ConjureEval (eval `(sc.api/defsc ~(sc.api/last-ep-id)))<CR>", options("def locals"))
 map("n", ",du", ":ConjureEval (eval `(sc.api/undefsc ~(sc.api/last-ep-id)))<CR>", options("undef locals "))
 map("n", ",dU", ":ConjureEval ((requiring-resolve 'sc.api/dispose-all!))<CR>", options("undef all locals"))
