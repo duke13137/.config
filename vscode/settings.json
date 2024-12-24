@@ -1,5 +1,4 @@
 {
-    "chat.commandCenter.enabled": false,
     "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, Monaco",
     "editor.fontLigatures": true,
     "editor.fontSize": 15,
@@ -41,7 +40,38 @@
     "workbench.activityBar.location": "top",
     "workbench.colorTheme": "Night Owl (No Italics)",
     "workbench.iconTheme": "material-icon-theme",
-    "calva.paredit.defaultKeyMap": "strict",
+    "calva.autoEvaluateCode": {
+        "onConnect": {
+            "clj": "(do (in-ns 'user) (defn read-spy [form] (require 'sc.api) `(sc.api/spy ~form)) (defn read-letsc [form] `(sc.api/letsc ~((requiring-resolve 'sc.api/last-ep-id)) ~form)) (set! *data-readers* (assoc *data-readers* 'sc/letsc #'read-letsc 'sc/spy #'read-spy)))",
+            "cljs": ""
+        },
+        "onFileLoaded": {
+            "clj": "(require 'sc.api)",
+            "cljs": ""
+        }
+    },
+    "calva.customREPLCommandSnippets": [
+        {
+            "name": "eval letsc",
+            "key": "e",
+            "snippet": "#sc/letsc $current-form"
+        },
+        {
+            "name": "def locals",
+            "key": "l",
+            "snippet": "(eval `(sc.api/defsc ~(sc.api/last-ep-id)))"
+        },
+        {
+            "name": "undef locals",
+            "key": "u",
+            "snippet": "(eval `(sc.api/undefsc ~(sc.api/last-ep-id)))"
+        },
+        {
+            "name": "print stacktrace",
+            "repl": "clj",
+            "snippet": "((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))"
+        },
+    ],
     "calva.prettyPrintingOptions": {
         "printEngine": "calva",
         "enabled": true,

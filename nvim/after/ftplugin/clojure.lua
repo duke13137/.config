@@ -1,15 +1,20 @@
+vim.cmd "iabbrev <buffer> !spy (when (and) (sc.api/spy))"
+vim.cmd "inoremap <buffer> (  ("
+vim.cmd "inoremap <buffer> '  '"
+vim.cmd "inoremap <buffer> `  `"
+
 if vim.g.vscode then
   return
 end
 
-require "lspconfig".clojure_lsp.setup {}
-
 local wk = require("which-key")
 wk.add({
   { "<localleader>c", group = "connect" },
+  { "<localleader>d", group = "debug" },
   { "<localleader>e", group = "eval" },
   { "<localleader>i", group = "inspect" },
   { "<localleader>l", group = "log" },
+  { "<localleader>p", group = "portal" },
   { "<localleader>r", group = "reload" },
   { "<localleader>s", group = "session" },
   { "<localleader>t", group = "test" },
@@ -28,37 +33,35 @@ map(
   ":<C-u>ConjureEval ((requiring-resolve 'clj-reload.core/reload))<CR>",
   options("reload changed namespaces")
 )
-map("n", ",ie", ":<C-u>ConjureEval ((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))<CR>", options("pst"))
-map("n", ",i1", ":ConjureEval (tap> *1)<CR>", options("tap *1"))
-map("n", ",i2", ":ConjureEval (tap> *2)<CR>", options("tap *2"))
-map("n", ",in", ":ConjureEval (tap> (-> *ns* (clojure.datafy/datafy) :publics))<CR>", options("tap *ns*"))
-map("n", ",is", ":ConjureEval (tap> (eval `(sc.api/defsc ~(sc.api/last-ep-id))))<CR>", options("sc/defsc"))
-map("n", ",iu", ":ConjureEval (eval `(sc.api/undefsc ~(sc.api/last-ep-id)))<CR>", options("sc/undefsc"))
-map("n", ",ix", ":ConjureEval ((requiring-resolve 'sc.api/dispose-all!))<CR>", options("sc/dispose-all!"))
 
--- prepare portal
--- scope-capture data_readers.clj {sc/letsc user/read-letsc}
---[[
-(in-ns 'user)
-(defn read-letsc [form]
-  `(sc.api/letsc ~((requiring-resolve 'sc.api/last-ep-id)) ~form))
---]]
+-- scope-capture
 map(
   "n",
-  ",ip",
-  [[:ConjureEval (do (in-ns 'user) (add-tap (requiring-resolve 'portal.api/submit)) (def portal ((requiring-resolve 'portal.api/open))) (defn read-letsc [form] `(sc.api/letsc ~((requiring-resolve 'sc.api/last-ep-id)) ~form)) (set! *data-readers* (assoc *data-readers* 'sc/letsc #'read-letsc)))<CR>]],
+  ",ds",
+  [[ :ConjureEval (do (require 'sc.api) (in-ns 'user) (defn read-spy [form] (require 'sc.api) `(sc.api/spy ~form)) (defn read-letsc [form] `(sc.api/letsc ~((requiring-resolve 'sc.api/last-ep-id)) ~form)) (set! *data-readers* (assoc *data-readers* 'sc/letsc #'read-letsc 'sc/spy #'read-spy)))<CR> ]],
+  options("setup capture")
+)
+map("n", ",di", ":ConjureEval (eval `(sc.api/defsc))<Left><Left>", options("def locals by id"))
+map("n", ",dl", ":ConjureEval (eval `(sc.api/defsc ~(sc.api/last-ep-id)))<CR>", options("def locals"))
+map("n", ",du", ":ConjureEval (eval `(sc.api/undefsc ~(sc.api/last-ep-id)))<CR>", options("undef locals "))
+map("n", ",dU", ":ConjureEval ((requiring-resolve 'sc.api/dispose-all!))<CR>", options("undef all locals"))
+map("v", ",e", 'y :<C-u>ConjureEval #sc/letsc <C-r>=@"<CR><CR>', options("eval letsc"))
+
+-- portal
+map(
+  "n",
+  ",pp",
+  [[ :ConjureEval (do (in-ns 'user) (require '[portal.api :as p]) (add-tap #'p/submit) (def p (p/open)))<CR> ]],
   options("portal")
 )
-
-map("v", ",e", 'y :<C-u>ConjureEval #sc/letsc <C-r>=@"<CR><CR>', options("letsc form"))
+map("n", ",p1", ":ConjureEval (tap> *1)<CR>", options("tap *1"))
+map("n", ",p2", ":ConjureEval (tap> *2)<CR>", options("tap *2"))
+map("n", ",p3", ":ConjureEval (tap> *2)<CR>", options("tap *3"))
+map("n", ",pe", ":ConjureEval ((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))<CR>", options("pst *e*"))
 
 -- flow-storm-debugger
 map("v", ",t", 'y :<C-u>ConjureEval (flow-storm.api/instrument* {} <C-r>=@"<CR>)<CR>', options("trace form"))
 map("v", ",r", 'y :<C-u>ConjureEval (flow-storm.api/runi {} <C-r>=@"<CR>)<CR>', options("rtrace form"))
-
-vim.cmd "inoremap <buffer> (  ("
-vim.cmd "inoremap <buffer> '  '"
-vim.cmd "inoremap <buffer> `  `"
 
 local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufEnter", {
