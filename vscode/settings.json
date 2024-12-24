@@ -50,7 +50,7 @@
   "terminal.integrated.allowChords": false,
   "terminal.integrated.sendKeybindingsToShell": true,
   "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "Night Owl",
+  "workbench.colorTheme": "Night Owl (No Italics)",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "calva.autoEvaluateCode": {
@@ -103,11 +103,6 @@
   "emmet.includeLanguages": {
     "haskell": "html"
   },
-  "haskell.formattingProvider": "fourmolu",
-  "haskell.plugin.ghcide-completions.config.snippetsOn": false,
-  "haskell.plugin.importLens.codeLensOn": false,
-  "haskell.plugin.retrie.globalOn": false,
-  "haskell.plugin.splice.globalOn": false,
   "jdk.test.editor.enableShortcuts": true,
   "launch": {
     "configurations": [
