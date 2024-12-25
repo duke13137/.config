@@ -65,6 +65,16 @@
   },
   "calva.customREPLCommandSnippets": [
     {
+      "name": "tap *1",
+      "key": "1",
+      "snippet": "(tap> *1)"
+    },
+    {
+      "name": "tap *2",
+      "key": "2",
+      "snippet": "(tap> *2)"
+    },
+    {
       "name": "eval letsc",
       "key": "e",
       "snippet": "#sc/letsc $current-form"
@@ -88,6 +98,11 @@
       "name": "print stacktrace",
       "repl": "clj",
       "snippet": "((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))"
+    },
+    {
+      "name": "Reload namespace",
+      "repl": "clj",
+      "snippet": "((requiring-resolve 'clj-reload.core/reload))"
     }
   ],
   "calva.prettyPrintingOptions": {
@@ -103,6 +118,7 @@
   "emmet.includeLanguages": {
     "haskell": "html"
   },
+  "haskell.manageHLS": "PATH",
   "jdk.test.editor.enableShortcuts": true,
   "launch": {
     "configurations": [
