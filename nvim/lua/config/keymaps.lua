@@ -55,14 +55,6 @@ map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
--- Move Lines
-map("n", "<M-Down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<M-Up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<M-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<M-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<M-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<M-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-
 -- buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
