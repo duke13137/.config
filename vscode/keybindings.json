@@ -41,17 +41,17 @@
   {
     "key": "shift+9",
     "command": "paredit.wrapAroundParens",
-    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|racket|scheme|lisp/ && paredit:keyMap =~ /original|strict/"
+    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure/ && paredit:keyMap =~ /original|strict/"
   },
   {
     "key": "[",
     "command": "paredit.wrapAroundSquare",
-    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|racket|scheme|lisp/ && paredit:keyMap =~ /original|strict/"
+    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure/ && paredit:keyMap =~ /original|strict/"
   },
   {
     "key": "shift+[",
     "command": "paredit.wrapAroundCurly",
-    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|racket|scheme|lisp/ && paredit:keyMap =~ /original|strict/"
+    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure/ && paredit:keyMap =~ /original|strict/"
   },
   {
     "key": "shift+escape",
@@ -61,6 +61,21 @@
   {
     "key": "escape",
     "command": "-calva.clearInlineResults"
+  },
+  {
+    "key": "shift+9",
+    "command": "paredit.wrapAroundParens",
+    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure/ && paredit:keyMap =~ /original|strict/"
+  },
+  {
+    "key": "[",
+    "command": "paredit.wrapAroundSquare",
+    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure/ && paredit:keyMap =~ /original|strict/"
+  },
+  {
+    "key": "shift+[",
+    "command": "paredit.wrapAroundCurly",
+    "when": "editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure/ && paredit:keyMap =~ /original|strict/"
   },
   {
     "key": "shift+ctrl+h",
@@ -158,11 +173,6 @@
     "when": "calva:connected && calva:keybindingsEnabled"
   },
   {
-    "key": "alt+y",
-    "command": "calva.copyLastResults",
-    "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
-  },
-  {
     "key": "alt+t a",
     "command": "calva.runAllTests",
     "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
@@ -181,10 +191,5 @@
     "key": "alt+t n",
     "command": "calva.runNamespaceTests",
     "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
-  },
-  {
-    "key": "ctrl+alt+o p",
-    "command": "calva.togglePrettyPrint",
-    "when": "calva:keybindingsEnabled && editorLangId == 'clojure'"
   }
 ]
