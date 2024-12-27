@@ -112,6 +112,9 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+# Take advantage of $LSCOLORS for completion as well
+zstyle ':completion:*' list-colors "${(s.:.)LSCOLORS}"
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 # Save command history
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
@@ -125,20 +128,6 @@ setopt share_history          # share command history data
 
 # force zsh to show the complete history
 alias history="history 0"
-
-export CLICOLOR=1
-export LS_COLORS="$LS_COLORS:ow=30;44:" # fix ls color for folders with 777 permissions
-
-alias ls='ls --color=auto'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias diff='diff --color=auto'
-
-# Take advantage of $LS_COLORS for completion as well
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 if [ -f ~/.aliases ]; then
     . ~/.aliases
