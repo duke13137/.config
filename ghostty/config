@@ -1,0 +1,12 @@
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+# font-family = "FiraCode Nerd Font Mono"
+font-family =
+font-size = 16
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+keybind = global:cmd+/=toggle_quick_terminal
+quick-terminal-animation-duration = 0.1
+
+# Empty values reset the configuration to the default value
