@@ -36,7 +36,7 @@
  ;; Specify a local repository for maven - default `$HOME/.m2/repository`
  ;; FreeDesktop.org XDG_CACHE_HOME is the recommended location
  ;; Full path should be used, otherwise a relative directory path will be created
- ;; :mvn/local-repo "/home/practicalli/.cache/maven/repository"
+ ;; :mvn/local-repo "/Users/duke/.m2/repository"
 
  ;; `clojure -Spath` will show the current class path which will include the path to the local maven repository for the library dependencies.
 
@@ -48,7 +48,7 @@
              "clojars" {:url "https://repo.clojars.org/"}
 
              ;; Clojure snapshots
-             ;; "sonatype" {:url "https://oss.sonatype.org/content/repositories/snapshots/"}
+             "sonatype" {:url "https://oss.sonatype.org/content/repositories/snapshots/"}
 
              ;; Maven Central Google Cloud Storage mirrors
              ;; Americas
@@ -76,6 +76,28 @@
   ;; ---------------------------------------------------
   ;; Development environment
 
+  :dev
+  {:extra-paths ["dev" "test"]
+   :extra-deps  {criterium/criterium          {:mvn/version "RELEASE"}
+                 com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
+                 com.taoensso/telemere        {:mvn/version "RELEASE"}
+                 io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
+                 nubank/matcher-combinators   {:mvn/version "RELEASE"}
+                 org.clojure/test.check       {:mvn/version "RELEASE"}
+                 org.clojure/tools.trace      {:mvn/version "RELEASE"}
+                 org.slf4j/slf4j-nop          {:mvn/version "RELEASE"}
+                 virgil/virgil                {:mvn/version "RELEASE"}}}
+
+  :dbg
+  {:classpath-overrides {org.clojure/clojure nil}
+   :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.0-2"}
+                com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
+   :jvm-opts ["-Dflowstorm.startRecording=false"
+              "-Dclojure.storm.instrumentEnable=true"
+              "-Dclojure.storm.instrumentAutoPrefixes=true"
+              "-Dflowstorm.theme=dark"
+              "-Dflowstorm.styles=/tmp/flowstorm.css"]}
+
   ;; ---------------------------------------------------
   ;; deps-new and Practicalli Project Teamplates
   ;; clojure -T:new :template template/name :name project/name
@@ -92,32 +114,6 @@
      :replace-paths []
      :main-opts ["-m" "uberdeps.uberjar"]}
 
-  ;; https://flow-storm.github.io/flow-storm-debugger/user_guide.html#_clojurestorm
-  :flow
-  {:classpath-overrides {org.clojure/clojure nil}
-   :extra-deps {com.github.flow-storm/clojure        {:mvn/version "RELEASE"}
-                com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
-   :jvm-opts ["-Dflowstorm.startRecording=false"
-              "-Dclojure.storm.instrumentEnable=true"
-              "-Dclojure.storm.instrumentAutoPrefixes=true"
-              "-Dflowstorm.theme=dark"
-              "-Dflowstorm.styles=/tmp/flowstorm.css"]}
-
-  :reload
-  {:extra-paths ["dev" "test"]
-   :extra-deps  {com.clojure-goes-fast/clj-java-decompiler  {:mvn/version "RELEASE"}
-                 com.clojure-goes-fast/clj-async-profiler   {:mvn/version "RELEASE"}
-                 criterium/criterium          {:mvn/version "RELEASE"}
-                 com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
-                 com.taoensso/telemere        {:mvn/version "RELEASE"}
-                 com.github.gnl/playback      {:mvn/version "RELEASE"}
-                 djblue/portal                {:mvn/version "RELEASE"}
-                 nubank/matcher-combinators   {:mvn/version "RELEASE"}
-                 org.clojure/test.check       {:mvn/version "RELEASE"}
-                 org.clojure/tools.trace      {:mvn/version "RELEASE"}
-                 org.slf4j/slf4j-nop          {:mvn/version "RELEASE"}
-                 virgil/virgil                {:mvn/version "RELEASE"}}}
-
   ;; End of Development environment
   ;; ---------------------------------------------------
 
@@ -128,10 +124,13 @@
   {:extra-deps {nrepl/nrepl                   {:mvn/version "RELEASE"}
                 cider/cider-nrepl             {:mvn/version "RELEASE"}
                 refactor-nrepl/refactor-nrepl {:mvn/version "RELEASE"}
-                io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
+                com.clojure-goes-fast/clj-java-decompiler {:mvn/version "RELEASE"}
+                com.github.gnl/playback       {:mvn/version "RELEASE"}
+                djblue/portal                 {:mvn/version "RELEASE"}
                 org.clojure/tools.namespace   {:mvn/version "RELEASE"}
                 org.clj-commons/pretty        {:mvn/version "RELEASE"}
                 vvvvalvalval/scope-capture    {:mvn/version "RELEASE"}}
+
    :main-opts  ["--main" "nrepl.cmdline"
                 "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"
                 "--interactive"]}
