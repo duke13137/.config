@@ -41,7 +41,7 @@
  ;; `clojure -Spath` will show the current class path which will include the path to the local maven repository for the library dependencies.
 
  ;; Order in which repositories are consulted is not guaranteed, so only add essential repositories
- ;; Maven Central and Clojars re the canonical repositories for library dependencies
+ ;; Maven Central and Clojars are the canonical repositories for library dependencies
  ;; JCenter is large and fast mirror often accessible behind corporate firewalls
 
  :mvn/repos {"central" {:url "https://repo1.maven.org/maven2/"}
