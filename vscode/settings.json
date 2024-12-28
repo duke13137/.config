@@ -107,7 +107,22 @@
         "maxLength": 50
     },
     "[clojure]": {
-        "editor.parameterHints.enabled": true
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
+        "editor.autoClosingBrackets": "always",
+        "editor.autoClosingOvertype": "always",
+        "editor.autoClosingQuotes": "always",
+        "editor.formatOnType": true,
+        "editor.autoIndent": "full",
+        "editor.formatOnPaste": true,
+        "editor.matchBrackets": "never",
+        "editor.guides.indentation": false,
+        "editor.parameterHints.enabled": true,
+        "editor.unicodeHighlight.allowedCharacters": {
+            " ": true,
+            "꞉": true
+        },
+        "editor.foldingStrategy": "indentation"
     },
     "clangd.path": "/Users/duke/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/18.1.3/clangd_18.1.3/bin/clangd",
     "continue.enableTabAutocomplete": true,
