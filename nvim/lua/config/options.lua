@@ -7,6 +7,7 @@ vim.g.loaded_ruby_provider = 0
 vim.g.maplocalleader = ","
 
 local opt = vim.opt
+opt.mousemodel = "extend"
 opt.relativenumber = false
 opt.exrc = true
 opt.list = true
