@@ -26,3 +26,4 @@ alias ghciw='ghciwatch --error-file ghcid.log --clear'
 alias code='/mnt/c/Users/houfe/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
 alias clip=/mnt/c/Windows/System32/clip.exe
 alias open=/mnt/c/Windows/explorer.exe
+alias note='/mnt/c/Program\ Files\/Notepad++/notepad++.exe'

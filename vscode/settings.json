@@ -120,25 +120,22 @@
     "maxLength": 50
   },
   "[clojure]": {
-    "editor.parameterHints.enabled": true
-  },
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "haskell": "html"
-  },
-  "haskell.manageHLS": "PATH",
-  "jdk.test.editor.enableShortcuts": true,
-  "launch": {
-    "configurations": [
-      {
-        "type": "lldb",
-        "request": "launch",
-        "name": "Debug opened file",
-        "cwd": "${workspaceFolder}",
-        "program": "${fileDirname}/${fileBasenameNoExtension}",
-        "args": []
-      }
-    ]
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingOvertype": "always",
+    "editor.autoClosingQuotes": "always",
+    "editor.formatOnType": true,
+    "editor.autoIndent": "full",
+    "editor.formatOnPaste": false,
+    "editor.matchBrackets": "never",
+    "editor.guides.indentation": false,
+    "editor.parameterHints.enabled": true,
+    "editor.unicodeHighlight.allowedCharacters": {
+      " ": true,
+      "꞉": true
+    },
+    "editor.foldingStrategy": "indentation"
   },
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1,
@@ -174,5 +171,44 @@
     "output.calva-repl",
     "vscode-chat-code-block",
     "vscode-copilot-chat-code-block"
-  ]
+  ],
+  "launch": {
+    "configurations": [
+      {
+        "type": "cppdbg",
+        "request": "launch",
+        "name": "GDB active file",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
+        "args": [],
+        "cwd": "${workspaceFolder}",
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          },
+          {
+            "description": "Set Disassembly Flavor to Intel",
+            "text": "-gdb-set disassembly-flavor intel",
+            "ignoreFailures": true
+          }
+        ],
+      },
+      {
+        "type": "lldb",
+        "request": "launch",
+        "name": "LLDB active file",
+        "cwd": "${workspaceFolder}",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
+        "args": []
+      },
+    ]
+  },
+  "haskell.manageHLS": "PATH",
+  "C_Cpp.codeAnalysis.runAutomatically": false,
+  "C_Cpp.debugShortcut": false,
+  "C_Cpp.errorSquiggles": "disabled",
+  "C_Cpp.formatting": "disabled",
+  "C_Cpp.intelliSenseEngine": "disabled",
 }
