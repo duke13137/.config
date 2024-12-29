@@ -146,7 +146,7 @@
                 "name": "Debug opened file",
                 "cwd": "${workspaceFolder}",
                 "program": "${fileDirname}/${fileBasenameNoExtension}",
-                "args": []
+                "args": [],
             }
         ]
     },
