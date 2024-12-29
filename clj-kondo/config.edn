@@ -1,24 +1,12 @@
 {:lint-as {clojure.alpha.spec/defop  clojure.core/defn
-           com.fulcrologic.guardrails.core/>defn clojure.core/defn
-           com.fulcrologic.guardrails.core/>def clojure.core/def
            com.rpl.proxy-plus/proxy+ clojure.core/reify
            dom-top.core/letr clojure.core/let
-           dom-top.core/loopr clojure.core/loop
-           libpython-clj2.require/require-python clojure.core/require
-           libpython-clj2.python/with clojure.core/with-open
-           promesa.core/do! clojure.core/do
-           promesa.core/let clojure.core/let
-           promesa.core/plet clojure.core/let
-           promesa.exec.csp/go-loop clojure.core/loop}
+           dom-top.core/loopr clojure.core/loop}
 
  :linters {:unresolved-namespace {:exclude [.]}
-           :unresolved-symbol    {:exclude [(dom-top.core/loopr)
-                                            (hyperfiddle.rcf/tests)]}
-           :unresolved-var       {:exclude [tech.v3.dataset
-                                            tech.v3.datatype]}
-           :unused-referred-var  {:exclude {com.fulcrologic.guardrails.core [>defn >fdef | ? =>]}}
+           :unresolved-symbol    {:exclude [(dom-top.core/loopr)]}
            :unused-namespace     {:exclude [clojure.string
                                             clojure.test
                                             clojure.spec.alpha]}}
 
- :config-paths ["net.clojars.john/injest"]}
+ :config-paths []}
