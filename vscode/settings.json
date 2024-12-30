@@ -1,214 +1,246 @@
 {
-  "chat.commandCenter.enabled": false,
-  "chat.editor.fontSize": 15,
-  "debug.internalConsoleOptions": "openOnSessionStart",
-  "debug.console.fontSize": 15,
-  "debug.openDebug": "openOnDebugBreak",
-  "diffEditor.wordWrap": "off",
-  "errorLens.delayMode": "debounce",
-  "errorLens.enabled": false,
-  "editor.acceptSuggestionOnEnter": "off",
-  "editor.acceptSuggestionOnCommitCharacter": false,
-  "editor.tabCompletion": "on",
-  "editor.fontFamily": "'Cascadia Code', 'JetBrainsMono NF'",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 16,
-  "markdown.preview.fontSize": 16,
-  "editor.fontWeight": 300,
-  "editor.formatOnSave": true,
-  "editor.inlayHints.enabled": "off",
-  "editor.minimap.autohide": true,
-  "editor.scrollBeyondLastLine": false,
-  "editor.semanticHighlighting.enabled": true,
-  "editor.unicodeHighlight.ambiguousCharacters": false,
-  "editor.wordWrap": "off",
-  "files.eol": "\n",
-  "files.exclude": {
-    "**/.calva": true,
-    "**/.classpath": true,
-    "**/.clj-kondo": true,
-    "**/.cpcache": true,
-    "**/.factorypath": true,
-    "**/.lsp": true,
-    "**/.project": true,
-    "**/.settings": true
-  },
-  "search.exclude": {
-    "**/.clj-kondo": true,
-    "**/.cpcache": true,
-    "**/.hie": true,
-    "**/.stack-work": true,
-    "**/*.class": true
-  },
-  "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.defaultProfile.linux": "zsh",
-  "terminal.integrated.defaultProfile.windows": "Git Bash",
-  "terminal.integrated.fontFamily": "JetBrainsMonoNL NFM",
-  "terminal.integrated.fontSize": 15,
-  "terminal.integrated.fontWeight": 300,
-  "terminal.integrated.fontWeightBold": 500,
-  "terminal.integrated.allowChords": false,
-  "terminal.integrated.sendKeybindingsToShell": true,
-  "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "Night Owl (No Italics)",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "none",
-  "calva.autoEvaluateCode": {
-    "onConnect": {
-      "clj": "(do (in-ns 'user) (defn read-spy [form] (require 'sc.api) `(sc.api/spy ~form)) (defn read-letsc [form] `(sc.api/letsc ~((requiring-resolve 'sc.api/last-ep-id)) ~form)) (set! *data-readers* (assoc *data-readers* 'sc/letsc #'read-letsc 'sc/spy #'read-spy)))",
-      "cljs": ""
+    "editor.fontFamily": "JetBrainsMono NFM, JetBrainsMono Nerd Font Mono",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 15,
+    "debug.console.fontSize": 14,
+    "chat.editor.fontSize": 14,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.formatOnSave": true,
+    "editor.minimap.autohide": true,
+    "editor.scrollBeyondLastLine": false,
+    "editor.tabCompletion": "on",
+    "extensions.ignoreRecommendations": true,
+    "diffEditor.wordWrap": "off",
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "debug.openDebug": "openOnDebugBreak",
+    "files.eol": "\n",
+    "files.exclude": {
+        "**/.calva": true,
+        "**/.classpath": true,
+        "**/.clj-kondo": true,
+        "**/.cpcache": true,
+        "**/.factorypath": true,
+        "**/.lsp": true,
+        "**/.project": true,
+        "**/.settings": true
     },
-    "onFileLoaded": {
-      "clj": "(require 'sc.api)",
-      "cljs": ""
-    }
-  },
-  "calva.customREPLCommandSnippets": [
-    {
-      "name": "eval letsc",
-      "key": "e",
-      "snippet": "#sc/letsc $current-form"
+    "search.exclude": {
+        "**/.clj-kondo": true,
+        "**/.cpcache": true,
+        "**/.hie": true,
+        "**/.stack-work": true,
+        "**/*.class": true
     },
-    {
-      "name": "tap ep-info",
-      "key": "i",
-      "snippet": "(tap> (sc.api/ep-info))"
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "terminal.integrated.fontFamily": "Consolas, Menlo",
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.fontWeight": 300,
+    "terminal.integrated.fontWeightBold": 500,
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.macOptionIsMeta": true,
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "workbench.activityBar.location": "top",
+    "workbench.colorTheme": "Night Owl (No Italics)",
+    "workbench.iconTheme": "material-icon-theme",
+    "calva.autoEvaluateCode": {
+        "onConnect": {
+            "clj": "(do (in-ns 'user) (defn read-spy [form] (require 'sc.api) `(sc.api/spy ~form)) (defn read-letsc [form] `(sc.api/letsc ~((requiring-resolve 'sc.api/last-ep-id)) ~form)) (set! *data-readers* (assoc *data-readers* 'sc/letsc #'read-letsc 'sc/spy #'read-spy)))",
+            "cljs": ""
+        },
+        "onFileLoaded": {
+            "clj": "(require 'sc.api)",
+            "cljs": ""
+        }
     },
-    {
-      "name": "def locals",
-      "key": "l",
-      "snippet": "(eval `(sc.api/defsc ~(sc.api/last-ep-id)))"
+    "calva.customREPLCommandSnippets": [
+        {
+            "name": "eval letsc",
+            "key": "e",
+            "snippet": "#sc/letsc $current-form"
+        },
+        {
+            "name": "tap ep-info",
+            "key": "i",
+            "snippet": "(tap> (sc.api/ep-info))"
+        },
+        {
+            "name": "def locals",
+            "key": "l",
+            "snippet": "(eval `(sc.api/defsc ~(sc.api/last-ep-id)))"
+        },
+        {
+            "name": "undef locals",
+            "key": "u",
+            "snippet": "(eval `(sc.api/undefsc ~(sc.api/last-ep-id)))"
+        },
+        {
+            "name": "Print stacktrace",
+            "repl": "clj",
+            "snippet": "((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))"
+        },
+        {
+            "name": "Reload namespace",
+            "repl": "clj",
+            "snippet": "((requiring-resolve 'clj-reload.core/reload))"
+        },
+        {
+            "name": "Decompile current top level form",
+            "key": "d",
+            "snippet": "(require '[clj-java-decompiler.core :refer [decompile]]) (spit \"decompiled-$top-level-defined-symbol.java\" (with-out-str (decompile $top-level-form)))"
+        },
+        {
+            "name": "Decompile current form",
+            "snippet": "(require '[clj-java-decompiler.core :refer [decompile]]) (spit \"decompiled.java\" (with-out-str (decompile $current-form)))"
+        },
+        {
+            "name": "Disassemble current top level form",
+            "key": "b",
+            "snippet": "(require '[clj-java-decompiler.core :refer [disassemble]]) (spit \"bytecode-$top-level-defined-symbol.class\" (with-out-str (disassemble $top-level-form)))"
+        },
+        {
+            "name": "Disassemble current current form",
+            "snippet": "(require '[clj-java-decompiler.core :refer [disassemble]]) (spit \"bytecode.class\" (with-out-str (disassemble $current-form)))"
+        }
+    ],
+    "calva.prettyPrintingOptions": {
+        "printEngine": "calva",
+        "enabled": true,
+        "width": 120,
+        "maxLength": 50
     },
-    {
-      "name": "undef locals",
-      "key": "u",
-      "snippet": "(eval `(sc.api/undefsc ~(sc.api/last-ep-id)))"
+    "[clojure]": {
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
+        "editor.autoClosingBrackets": "always",
+        "editor.autoClosingOvertype": "always",
+        "editor.autoClosingQuotes": "always",
+        "editor.formatOnType": true,
+        "editor.autoIndent": "full",
+        "editor.formatOnPaste": false,
+        "editor.matchBrackets": "never",
+        "editor.guides.indentation": false,
+        "editor.parameterHints.enabled": true,
+        "editor.unicodeHighlight.allowedCharacters": {
+            " ": true,
+            "꞉": true
+        },
+        "editor.foldingStrategy": "indentation"
     },
-    {
-      "name": "print stacktrace",
-      "repl": "clj",
-      "snippet": "((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))"
+    "continue.enableTabAutocomplete": true,
+    "continue.showInlineTip": false,
+    "continue.telemetryEnabled": false,
+    "git.openRepositoryInParentFolders": "never",
+    "github.copilot.editor.enableAutoCompletions": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
     },
-    {
-      "name": "Reload namespace",
-      "repl": "clj",
-      "snippet": "((requiring-resolve 'clj-reload.core/reload))"
+    "C_Cpp.codeAnalysis.runAutomatically": false,
+    "C_Cpp.debugShortcut": false,
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.formatting": "disabled",
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "haskell.manageHLS": "PATH",
+    "launch": {
+        "configurations": [
+            {
+                "type": "cppdbg",
+                "request": "launch",
+                "name": "GDB active file",
+                "program": "${fileDirname}/${fileBasenameNoExtension}",
+                "args": [],
+                "cwd": "${workspaceFolder}",
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "description": "Set Disassembly Flavor to Intel",
+                        "text": "-gdb-set disassembly-flavor intel",
+                        "ignoreFailures": true
+                    }
+                ],
+            },
+            {
+                "type": "lldb",
+                "request": "launch",
+                "name": "LLDB active file",
+                "cwd": "${workspaceFolder}",
+                "program": "${fileDirname}/${fileBasenameNoExtension}",
+                "args": []
+            },
+        ]
     },
-    {
-      "name": "Decompile current top level form",
-      "key": "d",
-      "snippet": "(require '[clj-java-decompiler.core :refer [decompile]]) (spit \"decompiled-$top-level-defined-symbol.java\" (with-out-str (decompile $top-level-form)))"
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1,
+        "vscodevim.vim": 1
     },
-    {
-      "name": "Decompile current form",
-      "snippet": "(require '[clj-java-decompiler.core :refer [decompile]]) (spit \"decompiled.java\" (with-out-str (decompile $current-form)))"
+    "vim.hlsearch": true,
+    "vim.sneak": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-b>": false,
+        "<C-c>": false,
+        "<C-d>": false,
+        "<C-e>": false,
+        "<C-f>": false,
+        "<C-g>": false,
+        "<C-h>": false,
+        "<C-i>": true, // cursor undo
+        "<C-j>": false,
+        "<C-k>": false,
+        "<C-l>": false,
+        "<C-m>": false,
+        "<C-n>": false,
+        "<C-o>": true, // cursor redo
+        "<C-p>": false,
+        "<C-q>": false,
+        "<C-r>": true, // redo
+        "<C-s>": false,
+        "<C-t>": false,
+        "<C-u>": false,
+        "<C-v>": false,
+        "<C-w>": true, // window
+        "<C-x>": false,
+        "<C-y>": false,
+        "<C-z>": false,
     },
-    {
-      "name": "Disassemble current top level form",
-      "key": "b",
-      "snippet": "(require '[clj-java-decompiler.core :refer [disassemble]]) (spit \"bytecode-$top-level-defined-symbol.class\" (with-out-str (disassemble $top-level-form)))"
-    },
-    {
-      "name": "Disassemble current current form",
-      "snippet": "(require '[clj-java-decompiler.core :refer [disassemble]]) (spit \"bytecode.class\" (with-out-str (disassemble $current-form)))"
-    }
-  ],
-  "calva.prettyPrintingOptions": {
-    "printEngine": "calva",
-    "enabled": true,
-    "width": 120,
-    "maxLength": 50
-  },
-  "[clojure]": {
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
-    "editor.autoClosingBrackets": "always",
-    "editor.autoClosingOvertype": "always",
-    "editor.autoClosingQuotes": "always",
-    "editor.formatOnType": true,
-    "editor.autoIndent": "full",
-    "editor.formatOnPaste": false,
-    "editor.matchBrackets": "never",
-    "editor.guides.indentation": false,
-    "editor.parameterHints.enabled": true,
-    "editor.unicodeHighlight.allowedCharacters": {
-      " ": true,
-      "꞉": true
-    },
-    "editor.foldingStrategy": "indentation"
-  },
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1,
-    "vscodevim.vim": 1
-  },
-  "vim.sneak": true,
-  "vim.useCtrlKeys": false,
-  "vscode-neovim.neovimExecutablePaths.linux": "/home/hacker/.local/bin/nvim",
-  "vscode-neovim.useWSL": true,
-  "vscode-neovim.ctrlKeysForInsertMode": [
-    "o",
-    "r",
-    "u"
-  ],
-  "vscode-neovim.ctrlKeysForNormalMode": [
-    "d",
-    "i",
-    "o",
-    "r",
-    "t",
-    "u",
-    "v",
-    "w",
-    "right",
-    "left",
-    "up",
-    "down",
-    "backspace",
-    "delete"
-  ],
-  "vscode-neovim.autoGeneratedDocumentSchemes": [
-    "output",
-    "output.calva-repl",
-    "vscode-chat-code-block",
-    "vscode-copilot-chat-code-block"
-  ],
-  "launch": {
-    "configurations": [
-      {
-        "type": "cppdbg",
-        "request": "launch",
-        "name": "GDB active file",
-        "program": "${fileDirname}/${fileBasenameNoExtension}",
-        "args": [],
-        "cwd": "${workspaceFolder}",
-        "MIMode": "gdb",
-        "setupCommands": [
-          {
-            "description": "Enable pretty-printing for gdb",
-            "text": "-enable-pretty-printing",
-            "ignoreFailures": true
-          },
-          {
-            "description": "Set Disassembly Flavor to Intel",
-            "text": "-gdb-set disassembly-flavor intel",
-            "ignoreFailures": true
-          }
-        ],
-      },
-      {
-        "type": "lldb",
-        "request": "launch",
-        "name": "LLDB active file",
-        "cwd": "${workspaceFolder}",
-        "program": "${fileDirname}/${fileBasenameNoExtension}",
-        "args": []
-      },
-    ]
-  },
-  "haskell.manageHLS": "PATH",
-  "C_Cpp.codeAnalysis.runAutomatically": false,
-  "C_Cpp.debugShortcut": false,
-  "C_Cpp.errorSquiggles": "disabled",
-  "C_Cpp.formatting": "disabled",
-  "C_Cpp.intelliSenseEngine": "disabled",
+    "vscode-neovim.ctrlKeysForInsertMode": [
+        "o",
+        "r",
+        "u"
+    ],
+    "vscode-neovim.ctrlKeysForNormalMode": [
+        "d",
+        "i",
+        "o",
+        "r",
+        "t",
+        "u",
+        "v",
+        "w",
+        "right",
+        "left",
+        "up",
+        "down",
+        "backspace",
+        "delete"
+    ],
+    "vscode-neovim.autoGeneratedDocumentSchemes": [
+        "output",
+        "output.calva-repl",
+        "vscode-chat-code-block",
+        "vscode-copilot-chat-code-block"
+    ],
+    "vscode-neovim.useWSL": true,
 }
