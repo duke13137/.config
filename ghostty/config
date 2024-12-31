@@ -1,7 +1,8 @@
 # The syntax is "key = value". The whitespace around the
 # equals doesn't matter.
 # font-family = "FiraCode Nerd Font Mono"
-font-family =
+# font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "SF Mono"
 font-size = 16
 
 # Comments start with a `#` and are only valid on their own line.

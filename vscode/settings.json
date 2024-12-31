@@ -1,7 +1,7 @@
 {
-    "editor.fontFamily": "JetBrainsMono NFM, JetBrainsMono Nerd Font Mono",
+    "editor.fontFamily": "SF Mono, JetBrainsMono NFM",
     "editor.fontLigatures": true,
-    "editor.fontSize": 15,
+    "editor.fontSize": 16,
     "debug.console.fontSize": 14,
     "chat.editor.fontSize": 14,
     "editor.acceptSuggestionOnEnter": "off",
@@ -35,7 +35,7 @@
     "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "terminal.integrated.enableMultiLinePasteWarning": "never",
-    "terminal.integrated.fontFamily": "Consolas, Menlo",
+    "terminal.integrated.fontFamily": "SF Mono, Consolas",
     "terminal.integrated.fontSize": 15,
     "terminal.integrated.fontWeight": 300,
     "terminal.integrated.fontWeightBold": 500,
