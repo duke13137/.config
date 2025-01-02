@@ -1,7 +1,12 @@
 // Place your key bindings in this file to overwrite the defaults
 [
   {
-    "key": "ctrl+;",
+    "key": "ctrl-;",
+    "command": "editor.action.inlineSuggest.acceptNextLine",
+    "when": "inlineSuggestionVisible && !editorReadonly"
+  },
+  {
+    "key": "ctrl+/",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
@@ -186,5 +191,35 @@
     "key": "alt+t n",
     "command": "calva.runNamespaceTests",
     "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Normal'"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "editor.action.insertCursorBelow",
+    "when": "editorTextFocus && vim.active"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+backspace",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-paredit.sexpRangeExpansion",
+    "when": "calva:keybindingsEnabled && editorTextFocus && !calva:cursorInComment && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "paredit.sexpRangeExpansion",
+    "when": "calva:keybindingsEnabled && editorTextFocus && !calva:cursorInComment && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
   },
 ]
