@@ -9,35 +9,29 @@ return {
     local set = vim.keymap.set
 
     -- Add or skip cursor above/below the main cursor.
-    set({ "n", "v" }, "<up>", function()
+    set({ "n", "v" }, "<c-p>", function()
       mc.lineAddCursor(-1)
     end)
-    set({ "n", "v" }, "<down>", function()
+    set({ "n", "v" }, "<c-n>", function()
       mc.lineAddCursor(1)
     end)
-    set({ "n", "v" }, "<leader><up>", function()
+    set({ "n", "v" }, "<up>", function()
       mc.lineSkipCursor(-1)
     end)
-    set({ "n", "v" }, "<leader><down>", function()
+    set({ "n", "v" }, "<down>", function()
       mc.lineSkipCursor(1)
     end)
 
     -- Add or skip adding a new cursor by matching word/selection
-    set({ "n", "v" }, "<leader>n", function()
+    set({ "n", "v" }, "gn", function()
       mc.matchAddCursor(1)
     end)
-    set({ "n", "v" }, "<leader>s", function()
-      mc.matchSkipCursor(1)
-    end)
-    set({ "n", "v" }, "<leader>N", function()
+    set({ "n", "v" }, "gN", function()
       mc.matchAddCursor(-1)
-    end)
-    set({ "n", "v" }, "<leader>S", function()
-      mc.matchSkipCursor(-1)
     end)
 
     -- Add all matches in the document
-    set({ "n", "v" }, "<leader>A", mc.matchAllAddCursors)
+    set({ "n", "v" }, "gA", mc.matchAllAddCursors)
 
     -- You can also add cursors with any motion you prefer:
     -- set("n", "<right>", function()
@@ -52,35 +46,13 @@ return {
     set({ "n", "v" }, "<right>", mc.prevCursor)
 
     -- Delete the main cursor.
-    set({ "n", "v" }, "<leader>x", mc.deleteCursor)
-
-    -- Add and remove cursors with control + left click.
-    set("n", "<A-leftmouse>", mc.handleMouse)
+    set({ "n", "v" }, "<c-q>", mc.deleteCursor)
 
     -- Easy way to add and remove cursors using the main cursor.
-    set({ "n", "v" }, "<c-q>", mc.toggleCursor)
+    set({ "n", "v" }, "<s-esc>", mc.toggleCursor)
 
-    -- Clone every cursor and disable the originals.
-    set({ "n", "v" }, "<leader><c-q>", mc.duplicateCursors)
-
-    set("n", "<esc>", function()
-      if not mc.cursorsEnabled() then
-        mc.enableCursors()
-      elseif mc.hasCursors() then
-        mc.clearCursors()
-      else
-        -- Default <esc> handler.
-      end
-    end)
-
-    -- bring back cursors if you accidentally clear them
-    set("n", "<leader>gv", mc.restoreCursors)
-
-    -- Align cursor columns.
-    set("n", "<leader>a", mc.alignCursors)
-
-    -- Split visual selections by regex.
-    set("v", "S", mc.splitCursors)
+    -- Add and remove cursors with alt + left click.
+    set("n", "<A-leftmouse>", mc.handleMouse)
 
     -- Append/insert for each line of visual selections.
     set("v", "I", mc.insertVisual)
@@ -88,14 +60,6 @@ return {
 
     -- match new cursors within visual selections by regex.
     set("v", "M", mc.matchCursors)
-
-    -- Rotate visual selection contents.
-    set("v", "<leader>t", function()
-      mc.transposeCursors(1)
-    end)
-    set("v", "<leader>T", function()
-      mc.transposeCursors(-1)
-    end)
 
     -- Jumplist support
     set({ "v", "n" }, "<c-i>", mc.jumpForward)
