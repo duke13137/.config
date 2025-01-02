@@ -76,7 +76,7 @@
   ;; ---------------------------------------------------
   ;; Development environment
 
-  :dev
+  :reload
   {:extra-paths ["dev" "test"]
    :extra-deps  {com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
                  com.taoensso/telemere        {:mvn/version "RELEASE"}

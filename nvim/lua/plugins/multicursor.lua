@@ -23,10 +23,10 @@ return {
     end)
 
     -- Add or skip adding a new cursor by matching word/selection
-    set({ "n", "v" }, "gn", function()
+    set({ "n", "v" }, "gb", function()
       mc.matchAddCursor(1)
     end)
-    set({ "n", "v" }, "gN", function()
+    set({ "n", "v" }, "gB", function()
       mc.matchAddCursor(-1)
     end)
 
@@ -46,13 +46,29 @@ return {
     set({ "n", "v" }, "<right>", mc.prevCursor)
 
     -- Delete the main cursor.
-    set({ "n", "v" }, "<c-q>", mc.deleteCursor)
-
-    -- Easy way to add and remove cursors using the main cursor.
-    set({ "n", "v" }, "<s-esc>", mc.toggleCursor)
+    set({ "n", "v" }, "<c-s>", mc.deleteCursor)
 
     -- Add and remove cursors with alt + left click.
-    set("n", "<A-leftmouse>", mc.handleMouse)
+    set("n", "<M-leftmouse>", mc.handleMouse)
+
+    -- Easy way to add and remove cursors using the main cursor.
+    set({ "n", "v" }, "<c-q>", mc.toggleCursor)
+
+    set("n", "<M-esc>", function()
+      if not mc.cursorsEnabled() then
+        mc.enableCursors()
+      elseif mc.hasCursors() then
+        mc.clearCursors()
+      else
+        -- Default <esc> handler.
+      end
+    end)
+
+    -- bring back cursors if you accidentally clear them
+    set("n", "gV", mc.restoreCursors)
+
+    -- Align cursor columns.
+    set("n", "g|", mc.alignCursors)
 
     -- Append/insert for each line of visual selections.
     set("v", "I", mc.insertVisual)

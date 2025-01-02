@@ -193,14 +193,9 @@
     "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
   },
   {
-    "key": "u",
-    "command": "undo",
-    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
-  },
-  {
-    "key": "ctrl+r",
-    "command": "redo",
-    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    "key": "ctrl+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Normal'"
   },
   {
     "key": "ctrl+n",

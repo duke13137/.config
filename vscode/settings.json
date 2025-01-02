@@ -132,7 +132,7 @@
     "continue.enableTabAutocomplete": true,
     "continue.showInlineTip": false,
     "continue.telemetryEnabled": false,
-    "git.openRepositoryInParentFolders": "never",
+    "git.openRepositoryInParentFolders": "always",
     "github.copilot.editor.enableAutoCompletions": false,
     "github.copilot.enable": {
         "*": false,
@@ -180,7 +180,6 @@
         ]
     },
     "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1,
         "vscodevim.vim": 1
     },
     "vim.hlsearch": true,
@@ -188,9 +187,35 @@
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": false,
     "vim.handleKeys": {
-        "<C-i>": true, // cursor undo
-        "<C-o>": true, // cursor redo
-        "<C-u>": true, // delete line
+        "<C-d>": true, // page down
+        "<C-u>": true, // page up
+        "<C-i>": true, // jump forword
+        "<C-o>": true, // jump back
+        "<C-r>": true, // undo
         "<C-w>": true, // window
     },
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "U"
+            ],
+            "commands": []
+        },
+        {
+            "key": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "key": [
+                "c-r"
+            ],
+            "commands": [
+                "redo"
+            ]
+        },
+    ],
 }
