@@ -10,12 +10,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-  pattern = { "xmake.lua" },
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "markdown" },
   callback = function()
-    vim.b.autoformat = false
-    local buffer = vim.api.nvim_get_current_buf()
-    vim.diagnostic.enable(false, { bufnr = buffer })
+    vim.diagnostic.enable(false, { bufnr = 0 })
   end,
 })
 

@@ -136,6 +136,7 @@ fi
 # enable auto-suggestions based on the history
 if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     . /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    fpath=(/opt/homebrew/share/zsh/site-functions/ $fpath)
     # change suggestion color
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
@@ -214,7 +215,3 @@ export EDITOR=vi
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
-
-[ -f "/Users/duke/.ghcup/env" ] && . "/Users/duke/.ghcup/env" # ghcup-env
-# Added by Windsurf
-export PATH="/Users/duke/.codeium/windsurf/bin:$PATH"

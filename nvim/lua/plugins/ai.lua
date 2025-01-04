@@ -16,6 +16,12 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     opts = {
+      args = {
+        "--no-auto-commits",
+        "--pretty",
+        "--stream",
+        "--watch-files",
+      },
       win = {
         wo = { winbar = "Aider" },
       },
