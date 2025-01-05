@@ -1,9 +1,14 @@
 return {
+  { "tpope/vim-fugitive" },
+
+  {
+    "mbbill/undotree",
+    dependencies = { "tpope/vim-repeat" },
+  },
+
   {
     "preservim/tagbar",
-    keys = {
-      { "<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" },
-    },
+    keys = { { "<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" } },
   },
 
   {
@@ -15,13 +20,5 @@ return {
       { "<leader>fj", "<Cmd>TmuxJumpFirst<CR>", desc = "TmuxJumpFirst" },
       { "<leader>fJ", "<Cmd>TmuxJumpFile<CR>", desc = "TmuxJumpFile" },
     },
-  },
-
-  {
-    "Mythos-404/xmake.nvim",
-    version = "^3",
-    lazy = true,
-    event = "BufReadPost xmake.lua",
-    config = true,
   },
 }

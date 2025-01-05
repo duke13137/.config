@@ -10,15 +10,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-  pattern = { "xmake.lua" },
-  callback = function()
-    vim.b.autoformat = false
-    local buffer = vim.api.nvim_get_current_buf()
-    vim.diagnostic.enable(false, { bufnr = buffer })
-  end,
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)

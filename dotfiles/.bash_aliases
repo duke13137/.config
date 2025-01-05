@@ -1,13 +1,15 @@
 alias gl='git log --oneline'
 alias gs='git status'
 alias ga='git add'
-alias gf='git fetch'
 alias gm='git merge'
 alias gci='git commit'
 alias gco='git checkout'
 alias gbs='git bisect'
 alias gdi='git diff'
+alias grv='git revert'
+alias grs='git restore'
 alias gsh='git show'
+alias gst='git stash'
 alias push='git push'
 alias pull='git pull'
 
@@ -15,15 +17,12 @@ alias nv=nvim
 alias py=python3
 alias ipy=ipython
 
-alias fn='rlwrap -cr -pyellow fennel --repl'
-alias lj='rlwrap -cr -pyellow luajit -e "require([[batteries]])()" -i'
-
 alias cabal-install='cabal install --overwrite-policy=always --install-method=copy'
 alias cabal-repl='cabal repl --repl-options="-fexternal-interpreter -prof"'
 alias cabal-test='cabal test -O0 --enable-tests --test-show-details=direct'
-alias ghciw='ghciwatch --error-file ghcid.log --clear'
+alias ghcid='ghciwatch --clear --no-interrupt-reloads --error-file ghcid.txt'
 
-alias code='/mnt/c/Users/houfe/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+alias finder=/mnt/c/Windows/explorer.exe
 alias clip=/mnt/c/Windows/System32/clip.exe
-alias open=/mnt/c/Windows/explorer.exe
-alias note='/mnt/c/Program\ Files\/Notepad++/notepad++.exe'
+alias code='/mnt/c/Users/houfe/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+alias open='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'

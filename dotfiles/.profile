@@ -48,17 +48,10 @@ test -f ~/.cargo/env && source ~/.cargo/env
 
 test -f ~/.ghcup/env && source ~/.ghcup/env
 
-test -f ~/.xmake/profile && source ~/.xmake/profile
-
 if [ -e /home/hacker/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hacker/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-export PATH="$HOME/.pyvenv/bin/:$PATH"
 
 exec zsh

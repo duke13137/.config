@@ -232,6 +232,3 @@ export FZF_DEFAULT_OPTS="\
 "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-# >>> xmake >>>
-test -f "/home/hacker/.xmake/profile" && source "/home/hacker/.xmake/profile"
-# <<< xmake <<<

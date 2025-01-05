@@ -4,7 +4,7 @@ return {
   {
     "Olical/conjure",
     branch = "main",
-    ft = { "clojure", "fennel" },
+    ft = { "clojure", "fennel", "lua" },
     dependencies = { "m00qek/baleia.nvim" },
     init = function()
       vim.g["conjure#log#hud#width"] = 1.0

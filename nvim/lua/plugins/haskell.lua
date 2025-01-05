@@ -50,15 +50,21 @@ local M = {
         event = { "BufReadPre", "BufNewFile" },
         opts = function(_, opts)
           vim.list_extend(opts.sources, {
-            -- require("plugins.haskell").ghcid(),
+            require("plugins.haskell").ghcid(),
             require("plugins.haskell").hlint(),
           })
         end,
       },
     },
     config = function()
-      if vim.fn.filereadable(".hiedb") ~= 0 then
-        require "lspconfig".hls.setup { cmd = { "./static-ls" } }
+      vim.g["hoogle_open_link"] = "open"
+      if vim.fn.filereadable("static-ls") ~= 0 then
+        require "lspconfig".hls.setup {
+          cmd = { "./static-ls" },
+          root_dir = function()
+            return vim.fs.root(0, ".hiefiles")
+          end,
+        }
       end
     end,
   },
@@ -67,12 +73,14 @@ local M = {
 function M.ghcid()
   local null_ls = require("null-ls")
   local helpers = require("null-ls.helpers")
-  local utils = require("null-ls.utils")
   return {
     name = "ghcid",
     meta = { url = "https://github.com/ndmitchell/ghcid" },
     method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
     filetypes = { "haskell" },
+    cwd = helpers.cache.by_bufnr(function()
+      return vim.fs.root(0, "ghcid.txt")
+    end),
     generator = helpers.generator_factory({
       command = "bash",
       args = {
@@ -88,7 +96,7 @@ function M.ghcid()
       multiple_files = true,
       on_output = function(line, _)
         local filename, row, end_row, col, end_col, severity, message =
-          line:match("([^:]+):%(?(%d+)[-,]?(%d*)%)?[:-]%(?(%d+)[-,]?(%d*)%)?:%s*(%w+):.+]%s*(.+)")
+          line:match("([^:]+):%(?(%d+)[-,]?(%d*)%)?[:-]%(?(%d+)[-,]?(%d*)%)?:%s*(%w+):%s*(.+)")
 
         if end_col == nil or end_col == "" then
           end_col = col
@@ -111,9 +119,6 @@ function M.ghcid()
         }
       end,
     }),
-    cwd = helpers.cache.by_bufnr(function(params)
-      return utils.root_pattern("ghcid.txt")(params.bufname)
-    end),
   }
 end
 

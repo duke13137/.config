@@ -42,24 +42,6 @@ return {
   },
 
   {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        haskell = { "stylishhaskell" },
-        sh = { "shellcheck" },
-      },
-      formatters = {
-        stylishhaskell = {
-          command = "stylish-haskell", args = { "-i" },
-        }
-      }
-    }
-  },
-
-  -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
-  -- would overwrite `ensure_installed` with the new value.
-  -- If you'd rather extend the default config, use the code below instead:
-  {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
@@ -110,10 +92,19 @@ return {
   },
 
   {
-    "mbbill/undotree",
-    dependencies = {
-      "tpope/vim-repeat",
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        ["markdown"] = { "prettier", "markdown-toc" },
+        ["markdown.mdx"] = { "prettier", "markdown-toc" },
+        haskell = { "stylishhaskell" },
+      },
+      formatters = {
+        stylishhaskell = {
+          command = "stylish-haskell",
+          args = { "-i" },
+        },
+      },
     },
   },
-
 }

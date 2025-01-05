@@ -1,5 +1,6 @@
 shopt -s expand_aliases
 
-alias chrome='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
-alias edge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
-alias clip='/mnt/c/Windows/System32/clip.exe'
+alias finder=/mnt/c/Windows/explorer.exe
+alias clip=/mnt/c/Windows/System32/clip.exe
+alias code='/mnt/c/Users/houfe/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+alias open='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
