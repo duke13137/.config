@@ -187,6 +187,7 @@
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": false,
     "vim.handleKeys": {
+        "<C-[>": true, // Esc
         "<C-d>": true, // page down
         "<C-u>": true, // page up
         "<C-i>": true, // jump forword
