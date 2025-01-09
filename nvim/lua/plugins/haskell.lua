@@ -62,7 +62,7 @@ local M = {
         require "lspconfig".hls.setup {
           cmd = { "./static-ls" },
           root_dir = function()
-            return vim.fs.root(0, ".hiefiles")
+            return vim.fs.root(0, ".hiedb")
           end,
         }
       end
