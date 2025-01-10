@@ -26,3 +26,4 @@ alias finder=/mnt/c/Windows/explorer.exe
 alias clip=/mnt/c/Windows/System32/clip.exe
 alias code='/mnt/c/Users/houfe/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
 alias open='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
+alias scrape='python -m aider.scrape'

@@ -49,10 +49,10 @@ local M = {
         "nvimtools/none-ls.nvim",
         event = { "BufReadPre", "BufNewFile" },
         opts = function(_, opts)
-          vim.list_extend(opts.sources, {
+          opts.sources = {
             require("plugins.haskell").ghcid(),
             require("plugins.haskell").hlint(),
-          })
+          }
         end,
       },
     },
@@ -62,7 +62,7 @@ local M = {
         require "lspconfig".hls.setup {
           cmd = { "./static-ls" },
           root_dir = function()
-            return vim.fs.root(0, ".hiefiles")
+            return vim.fs.root(0, ".hiedb")
           end,
         }
       end

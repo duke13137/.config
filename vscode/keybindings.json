@@ -25,8 +25,9 @@
     "command": "workbench.action.toggleMaximizedPanel"
   },
   {
-    "key": "ctrl+alt+[",
-    "command": "vscode-neovim.restart"
+    "key": "alt+l",
+    "command": "expandLineSelection",
+    "when": "textInputFocus"
   },
   {
     "key": "alt+enter",
