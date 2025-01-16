@@ -5,24 +5,25 @@ return {
       "AiderTerminalToggle",
     },
     keys = {
+      { "<leader>aa", "<cmd>AiderQuickAddFile<cr>", desc = "Aider: Add File" },
+      { "<leader>ad", "<cmd>AiderQuickDropFile<cr>", desc = "Aider: Drop File" },
       { "<leader>ai", "<cmd>AiderTerminalToggle<cr>", desc = "Aider: Open Terminal " },
       { "<leader>al", "<cmd>AiderTerminalSend<cr>", desc = "Aider: Send", mode = { "n", "v" } },
+      { "<leader>aL", "<cmd>AiderQuickSendBuffer<cr>", desc = "Aider: Send Buffer" },
       { "<leader>ak", "<cmd>AiderQuickSendCommand<cr>", desc = "Aider: Send Command" },
-      { "<leader>aj", "<cmd>AiderQuickSendBuffer<cr>", desc = "Aider: Send Buffer" },
-      { "<leader>a+", "<cmd>AiderQuickAddFile<cr>", desc = "Aider: Add File" },
-      { "<leader>a-", "<cmd>AiderQuickDropFile<cr>", desc = "Aider: Drop File" },
     },
     dependencies = {
       "nvim-telescope/telescope.nvim",
     },
     opts = {
       args = {
+        "--no-analytics",
         "--no-auto-commits",
-        "--pretty",
-        "--stream",
+        "--yes-always",
         "--watch-files",
       },
       win = {
+        position = "right",
         wo = { winbar = "Aider" },
       },
     },

@@ -29,10 +29,4 @@ map("n", ",rl", ":Repl %autoreload 3 -p<CR>", options("autoreload all"))
 map("n", ",ro", ":Repl %autoreload off<CR>", options("autoreload off"))
 map("n", ",rr", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("run"))
 map("n", ",rR", ":Repl %reset -f<CR>", options("reset"))
-map("n", ",t", ":Repl !pytest -lv --no-header --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest"))
-map(
-  "n",
-  ",rt",
-  ":Repl !pytest -ls --no-header --trace --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb <C-r>=expand('%:p')<CR>::<C-r>=expand('<cword>')<CR> ",
-  options("debug")
-)
+map("n", ",t", ":Repl !pytest --no-header -lv --doctest-modules <C-r>=expand('%:p')<CR><CR>", options("pytest"))

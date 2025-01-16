@@ -1,5 +1,7 @@
 {:paths ["."]
  :deps {org.clojure/clojure {:mvn/version "RELEASE"}
+        metosin/malli {:mvn/version "RELEASE"}
+        com.rpl/specter {:mvn/version "RELEASE"}
         org.clojars.askonomm/ruuter {:mvn/version "RELEASE"}
 
         djblue/portal {:mvn/version "RELEASE"}
@@ -10,7 +12,6 @@
                              :git/sha "e5513349a2fd8a980a62bbe0d45a0d55bfcea141"}
         com.cognitect.aws/api {:mvn/version "RELEASE"}
         com.cognitect.aws/endpoints {:mvn/version "RELEASE"}
-        com.cognitect.aws/accessanalyzer {:mvn/version "RELEASE"}
         com.cognitect.aws/config {:mvn/version "RELEASE"}
         com.cognitect.aws/iam {:mvn/version "RELEASE"}
         com.cognitect.aws/dynamodb {:mvn/version "RELEASE"}

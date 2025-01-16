@@ -6,6 +6,14 @@ local M = {
     cond = function()
       return vim.fn.filereadable("hls.json") ~= 0 and true
     end,
+    init = function()
+      vim.g.haskell_tools = {
+        tools = {
+          codeLens = { autoRefresh = true },
+          hover = { enable = false },
+        },
+      }
+    end,
     keys = {
       {
         "<leader>ch",
