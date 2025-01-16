@@ -26,3 +26,6 @@ alias cabal-install='cabal install --overwrite-policy=always --install-method=co
 alias cabal-repl='cabal repl --repl-options="-fexternal-interpreter -prof"'
 alias cabal-test='cabal test -O0 --enable-tests --test-show-details=direct'
 alias ghcid='ghciwatch --clear --no-interrupt-reloads --error-file ghcid.txt'
+
+alias wcat='python -m aider.scrape'
+alias wpdf='playwright pdf'

@@ -17,9 +17,9 @@ return {
     },
     opts = {
       args = {
+        "--no-analytics",
         "--no-auto-commits",
-        "--pretty",
-        "--stream",
+        "--yes-always",
         "--watch-files",
       },
       win = {
