@@ -10,11 +10,11 @@ alias gdi='git diff'
 alias gsh='git show'
 alias ga='git add'
 alias gci='git commit'
-alias gco='git restore'
-alias gsw='git switch'
-alias stash='git stash'
+alias gco='git checkout'
 alias push='git push'
 alias pull='git pull'
+alias restore='git restore'
+alias stash='git stash'
 
 alias nv=nvim
 alias py=python
