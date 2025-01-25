@@ -1,5 +1,14 @@
 return {
   {
+    "ggml-org/llama.vim",
+    init = function()
+      vim.g.llama_config = {
+        auto_fim = true,
+        show_info = false,
+      }
+    end,
+  },
+  {
     "GeorgesAlkhouri/nvim-aider",
     cmd = {
       "AiderTerminalToggle",
