@@ -327,7 +327,7 @@ export FZF_DEFAULT_OPTS="\
 "
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export EDITOR=vi
+export EDITOR=nvim
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"

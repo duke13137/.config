@@ -2,14 +2,14 @@ alias gl='git log --oneline'
 alias gs='git status -sb'
 alias ga='git add'
 alias gci='git commit'
-alias gco='git restore'
-alias gsw='git switch'
+alias gco='git checkout'
 alias gbs='git bisect'
 alias gdi='git diff'
 alias gsh='git show'
-alias stash='git stash'
 alias push='git push'
 alias pull='git pull'
+alias restore='git restore'
+alias stash='git stash'
 
 alias nv=nvim
 alias py=python3
