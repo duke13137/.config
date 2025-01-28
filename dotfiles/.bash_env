@@ -1,6 +1,6 @@
 shopt -s expand_aliases
 
-alias finder=/mnt/c/Windows/explorer.exe
-alias clip=/mnt/c/Windows/System32/clip.exe
+alias open=/mnt/c/Windows/explorer.exe
+alias pbcopy=/mnt/c/Windows/System32/clip.exe
 alias code='/mnt/c/Users/houfe/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
 alias open='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
