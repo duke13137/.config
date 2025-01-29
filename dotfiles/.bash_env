@@ -1,6 +1,8 @@
 shopt -s expand_aliases
 
-alias open=/mnt/c/Windows/explorer.exe
-alias pbcopy=/mnt/c/Windows/System32/clip.exe
+alias open='/mnt/c/Windows/explorer.exe'
+alias pbcopy='tee /dev/tty <&0 | /mnt/c/Windows/System32/clip.exe'
+alias pbpaste='/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe Get-ClipBoard | sed "s/\r$//" '
+
 alias code='/mnt/c/Users/houfe/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
-alias open='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
+alias chrome='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
