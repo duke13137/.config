@@ -15,7 +15,6 @@ alias stash='git stash'
 alias nv=nvim
 alias py=python3
 alias ipy=ipython
-alias scrape='python -m aider.scrape'
 
 alias cabal-install='cabal install --overwrite-policy=always --install-method=copy'
 alias cabal-repl='cabal repl --repl-options="-fexternal-interpreter -prof"'

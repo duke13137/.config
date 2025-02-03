@@ -1,4 +1,5 @@
 {
+    "chat.commandCenter.enabled": false,
     "editor.fontFamily": "SF Mono, JetBrainsMono NFM",
     "editor.fontLigatures": true,
     "editor.fontSize": 16,
@@ -129,9 +130,6 @@
         },
         "editor.foldingStrategy": "indentation"
     },
-    "continue.enableTabAutocomplete": true,
-    "continue.showInlineTip": false,
-    "continue.telemetryEnabled": false,
     "git.openRepositoryInParentFolders": "always",
     "github.copilot.editor.enableAutoCompletions": false,
     "github.copilot.enable": {
@@ -219,4 +217,8 @@
             ]
         },
     ],
+    "continue.enableTabAutocomplete": false,
+    "continue.telemetryEnabled": false,
+    "continue.showInlineTip": false,
+    "llama-vscode.enabled": true,
 }
