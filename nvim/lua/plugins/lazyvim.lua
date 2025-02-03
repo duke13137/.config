@@ -105,4 +105,16 @@ return {
       },
     },
   },
+
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      { "igorlfs/nvim-dap-view", opts = {} },
+      { "nvim-dap-ui",  enabled = false },
+    },
+    keys = {
+      { "<leader>dv", function() require("dap-view").toggle() end, desc = "Toggle Dap View" },
+      { "<leader>dy", function() require("dap-view").add_expr() end, desc = "Watch Expression" },
+    }
+  },
 }
