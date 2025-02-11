@@ -131,11 +131,19 @@ return {
           },
         },
       },
-      -- { "igorlfs/nvim-dap-view", opts = {} },
     },
+  },
+
+  {
+    "igorlfs/nvim-dap-view",
+    cond = function()
+      local version = vim.version()
+      return version.major >= 0 and version.minor >= 11
+    end,
     keys = {
-      -- { "<leader>dv", function() require("dap-view").toggle() end, desc = "Toggle Dap View" },
-      -- { "<leader>dy", function() require("dap-view").add_expr() end, desc = "Watch Expression" },
-    }
+      { "<leader>dv", function() require("dap-view").toggle() end, desc = "Toggle Dap View" },
+      { "<leader>dy", function() require("dap-view").add_expr() end, desc = "Watch Expression" },
+    },
+    opts = {},
   },
 }
