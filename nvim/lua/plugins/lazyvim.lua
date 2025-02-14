@@ -56,9 +56,12 @@ return {
     'saghen/blink.cmp',
     opts = {
       keymap = {
-        preset = "enter",
+        preset = "default",
       },
-      signature = { enabled = false }
+      completion = {
+        ghost_text = { enabled = false },
+      },
+      signature = { enabled = true }
     }
   },
 
