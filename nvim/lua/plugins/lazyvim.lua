@@ -112,7 +112,8 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
-      { "nvim-dap-ui",
+      {
+        "nvim-dap-ui",
         opts = {
           layouts = {
             {
@@ -120,15 +121,15 @@ return {
               size = 0.3,
               elements = {
                 { id = "scopes", size = 0.6 },
-                { id = "watches", size = 0.4},
+                { id = "stacks", size = 0.4 },
               },
             },
             {
               position = "bottom",
               size = 0.3,
               elements = {
-                { id = "repl", size = 0.7 },
-                { id = "breakpoints", size = 0.3},
+                { id = "repl", size = 0.6 },
+                { id = "console", size = 0.4},
               },
             }
           },
@@ -137,16 +138,4 @@ return {
     },
   },
 
-  {
-    "igorlfs/nvim-dap-view",
-    cond = function()
-      local version = vim.version()
-      return version.major >= 0 and version.minor >= 11
-    end,
-    keys = {
-      { "<leader>dv", function() require("dap-view").toggle() end, desc = "Toggle Dap View" },
-      { "<leader>dy", function() require("dap-view").add_expr() end, desc = "Watch Expression" },
-    },
-    opts = {},
-  },
 }

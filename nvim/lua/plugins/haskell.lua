@@ -93,7 +93,7 @@ function M.ghcid()
       command = "bash",
       args = {
         "-c",
-        [[ sleep 1 && [ -f ghcid.txt ] && cat ghcid.txt \
+        [[ sleep 2 && [ -f ghcid.txt ] && cat ghcid.txt \
           | grep -A2 -E '.*[^>]: (error|warning):' \
           | grep -v '\--' \
           | paste -s -d'\0\t\n' - \
