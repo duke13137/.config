@@ -78,9 +78,6 @@ return {
       ensure_installed = {
         "codelldb",
         "debugpy",
-        "delve",
-        "gopls",
-        "emmet-language-server",
         "json-lsp",
         "lua-language-server",
         "pyright",
