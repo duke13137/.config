@@ -26,10 +26,7 @@ return {
     },
     opts = {
       args = {
-        "--architect",
         "--model",
-        "think",
-        "--editor-model",
         "g2pro",
         "--no-analytics",
         "--no-auto-commits",
