@@ -298,6 +298,6 @@
                  com.cognitect.aws/s3             {:mvn/version "RELEASE"}
                  com.cognitect.aws/sts            {:mvn/version "RELEASE"}}}
 
-  :lib/ml
-  {:extra-deps  {com.techascent/tmducken          {:mvn/version "RELEASE"}
-                 io.github.nextjournal/clerk      {:mvn/version "RELEASE"}}}}}
+  :lib/web
+  {:extra-deps  {com.github.brettatoms/zodiac     {:mvn/version "RELEASE"}
+                 io.github.camsaul/toucan2        {:mvn/version "RELEASE"}}}}}
