@@ -108,7 +108,7 @@ return {
         "debugpy",
         "json-lsp",
         "lua-language-server",
-        "pyright",
+        "basedpyright",
         "ruff",
         "ruff-lsp",
         "shellcheck",
