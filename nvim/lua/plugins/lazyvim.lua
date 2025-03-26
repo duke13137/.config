@@ -104,17 +104,7 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "codelldb",
-        "debugpy",
-        "json-lsp",
-        "lua-language-server",
-        "basedpyright",
-        "ruff",
-        "ruff-lsp",
-        "shellcheck",
-        "shfmt",
-        "stylua",
-        "taplo",
+        "clojure-lsp"
       },
     },
   },
