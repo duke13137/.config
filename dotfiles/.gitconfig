@@ -1,0 +1,30 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Duke
+	email = duke@home.com
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[merge]
+	conflictstyple = diff3
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[push]
+	autoSetupRemote = true
+	followTags = true
+[pull]
+	ff = only
+[alias]
+	lg = log --graph --decorate --oneline
