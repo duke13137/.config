@@ -9,6 +9,3 @@ font-size = 16
 # Blank lines are ignored!
 keybind = global:cmd+/=toggle_quick_terminal
 quick-terminal-animation-duration = 0.1
-
-# Empty values reset the configuration to the default value
-scrollback-limit=99999

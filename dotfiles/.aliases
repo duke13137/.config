@@ -18,8 +18,8 @@ alias rebase='git rebase'
 alias stash='git stash'
 
 alias nv=nvim
-alias py=python
-alias ipy=ipython
+alias py='uv run python'
+alias pip='uv run pip'
 
 alias cabal-install='cabal install --overwrite-policy=always --install-method=copy'
 alias cabal-repl='cabal repl --repl-options="-fexternal-interpreter -prof"'
