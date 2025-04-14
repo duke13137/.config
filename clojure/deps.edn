@@ -281,23 +281,4 @@
    :ns-default    clojure.tools.deps.graph
    :exec-fn       graph
    :exec-args     {:output "project-dependencies-graph.png"
-                   :size   true}}
-
-  :lib/aws
-  {:extra-deps  {com.cognitect.aws/api            {:mvn/version "RELEASE"}
-                 com.cognitect.aws/endpoints      {:mvn/version "RELEASE"}
-                 com.cognitect.aws/accessanalyzer {:mvn/version "RELEASE"}
-                 com.cognitect.aws/account        {:mvn/version "RELEASE"}
-                 com.cognitect.aws/organizations  {:mvn/version "RELEASE"}
-                 com.cognitect.aws/cloudtrail     {:mvn/version "RELEASE"}
-                 com.cognitect.aws/config         {:mvn/version "RELEASE"}
-                 com.cognitect.aws/iam            {:mvn/version "RELEASE"}
-                 com.cognitect.aws/dynamodb       {:mvn/version "RELEASE"}
-                 com.cognitect.aws/lambda         {:mvn/version "RELEASE"}
-                 com.cognitect.aws/ec2            {:mvn/version "RELEASE"}
-                 com.cognitect.aws/s3             {:mvn/version "RELEASE"}
-                 com.cognitect.aws/sts            {:mvn/version "RELEASE"}}}
-
-  :lib/web
-  {:extra-deps  {com.github.brettatoms/zodiac     {:mvn/version "RELEASE"}
-                 io.github.camsaul/toucan2        {:mvn/version "RELEASE"}}}}}
+                   :size   true}}}}

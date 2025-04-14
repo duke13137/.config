@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "markdown" },
+  pattern = { "markdown", "python" },
   callback = function()
     vim.diagnostic.enable(false, { bufnr = 0 })
   end,
