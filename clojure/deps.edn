@@ -81,6 +81,7 @@
    :extra-deps  {com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
                  com.taoensso/telemere        {:mvn/version "RELEASE"}
                  criterium/criterium          {:mvn/version "RELEASE"}
+                 metosin/malli                {:mvn/version "RELEASE"}
                  nubank/matcher-combinators   {:mvn/version "RELEASE"}
                  org.clojure/test.check       {:mvn/version "RELEASE"}
                  org.clojure/tools.trace      {:mvn/version "RELEASE"}
@@ -127,18 +128,17 @@
   :repl
   {:extra-deps {nrepl/nrepl                   {:mvn/version "RELEASE"}
                 cider/cider-nrepl             {:mvn/version "RELEASE"}
-                refactor-nrepl/refactor-nrepl {:mvn/version "RELEASE"}
-                io.github.tonsky/clj-reload  {:mvn/version "RELEASE"}
-                io.github.paintparty/fireworks {:mvn/version "RELEASE"}
+                com.github.gnl/playback       {:mvn/version "RELEASE"}
+                djblue/portal                 {:mvn/version "RELEASE"}
+                io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
                 org.clojure/tools.namespace   {:mvn/version "RELEASE"}
                 org.clj-commons/pretty        {:mvn/version "RELEASE"}
-                vvvvalvalval/scope-capture    {:mvn/version "RELEASE"}
-                djblue/portal                 {:mvn/version "RELEASE"}}
+                vvvvalvalval/scope-capture    {:mvn/version "RELEASE"}}
    :jvm-opts   ["-Xmx2g" "-Djdk.attach.allowAttachSelf"
                 "-Dflowstorm.theme=dark"
                 "-Dflowstorm.styles=/tmp/flowstorm.css"]
    :main-opts  ["--main" "nrepl.cmdline"
-                "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"
+                "--middleware" "[cider.nrepl/cider-middleware]"
                 "--interactive"]}
 
   ;; ---------------------------------------------------
