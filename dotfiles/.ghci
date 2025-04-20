@@ -1,10 +1,7 @@
-:seti -XNoImplicitPrelude
-:m + Prelude
 
 :set prompt-function \modules _ -> pure (mconcat [case modules of topmost:_ -> topmost; [] -> "", " \ESC[0;36mλ> \ESC[m"] )
 :set prompt-cont "\ESC[0;36m|  \ESC[m"
 
-:set -package pretty-simple
 :def pp   \_ -> pure (":set -interactive-print Text.Pretty.Simple.pPrint")
 :def nopp \_ -> pure (":set -interactive-print System.IO.print")
 
@@ -13,7 +10,12 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 :def hoogle return . (":!hoogle --database .haskell.hoo -q --count=10 --color " ++) . dotGHCI_escapeShellArg
 :def doctest return . (":!cabal repl -w doctest " ++) . dotGHCI_escapeShellArg
 
-:m - Prelude
+:seti -XGHC2021
+:seti -XNoImplicitPrelude
+:seti -XPartialTypeSignatures
+:seti -XOverloadedStrings
+:seti -XOverloadedLabels
+:seti -XOverloadedRecordDot
 
 :set -Wall
 :set -Wcompat
@@ -21,12 +23,10 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 :set -Wincomplete-record-updates
 :set -Wincomplete-uni-patterns
 :set -Wredundant-constraints
-
-:seti -XGHC2021
-:seti -XPartialTypeSignatures
+:set  -Wno-missing-home-modules
+:set  -Wno-unused-imports
 :seti -Wno-partial-type-signatures
 :seti -Wno-type-defaults
-:set  -Wno-missing-home-modules
 
 :set -fmax-valid-hole-fits=6
 :set -fmax-refinement-hole-fits=3
