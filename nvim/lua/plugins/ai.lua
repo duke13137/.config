@@ -4,7 +4,11 @@ return {
     init = function()
       vim.g.llama_config = {
         auto_fim = true,
-        show_info = false,
+        show_info = 1,
+        keymap_trigger = "<C-l>",
+        keymap_accept_line = "<Tab>",
+        keymap_accept_full = "<S-Tab>",
+        keymap_accept_word = "",
       }
     end,
   },

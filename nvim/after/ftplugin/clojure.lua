@@ -27,14 +27,17 @@ local function options(desc)
 end
 
 local map = vim.keymap.set
+-- Reload
 map(
   "n",
   ",rr",
   ":<C-u>ConjureEval ((requiring-resolve 'clj-reload.core/reload))<CR>",
-  options("reload changed namespaces")
+  options("Reload changed namespaces")
 )
+map("n", ",rs", ":ConjureEval ((requiring-resolve 'malli.dev/start!))<CR>", options("Start malli.dev"))
+map("n", ",rt", ":ConjureEval ((requiring-resolve 'malli.dev/stop!))<CR>", options("Stop malli.dev"))
 
--- scope-capture
+-- Scope-capture
 map(
   "n",
   ",ds",
@@ -47,7 +50,7 @@ map("n", ",du", ":ConjureEval (eval `(sc.api/undefsc ~(sc.api/last-ep-id)))<CR>"
 map("n", ",dU", ":ConjureEval ((requiring-resolve 'sc.api/dispose-all!))<CR>", options("undef all locals"))
 map("v", ",e", 'y :<C-u>ConjureEval #sc/letsc <C-r>=@"<CR><CR>', options("eval letsc"))
 
--- portal
+-- Portal
 map(
   "n",
   ",pp",
@@ -58,10 +61,6 @@ map("n", ",p1", ":ConjureEval (tap> *1)<CR>", options("tap *1"))
 map("n", ",p2", ":ConjureEval (tap> *2)<CR>", options("tap *2"))
 map("n", ",p3", ":ConjureEval (tap> *2)<CR>", options("tap *3"))
 map("n", ",pe", ":ConjureEval ((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))<CR>", options("pst *e*"))
-
--- flow-storm-debugger
-map("v", ",t", 'y :<C-u>ConjureEval (flow-storm.api/instrument* {} <C-r>=@"<CR>)<CR>', options("trace form"))
-map("v", ",r", 'y :<C-u>ConjureEval (flow-storm.api/runi {} <C-r>=@"<CR>)<CR>', options("rtrace form"))
 
 local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufEnter", {

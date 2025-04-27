@@ -19,7 +19,7 @@ vnoremap <buffer><silent><nowait> <localleader>i y :Repl :instances <C-r>=@"<CR>
 nnoremap <buffer><silent><nowait> <localleader>k   :Repl :kind <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>k y :Repl :kind! <C-r>=@"<CR><CR>
 
-nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type +d <C-r><C-w><CR>
+nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>t   <Cmd>call GHC_type_at()<CR>
 
 inoremap <buffer><silent><C-l>       <Left><C-o>:HaskComplete <C-r><C-w><CR><Right>
