@@ -138,7 +138,7 @@
                 "-Dflowstorm.theme=dark"
                 "-Dflowstorm.styles=/tmp/flowstorm.css"]
    :main-opts  ["--main" "nrepl.cmdline"
-                "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"
+                "--middleware" "[cider.nrepl/cider-middleware]"
                 "--interactive"]}
 
   ;; ---------------------------------------------------
