@@ -66,9 +66,9 @@ local M = {
     },
     config = function()
       vim.g["hoogle_open_link"] = "open"
-      if vim.fn.filereadable(".hiedb") ~= 0 then
+      if vim.fn.filereadable("./static-ls") ~= 0 then
         require "lspconfig".hls.setup {
-          cmd = { "static-ls" },
+          cmd = { "./static-ls" },
           root_dir = function()
             return vim.fs.root(0, ".hiedb")
           end,
