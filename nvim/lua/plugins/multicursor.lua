@@ -9,10 +9,10 @@ return {
     local set = vim.keymap.set
 
     -- Add or skip cursor above/below the main cursor.
-    set({ "n", "v" }, "<c-p>", function()
+    set({ "n", "v" }, "<M-up>", function()
       mc.lineAddCursor(-1)
     end)
-    set({ "n", "v" }, "<c-n>", function()
+    set({ "n", "v" }, "<M-down>", function()
       mc.lineAddCursor(1)
     end)
     set({ "n", "v" }, "<up>", function()
@@ -20,6 +20,29 @@ return {
     end)
     set({ "n", "v" }, "<down>", function()
       mc.lineSkipCursor(1)
+    end)
+
+    -- Rotate the main cursor.
+    set({ "n", "v" }, "<left>", mc.nextCursor)
+    set({ "n", "v" }, "<right>", mc.prevCursor)
+
+    -- Add and remove cursors with alt + left click.
+    set("n", "<M-leftmouse>", mc.handleMouse)
+
+    -- Easy way to add and remove cursors using the main cursor.
+    set({ "n", "v" }, "<M-c>", mc.toggleCursor)
+
+    -- Delete the main cursor.
+    set({ "n", "v" }, "<M-d>", mc.deleteCursor)
+
+    set("n", "<M-q>", function()
+      if not mc.cursorsEnabled() then
+        mc.enableCursors()
+      elseif mc.hasCursors() then
+        mc.clearCursors()
+      else
+        -- Default <esc> handler.
+      end
     end)
 
     -- Add or skip adding a new cursor by matching word/selection
@@ -32,37 +55,6 @@ return {
 
     -- Add all matches in the document
     set({ "n", "v" }, "gA", mc.matchAllAddCursors)
-
-    -- You can also add cursors with any motion you prefer:
-    -- set("n", "<right>", function()
-    --     mc.addCursor("w")
-    -- end)
-    -- set("n", "<leader><right>", function()
-    --     mc.skipCursor("w")
-    -- end)
-
-    -- Rotate the main cursor.
-    set({ "n", "v" }, "<left>", mc.nextCursor)
-    set({ "n", "v" }, "<right>", mc.prevCursor)
-
-    -- Delete the main cursor.
-    set({ "n", "v" }, "<c-s>", mc.deleteCursor)
-
-    -- Add and remove cursors with alt + left click.
-    set("n", "<M-leftmouse>", mc.handleMouse)
-
-    -- Easy way to add and remove cursors using the main cursor.
-    set({ "n", "v" }, "<c-q>", mc.toggleCursor)
-
-    set("n", "<M-esc>", function()
-      if not mc.cursorsEnabled() then
-        mc.enableCursors()
-      elseif mc.hasCursors() then
-        mc.clearCursors()
-      else
-        -- Default <esc> handler.
-      end
-    end)
 
     -- bring back cursors if you accidentally clear them
     set("n", "gV", mc.restoreCursors)
