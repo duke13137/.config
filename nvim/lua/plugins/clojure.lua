@@ -12,7 +12,7 @@ return {
       vim.g["conjure#log#hud#anchor"] = "SE"
       vim.g["conjure#log#botright"] = true
       vim.g["conjure#extract#context_header_lines"] = 100
-      vim.g["conjure#client#clojure#nrepl#eval#raw_out"] = true
+      vim.g["conjure#highlight#enabled"] = true
       vim.g["conjure#client#clojure#nrepl#eval#auto_require"] = false
       vim.g["conjure#client#clojure#nrepl#connection#auto_repl#enabled"] = true
       vim.g["conjure#client#clojure#nrepl#connection#auto_repl#hidden"] = true
