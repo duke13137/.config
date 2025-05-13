@@ -20,6 +20,7 @@ return {
       { "<leader>ab", "<cmd>Aider buffer<cr>", desc = "Aider: Send Buffer" },
       { "<leader>ac", "<cmd>Aider command<cr>", desc = "Aider: Send Command" },
       { "<leader>ad", "<cmd>Aider drop<cr>", desc = "Aider: Drop File" },
+      { "<leader>ar", "<cmd>Aider add readonly<cr>", desc = "Aider: Read File" },
       { "<leader>as", "<cmd>Aider send<cr>", desc = "Aider: Send", mode = { "n", "v" } },
       { "<leader>at", "<cmd>Aider toggle<cr>", desc = "Aider: Open Terminal " },
     },

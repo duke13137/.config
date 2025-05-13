@@ -94,21 +94,6 @@ return {
   },
 
   {
-    "williamboman/mason.nvim",
-    version = "1.11.0",
-    opts = {
-      ensure_installed = {
-        "clojure-lsp"
-      },
-    },
-  },
-
-  {
-    "williamboman/mason-lspconfig.nvim",
-    version = "1.32.0"
-  },
-
-  {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = false }
