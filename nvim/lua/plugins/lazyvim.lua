@@ -144,4 +144,12 @@ return {
     },
   },
 
+  {
+    "jonboh/nvim-dap-rr", dependencies = {"nvim-dap", "telescope.nvim"},
+    config = function()
+      local dap = require('dap')
+      local rr = require('nvim-dap-rr')
+      table.insert(dap.configurations.c, rr.get_config())
+    end
+  },
 }
