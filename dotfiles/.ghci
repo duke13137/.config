@@ -28,11 +28,6 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 :set -fsort-by-subsumption-hole-fits
 :set -funclutter-valid-hole-fits
 
-:set -fdefer-type-errors
-:set -fno-defer-typed-holes
-:set -Werror=deferred-type-errors
-:set -Werror=deferred-out-of-scope-variables
-
 :set -ferror-spans
 :set -freverse-errors
 :set -fno-show-error-context

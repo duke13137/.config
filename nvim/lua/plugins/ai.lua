@@ -30,7 +30,7 @@ return {
     opts = {
       args = {
         "--model",
-        "gemini",
+        "flash",
         "--no-analytics",
         "--no-auto-commits",
         "--yes-always",
