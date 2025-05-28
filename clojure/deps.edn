@@ -72,24 +72,38 @@
  ;; User alias definitions
 
  :aliases
- {
+ {;; ---------------------------------------------------
+  ;; clj -M:new app|lib|pom|scratch|template --name namespace/core --target-dir proj
+  :new {:deps {org.babashka/cli {:mvn/version "RELEASE"}
+               io.github.seancorfield/deps-new {:git/tag "v0.9.0"
+                                                :git/sha "da2f764"}}
+        :ns-default org.corfield.new
+        :exec-args {} ;; insert default arguments here
+        :main-opts ["-m" "babashka.cli.exec"]}
+
+  ;; https://github.com/tonsky/uberdeps
+  :uberjar
+  {:replace-deps {uberdeps/uberdeps  {:mvn/version "RELEASE"}}
+   :replace-paths []
+   :main-opts ["-m" "uberdeps.uberjar"]}
+
   ;; ---------------------------------------------------
   ;; Development environment
 
-  :reload
-  {:extra-paths ["dev" "test"]
-   :extra-deps  {com.fulcrologic/guardrails   {:mvn/version "RELEASE"}
-                 com.taoensso/telemere        {:mvn/version "RELEASE"}
-                 criterium/criterium          {:mvn/version "RELEASE"}
-                 metosin/malli                {:mvn/version "RELEASE"}
-                 nubank/matcher-combinators   {:mvn/version "RELEASE"}
-                 org.clojure/test.check       {:mvn/version "RELEASE"}
-                 org.slf4j/slf4j-nop          {:mvn/version "RELEASE"}
-                 ;; live reload java/junit!
-                 virgil/virgil                {:mvn/version "RELEASE"}
-                 org.assertj/assertj-core     {:mvn/version "RELEASE"}
-                 org.mockito/mockito-core     {:mvn/version "RELEASE"}
-                 org.junit.jupiter/junit-jupiter           {:mvn/version "RELEASE"}
+  :dev
+  {:extra-paths ["dev"]
+   :extra-deps  {com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
+                 com.taoensso/telemere         {:mvn/version "RELEASE"}
+                 com.taoensso/tufte            {:mvn/version "RELEASE"}
+                 functionalbytes/redelay       {:mvn/version "RELEASE"}
+                 io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
+                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
+                 nubank/matcher-combinators    {:mvn/version "RELEASE"}
+                 org.clojure/test.check        {:mvn/version "RELEASE"}
+                 org.clj-commons/pretty        {:mvn/version "RELEASE"}
+                 org.slf4j/slf4j-nop           {:mvn/version "RELEASE"}
+                 virgil/virgil                 {:mvn/version "RELEASE"}
+                 org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
                  org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}}}
 
   :flow
@@ -97,24 +111,16 @@
    :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.0-2"}
                 com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
    :jvm-opts ["-Dflowstorm.startRecording=false"
+              "-Dflowstorm.styles=/tmp/flowstorm.css"
+              "-Dflowstorm.theme=dark"
               "-Dclojure.storm.instrumentEnable=true"
               "-Dclojure.storm.instrumentAutoPrefixes=true"]}
 
-  ;; ---------------------------------------------------
-  ;; deps-new and Practicalli Project Teamplates
-  ;; clojure -T:new :template template/name :name project/name
-  :new
-  {:replace-deps {io.github.seancorfield/deps-new         {:git/tag "v0.8.0" :git/sha "2f96530"}
-                  io.github.practicalli/project-templates {:git/tag "2024-09-09" :git/sha "0d11ca4"}}
-   :exec-fn      org.corfield.new/create
-   :exec-args    {:template practicalli/minimal
-                  :name practicalli/playground}}
-
-  ;; https://github.com/tonsky/uberdeps
-  :uberjar
-  {:replace-deps {uberdeps/uberdeps  {:mvn/version "RELEASE"}}
-     :replace-paths []
-     :main-opts ["-m" "uberdeps.uberjar"]}
+  :mcp
+  {:deps {org.slf4j/slf4j-nop     {:mvn/version "2.0.16"}
+          com.bhauman/clojure-mcp {:local/root "/Users/duke/github/clojure-mcp"}}
+   :exec-fn clojure-mcp.main/start-mcp-server
+   :exec-args {:port 9999}}
 
   ;; End of Development environment
   ;; ---------------------------------------------------
@@ -123,18 +129,14 @@
   ;; Running a REPL
 
   :repl
-  {:extra-deps {cider/cider-nrepl             {:mvn/version "RELEASE"}
-                com.github.gnl/playback       {:mvn/version "RELEASE"}
-                djblue/portal                 {:mvn/version "RELEASE"}
-                nrepl/nrepl                   {:mvn/version "RELEASE"}
-                io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
-                io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
-                org.clj-commons/pretty        {:mvn/version "RELEASE"}
-                vvvvalvalval/scope-capture    {:mvn/version "RELEASE"}}
-   :jvm-opts   ["-Xmx2g" "-Djdk.attach.allowAttachSelf"
-                "-Dflowstorm.theme=dark"
-                "-Dflowstorm.styles=/tmp/flowstorm.css"]
+  {:extra-deps {cider/cider-nrepl          {:mvn/version "RELEASE"}
+                nrepl/nrepl                {:mvn/version "RELEASE"}
+                djblue/portal              {:mvn/version "RELEASE"}
+                com.github.gnl/playback    {:mvn/version "RELEASE"}
+                vvvvalvalval/scope-capture {:mvn/version "RELEASE"}}
+   :jvm-opts   ["-Xmx2g" "-Djdk.attach.allowAttachSelf"]
    :main-opts  ["--main" "nrepl.cmdline"
+                "--port" "9999"
                 "--middleware" "[cider.nrepl/cider-middleware]"
                 "--interactive"]}
 
@@ -216,12 +218,6 @@
    :extra-deps  {lambdaisland/kaocha      {:mvn/version "RELEASE"}
                  lambdaisland/kaocha-cljs {:mvn/version "RELEASE"}}
    :main-opts   ["--main" "kaocha.runner" "unit-cljs"]}
-
-  ;; Babashka cli - run any clojure function from the command line
-  ;; clojure -M:cli clojure.core/prn --flag --option 1
-  :cli
-  {:extra-deps {org.babashka/cli  {:mvn/version "RELEASE"}}
-   :main-opts ["-m" "babashka.cli.exec"]}
 
   ;; End of Test runners
   ;; ---------------------------------------------------
