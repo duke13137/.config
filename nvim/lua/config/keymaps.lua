@@ -197,3 +197,14 @@ map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
 map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+map("n", "<leader>r", function()
+  vim.ui.input({}, function(c)
+      if c and c ~= "" then
+        vim.cmd("noswapfile vnew")
+        vim.bo.buftype = "nofile"
+        vim.bo.bufhidden = "wipe"
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.systemlist(c))
+      end
+  end)
+end, { desc = "Run cmd"})
