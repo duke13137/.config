@@ -24,7 +24,7 @@ dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" e
 
 :set -fmax-valid-hole-fits=6
 :set -fmax-refinement-hole-fits=3
-:set -fno-refinement-level-hole-fits
+:set -frefinement-level-hole-fits=1
 :set -fsort-by-subsumption-hole-fits
 :set -funclutter-valid-hole-fits
 

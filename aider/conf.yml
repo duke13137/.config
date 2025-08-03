@@ -440,3 +440,4 @@ editor: code
 alias:
   - "gemini:gemini/gemini-2.5-pro"
   - "flash:gemini/gemini-2.5-flash"
+  - "qwen3:openrouter/qwen/qwen3-coder:free"
