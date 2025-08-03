@@ -1,15 +1,17 @@
 {:paths ["."]
  :deps {org.clojure/clojure {:mvn/version "RELEASE"}
+        funcool/promesa {:mvn/version "12.0.753"}
+
         com.fulcrologic/guardrails {:mvn/version "RELEASE"}
-
-        com.rpl/specter {:mvn/version "RELEASE"}
-        funcool/promesa {:mvn/version "RELEASE"}
-        metosin/malli {:mvn/version "RELEASE"}
-        org.clojars.askonomm/ruuter {:mvn/version "RELEASE"}
-
-        djblue/portal {:mvn/version "RELEASE"}
         com.github.gnl/playback {:mvn/version "RELEASE"}
+        djblue/portal {:mvn/version "RELEASE"}
         vvvvalvalval/scope-capture {:mvn/version "RELEASE"}
+
+        dev.data-star.clojure/sdk {:mvn/version "RELEASE"}
+        dev.data-star.clojure/http-kit {:mvn/version "RELEASE"}
+        dev.data-star.clojure/malli-schemas {:mvn/version "RELEASE"}
+        org.clojars.askonomm/ruuter {:mvn/version "RELEASE"}
+        ring/ring-core {:mvn/version "RELEASE"}
 
         com.grzm/awyeah-api {:git/url "https://github.com/grzm/awyeah-api"
                              :git/sha "e5513349a2fd8a980a62bbe0d45a0d55bfcea141"}
