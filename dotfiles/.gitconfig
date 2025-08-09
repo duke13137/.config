@@ -1,13 +1,8 @@
-# This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
 	name = Duke
 	email = duke@home.com
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+[column]
+	ui = auto
 [init]
 	defaultBranch = main
 [diff]
@@ -15,16 +10,23 @@
 	colorMoved = plain
 	mnemonicPrefix = true
 	renames = true
-[merge]
-	conflictstyple = diff3
 [fetch]
 	prune = true
 	pruneTags = true
 	all = true
+[merge]
+	conflictstyle = diff3
+[pull]
+	rebase = true
 [push]
 	autoSetupRemote = true
 	followTags = true
-[pull]
-	ff = only
+[rebase]
+	autoStash = true
+	autoSquash = true
+	updateRefs = true
+[rerere]
+	enabled = true
 [alias]
-	lg = log --graph --decorate --oneline
+  rsync = "!f() { BASE=${1:-main}; git fetch origin $BASE:$BASE && git rebase origin/$BASE; }; f"
+  fixup = "!f() { git commit --fixup=$1 --no-verify && git -c sequence.editor=: rebase -i --autosquash $1^; }; f"
