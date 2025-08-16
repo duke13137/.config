@@ -10,7 +10,7 @@ alias gdi='git diff'
 alias gsh='git show'
 alias push='git push'
 alias pull='git pull'
-alias stash='git stash'
+alias rebase='git rebase'
 
 alias nv=nvim
 alias py=python3
