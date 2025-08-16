@@ -1,31 +1,30 @@
-[alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-[pull]
-	rebase = true
-[init]
-	defaultBranch = main
 [user]
-	name = duke
+	name = Duke
 	email = duke@home.com
-[rebase]
-	autoStash = true
-	autoSquash = true
-	updateRefs = true
 [column]
 	ui = auto
+[init]
+	defaultBranch = main
 [diff]
 	algorithm = histogram
-	renames = true
+	colorMoved = plain
 	mnemonicPrefix = true
-[push]
-	autoSetupRemote = true
+	renames = true
 [fetch]
 	prune = true
 	pruneTags = true
 	all = true
+[merge]
+	conflictstyle = diff3
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+	followTags = true
+[rebase]
+	autoStash = true
+	autoSquash = true
+	updateRefs = true
 [rerere]
 	enabled = true
 [alias]
@@ -34,4 +33,4 @@
   ci = commit
   st = status
   sync = "!f() { \\\n  BASE=${1:-main}; \\\n  git fetch origin $BASE && git rebase origin/$BASE; \\\n}; f"
-  fixup = "!f() { git commit --fixup=\"$1\" --no-verify && git rebase --autosquash \"$1^\"; }; f"
+  fixup = "!f() { git commit --fixup=$1 --no-verify && git -c sequence.editor=: rebase -i --autosquash $1^; }; f"

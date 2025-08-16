@@ -1,5 +1,5 @@
 alias ga='git add'
-alias gl='git log --oneline --graph'
+alias gl='git log --oneline --graph --decorate'
 alias gs='git status'
 alias gbr='git branch'
 alias gca='git commit -a --amend --no-edit'
@@ -10,7 +10,7 @@ alias gdi='git diff'
 alias gsh='git show'
 alias push='git push'
 alias pull='git pull'
-alias stash='git stash'
+alias rebase='git rebase'
 
 alias nv=nvim
 alias py=python3
