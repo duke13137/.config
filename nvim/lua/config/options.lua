@@ -16,5 +16,3 @@ opt.listchars = {
   leadmultispace = "│ ",
   tab = "│ ",
 }
-
-vim.lsp.set_log_level("OFF")
