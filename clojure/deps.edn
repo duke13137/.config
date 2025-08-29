@@ -72,7 +72,31 @@
  ;; User alias definitions
 
  :aliases
- {;; ---------------------------------------------------
+ {:lib/lang
+  {:extra-deps {com.cnuernber/charred   {:mvn/version "RELEASE"}
+                com.rpl/specter         {:mvn/version "RELEASE"}
+                datalevin/datalevin     {:mvn/version "RELEASE"}
+                dom-top/dom-top         {:mvn/version "RELEASE"}
+                funcool/promesa         {:mvn/version "RELEASE"}
+                io.lacuna/bifurcan      {:mvn/version "RELEASE"}}}
+
+  :lib/logging
+  {:extra-deps {com.taoensso/telemere  {:mvn/version "RELEASE"}
+                com.taoensso/trove     {:mvn/version "RELEASE"}
+                com.taoensso/tufte     {:mvn/version "RELEASE"}
+                com.taoensso/truss     {:mvn/version "RELEASE"}}}
+  :lib/aws
+  {:extra-deps {com.cognitect.aws/api       {:mvn/version "RELEASE"}
+                com.cognitect.aws/endpoints {:mvn/version "RELEASE"}
+                com.cognitect.aws/s3        {:mvn/version "RELEASE"}}}
+
+  :lib/web
+  {:extra-deps {com.github.brettatoms/zodiac {:mvn/version "RELEASE"}
+                dev.data-star.clojure/sdk    {:mvn/version "RELEASE"}
+                dev.data-star.clojure/ring   {:mvn/version "RELEASE"}
+                dev.data-star.clojure/malli-schemas {:mvn/version "RELEASE"}}}
+
+  ;; ---------------------------------------------------
   ;; clj -M:new app|lib|pom|scratch|template --name namespace/core --target-dir proj
   :new {:deps {org.babashka/cli {:mvn/version "RELEASE"}
                io.github.seancorfield/deps-new {:git/tag "v0.10.0"
@@ -93,8 +117,6 @@
   :dev
   {:extra-paths ["dev"]
    :extra-deps  {com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
-                 com.taoensso/telemere         {:mvn/version "RELEASE"}
-                 com.taoensso/tufte            {:mvn/version "RELEASE"}
                  functionalbytes/redelay       {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
                  io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
