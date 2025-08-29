@@ -7,6 +7,18 @@ if vim.g.vscode then
   return
 end
 
+local runners = require("conjure.client.clojure.nrepl.action")
+runners["test-runners"].lazytest = {
+  ["namespace"] = "lazytest.repl",
+  ["all-fn"] = "run-all-tests",
+  ["ns-fn"] = "run-tests",
+  ["single-fn"] = "run-test-var",
+  ["default-call-suffix"] = "",
+  ["name-prefix"] = "#'",
+  ["name-suffix"] = "",
+}
+vim.g["conjure#client#clojure#nrepl#test#runner"] = "lazytest"
+
 local wk = require("which-key")
 wk.add({
   { "<localleader>c", group = "connect" },

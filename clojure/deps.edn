@@ -72,7 +72,32 @@
  ;; User alias definitions
 
  :aliases
- {;; ---------------------------------------------------
+ {:lib/lang
+  {:extra-deps {com.aphyr/bifurcan-clj  {:mvn/version "RELEASE"}
+                com.cnuernber/charred   {:mvn/version "RELEASE"}
+                com.rpl/specter         {:mvn/version "RELEASE"}
+                datalevin/datalevin     {:mvn/version "RELEASE"}
+                dom-top/dom-top         {:mvn/version "RELEASE"}
+                funcool/promesa         {:mvn/version "RELEASE"}
+                juji/editscript         {:mvn/version "RELEASE"}}}
+
+  :lib/logging
+  {:extra-deps {com.taoensso/telemere  {:mvn/version "RELEASE"}
+                com.taoensso/trove     {:mvn/version "RELEASE"}
+                com.taoensso/tufte     {:mvn/version "RELEASE"}
+                com.taoensso/truss     {:mvn/version "RELEASE"}}}
+
+  :lib/aws
+  {:extra-deps {com.cognitect.aws/api       {:mvn/version "RELEASE"}
+                com.cognitect.aws/endpoints {:mvn/version "RELEASE"}
+                com.cognitect.aws/s3        {:mvn/version "RELEASE"}}}
+
+  :lib/web
+  {:extra-deps {com.github.brianium/datastar.wow {:mvn/version "RELEASE"}
+                dev.data-star.clojure/http-kit   {:mvn/version "RELEASE"}
+                dev.data-star.clojure/ring       {:mvn/version "RELEASE"}}}
+
+  ;; ---------------------------------------------------
   ;; clj -M:new app|lib|pom|scratch|template --name namespace/core --target-dir proj
   :new {:deps {org.babashka/cli {:mvn/version "RELEASE"}
                io.github.seancorfield/deps-new {:git/tag "v0.10.0"
@@ -93,15 +118,14 @@
   :dev
   {:extra-paths ["dev"]
    :extra-deps  {com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
-                 com.taoensso/telemere         {:mvn/version "RELEASE"}
-                 com.taoensso/tufte            {:mvn/version "RELEASE"}
                  functionalbytes/redelay       {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
                  io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
-                 nubank/matcher-combinators    {:mvn/version "RELEASE"}
+                 io.github.noahtheduke/lazytest {:mvn/version "RELEASE"}
                  org.clojure/test.check        {:mvn/version "RELEASE"}
                  org.clj-commons/pretty        {:mvn/version "RELEASE"}
                  org.slf4j/slf4j-nop           {:mvn/version "RELEASE"}
+                 ring/ring-mock                {:mvn/version "RELEASE"}
                  virgil/virgil                 {:mvn/version "RELEASE"}
                  org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
                  org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}}}
@@ -177,15 +201,12 @@
   ;; ---------------------------------------------------
   ;; Test runners
 
-  ;; Cognitect test-runner
-  ;; https://github.com/cognitect-labs/test-runner
-  ;; clojure -X:test/cognitect
-  :test/cognitect
-  {:extra-paths ["test"]
-   :extra-deps  {io.github.cognitect-labs/test-runner
-                 {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
-   :main-opts   ["--main" "cognitect.test-runner"]
-   :exec-fn cognitect.test-runner.api/test}
+  ;; https://github.com/NoahTheDuke/lazytest
+  ;; clojure -M:test --watch [options] [path...]
+  :test
+  {:extra-deps {io.github.noahtheduke/lazytest {:mvn/version "RELEASE"}}
+   :extra-paths ["test"]
+   :main-opts ["-m" "lazytest.main"]}
 
   ;; kaocha - comprehensive test runner for Clojure/Script
   ;; tests.edn should be created for each project
