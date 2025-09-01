@@ -8,7 +8,7 @@
     "editor.acceptSuggestionOnEnter": "off",
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.formatOnSave": true,
-    "editor.minimap.autohide": true,
+    "editor.minimap.autohide": "mouseover",
     "editor.scrollBeyondLastLine": false,
     "editor.tabCompletion": "on",
     "extensions.ignoreRecommendations": true,
@@ -44,9 +44,9 @@
     "terminal.integrated.macOptionIsMeta": true,
     "terminal.integrated.sendKeybindingsToShell": true,
     "workbench.activityBar.location": "top",
+    "workbench.colorTheme": "Night Owl (No Italics)",
     "workbench.editor.editorActionsLocation": "titleBar",
     "workbench.editor.showTabs": "none",
-    "workbench.colorTheme": "Night Owl (No Italics)",
     "workbench.iconTheme": "material-icon-theme",
     "calva.autoEvaluateCode": {
         "onConnect": {
@@ -182,8 +182,14 @@
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
     },
-    "vim.hlsearch": true,
+    "vim.enableNeovim": true,
     "vim.sneak": true,
+    "vim.surround": true,
+    "vim.highlightedyank.enable": true,
+    "vim.hlsearch": true,
+    "vim.leader": " ",
+    "vim.searchMatchTextColor": "yellow",
+    "vim.substitutionTextColor": "yellow",
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": false,
     "vim.handleKeys": {
@@ -203,7 +209,7 @@
             "commands": []
         },
         {
-            "key": [
+            "before": [
                 "u"
             ],
             "commands": [
@@ -211,7 +217,7 @@
             ]
         },
         {
-            "key": [
+            "before": [
                 "c-r"
             ],
             "commands": [
@@ -219,34 +225,10 @@
             ]
         },
     ],
-    "pgsql.serverGroups": [
-        {
-            "name": "Servers",
-            "id": "40CCC1BE-1DEC-4EA9-86C5-AFE293E021D9",
-            "isDefault": true
-        }
+    "roo-cline.allowedCommands": [
+        "git log",
+        "git diff",
+        "git show",
     ],
-    "pgsql.connections": [
-        {
-            "id": "3E401B32-D86F-4C46-B580-66E5012C2AD1",
-            "groupId": "40CCC1BE-1DEC-4EA9-86C5-AFE293E021D9",
-            "authenticationType": "SqlLogin",
-            "connectTimeout": 15,
-            "applicationName": "vscode-pgsql",
-            "clientEncoding": "utf8",
-            "sslmode": "prefer",
-            "server": "localhost",
-            "user": "postgres",
-            "password": "",
-            "database": "postgres",
-            "profileName": "docker",
-            "port": "5432",
-            "hostaddr": "127.0.0.1",
-            "savePassword": true,
-            "expiresOn": 0,
-            "profileSource": 0,
-            "displayName": "postgres, postgres (postgres)"
-        }
-    ],
-    "redhat.telemetry.enabled": false,
+    "roo-cline.deniedCommands": [],
 }
