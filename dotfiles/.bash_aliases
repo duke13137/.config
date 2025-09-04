@@ -1,11 +1,16 @@
+alias l=ls
+alias la=lsa
+alias ll=lta
+
 alias ga='git add'
 alias gl='git log --oneline --graph --decorate'
 alias gs='git status'
 alias gbr='git branch'
-alias gca='git commit -a --amend --no-edit'
+alias gcam='git commit -a --amend --no-edit'
 alias gcb='git switch'
-alias gci='git commit'
+alias gci='git commit -m'
 alias gco='git restore'
+alias gcp='git cherry-pick'
 alias gdi='git diff'
 alias gsh='git show'
 alias push='git push'
