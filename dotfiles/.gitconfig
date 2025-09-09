@@ -28,5 +28,5 @@
 [rerere]
 	enabled = true
 [alias]
-  sync = "!f() { \\\n  BASE=${1:-main}; \\\n  git fetch origin $BASE && git rebase origin/$BASE; \\\n}; f"
+  rsync = "!f() { BASE=${1:-main}; git fetch origin $BASE:$BASE && git rebase origin/$BASE; }; f"
   fixup = "!f() { git commit --fixup=$1 --no-verify && git -c sequence.editor=: rebase -i --autosquash $1^; }; f"
