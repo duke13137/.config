@@ -58,15 +58,9 @@ return {
   },
 
   {
-    "PaterJason/nvim-treesitter-sexp",
-    event = "LazyFile",
-    opts = {
-      keymaps = {
-        motions = {
-          prev_top_level = "][",
-          next_top_level = "[]",
-        },
-      },
-    },
+    "julienvincent/nvim-paredit",
+    config = function()
+      require("nvim-paredit").setup()
+    end,
   },
 }

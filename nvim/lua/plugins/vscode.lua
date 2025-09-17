@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("User", {
 
 return {
   {
-    "duck13137/LazyVim",
+    "LazyVim/LazyVim",
     config = function(_, opts)
       opts = opts or {}
       -- disable the colorscheme
@@ -67,17 +67,5 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = { highlight = { enable = false } },
-  },
-  {
-    "PaterJason/nvim-treesitter-sexp",
-    vscode = true,
-    opts = {
-      keymaps = {
-        motions = {
-          prev_top_level = "][",
-          next_top_level = "[]",
-        },
-      },
-    },
   },
 }
