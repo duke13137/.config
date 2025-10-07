@@ -78,8 +78,7 @@
                 com.rpl/specter         {:mvn/version "RELEASE"}
                 datalevin/datalevin     {:mvn/version "RELEASE"}
                 dom-top/dom-top         {:mvn/version "RELEASE"}
-                funcool/promesa         {:mvn/version "RELEASE"}
-                juji/editscript         {:mvn/version "RELEASE"}}}
+                funcool/promesa         {:mvn/version "RELEASE"}}}
 
   :lib/logging
   {:extra-deps {com.taoensso/telemere  {:mvn/version "RELEASE"}
@@ -91,11 +90,6 @@
   {:extra-deps {com.cognitect.aws/api       {:mvn/version "RELEASE"}
                 com.cognitect.aws/endpoints {:mvn/version "RELEASE"}
                 com.cognitect.aws/s3        {:mvn/version "RELEASE"}}}
-
-  :lib/web
-  {:extra-deps {com.github.brianium/datastar.wow {:mvn/version "RELEASE"}
-                dev.data-star.clojure/http-kit   {:mvn/version "RELEASE"}
-                dev.data-star.clojure/ring       {:mvn/version "RELEASE"}}}
 
   ;; ---------------------------------------------------
   ;; clj -M:new app|lib|pom|scratch|template --name namespace/core --target-dir proj
