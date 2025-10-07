@@ -79,7 +79,8 @@
                 datalevin/datalevin     {:mvn/version "RELEASE"}
                 dom-top/dom-top         {:mvn/version "RELEASE"}
                 funcool/promesa         {:mvn/version "RELEASE"}
-                juji/editscript         {:mvn/version "RELEASE"}}}
+                functionalbytes/redelay       {:mvn/version "RELEASE"}
+                io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}}}
 
   :lib/logging
   {:extra-deps {com.taoensso/telemere  {:mvn/version "RELEASE"}
@@ -92,16 +93,11 @@
                 com.cognitect.aws/endpoints {:mvn/version "RELEASE"}
                 com.cognitect.aws/s3        {:mvn/version "RELEASE"}}}
 
-  :lib/web
-  {:extra-deps {com.github.brianium/datastar.wow {:mvn/version "RELEASE"}
-                dev.data-star.clojure/http-kit   {:mvn/version "RELEASE"}
-                dev.data-star.clojure/ring       {:mvn/version "RELEASE"}}}
-
   ;; ---------------------------------------------------
   ;; clj -M:new app|lib|pom|scratch|template --name namespace/core --target-dir proj
   :new {:deps {org.babashka/cli {:mvn/version "RELEASE"}
-               io.github.seancorfield/deps-new {:git/tag "v0.10.0"
-                                                :git/sha "20e82f8"}}
+               io.github.seancorfield/deps-new {:git/tag "v0.10.1"
+                                                :git/sha "a90029c"}}
         :ns-default org.corfield.new
         :exec-args {} ;; insert default arguments here
         :main-opts ["-m" "babashka.cli.exec"]}
@@ -118,21 +114,18 @@
   :dev
   {:extra-paths ["dev"]
    :extra-deps  {com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
-                 functionalbytes/redelay       {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
-                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
                  io.github.noahtheduke/lazytest {:mvn/version "RELEASE"}
                  org.clojure/test.check        {:mvn/version "RELEASE"}
                  org.clj-commons/pretty        {:mvn/version "RELEASE"}
                  org.slf4j/slf4j-nop           {:mvn/version "RELEASE"}
-                 ring/ring-mock                {:mvn/version "RELEASE"}
                  virgil/virgil                 {:mvn/version "RELEASE"}
                  org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
                  org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}}}
 
   :flow
   {:classpath-overrides {org.clojure/clojure nil}
-   :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.0-2"}
+   :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.3-4"}
                 com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
    :jvm-opts ["-Dflowstorm.startRecording=false"
               "-Dflowstorm.styles=/tmp/flowstorm.css"
@@ -268,9 +261,9 @@
   ;; Libraries
 
   ;; - report project dependencies that have newer versions available:
-  ;; cd project-directory && clojure -T:search/outdated
+  ;; cd project-directory && clojure -T:deps/outdated
   ;; - update library versions in this deps.edn file:
-  ;; cd $XDG_CONFIG_HOME/clojure && clojure -T:search/outdated
+  ;; cd $XDG_CONFIG_HOME/clojure && clojure -T:deps/outdated
   :deps/outdated
   {:replace-paths ["."]
    :replace-deps  {com.github.liquidz/antq {:mvn/version "RELEASE"}
@@ -288,7 +281,7 @@
 
   ;; GraphViz of project dependencies
   ;; https://github.com/clojure/tools.deps.graph
-  ;; clojure -T:graph/deps
+  ;; clojure -T:deps/graph
   :deps/graph
   {:replace-paths []
    :replace-deps  {org.clojure/tools.deps.graph {:mvn/version "RELEASE"}}
