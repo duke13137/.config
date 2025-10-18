@@ -389,11 +389,6 @@
 
 ## specify a read-only file (can be used multiple times)
 #read: xxx
-## Specify multiple values like this:
-#read:
-#  - xxx
-#  - yyy
-#  - zzz
 
 ## Use VI editing mode in the terminal (default: False)
 #vim: false
@@ -441,3 +436,9 @@ alias:
   - "gemini:gemini/gemini-2.5-pro"
   - "flash:gemini/gemini-2.5-flash"
   - "qwen3:openrouter/qwen/qwen3-coder:free"
+
+read:
+  - README.md
+  - AGENTS.md
+  - SKILL.md
+  - PROJECT_SUMMARY.md
