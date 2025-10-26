@@ -100,4 +100,9 @@ return {
     },
   },
 
+  {
+    "preservim/tagbar",
+    keys = { { "<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" } },
+  },
+
 }
