@@ -5,8 +5,6 @@
 font-family = "SF Mono"
 font-size = 16
 
-# Comments start with a `#` and are only valid on their own line.
-# Blank lines are ignored!
 keybind = global:cmd+/=toggle_quick_terminal
 keybind = cmd+p=toggle_command_palette
 quick-terminal-animation-duration = 0.1

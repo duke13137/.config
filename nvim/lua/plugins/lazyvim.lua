@@ -26,6 +26,11 @@ return {
   },
 
   {
+    "preservim/tagbar",
+    keys = { { "<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" } },
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
