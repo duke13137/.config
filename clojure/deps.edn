@@ -72,32 +72,11 @@
  ;; User alias definitions
 
  :aliases
- {:lib/lang
-  {:extra-deps {com.aphyr/bifurcan-clj  {:mvn/version "RELEASE"}
-                com.cnuernber/charred   {:mvn/version "RELEASE"}
-                com.rpl/specter         {:mvn/version "RELEASE"}
-                datalevin/datalevin     {:mvn/version "RELEASE"}
-                dom-top/dom-top         {:mvn/version "RELEASE"}
-                funcool/promesa         {:mvn/version "RELEASE"}
-                functionalbytes/redelay       {:mvn/version "RELEASE"}
-                io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}}}
-
-  :lib/logging
-  {:extra-deps {com.taoensso/telemere  {:mvn/version "RELEASE"}
-                com.taoensso/trove     {:mvn/version "RELEASE"}
-                com.taoensso/tufte     {:mvn/version "RELEASE"}
-                com.taoensso/truss     {:mvn/version "RELEASE"}}}
-
-  :lib/aws
-  {:extra-deps {com.cognitect.aws/api       {:mvn/version "RELEASE"}
-                com.cognitect.aws/endpoints {:mvn/version "RELEASE"}
-                com.cognitect.aws/s3        {:mvn/version "RELEASE"}}}
-
-  ;; ---------------------------------------------------
+ {;; ---------------------------------------------------
   ;; clj -M:new app|lib|pom|scratch|template --name namespace/core --target-dir proj
   :new {:deps {org.babashka/cli {:mvn/version "RELEASE"}
-               io.github.seancorfield/deps-new {:git/tag "v0.10.1"
-                                                :git/sha "a90029c"}}
+               io.github.seancorfield/deps-new {:git/tag "v0.10.2"
+                                                :git/sha "3153351"}}
         :ns-default org.corfield.new
         :exec-args {} ;; insert default arguments here
         :main-opts ["-m" "babashka.cli.exec"]}
@@ -114,7 +93,9 @@
   :dev
   {:extra-paths ["dev"]
    :extra-deps  {com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
+                 functionalbytes/redelay       {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
+                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
                  io.github.noahtheduke/lazytest {:mvn/version "RELEASE"}
                  org.clojure/test.check        {:mvn/version "RELEASE"}
                  org.clj-commons/pretty        {:mvn/version "RELEASE"}
@@ -288,4 +269,27 @@
    :ns-default    clojure.tools.deps.graph
    :exec-fn       graph
    :exec-args     {:output "project-dependencies-graph.png"
-                   :size   true}}}}
+                   :size   true}}
+
+  :lib/lang
+  {:extra-deps {org.clojure/core.async        {:mvn/version "RELEASE"}
+                org.clojure/core.match        {:mvn/version "RELEASE"}
+                org.clojure/core.rrb-vector   {:mvn/version "RELEASE"}
+                org.clojure/data.priority-map {:mvn/version "RELEASE"}
+                org.flatland/ordered          {:mvn/version "RELEASE"}
+                io.github.tonsky/fast-edn     {:mvn/version "RELEASE"}
+                cheshire/cheshire             {:mvn/version "RELEASE"}
+                com.rpl/specter               {:mvn/version "RELEASE"}
+                com.taoensso/truss            {:mvn/version "RELEASE"}
+                dom-top/dom-top               {:mvn/version "RELEASE"}
+                funcool/promesa               {:mvn/version "RELEASE"}}}
+
+  :lib/logging
+  {:extra-deps {com.taoensso/telemere         {:mvn/version "RELEASE"}
+                com.taoensso/trove            {:mvn/version "RELEASE"}
+                com.taoensso/tufte            {:mvn/version "RELEASE"}}}
+
+  :lib/aws
+  {:extra-deps {com.cognitect.aws/api         {:mvn/version "RELEASE"}
+                com.cognitect.aws/endpoints   {:mvn/version "RELEASE"}
+                com.cognitect.aws/s3          {:mvn/version "RELEASE"}}}}}

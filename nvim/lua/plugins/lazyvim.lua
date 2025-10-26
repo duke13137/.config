@@ -100,4 +100,35 @@ return {
     },
   },
 
+  {
+    "jonboh/nvim-dap-rr", dependencies = {"nvim-dap", "telescope.nvim"},
+    config = function()
+      local dap = require('dap')
+      local rr = require('nvim-dap-rr')
+      table.insert(dap.configurations.c, rr.get_config())
+    end
+  },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "folke/snacks.nvim",
+    },
+    lazy = true,
+    cmd = "Neogit",
+    keys = { { "<leader>G", "<cmd>Neogit<cr>", desc = "Neogit" } },
+  },
+
+  {
+    "preservim/tagbar",
+    keys = { { "<leader>ct", "<cmd>TagbarToggle<cr>", desc = "Toggle Tagbar" } },
+  },
+
+  {
+    "mbbill/undotree",
+    dependencies = { "tpope/vim-repeat" },
+  },
+
 }
