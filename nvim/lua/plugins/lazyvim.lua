@@ -57,6 +57,11 @@ return {
   },
 
   {
+    "preservim/tagbar",
+    keys = { { "<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" } },
+  },
+
+  {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {

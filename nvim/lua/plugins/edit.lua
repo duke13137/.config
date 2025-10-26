@@ -42,4 +42,18 @@ return {
       },
     },
   },
+
+  {
+    "mbbill/undotree",
+    dependencies = { "tpope/vim-repeat" },
+  },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "folke/snacks.nvim",
+    },
+  },
 }

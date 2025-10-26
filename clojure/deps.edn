@@ -96,8 +96,8 @@
   ;; ---------------------------------------------------
   ;; clj -M:new app|lib|pom|scratch|template --name namespace/core --target-dir proj
   :new {:deps {org.babashka/cli {:mvn/version "RELEASE"}
-               io.github.seancorfield/deps-new {:git/tag "v0.10.0"
-                                                :git/sha "20e82f8"}}
+               io.github.seancorfield/deps-new {:git/tag "v0.10.1"
+                                                :git/sha "a90029c"}}
         :ns-default org.corfield.new
         :exec-args {} ;; insert default arguments here
         :main-opts ["-m" "babashka.cli.exec"]}
@@ -261,9 +261,9 @@
   ;; Libraries
 
   ;; - report project dependencies that have newer versions available:
-  ;; cd project-directory && clojure -T:search/outdated
+  ;; cd project-directory && clojure -T:deps/outdated
   ;; - update library versions in this deps.edn file:
-  ;; cd $XDG_CONFIG_HOME/clojure && clojure -T:search/outdated
+  ;; cd $XDG_CONFIG_HOME/clojure && clojure -T:deps/outdated
   :deps/outdated
   {:replace-paths ["."]
    :replace-deps  {com.github.liquidz/antq {:mvn/version "RELEASE"}
@@ -281,7 +281,7 @@
 
   ;; GraphViz of project dependencies
   ;; https://github.com/clojure/tools.deps.graph
-  ;; clojure -T:graph/deps
+  ;; clojure -T:deps/graph
   :deps/graph
   {:replace-paths []
    :replace-deps  {org.clojure/tools.deps.graph {:mvn/version "RELEASE"}}
