@@ -1,6 +1,6 @@
 {:paths ["."]
  :deps {org.clojure/clojure {:mvn/version "RELEASE"}
-        funcool/promesa {:mvn/version "12.0.753"}
+        funcool/promesa {:mvn/version "12.0.754"}
 
         com.fulcrologic/guardrails {:mvn/version "RELEASE"}
         com.github.gnl/playback {:mvn/version "RELEASE"}

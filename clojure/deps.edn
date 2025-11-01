@@ -73,20 +73,16 @@
 
  :aliases
  {:lib/lang
-  {:extra-deps {com.aphyr/bifurcan-clj  {:mvn/version "RELEASE"}
-                com.cnuernber/charred   {:mvn/version "RELEASE"}
+  {:extra-deps {com.cnuernber/charred   {:mvn/version "RELEASE"}
                 com.rpl/specter         {:mvn/version "RELEASE"}
-                datalevin/datalevin     {:mvn/version "RELEASE"}
+                com.taoensso/truss      {:mvn/version "RELEASE"}
                 dom-top/dom-top         {:mvn/version "RELEASE"}
-                funcool/promesa         {:mvn/version "RELEASE"}
-                functionalbytes/redelay       {:mvn/version "RELEASE"}
-                io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}}}
+                funcool/promesa         {:mvn/version "RELEASE"}}}
 
   :lib/logging
   {:extra-deps {com.taoensso/telemere  {:mvn/version "RELEASE"}
                 com.taoensso/trove     {:mvn/version "RELEASE"}
-                com.taoensso/tufte     {:mvn/version "RELEASE"}
-                com.taoensso/truss     {:mvn/version "RELEASE"}}}
+                com.taoensso/tufte     {:mvn/version "RELEASE"}}}
 
   :lib/aws
   {:extra-deps {com.cognitect.aws/api       {:mvn/version "RELEASE"}
@@ -114,7 +110,9 @@
   :dev
   {:extra-paths ["dev"]
    :extra-deps  {com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
+                 functionalbytes/redelay       {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
+                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
                  io.github.noahtheduke/lazytest {:mvn/version "RELEASE"}
                  org.clojure/test.check        {:mvn/version "RELEASE"}
                  org.clj-commons/pretty        {:mvn/version "RELEASE"}
@@ -125,7 +123,7 @@
 
   :flow
   {:classpath-overrides {org.clojure/clojure nil}
-   :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.0-2"}
+   :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.3-4"}
                 com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
    :jvm-opts ["-Dflowstorm.startRecording=false"
               "-Dflowstorm.styles=/tmp/flowstorm.css"
