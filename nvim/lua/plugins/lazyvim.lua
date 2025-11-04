@@ -57,11 +57,6 @@ return {
   },
 
   {
-    "preservim/tagbar",
-    keys = { { "<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" } },
-  },
-
-  {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
@@ -112,6 +107,11 @@ return {
       local rr = require('nvim-dap-rr')
       table.insert(dap.configurations.c, rr.get_config())
     end
+  },
+
+  {
+    "preservim/tagbar",
+    keys = { { "<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" } },
   },
 
 }

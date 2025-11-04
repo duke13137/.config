@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("User", {
 
 return {
   {
-    "duck13137/LazyVim",
+    "LazyVim/LazyVim",
     config = function(_, opts)
       opts = opts or {}
       -- disable the colorscheme
