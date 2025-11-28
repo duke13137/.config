@@ -280,13 +280,13 @@
                 io.github.tonsky/fast-edn     {:mvn/version "RELEASE"}
                 cheshire/cheshire             {:mvn/version "RELEASE"}
                 com.rpl/specter               {:mvn/version "RELEASE"}
-                com.taoensso/truss            {:mvn/version "RELEASE"}
                 dom-top/dom-top               {:mvn/version "RELEASE"}
                 funcool/promesa               {:mvn/version "RELEASE"}}}
 
-  :lib/logging
+  :lib/log
   {:extra-deps {com.taoensso/telemere         {:mvn/version "RELEASE"}
                 com.taoensso/trove            {:mvn/version "RELEASE"}
+                com.taoensso/truss            {:mvn/version "RELEASE"}
                 com.taoensso/tufte            {:mvn/version "RELEASE"}}}
 
   :lib/aws
