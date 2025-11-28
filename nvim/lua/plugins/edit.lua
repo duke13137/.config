@@ -42,19 +42,4 @@ return {
       },
     },
   },
-
-  {
-    "mbbill/undotree",
-    dependencies = { "tpope/vim-repeat" },
-  },
-
-  {
-    "NeogitOrg/neogit",
-    keys = { { "<leader>G", "<Cmd>Neogit<CR>", desc = "Neogit" } },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-      "folke/snacks.nvim",
-    },
-  },
 }

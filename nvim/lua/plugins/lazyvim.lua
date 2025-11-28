@@ -110,8 +110,25 @@ return {
   },
 
   {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "folke/snacks.nvim",
+    },
+    lazy = true,
+    cmd = "Neogit",
+    keys = { { "<leader>", "<cmd>Neogit<cr>", desc = "Neogit" } },
+  },
+
+  {
     "preservim/tagbar",
-    keys = { { "<leader>ct", "<Cmd>TagbarToggle<CR>", desc = "Toggle Tagbar" } },
+    keys = { { "<leader>ct", "<cmd>TagbarToggle<cr>", desc = "Toggle Tagbar" } },
+  },
+
+  {
+    "mbbill/undotree",
+    dependencies = { "tpope/vim-repeat" },
   },
 
 }
