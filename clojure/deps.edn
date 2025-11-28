@@ -104,7 +104,7 @@
                  org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
                  org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}}}
 
-  :flow
+  :dbg
   {:classpath-overrides {org.clojure/clojure nil}
    :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.3-4"}
                 com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
@@ -272,21 +272,19 @@
                    :size   true}}
 
   :lib/lang
-  {:extra-deps {org.clojure/core.async        {:mvn/version "RELEASE"}
-                org.clojure/core.match        {:mvn/version "RELEASE"}
-                org.clojure/core.rrb-vector   {:mvn/version "RELEASE"}
+  {:extra-deps {org.clojure/core.rrb-vector   {:mvn/version "RELEASE"}
                 org.clojure/data.priority-map {:mvn/version "RELEASE"}
                 org.flatland/ordered          {:mvn/version "RELEASE"}
                 io.github.tonsky/fast-edn     {:mvn/version "RELEASE"}
                 cheshire/cheshire             {:mvn/version "RELEASE"}
                 com.rpl/specter               {:mvn/version "RELEASE"}
-                com.taoensso/truss            {:mvn/version "RELEASE"}
                 dom-top/dom-top               {:mvn/version "RELEASE"}
                 funcool/promesa               {:mvn/version "RELEASE"}}}
 
-  :lib/logging
+  :lib/log
   {:extra-deps {com.taoensso/telemere         {:mvn/version "RELEASE"}
                 com.taoensso/trove            {:mvn/version "RELEASE"}
+                com.taoensso/truss            {:mvn/version "RELEASE"}
                 com.taoensso/tufte            {:mvn/version "RELEASE"}}}
 
   :lib/aws
