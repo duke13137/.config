@@ -118,7 +118,7 @@ return {
     },
     lazy = true,
     cmd = "Neogit",
-    keys = { { "<leader>", "<cmd>Neogit<cr>", desc = "Neogit" } },
+    keys = { { "<leader>G", "<cmd>Neogit<cr>", desc = "Neogit" } },
   },
 
   {
