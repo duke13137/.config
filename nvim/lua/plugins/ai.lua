@@ -12,6 +12,7 @@ return {
       }
     end,
   },
+
   {
     "GeorgesAlkhouri/nvim-aider",
     dependencies = {
@@ -25,7 +26,7 @@ return {
       { "<leader>ad", "<cmd>Aider drop<cr>", desc = "Aider: Drop File" },
       { "<leader>ar", "<cmd>Aider add readonly<cr>", desc = "Aider: Read File" },
       { "<leader>as", "<cmd>Aider send<cr>", desc = "Aider: Send", mode = { "n", "v" } },
-      { "<leader>at", "<cmd>Aider toggle<cr>", desc = "Aider: Open Terminal " },
+      { "<leader>at", "<cmd>Aider toggle<cr>", desc = "Aider: Toggle Chat" },
     },
     opts = {
       args = {
@@ -39,28 +40,6 @@ return {
       win = {
         position = "right",
         wo = { winbar = "Aider" },
-      },
-    },
-  },
-
-  {
-    "editor-code-assistant/eca-nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    cmd = "EcaChat",
-    keys = {
-      { "<leader>ae", "<cmd>EcaToggle<cr>", desc = "ECA: Toggle sidebar" },
-      { "<leader>af", "<cmd>EcaFocus<cr>", desc = "ECA: Focus sidebar" },
-      { "<leader>ag", "<cmd>EcaChatAddSelection<cr>", desc = "ECA: Add selection", mode = { "n", "v" } },
-    },
-    opts = {
-      debug = false,
-      server_path = "",
-      behavior = {
-        auto_set_keymaps = true,
-        auto_focus_sidebar = true,
       },
     },
   },

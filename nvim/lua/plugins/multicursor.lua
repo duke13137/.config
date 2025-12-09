@@ -9,69 +9,71 @@ return {
     local set = vim.keymap.set
 
     -- Add or skip cursor above/below the main cursor.
-    set({ "n", "v" }, "<M-up>", function()
+    set({ "n", "x" }, "<M-up>", function()
       mc.lineAddCursor(-1)
     end)
-    set({ "n", "v" }, "<M-down>", function()
+    set({ "n", "x" }, "<M-down>", function()
       mc.lineAddCursor(1)
     end)
-    set({ "n", "v" }, "<up>", function()
+    set({ "n", "x" }, "<M-S-up>", function()
       mc.lineSkipCursor(-1)
     end)
-    set({ "n", "v" }, "<down>", function()
+    set({ "n", "x" }, "<M-S-down>", function()
       mc.lineSkipCursor(1)
     end)
 
-    -- Rotate the main cursor.
-    set({ "n", "v" }, "<left>", mc.nextCursor)
-    set({ "n", "v" }, "<right>", mc.prevCursor)
-
-    -- Add and remove cursors with alt + left click.
-    set("n", "<M-leftmouse>", mc.handleMouse)
-
     -- Easy way to add and remove cursors using the main cursor.
-    set({ "n", "v" }, "<M-c>", mc.toggleCursor)
+    set({ "n", "x" }, "<M-x>", mc.toggleCursor)
 
-    -- Delete the main cursor.
-    set({ "n", "v" }, "<M-d>", mc.deleteCursor)
-
-    set("n", "<M-q>", function()
+    set("n", "<M-v>", function()
       if not mc.cursorsEnabled() then
         mc.enableCursors()
       elseif mc.hasCursors() then
         mc.clearCursors()
       else
-        -- Default <esc> handler.
+        mc.restoreCursors()
       end
     end)
 
+    -- Rotate the main cursor.
+    set({ "n", "x" }, "<left>", mc.nextCursor)
+    set({ "n", "x" }, "<right>", mc.prevCursor)
+
+    -- Add and remove cursors with alt + left click.
+    set("n", "<M-leftmouse>", mc.handleMouse)
+
+    set({ "n", "x" }, "gA", mc.matchAllAddCursors, { desc = "Cursor: Add All Match" })
     -- Add or skip adding a new cursor by matching word/selection
-    set({ "n", "v" }, "gb", function()
+    set({ "n", "x" }, "gb", function()
       mc.matchAddCursor(1)
-    end)
-    set({ "n", "v" }, "gB", function()
-      mc.matchAddCursor(-1)
-    end)
+    end, { desc = "Cursor: Add Match Next " })
+    set({ "n", "x" }, "gB", function()
+      mc.matchSkipCursor(1)
+    end, { desc = "Cursor: Skip Match Next" })
 
+    -- Add a cursor and jump to the next/previous search result.
+    set("n", "gj", function()
+      mc.searchAddCursor(1)
+    end, { desc = "Cursor: Add Search Next" })
+    set("n", "gJ", function()
+      mc.searchSkipCursor(1)
+    end, { desc = "Cursor: Skip Search Next" })
     -- Add all matches in the document
-    set({ "n", "v" }, "gA", mc.matchAllAddCursors)
-
-    -- bring back cursors if you accidentally clear them
-    set("n", "gV", mc.restoreCursors)
+    set({ "n", "x" }, "gS", mc.searchAllAddCursors, { desc = "Cursor: Add All Search" })
 
     -- Align cursor columns.
-    set("n", "g|", mc.alignCursors)
+    set("n", "g|", mc.alignCursors, { desc = "Align Cursor Columns" })
 
     -- Append/insert for each line of visual selections.
-    set("v", "I", mc.insertVisual)
-    set("v", "A", mc.appendVisual)
+    set("x", "I", mc.insertVisual)
+    set("x", "A", mc.appendVisual)
 
     -- match new cursors within visual selections by regex.
-    set("v", "M", mc.matchCursors)
+    set("x", "M", mc.matchCursors)
 
     -- Jumplist support
-    set({ "v", "n" }, "<c-i>", mc.jumpForward)
-    set({ "v", "n" }, "<c-o>", mc.jumpBackward)
+    set({ "x", "n" }, "<c-i>", mc.jumpForward)
+    set({ "x", "n" }, "<c-o>", mc.jumpBackward)
 
     -- Customize how cursors look.
     local hl = vim.api.nvim_set_hl
