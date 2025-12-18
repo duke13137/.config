@@ -287,6 +287,11 @@
                 com.taoensso/truss            {:mvn/version "RELEASE"}
                 com.taoensso/tufte            {:mvn/version "RELEASE"}}}
 
+  :lib/python
+  {:extra-deps {clj-python/libpython-clj      {:mvn/version "RELEASE"}
+                techascent/tech.ml.dataset    {:mvn/version "RELEASE"}
+                cnuernber/dtype-next          {:mvn/version "RELEASE"}}}
+
   :lib/aws
   {:extra-deps {com.cognitect.aws/api         {:mvn/version "RELEASE"}
                 com.cognitect.aws/endpoints   {:mvn/version "RELEASE"}

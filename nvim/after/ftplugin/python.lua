@@ -21,11 +21,9 @@ end
 
 local map = vim.keymap.set
 
-map("n", ",i", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("info"))
-map("n", ",ra", ":Repl %load_ext autoreload<CR> | :Repl %autoreload<CR>", options("autoreload on"))
 map("n", ",rc", ":Repl %clear<CR>", options("clear"))
-map("n", ",ri", ":Repl %autoreload 1 -p<CR> | :Repl %aimport<CR>", options("aimport"))
-map("n", ",rl", ":Repl %autoreload 3 -p<CR>", options("autoreload all"))
+map("n", ",ri", ":Repl %pinfo <C-r>=expand('<cexpr>')<CR><CR>", options("info"))
+map("n", ",rl", ":Repl %load_ext autoreload<CR> | :Repl %autoreload 2 -p<CR>", options("autoreload on"))
 map("n", ",ro", ":Repl %autoreload off<CR>", options("autoreload off"))
 map("n", ",rr", ":Repl %run -e -i <C-r>=expand('%:p')<CR><CR>", options("run"))
 map("n", ",rR", ":Repl %reset -f<CR>", options("reset"))

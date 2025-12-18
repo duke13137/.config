@@ -71,18 +71,3 @@ map("n", ",p1", ":ConjureEval (tap> *1)<CR>", options("tap *1"))
 map("n", ",p2", ":ConjureEval (tap> *2)<CR>", options("tap *2"))
 map("n", ",p3", ":ConjureEval (tap> *2)<CR>", options("tap *3"))
 map("n", ",pe", ":ConjureEval ((requiring-resolve 'clj-commons.pretty.repl/pretty-pst))<CR>", options("pst *e*"))
-
-local autocmd = vim.api.nvim_create_autocmd
-autocmd("BufEnter", {
-  pattern = "*.clj",
-  callback = function()
-    vim.g["conjure#client#clojure#nrepl#connection#auto_repl#cmd"] = "bb nrepl-server localhost:$port"
-  end,
-})
-
-autocmd("BufEnter", {
-  pattern = "*.cljs",
-  callback = function()
-    vim.g["conjure#client#clojure#nrepl#connection#auto_repl#cmd"] = "npx nbb nrepl-server :port $port"
-  end,
-})

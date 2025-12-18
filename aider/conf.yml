@@ -433,8 +433,8 @@
 editor: code
 
 alias:
-  - "gemini:gemini/gemini-2.5-pro"
-  - "flash:gemini/gemini-2.5-flash"
+  - "gemini:gemini/gemini-3-pro-preview"
+  - "flash:gemini/gemini-3-flash-preview"
   - "qwen3:openrouter/qwen/qwen3-coder:free"
 
 read:
