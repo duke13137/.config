@@ -1,0 +1,14 @@
+{
+  "providers": {
+    "google": {
+      "key": "${env:GEMINI_API_KEY}"
+    }
+  },
+  "mcpServers": {
+    "clojure-mcp": {
+      "command": "/usr/bin/bash",
+      "args": ["-c", "clojure -Tmcp start :not-cwd true :port 9999"]
+    }
+  },
+  "defaultModel": "google/gemini-3-flash-preview"
+}

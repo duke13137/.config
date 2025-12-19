@@ -6,6 +6,7 @@ return {
     branch = "main",
     ft = { "clojure", "fennel", "lua" },
     dependencies = { "m00qek/baleia.nvim" },
+
     init = function()
       vim.g["conjure#log#hud#width"] = 1.0
       vim.g["conjure#log#hud#enabled"] = true
@@ -24,7 +25,27 @@ return {
       vim.g["conjure#mapping#doc_word"] = "k"
       vim.g["conjure#mapping#def_word"] = "g"
       vim.g["conjure#log#strip_ansi_escape_sequences_line_limit"] = 0
+      vim.filetype.add({
+        extension = {
+          lpy = "clojure",
+        },
+      })
+      vim.api.nvim_create_augroup("conjure_set_state_on_filetype", { clear = true })
+      vim.api.nvim_create_autocmd("BufEnter", {
+        group = "conjure_set_state_on_filetype",
+        pattern = { "*.clj", "*.cljs", "*.lpy" },
+        callback = function()
+          local ext = vim.fn.expand("%:e")
+          vim.cmd("ConjureClientState " .. ext)
+          if ext == "clj" then
+            vim.g["conjure#client#clojure#nrepl#connection#auto_repl#cmd"] = "bb nrepl-server localhost:$port"
+          elseif ext == "cljs" then
+            vim.g["conjure#client#clojure#nrepl#connection#auto_repl#cmd"] = "npx nbb nrepl-server :port $port"
+          end
+        end,
+      })
     end,
+
     config = function()
       local baleia = require("baleia").setup({ line_starts_at = 3 })
       vim.api.nvim_create_autocmd("BufWinEnter", {
