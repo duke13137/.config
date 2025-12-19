@@ -1,6 +1,9 @@
 return {
   {
     "GeorgesAlkhouri/nvim-aider",
+    dependencies = {
+      "folke/snacks.nvim",
+    },
     cmd = "Aider",
     keys = {
       { "<leader>aa", "<cmd>Aider add<cr>", desc = "Aider: Add File" },
@@ -9,10 +12,7 @@ return {
       { "<leader>ad", "<cmd>Aider drop<cr>", desc = "Aider: Drop File" },
       { "<leader>ar", "<cmd>Aider add readonly<cr>", desc = "Aider: Read File" },
       { "<leader>as", "<cmd>Aider send<cr>", desc = "Aider: Send", mode = { "n", "v" } },
-      { "<leader>at", "<cmd>Aider toggle<cr>", desc = "Aider: Open Terminal " },
-    },
-    dependencies = {
-      "folke/snacks.nvim",
+      { "<leader>at", "<cmd>Aider toggle<cr>", desc = "Aider: Toggle Chat" },
     },
     opts = {
       args = {
