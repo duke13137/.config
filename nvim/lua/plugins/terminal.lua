@@ -11,7 +11,7 @@ function M.init()
     command -nargs=1 Repl :call g:send_target.send(["<args>"])
     nnoremap <silent>,<CR>  <Plug>SendLine
     nnoremap <silent>,;     <Plug>Send$
-    xnoremap <silent>,;     <Plug>Send
+    xnoremap <silent>,<CR>  <Plug>Send
   ]])
 
   vim.g.send_disable_mapping = true
