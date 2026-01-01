@@ -1,7 +1,7 @@
 local M = {
   {
     "mrcjkb/haskell-tools.nvim",
-    version = "^6",
+    version = "^7",
     lazy = false,
     cond = function()
       return vim.fn.filereadable("hls.json") ~= 0 and true
@@ -10,7 +10,6 @@ local M = {
       vim.g.haskell_tools = {
         tools = {
           codeLens = { autoRefresh = true },
-          hover = { enable = false },
         },
       }
     end,
@@ -22,6 +21,22 @@ local M = {
         end,
         desc = "Hoogle Search",
       },
+    },
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = function(_, opts)
+      opts.sources = {
+        require("plugins.haskell").ghcid(),
+        require("plugins.haskell").hlint(),
+      }
+    end,
+  },
+  {
+    "mrcjkb/haskell-snippets.nvim",
+    dependencies = {
+      "L3MON4D3/LuaSnip",
     },
   },
   {
@@ -41,19 +56,8 @@ local M = {
     "fonghou/fzf-hoogle.vim",
     ft = "haskell",
     dependencies = {
-      { "junegunn/fzf", build = "./install --all" },
+      "junegunn/fzf",
       "junegunn/fzf.vim",
-      "mrcjkb/haskell-snippets.nvim",
-      {
-        "nvimtools/none-ls.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        opts = function(_, opts)
-          opts.sources = {
-            require("plugins.haskell").ghcid(),
-            require("plugins.haskell").hlint(),
-          }
-        end,
-      },
     },
     config = function()
       vim.g["hoogle_open_link"] = "open"

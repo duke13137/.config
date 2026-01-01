@@ -2,14 +2,13 @@
 :set prompt-function \modules _ -> pure (mconcat [case modules of topmost:_ -> topmost; [] -> "", " \ESC[0;36mλ> \ESC[m"] )
 :set prompt-cont "\ESC[0;36m|  \ESC[m"
 
--- :def pp   \_ -> pure (":set -interactive-print Text.Pretty.Simple.pPrint")
-:def pp   \_ -> pure (":set -interactive-print Text.Show.Pretty.pPrint")
+:set -package pretty-simple
+:def pp   \_ -> pure (":set -interactive-print Text.Pretty.Simple.pPrint")
 :def nopp \_ -> pure (":set -interactive-print System.IO.print")
 
 dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" else [c]) arg ++ "'"
-:def! doc return . (":!hoogle --database .haskell.hoo -q --color --info " ++) . dotGHCI_escapeShellArg
 :def hoogle return . (":!hoogle --database .haskell.hoo -q --count=10 --color " ++) . dotGHCI_escapeShellArg
-:def doctest return . (":!cabal repl -w doctest " ++) . dotGHCI_escapeShellArg
+:def hdoc return . (":!hoogle --database .haskell.hoo -q --color --info " ++) . dotGHCI_escapeShellArg
 
 :set -Wall
 :set -Wcompat

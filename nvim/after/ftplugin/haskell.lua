@@ -13,7 +13,8 @@ wk.add({
   { "<localleader>m", desc = "ghci main" },
   { "<localleader>r", desc = "ghci reload" },
   { "<localleader>t", desc = "ghci type" },
-  { "<localleader>h", desc = "hoogle" },
+  { "<localleader>h", desc = "hoogle info" },
+  { "<localleader>s", desc = "hoogle search" },
 })
 wk.add({
   mode = "v",
@@ -34,3 +35,32 @@ vim.api.nvim_create_user_command("HlintApplyAll", function()
   local bufname = vim.api.nvim_buf_get_name(0)
   vim.cmd(string.format("silent !hlint %s --refactor --refactor-options='--inplace' ", bufname))
 end, { nargs = 0 })
+
+local snippets = require("haskell-snippets").all
+require("luasnip").add_snippets("haskell", snippets, { key = "haskell" })
+
+local dap = require("dap")
+dap.adapters["haskell-debugger"] = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = "hdb",
+    args = {
+      "server",
+      "--port",
+      "${port}",
+    },
+  },
+}
+dap.configurations.haskell = {
+  {
+    type = "haskell-debugger",
+    request = "launch",
+    name = "hdb:file:main",
+    entryFile = "${file}",
+    entryPoint = "main",
+    projectRoot = "${workspaceFolder}",
+    entryArgs = {},
+    extraGhcArgs = { "--allow-newer" },
+  },
+}
