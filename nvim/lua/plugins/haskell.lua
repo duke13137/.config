@@ -25,6 +25,22 @@ local M = {
     },
   },
   {
+    "nvimtools/none-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = function(_, opts)
+      opts.sources = {
+        require("plugins.haskell").ghcid(),
+        require("plugins.haskell").hlint(),
+      }
+    end,
+  },
+  {
+    "mrcjkb/haskell-snippets.nvim",
+    dependencies = {
+      "L3MON4D3/LuaSnip",
+    },
+  },
+  {
     "luc-tielen/telescope_hoogle",
     ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
     dependencies = {
@@ -41,19 +57,8 @@ local M = {
     "fonghou/fzf-hoogle.vim",
     ft = "haskell",
     dependencies = {
-      { "junegunn/fzf", build = "./install --all" },
+      "junegunn/fzf",
       "junegunn/fzf.vim",
-      "mrcjkb/haskell-snippets.nvim",
-      {
-        "nvimtools/none-ls.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        opts = function(_, opts)
-          opts.sources = {
-            require("plugins.haskell").ghcid(),
-            require("plugins.haskell").hlint(),
-          }
-        end,
-      },
     },
     config = function()
       vim.g["hoogle_open_link"] = "open"
