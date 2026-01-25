@@ -272,14 +272,12 @@
                    :size   true}}
 
   :lib/lang
-  {:extra-deps {org.clojure/core.rrb-vector   {:mvn/version "RELEASE"}
-                org.clojure/data.priority-map {:mvn/version "RELEASE"}
-                org.flatland/ordered          {:mvn/version "RELEASE"}
-                io.github.tonsky/fast-edn     {:mvn/version "RELEASE"}
-                cheshire/cheshire             {:mvn/version "RELEASE"}
+  {:extra-deps {dom-top/dom-top               {:mvn/version "RELEASE"}
+                funcool/promesa               {:mvn/version "RELEASE"}
                 com.rpl/specter               {:mvn/version "RELEASE"}
-                dom-top/dom-top               {:mvn/version "RELEASE"}
-                funcool/promesa               {:mvn/version "RELEASE"}}}
+                com.cnuernber/charred         {:mvn/version "RELEASE"}
+                datalevin/datalevin           {:mvn/version "RELEASE"}
+                io.github.tonsky/fast-edn     {:mvn/version "RELEASE"}}}
 
   :lib/log
   {:extra-deps {com.taoensso/telemere         {:mvn/version "RELEASE"}
