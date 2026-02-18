@@ -21,11 +21,6 @@ function M.init()
       ["end"] = "\n:}\n",
       newline = "\n",
     },
-    aider = {
-      begin = "{code\n\n",
-      ["end"] = "\n\ncode}\n",
-      newline = "\n",
-    },
   }
 end
 
