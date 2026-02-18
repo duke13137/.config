@@ -73,33 +73,15 @@
 
  :aliases
  {;; ---------------------------------------------------
-  ;; clj -M:new app|lib|pom|scratch|template --name namespace/core --target-dir proj
-  :new {:deps {org.babashka/cli {:mvn/version "RELEASE"}
-               io.github.seancorfield/deps-new {:git/tag "v0.10.2"
-                                                :git/sha "3153351"}}
-        :ns-default org.corfield.new
-        :exec-args {} ;; insert default arguments here
-        :main-opts ["-m" "babashka.cli.exec"]}
-
-  ;; https://github.com/tonsky/uberdeps
-  :uberjar
-  {:replace-deps {uberdeps/uberdeps  {:mvn/version "RELEASE"}}
-   :replace-paths []
-   :main-opts ["-m" "uberdeps.uberjar"]}
-
-  ;; ---------------------------------------------------
   ;; Development environment
 
   :dev
   {:extra-paths ["dev"]
    :extra-deps  {com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
-                 functionalbytes/redelay       {:mvn/version "RELEASE"}
-                 io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
-                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
                  io.github.noahtheduke/lazytest {:mvn/version "RELEASE"}
-                 org.clojure/test.check        {:mvn/version "RELEASE"}
+                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
                  org.clj-commons/pretty        {:mvn/version "RELEASE"}
-                 org.slf4j/slf4j-nop           {:mvn/version "RELEASE"}
+                 org.clojure/test.check        {:mvn/version "RELEASE"}
                  virgil/virgil                 {:mvn/version "RELEASE"}
                  org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
                  org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}}}
@@ -114,11 +96,11 @@
               "-Dclojure.storm.instrumentEnable=true"
               "-Dclojure.storm.instrumentAutoPrefixes=true"]}
 
-  :mcp
-  {:deps {org.slf4j/slf4j-nop     {:mvn/version "2.0.16"}
-          com.bhauman/clojure-mcp {:local/root "/Users/duke/github/clojure-mcp"}}
-   :exec-fn clojure-mcp.main/start-mcp-server
-   :exec-args {:port 9999}}
+  ;; https://github.com/tonsky/uberdeps
+  :uberjar
+  {:replace-deps {uberdeps/uberdeps  {:mvn/version "RELEASE"}}
+   :replace-paths []
+   :main-opts ["-m" "uberdeps.uberjar"]}
 
   ;; End of Development environment
   ;; ---------------------------------------------------
@@ -127,10 +109,12 @@
   ;; Running a REPL
 
   :repl
-  {:extra-deps {cider/cider-nrepl          {:mvn/version "RELEASE"}
-                nrepl/nrepl                {:mvn/version "RELEASE"}
-                djblue/portal              {:mvn/version "RELEASE"}
+  {:extra-deps {nrepl/nrepl                {:mvn/version "RELEASE"}
+                cider/cider-nrepl          {:mvn/version "RELEASE"}
                 com.github.gnl/playback    {:mvn/version "RELEASE"}
+                functionalbytes/redelay    {:mvn/version "RELEASE"}
+                io.github.babashka/sci.nrepl {:mvn/version "RELEASE"}
+                io.github.tonsky/clj-reload {:mvn/version "RELEASE"}
                 vvvvalvalval/scope-capture {:mvn/version "RELEASE"}}
    :jvm-opts   ["-Xmx2g" "-Djdk.attach.allowAttachSelf"]
    :main-opts  ["--main" "nrepl.cmdline"
@@ -272,12 +256,11 @@
                    :size   true}}
 
   :lib/lang
-  {:extra-deps {dom-top/dom-top               {:mvn/version "RELEASE"}
-                funcool/promesa               {:mvn/version "RELEASE"}
+  {:extra-deps {com.cnuernber/charred         {:mvn/version "RELEASE"}
                 com.rpl/specter               {:mvn/version "RELEASE"}
-                com.cnuernber/charred         {:mvn/version "RELEASE"}
-                datalevin/datalevin           {:mvn/version "RELEASE"}
-                io.github.tonsky/fast-edn     {:mvn/version "RELEASE"}}}
+                dom-top/dom-top               {:mvn/version "RELEASE"}
+                funcool/promesa               {:mvn/version "RELEASE"}
+                datalevin/datalevin           {:mvn/version "RELEASE"}}}
 
   :lib/log
   {:extra-deps {com.taoensso/telemere         {:mvn/version "RELEASE"}

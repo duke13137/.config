@@ -1,1 +1,0 @@
-{:cljfmt {:extra-indents {>defn [[:inner 0]]}}}

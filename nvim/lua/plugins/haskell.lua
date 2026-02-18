@@ -1,7 +1,7 @@
 local M = {
   {
     "mrcjkb/haskell-tools.nvim",
-    version = "^6",
+    version = "^7",
     lazy = false,
     cond = function()
       return vim.fn.filereadable("hls.json") ~= 0 and true
@@ -10,7 +10,6 @@ local M = {
       vim.g.haskell_tools = {
         tools = {
           codeLens = { autoRefresh = true },
-          hover = { enable = false },
         },
       }
     end,
@@ -90,7 +89,7 @@ function M.ghcid()
       args = {
         "-c",
         [[ sleep 2 && [ -f ghcid.txt ] && cat ghcid.txt \
-          | grep -A2 -E '.*[^>]: (error|warning):' \
+          | grep -A2 -oE '.*[^>]: (error|warning):' \
           | grep -v '\--' \
           | paste -s -d'\0\t\n' - \
           | tr -s '\t' ' '
