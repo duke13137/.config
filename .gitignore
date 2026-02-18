@@ -1,5 +1,4 @@
-clj-kondo
-.clj-kondo
+.clj-kondo/
 .lsp/
 io.*.llm/
 clojure/.*
@@ -34,4 +33,3 @@ xfce4/
 go/
 uv/
 github-copilot/
-eca/
