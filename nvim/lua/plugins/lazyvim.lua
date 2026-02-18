@@ -26,17 +26,6 @@ return {
   },
 
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "clojure",
-        "fennel",
-        "haskell",
-      })
-    end,
-  },
-
-  {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = false }
@@ -101,7 +90,7 @@ return {
   },
 
   {
-    "jonboh/nvim-dap-rr", dependencies = {"nvim-dap", "telescope.nvim"},
+    "jonboh/nvim-dap-rr", dependencies = {"nvim-dap"},
     config = function()
       local dap = require('dap')
       local rr = require('nvim-dap-rr')
@@ -119,7 +108,7 @@ return {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "folke/snacks.nvim",
+      "ibhagwan/fzf-lua",
     },
     lazy = true,
     cmd = "Neogit",
