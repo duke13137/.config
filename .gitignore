@@ -33,3 +33,17 @@ xfce4/
 go/
 uv/
 github-copilot/
+nvim/lazy-lock.json
+Typora/
+chromium/
+omarchy/
+opencode/
+fcitx/
+fcitx5/
+ibus/
+systemd/
+1Password/
+BraveSoftware/
+google-*/
+microsoft-*/
+vivaldi*/

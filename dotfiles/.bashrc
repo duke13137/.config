@@ -9,6 +9,4 @@ source ~/.bash_aliases
 
 eval "$(direnv hook bash)"
 
-eval "$(llm cmdcomp --init bash)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.local/share/../bin/env"

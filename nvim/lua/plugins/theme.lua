@@ -1,0 +1,1 @@
+/home/duke/.config/omarchy/current/theme/neovim.lua

@@ -1,0 +1,5 @@
+[tools]
+go = "latest"
+java = "latest"
+node = "25.8.0"
+python = "latest"
