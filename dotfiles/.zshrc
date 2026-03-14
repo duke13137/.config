@@ -228,8 +228,9 @@ __llm_cmdcomp() {
 
 zle -N __llm_cmdcomp
 
-export EDITOR=vi
 export LSCOLORS='gxfxcxdxbxegedabagacadah'
+export EDITOR=nvim
+export VISUAL='code --goto'
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
