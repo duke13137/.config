@@ -7,5 +7,8 @@ font-size = 16
 
 keybind = global:cmd+/=toggle_quick_terminal
 keybind = cmd+p=toggle_command_palette
+# Unbind them (let tmux use Alt+Arrow)
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind
 quick-terminal-animation-duration = 0.1
 quick-terminal-position = top

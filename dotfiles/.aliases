@@ -19,9 +19,17 @@ alias push='git push'
 alias rebase='git rebase'
 alias stash='git stash'
 
-alias nv=nvim
 alias py='uv run python'
 alias pip='uv run pip'
+
+function n()
+{
+    if [ "$#" -eq 0 ]; then
+        command nvim .;
+    else
+        command nvim "$@";
+    fi
+}
 
 alias cabal-install='cabal install --overwrite-policy=always --install-method=copy'
 alias cabal-repl='cabal repl --repl-options="-fexternal-interpreter -prof"'

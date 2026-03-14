@@ -13,6 +13,16 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-export GOBIN="$HOME/go/bin"
-export PATH="$PATH:$GOBIN:/opt/cosmocc/bin"
+export JAVA_HOME=$(/usr/libexec/java_home)
 
+export GOBIN="$HOME/go/bin"
+export PATH="$PATH:$GOBIN"
+
+export PATH="$PATH:$HOME/.local/bin:/opt/cosmocc/bin"
+
+export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
+
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
