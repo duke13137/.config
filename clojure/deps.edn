@@ -266,9 +266,4 @@
   {:extra-deps {com.taoensso/telemere         {:mvn/version "RELEASE"}
                 com.taoensso/trove            {:mvn/version "RELEASE"}
                 com.taoensso/truss            {:mvn/version "RELEASE"}
-                com.taoensso/tufte            {:mvn/version "RELEASE"}}}
-
-  :lib/aws
-  {:extra-deps {com.cognitect.aws/api         {:mvn/version "RELEASE"}
-                com.cognitect.aws/endpoints   {:mvn/version "RELEASE"}
-                com.cognitect.aws/s3          {:mvn/version "RELEASE"}}}}}
+                com.taoensso/tufte            {:mvn/version "RELEASE"}}}}}

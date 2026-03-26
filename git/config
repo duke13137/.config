@@ -28,10 +28,10 @@
 	autoupdate = true        # Apply stored conflict resolutions automatically
 [credential "https://github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [user]
 	email = duke@github.com
 	name = duke
