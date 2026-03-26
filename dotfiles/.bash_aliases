@@ -18,7 +18,6 @@ alias push='git push'
 alias rebase='git rebase'
 alias stash='git stash'
 
-alias nv=nvim
 alias py=python3
 alias ipy=ipython
 alias pip='uv pip'
