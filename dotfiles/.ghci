@@ -6,8 +6,8 @@
 :def nopp \_ -> pure (":set -interactive-print System.IO.print")
 
 dotGHCI_escapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\\''" else [c]) arg ++ "'"
-:def! doc return . (":!hoogle --database .haskell.hoo -q --color --info " ++) . dotGHCI_escapeShellArg
-:def search return . (":!hoogle --database .haskell.hoo -q --count=10 --color " ++) . dotGHCI_escapeShellArg
+:def hdoc return . (":!hoogle --database .haskell.hoo -q --color --info " ++) . dotGHCI_escapeShellArg
+:def hoogle return . (":!hoogle --database .haskell.hoo -q --count=10 --color " ++) . dotGHCI_escapeShellArg
 :def doctest return . (":!cabal repl -w doctest " ++) . dotGHCI_escapeShellArg
 
 :seti -XGHC2021
