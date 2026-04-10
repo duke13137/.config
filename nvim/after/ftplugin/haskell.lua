@@ -10,10 +10,9 @@ wk.add({
   { "<localleader>i", desc = "ghci info" },
   { "<localleader>k", desc = "ghci kind" },
   { "<localleader>l", desc = "ghci load" },
-  { "<localleader>m", desc = "ghci main" },
   { "<localleader>r", desc = "ghci reload" },
   { "<localleader>t", desc = "ghci type" },
-  { "<localleader>h", desc = "hoogle info" },
+  { "<localleader>h", desc = "hoogle doc" },
   { "<localleader>s", desc = "hoogle search" },
 })
 wk.add({

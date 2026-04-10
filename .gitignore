@@ -33,6 +33,4 @@ xfce4/
 go/
 uv/
 github-copilot/
-**/project.json
-**/node_modules
-**/bun.lock
+opencode/

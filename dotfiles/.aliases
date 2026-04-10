@@ -3,6 +3,11 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias cabal-install='cabal install --overwrite-policy=always --install-method=copy'
+alias cabal-repl='cabal repl --repl-options="-fexternal-interpreter -prof"'
+alias cabal-test='cabal test -O0 --enable-tests --test-show-details=direct'
+alias ghcid='ghciwatch --clear --no-interrupt-reloads --error-file ghcid.txt'
+
 alias ga='git add'
 alias gb='git branch'
 alias gl='git log --oneline --graph --decorate --all'
@@ -22,6 +27,8 @@ alias stash='git stash'
 alias py='uv run python'
 alias pip='uv run pip'
 
+alias codex='npx @openai/codex'
+
 function n()
 {
     if [ "$#" -eq 0 ]; then
@@ -30,8 +37,3 @@ function n()
         command nvim "$@";
     fi
 }
-
-alias cabal-install='cabal install --overwrite-policy=always --install-method=copy'
-alias cabal-repl='cabal repl --repl-options="-fexternal-interpreter -prof"'
-alias cabal-test='cabal test -O0 --enable-tests --test-show-details=direct'
-alias ghcid='ghciwatch --clear --no-interrupt-reloads --error-file ghcid.txt'
