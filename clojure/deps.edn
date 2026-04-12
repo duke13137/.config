@@ -134,25 +134,15 @@
    :main-opts ["--main" "nrepl.cmdline" "--connect"]}
 
   ;; ---------------------------------------------------
-  ;; Socket REPL
+  ;; Superficie syntax for Clojure
+  ;; https://github.com/replikativ/superficie
+  :sup
+  {:extra-deps {org.replikativ/superficie {:mvn/version "RELEASE"}}
+   :main-opts ["-m" "superficie.main"]}
 
-  ;; Clojure Socket REPL on port 55555:
-  ;; clojure -X:repl/socket
-  :repl/socket
-  {:exec-fn clojure.core.server/start-server
-   :exec-args {:name "socket-repl-server"
-               :port 55555
-               :accept clojure.core.server/repl
-               :server-daemon false}}
-
-  ;; tubular - socket repl client
-  ;; https://github.com/mfikes/tubular
-  ;; Connect to a socket repl, e.g. :repl/socket
-  ;; clojure -M:repl/socket-client
-  :repl/socket-client
-  {:extra-deps {tubular/tubular {:mvn/version "RELEASE"}}
-   :main-opts  ["--main" "tubular.core"
-                "-p" "55555"]}
+  :sup/repl
+  {:extra-deps {org.replikativ/superficie {:mvn/version "RELEASE"}}
+   :main-opts ["-m" "superficie.repl"]}
 
   ;; End of REPL and nREPL connections
   ;; ---------------------------------------------------
@@ -256,20 +246,34 @@
    :exec-args     {:output "project-dependencies-graph.png"
                    :size   true}}
 
+  :lib/aws
+  {:extra-deps {com.cognitect.aws/api         {:mvn/version "RELEASE"}
+                com.cognitect.aws/endpoints   {:mvn/version "RELEASE"}
+                com.cognitect.aws/s3          {:mvn/version "RELEASE"}}}
+
   :lib/lang
   {:extra-deps {com.cnuernber/charred         {:mvn/version "RELEASE"}
-                com.rpl/specter               {:mvn/version "RELEASE"}
+                datalevin/datalevin           {:mvn/version "RELEASE"}
                 dom-top/dom-top               {:mvn/version "RELEASE"}
                 funcool/promesa               {:mvn/version "RELEASE"}
-                datalevin/datalevin           {:mvn/version "RELEASE"}}}
-
-  :lib/log
-  {:extra-deps {com.taoensso/telemere         {:mvn/version "RELEASE"}
+                com.taoensso/telemere         {:mvn/version "RELEASE"}
                 com.taoensso/trove            {:mvn/version "RELEASE"}
                 com.taoensso/truss            {:mvn/version "RELEASE"}
                 com.taoensso/tufte            {:mvn/version "RELEASE"}}}
 
-  :lib/aws
-  {:extra-deps {com.cognitect.aws/api         {:mvn/version "RELEASE"}
-                com.cognitect.aws/endpoints   {:mvn/version "RELEASE"}
-                com.cognitect.aws/s3          {:mvn/version "RELEASE"}}}}}
+  :lib/data
+  {:extra-deps {datalevin/datalevin           {:mvn/version "RELEASE"}
+                org.replikativ/datahike       {:mvn/version "RELEASE"}
+                org.replikativ/stratum        {:mvn/version "RELEASE"}
+                scicloj/tablecloth            {:mvn/version "RELEASE"}}}
+
+  :stratum
+  {:jvm-opts ["--add-modules=jdk.incubator.vector"
+              "--enable-native-access=ALL-UNNAMED"
+              "-Xmx4g"]
+   :main-opts ["-m" "stratum.server"]}
+
+  :migrate
+  {:extra-deps {com.github.paulbutcher/clj-migratus {:git/tag "v1.0.3" :git/sha "46a3ac1"}
+                migratus/migratus {:mvn/version "RELEASE"}
+                org.postgresql/postgresql {:mvn/version "RELEASE"}} :main-opts ["-m" "clj-migratus"]}}}
