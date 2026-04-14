@@ -33,7 +33,7 @@ return {
   },
 
   {
-    'saghen/blink.cmp',
+    "saghen/blink.cmp",
     opts = {
       keymap = {
         preset = "default",
@@ -123,6 +123,11 @@ return {
   {
     "mbbill/undotree",
     dependencies = { "tpope/vim-repeat" },
+  },
+
+  {
+    "linw1995/nvim-mcp",
+    opts = {},
   },
 
 }
