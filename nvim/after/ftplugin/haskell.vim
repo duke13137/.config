@@ -14,10 +14,10 @@ nnoremap <buffer><silent><nowait> <localleader>d   :Repl :doc <C-r><C-w><CR>
 nnoremap <buffer><silent><nowait> <localleader>h   :Repl :hdoc <C-r><C-w><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>i   :Repl :info <C-r><C-w><CR>
-vnoremap <buffer><silent><nowait> <localleader>i y :Repl :instances <C-r>=@"<CR><CR>
+vnoremap <buffer><silent><nowait> <localleader>i y :Repl :instances <C-r>=escape(getreg('"'), '"')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>k   :Repl :kind <C-r><C-w><CR>
-vnoremap <buffer><silent><nowait> <localleader>k y :Repl :kind! <C-r>=@"<CR><CR>
+vnoremap <buffer><silent><nowait> <localleader>k y :Repl :kind! <C-r>=escape(getreg('"'), '"')<CR><CR>
 
 nnoremap <buffer><silent><nowait> <localleader>t   :Repl :type <C-r><C-w><CR>
 vnoremap <buffer><silent><nowait> <localleader>t   <Cmd>call GHC_type_at()<CR>
