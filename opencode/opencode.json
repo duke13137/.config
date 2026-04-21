@@ -2,13 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "lsp": false,
   "permission": {
-    "bash": "ask",
     "read": {
-      ".envrc": "deny"
-    },
-    "edit": {
-      "*": "ask",
-      ".": "allow"
+      "**/.envrc": "deny"
     },
     "external_directory": {
       "/tmp/**": "allow",

@@ -77,7 +77,7 @@
 
   :dev
   {:extra-paths ["dev"]
-   :extra-deps  {com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
+   :extra-deps  {
                  io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
                  io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
                  nubank/matcher-combinators    {:mvn/version "RELEASE"}
@@ -251,21 +251,34 @@
                 com.cognitect.aws/endpoints   {:mvn/version "RELEASE"}
                 com.cognitect.aws/s3          {:mvn/version "RELEASE"}}}
 
-  :lib/lang
-  {:extra-deps {com.cnuernber/charred         {:mvn/version "RELEASE"}
+  :lib/core
+  {:extra-deps {com.dean/ordered-collections  {:mvn/version "RELEASE"}
+                com.cnuernber/charred         {:mvn/version "RELEASE"}
+                com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
                 datalevin/datalevin           {:mvn/version "RELEASE"}
                 dom-top/dom-top               {:mvn/version "RELEASE"}
                 funcool/promesa               {:mvn/version "RELEASE"}
-                com.taoensso/telemere         {:mvn/version "RELEASE"}
                 com.taoensso/trove            {:mvn/version "RELEASE"}
-                com.taoensso/truss            {:mvn/version "RELEASE"}
-                com.taoensso/tufte            {:mvn/version "RELEASE"}}}
+                com.taoensso/truss            {:mvn/version "RELEASE"}}}
 
   :lib/data
-  {:extra-deps {datalevin/datalevin           {:mvn/version "RELEASE"}
-                org.replikativ/datahike       {:mvn/version "RELEASE"}
+  {:extra-deps {org.replikativ/datahike       {:mvn/version "RELEASE"}
                 org.replikativ/stratum        {:mvn/version "RELEASE"}
                 scicloj/tablecloth            {:mvn/version "RELEASE"}}}
+
+  :lib/web
+  {:extra-deps {dev.data-star.clojure/sdk      {:mvn/version "RELEASE"}
+                dev.data-star.clojure/http-kit {:mvn/version "RELEASE"}
+                dev.data-star.clojure/brotli   {:mvn/version "RELEASE"}
+                dev.onionpancakes/chassis      {:mvn/version "RELEASE"}
+                ring/ring-core                 {:mvn/version "RELEASE"}
+                com.taoensso/telemere          {:mvn/version "RELEASE"}
+                com.taoensso/telemere-slf4j    {:mvn/version "RELEASE"}
+                com.taoensso/tufte             {:mvn/version "RELEASE"}
+                cheshire/cheshire              {:mvn/version "RELEASE"}
+                hiccup/hiccup                  {:mvn/version "RELEASE"}
+                selmer/selmer                  {:mvn/version "RELEASE"}
+                io.github.tonsky/clj-simple-router {:mvn/version "RELEASE"}}}
 
   :stratum
   {:jvm-opts ["--add-modules=jdk.incubator.vector"
