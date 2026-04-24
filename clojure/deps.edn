@@ -75,20 +75,14 @@
  {;; ---------------------------------------------------
   ;; Development environment
 
-  :dev
-  {:extra-paths ["dev"]
-   :extra-deps  {
-                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
-                 io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
-                 nubank/matcher-combinators    {:mvn/version "RELEASE"}
-                 org.clj-commons/pretty        {:mvn/version "RELEASE"}
-                 org.clojure/test.check        {:mvn/version "RELEASE"}
-                 com.github.brettatoms/ring-hot-reload {:mvn/version "RELEASE"}
-                 virgil/virgil                 {:mvn/version "RELEASE"}
-                 org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
-                 org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}}}
+  :new {:deps {org.babashka/cli {:mvn/version "0.8.67"}
+               io.github.seancorfield/deps-new {:git/tag "v0.11.1"
+                                                :git/sha "dd459f0"}}
+        :ns-default org.corfield.new
+        :exec-args {}
+        :main-opts ["-m" "babashka.cli.exec"]}
 
-  :dbg
+  :flow-dbg
   {:classpath-overrides {org.clojure/clojure nil}
    :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.3-4"}
                 com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
@@ -97,6 +91,11 @@
               "-Dflowstorm.theme=dark"
               "-Dclojure.storm.instrumentEnable=true"
               "-Dclojure.storm.instrumentAutoPrefixes=true"]}
+
+  :migrate
+  {:extra-deps {com.github.paulbutcher/clj-migratus {:git/tag "v1.0.3" :git/sha "46a3ac1"}
+                migratus/migratus {:mvn/version "RELEASE"}
+                org.postgresql/postgresql {:mvn/version "RELEASE"}} :main-opts ["-m" "clj-migratus"]}
 
   ;; https://github.com/tonsky/uberdeps
   :uberjar
@@ -111,11 +110,18 @@
   ;; Running a REPL
 
   :repl
-  {:extra-deps {nrepl/nrepl                {:mvn/version "RELEASE"}
-                cider/cider-nrepl          {:mvn/version "RELEASE"}
+  {:extra-deps {cider/cider-nrepl          {:mvn/version "RELEASE"}
+                nrepl/nrepl                {:mvn/version "RELEASE"}
                 com.github.gnl/playback    {:mvn/version "RELEASE"}
                 functionalbytes/redelay    {:mvn/version "RELEASE"}
                 io.github.babashka/sci.nrepl {:mvn/version "RELEASE"}
+                io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
+                io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
+                org.clj-commons/pretty        {:mvn/version "RELEASE"}
+                org.clojure/test.check        {:mvn/version "RELEASE"}
+                org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
+                org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}
+                virgil/virgil                 {:mvn/version "RELEASE"}
                 vvvvalvalval/scope-capture {:mvn/version "RELEASE"}}
    :jvm-opts   ["-Xmx2g" "-Djdk.attach.allowAttachSelf"]
    :main-opts  ["--main" "nrepl.cmdline"
@@ -132,17 +138,6 @@
   :repl/connect
   {:extra-deps {nrepl/nrepl {:mvn/version "RELEASE"}}
    :main-opts ["--main" "nrepl.cmdline" "--connect"]}
-
-  ;; ---------------------------------------------------
-  ;; Superficie syntax for Clojure
-  ;; https://github.com/replikativ/superficie
-  :sup
-  {:extra-deps {org.replikativ/superficie {:mvn/version "RELEASE"}}
-   :main-opts ["-m" "superficie.main"]}
-
-  :sup/repl
-  {:extra-deps {org.replikativ/superficie {:mvn/version "RELEASE"}}
-   :main-opts ["-m" "superficie.repl"]}
 
   ;; End of REPL and nREPL connections
   ;; ---------------------------------------------------
@@ -252,10 +247,10 @@
                 com.cognitect.aws/s3          {:mvn/version "RELEASE"}}}
 
   :lib/core
-  {:extra-deps {com.dean/ordered-collections  {:mvn/version "RELEASE"}
+  {:extra-deps {org.datalevin/datalevin-embedded {:mvn/version "RELEASE"}
+                com.dean/ordered-collections  {:mvn/version "RELEASE"}
                 com.cnuernber/charred         {:mvn/version "RELEASE"}
                 com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
-                datalevin/datalevin           {:mvn/version "RELEASE"}
                 dom-top/dom-top               {:mvn/version "RELEASE"}
                 funcool/promesa               {:mvn/version "RELEASE"}
                 com.taoensso/trove            {:mvn/version "RELEASE"}
@@ -284,9 +279,4 @@
   {:jvm-opts ["--add-modules=jdk.incubator.vector"
               "--enable-native-access=ALL-UNNAMED"
               "-Xmx4g"]
-   :main-opts ["-m" "stratum.server"]}
-
-  :migrate
-  {:extra-deps {com.github.paulbutcher/clj-migratus {:git/tag "v1.0.3" :git/sha "46a3ac1"}
-                migratus/migratus {:mvn/version "RELEASE"}
-                org.postgresql/postgresql {:mvn/version "RELEASE"}} :main-opts ["-m" "clj-migratus"]}}}
+   :main-opts ["-m" "stratum.server"]}}}
