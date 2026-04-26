@@ -18,7 +18,7 @@
                                             "-n" include]))))
 
 (require '[clj-reload.core :as reload])
-(reload/init {:dirs ["clojure/src"]})
+(reload/init {:dirs ["src", "clojure/src"]})
 
 (require 'virgil)
 (virgil/watch-and-recompile ["java/src" "java/test"]
