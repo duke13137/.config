@@ -15,6 +15,16 @@
       "type": "local",
       "command": ["nvim-mcp", "--connect", "auto"],
       "enabled": true
+    },
+    "clojure": {
+      "type": "local",
+      "command": [
+        "bash",
+        "-c",
+        "echo 47888 > .nrepl-port; clojure -M:repl:repl-mcp"
+      ],
+      "timeout": 60000,
+      "enabled": true
     }
   }
 }

@@ -129,6 +129,19 @@
                 "--middleware" "[cider.nrepl/cider-middleware]"
                 "--interactive"]}
 
+  :repl-mcp
+  {:main-opts ["-m" "is.simm.repl-mcp"]
+   :extra-paths ["test"]
+   ;; Option for clj-async-profiler
+   :jvm-opts ["-Djdk.attach.allowAttachSelf"
+              "-XX:+UnlockDiagnosticVMOptions"
+              "-XX:+DebugNonSafepoints"
+              "-XX:+EnableDynamicAgentLoading"
+              "--enable-native-access=ALL-UNNAMED"]
+   :extra-deps {is.simm/repl-mcp {:git/url "https://github.com/simm-is/repl-mcp" :git/sha "d00f661ae6174bf6281d98676f9be21b1e8969c7"}
+                org.slf4j/slf4j-api {:mvn/version "2.0.17"}
+                org.slf4j/slf4j-simple {:mvn/version "2.0.17"}}}
+
   ;; ---------------------------------------------------
   ;; Remote REPL connection
 
@@ -251,10 +264,11 @@
                 com.dean/ordered-collections  {:mvn/version "RELEASE"}
                 com.cnuernber/charred         {:mvn/version "RELEASE"}
                 com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
+                com.taoensso/trove            {:mvn/version "RELEASE"}
+                com.taoensso/truss            {:mvn/version "RELEASE"}
                 dom-top/dom-top               {:mvn/version "RELEASE"}
                 funcool/promesa               {:mvn/version "RELEASE"}
-                com.taoensso/trove            {:mvn/version "RELEASE"}
-                com.taoensso/truss            {:mvn/version "RELEASE"}}}
+                is.simm/partial-cps           {:mvn/version "LATEST"}}}
 
   :lib/data
   {:extra-deps {org.replikativ/datahike       {:mvn/version "RELEASE"}
