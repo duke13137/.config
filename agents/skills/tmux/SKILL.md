@@ -1,105 +1,222 @@
 ---
 name: tmux
-description: "Remote control tmux sessions for interactive CLIs (python, gdb, etc.) by sending keystrokes and scraping pane output."
-license: Vibecoded
+description: Control tmux panes and communicate between AI agents. Use this skill whenever the user mentions tmux panes, cross-pane communication, sending messages to other agents, reading other panes, managing tmux sessions, or interacting with processes running in tmux. Includes tmux-bridge CLI for agent-to-agent messaging and raw tmux commands for direct session control.
+metadata:
+  {
+    "openclaw":
+      {
+        "emoji": "🖥️",
+        "os": ["darwin", "linux"],
+        "requires": { "bins": ["tmux", "tmux-bridge"] },
+      },
+  }
 ---
 
-# tmux Skill
+# Tmux pane control and cross-pane agent communication. Use `tmux-bridge` (the high-level CLI) for all cross-pane interactions. Fall back to raw tmux commands only when you need low-level control.
 
-Use tmux as a programmable terminal multiplexer for interactive work. Works on Linux and macOS with stock tmux; avoid custom config by using a private socket.
+## tmux-bridge — Cross-Pane Communication
 
-## Quickstart (isolated socket)
+A CLI that lets any AI agent interact with any other tmux pane. Works via plain bash. Every command is **atomic**: `type` types text (no Enter), `keys` sends special keys, `read` captures pane content.
+
+### DO NOT WAIT OR POLL
+
+Other panes have agents that will reply to you via tmux-bridge. Their reply appears directly in YOUR pane as a `[tmux-bridge from:...]` message. Do not sleep, poll, read the target pane for a response, or loop. Type your message, press Enter, and move on.
+
+The ONLY time you read a target pane is:
+
+- **Before** interacting with it (enforced by the read guard)
+- **After typing** to verify your text landed before pressing Enter
+- When interacting with a **non-agent pane** (plain shell, running process)
+
+### Read Guard
+
+The CLI enforces read-before-act. You cannot `type` or `keys` to a pane unless you have read it first.
+
+1. `tmux-bridge read <target>` marks the pane as "read"
+2. `tmux-bridge type/keys <target>` checks for that mark — errors if you haven't read
+3. After a successful `type`/`keys`, the mark is cleared — you must read again before the next interaction
+
+```
+$ tmux-bridge type codex "hello"
+error: must read the pane before interacting. Run: tmux-bridge read codex
+```
+
+### Command Reference
+
+| Command                               | Description                                           | Example                                          |
+| ------------------------------------- | ----------------------------------------------------- | ------------------------------------------------ |
+| `tmux-bridge list`                    | Show all panes with target, pid, command, size, label | `tmux-bridge list`                               |
+| `tmux-bridge type <target> <text>`    | Type text without pressing Enter                      | `tmux-bridge type codex "hello"`                 |
+| `tmux-bridge message <target> <text>` | Type text with auto sender info and reply target      | `tmux-bridge message codex "review src/auth.ts"` |
+| `tmux-bridge read <target> [lines]`   | Read last N lines (default 50)                        | `tmux-bridge read codex 100`                     |
+| `tmux-bridge keys <target> <key>...`  | Send special keys                                     | `tmux-bridge keys codex Enter`                   |
+| `tmux-bridge name <target> <label>`   | Label a pane (visible in tmux border)                 | `tmux-bridge name %3 codex`                      |
+| `tmux-bridge resolve <label>`         | Print pane target for a label                         | `tmux-bridge resolve codex`                      |
+| `tmux-bridge id`                      | Print this pane's ID                                  | `tmux-bridge id`                                 |
+
+### Target Resolution
+
+Targets can be:
+
+- **tmux native**: `session:window.pane` (e.g. `shared:0.1`), pane ID (`%3`), or window index (`0`)
+- **label**: Any string set via `tmux-bridge name` — resolved automatically
+
+### Read-Act-Read Cycle
+
+Every interaction follows **read → act → read**. The CLI enforces this.
+
+**Sending a message to an agent:**
 
 ```bash
-SOCKET_DIR=${TMPDIR:-/tmp}/claude-tmux-sockets  # well-known dir for all agent sockets
-mkdir -p "$SOCKET_DIR"
-SOCKET="$SOCKET_DIR/claude.sock"                # keep agent sessions separate from your personal tmux
-SESSION=claude-python                           # slug-like names; avoid spaces
-tmux -S "$SOCKET" new -d -s "$SESSION" -n shell
-tmux -S "$SOCKET" send-keys -t "$SESSION":0.0 -- 'python3 -q' Enter
-tmux -S "$SOCKET" capture-pane -p -J -t "$SESSION":0.0 -S -200  # watch output
-tmux -S "$SOCKET" kill-session -t "$SESSION"                   # clean up
+tmux-bridge read codex 20                    # 1. READ — satisfy read guard
+tmux-bridge message codex 'Please review src/auth.ts'
+                                              # 2. MESSAGE — auto-prepends sender info, no Enter
+tmux-bridge read codex 20                    # 3. READ — verify text landed
+tmux-bridge keys codex Enter                 # 4. KEYS — submit
+# STOP. Do NOT read codex for a reply. The agent replies into YOUR pane.
 ```
 
-After starting a session ALWAYS tell the user how to monitor the session by giving them a command to copy paste:
-
-```
-To monitor this session yourself:
-  tmux -S "$SOCKET" attach -t claude-lldb
-
-Or to capture the output once:
-  tmux -S "$SOCKET" capture-pane -p -J -t claude-lldb:0.0 -S -200
-```
-
-This must ALWAYS be printed right after a session was started and once again at the end of the tool loop.  But the earlier you send it, the happier the user will be.
-
-## Socket convention
-
-- Agents MUST place tmux sockets under `CLAUDE_TMUX_SOCKET_DIR` (defaults to `${TMPDIR:-/tmp}/claude-tmux-sockets`) and use `tmux -S "$SOCKET"` so we can enumerate/clean them. Create the dir first: `mkdir -p "$CLAUDE_TMUX_SOCKET_DIR"`.
-- Default socket path to use unless you must isolate further: `SOCKET="$CLAUDE_TMUX_SOCKET_DIR/claude.sock"`.
-
-## Targeting panes and naming
-
-- Target format: `{session}:{window}.{pane}`, defaults to `:0.0` if omitted. Keep names short (e.g., `claude-py`, `claude-gdb`).
-- Use `-S "$SOCKET"` consistently to stay on the private socket path. If you need user config, drop `-f /dev/null`; otherwise `-f /dev/null` gives a clean config.
-- Inspect: `tmux -S "$SOCKET" list-sessions`, `tmux -S "$SOCKET" list-panes -a`.
-
-## Finding sessions
-
-- List sessions on your active socket with metadata: `./scripts/find-sessions.sh -S "$SOCKET"`; add `-q partial-name` to filter.
-- Scan all sockets under the shared directory: `./scripts/find-sessions.sh --all` (uses `CLAUDE_TMUX_SOCKET_DIR` or `${TMPDIR:-/tmp}/claude-tmux-sockets`).
-
-## Sending input safely
-
-- Prefer literal sends to avoid shell splitting: `tmux -L "$SOCKET" send-keys -t target -l -- "$cmd"`
-- When composing inline commands, use single quotes or ANSI C quoting to avoid expansion: `tmux ... send-keys -t target -- $'python3 -m http.server 8000'`.
-- To send control keys: `tmux ... send-keys -t target C-c`, `C-d`, `C-z`, `Escape`, etc.
-
-## Watching output
-
-- Capture recent history (joined lines to avoid wrapping artifacts): `tmux -L "$SOCKET" capture-pane -p -J -t target -S -200`.
-- For continuous monitoring, poll with the helper script (below) instead of `tmux wait-for` (which does not watch pane output).
-- You can also temporarily attach to observe: `tmux -L "$SOCKET" attach -t "$SESSION"`; detach with `Ctrl+b d`.
-- When giving instructions to a user, **explicitly print a copy/paste monitor command** alongside the action don't assume they remembered the command.
-
-## Spawning Processes
-
-Some special rules for processes:
-
-- when asked to debug, use lldb by default
-- when starting a python interactive shell, always set the `PYTHON_BASIC_REPL=1` environment variable. This is very important as the non-basic console interferes with your send-keys.
-
-## Synchronizing / waiting for prompts
-
-- Use timed polling to avoid races with interactive tools. Example: wait for a Python prompt before sending code:
-  ```bash
-  ./scripts/wait-for-text.sh -t "$SESSION":0.0 -p '^>>>' -T 15 -l 4000
-  ```
-- For long-running commands, poll for completion text (`"Type quit to exit"`, `"Program exited"`, etc.) before proceeding.
-
-## Interactive tool recipes
-
-- **Python REPL**: `tmux ... send-keys -- 'python3 -q' Enter`; wait for `^>>>`; send code with `-l`; interrupt with `C-c`. Always with `PYTHON_BASIC_REPL`.
-- **gdb**: `tmux ... send-keys -- 'gdb --quiet ./a.out' Enter`; disable paging `tmux ... send-keys -- 'set pagination off' Enter`; break with `C-c`; issue `bt`, `info locals`, etc.; exit via `quit` then confirm `y`.
-- **Other TTY apps** (ipdb, psql, mysql, node, bash): same pattern—start the program, poll for its prompt, then send literal text and Enter.
-
-## Cleanup
-
-- Kill a session when done: `tmux -S "$SOCKET" kill-session -t "$SESSION"`.
-- Kill all sessions on a socket: `tmux -S "$SOCKET" list-sessions -F '#{session_name}' | xargs -r -n1 tmux -S "$SOCKET" kill-session -t`.
-- Remove everything on the private socket: `tmux -S "$SOCKET" kill-server`.
-
-## Helper: wait-for-text.sh
-
-`./scripts/wait-for-text.sh` polls a pane for a regex (or fixed string) with a timeout. Works on Linux/macOS with bash + tmux + grep.
+**Approving a prompt (non-agent pane):**
 
 ```bash
-./scripts/wait-for-text.sh -t session:0.0 -p 'pattern' [-F] [-T 20] [-i 0.5] [-l 2000]
+tmux-bridge read worker 10                   # 1. READ — see the prompt
+tmux-bridge type worker "y"                  # 2. TYPE
+tmux-bridge read worker 10                   # 3. READ — verify
+tmux-bridge keys worker Enter                # 4. KEYS — submit
+tmux-bridge read worker 20                   # 5. READ — see the result
 ```
 
-- `-t`/`--target` pane target (required)
-- `-p`/`--pattern` regex to match (required); add `-F` for fixed string
-- `-T` timeout seconds (integer, default 15)
-- `-i` poll interval seconds (default 0.5)
-- `-l` history lines to search from the pane (integer, default 1000)
-- Exits 0 on first match, 1 on timeout. On failure prints the last captured text to stderr to aid debugging.
+### Messaging Convention
+
+The `message` command auto-prepends sender info and location:
+
+```
+[tmux-bridge from:claude pane:%4 at:3:0.0] Please review src/auth.ts
+```
+
+The receiver gets: who sent it (`from`), the exact pane to reply to (`pane`), and the session/window location (`at`). When you see this header, reply using tmux-bridge to the pane ID from the header.
+
+### Agent-to-Agent Workflow
+
+```bash
+# 1. Label yourself
+tmux-bridge name "$(tmux-bridge id)" claude
+
+# 2. Discover other panes
+tmux-bridge list
+
+# 3. Send a message (read-act-read)
+tmux-bridge read codex 20
+tmux-bridge message codex 'Please review the changes in src/auth.ts'
+tmux-bridge read codex 20
+tmux-bridge keys codex Enter
+```
+
+### Example Conversation
+
+**Agent A (claude) sends:**
+
+```bash
+tmux-bridge read codex 20
+tmux-bridge message codex 'What is the test coverage for src/auth.ts?'
+tmux-bridge read codex 20
+tmux-bridge keys codex Enter
+```
+
+**Agent B (codex) sees in their prompt:**
+
+```
+[tmux-bridge from:claude pane:%4 at:3:0.0] What is the test coverage for src/auth.ts?
+```
+
+**Agent B replies using the pane ID from the header:**
+
+```bash
+tmux-bridge read %4 20
+tmux-bridge message %4 '87% line coverage. Missing the OAuth refresh token path (lines 142-168).'
+tmux-bridge read %4 20
+tmux-bridge keys %4 Enter
+```
+
+---
+
+## Raw tmux Commands
+
+Use these when you need direct tmux control beyond what tmux-bridge provides — session management, window navigation, creating panes, or low-level scripting.
+
+### Capture Output
+
+```bash
+tmux capture-pane -t shared -p | tail -20    # Last 20 lines
+tmux capture-pane -t shared -p -S -          # Entire scrollback
+tmux capture-pane -t shared:0.0 -p           # Specific pane
+```
+
+### Send Keys
+
+```bash
+tmux send-keys -t shared -l -- "text here"   # Type text (literal mode)
+tmux send-keys -t shared Enter               # Press Enter
+tmux send-keys -t shared Escape              # Press Escape
+tmux send-keys -t shared C-c                 # Ctrl+C
+tmux send-keys -t shared C-d                 # Ctrl+D (EOF)
+```
+
+For interactive TUIs, split text and Enter into separate sends:
+
+```bash
+tmux send-keys -t shared -l -- "Please apply the patch"
+sleep 0.1
+tmux send-keys -t shared Enter
+```
+
+### Panes and Windows
+
+```bash
+# Create panes (prefer over new windows)
+tmux split-window -h -t SESSION              # Horizontal split
+tmux split-window -v -t SESSION              # Vertical split
+tmux select-layout -t SESSION tiled          # Re-balance
+
+# Navigate
+tmux select-window -t shared:0
+tmux select-pane -t shared:0.1
+tmux list-windows -t shared
+```
+
+### Session Management
+
+```bash
+tmux list-sessions
+tmux new-session -d -s newsession
+tmux kill-session -t sessionname
+tmux rename-session -t old new
+```
+
+### Claude Code Patterns
+
+```bash
+# Check if session needs input
+tmux capture-pane -t worker-3 -p | tail -10 | grep -E "❯|Yes.*No|proceed|permission"
+
+# Approve a prompt
+tmux send-keys -t worker-3 'y' Enter
+
+# Check all sessions
+for s in shared worker-2 worker-3 worker-4; do
+  echo "=== $s ==="
+  tmux capture-pane -t $s -p 2>/dev/null | tail -5
+done
+```
+
+## Tips
+
+- **Read guard is enforced** — you MUST read before every `type`/`keys`
+- **Every action clears the read mark** — after `type`, read again before `keys`
+- **Never wait or poll** — agent panes reply via tmux-bridge into YOUR pane
+- **Label panes early** — easier than using `%N` IDs
+- **`type` uses literal mode** — special characters are typed as-is
+- **`read` defaults to 50 lines** — pass a higher number for more context
+- **Non-agent panes** are the exception — you DO need to read them to see output
+- Use `capture-pane -p` to print to stdout (essential for scripting)
+- Target format: `session:window.pane` (e.g., `shared:0.0`)
