@@ -47,3 +47,7 @@ BraveSoftware/
 google-*/
 microsoft-*/
 vivaldi*/
+obsidian/
+*-flags.conf
+elephant/
+waybar/

@@ -1,3 +1,7 @@
+unalias c
+unalias d
+unalias r
+
 alias l=ls
 alias la=lsa
 alias ll=lta
