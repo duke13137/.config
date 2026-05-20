@@ -14,7 +14,11 @@
   "mcp": {
     "nvim": {
       "type": "local",
-      "command": ["nvim-mcp", "--connect", "auto"],
+      "command": [
+        "nvim-mcp",
+        "--connect",
+        "auto"
+      ],
       "enabled": true
     },
     "clojure": {
@@ -28,5 +32,7 @@
       "enabled": false
     }
   },
-  "plugin": ["context-mode"]
+  "plugin": [
+    "context-mode"
+  ]
 }

@@ -76,7 +76,7 @@ function M.ghcid()
       args = {
         "-c",
         [[ sleep 2 && [ -f ghcid.txt ] && cat ghcid.txt \
-          | grep -A2 -oE '.*[^>]: (error|warning):' \
+          | grep -A2 -E '.*[^>]: (error|warning):' \
           | grep -v '\--' \
           | paste -s -d'\0\t\n' - \
           | tr -s '\t' ' '
