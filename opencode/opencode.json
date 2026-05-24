@@ -1,7 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "lsp": false,
-  "share": "disabled",
+  "mcp": {
+    "nvim": {
+      "type": "local",
+      "command": ["nvim-mcp", "--connect", "auto"],
+      "enabled": true
+    }
+  },
   "permission": {
     "read": {
       "**/.envrc": "deny"
@@ -11,28 +17,7 @@
       "/private/tmp/**": "allow"
     }
   },
-  "mcp": {
-    "nvim": {
-      "type": "local",
-      "command": [
-        "nvim-mcp",
-        "--connect",
-        "auto"
-      ],
-      "enabled": true
-    },
-    "clojure": {
-      "type": "local",
-      "command": [
-        "bash",
-        "-c",
-        "echo 47888 > .nrepl-port; clojure -M:repl:repl-mcp"
-      ],
-      "timeout": 60000,
-      "enabled": false
-    }
-  },
   "plugin": [
     "context-mode"
-  ]
+  ],
 }

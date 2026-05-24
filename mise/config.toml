@@ -1,5 +1,8 @@
 [tools]
+bun = "latest"
 go = "latest"
 java = "latest"
 node = "latest"
 python = "latest"
+zig = "latest"
+zls = "latest"
