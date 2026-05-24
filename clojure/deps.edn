@@ -76,22 +76,22 @@
  {;; ---------------------------------------------------
   ;; Development environment
 
-  :new {:deps {org.babashka/cli {:mvn/version "0.8.67"}
-               io.github.seancorfield/deps-new {:git/tag "v0.11.1"
-                                                :git/sha "dd459f0"}}
-        :ns-default org.corfield.new
-        :exec-args {}
-        :main-opts ["-m" "babashka.cli.exec"]}
-
   :flow-dbg
   {:classpath-overrides {org.clojure/clojure nil}
-   :extra-deps {com.github.flow-storm/clojure        {:mvn/version "1.12.3-4"}
+   :extra-deps {com.github.flow-storm/clojure        {:mvn/version "RELEASE"}
                 com.github.flow-storm/flow-storm-dbg {:mvn/version "RELEASE"}}
    :jvm-opts ["-Dflowstorm.startRecording=false"
               "-Dflowstorm.styles=/tmp/flowstorm.css"
               "-Dflowstorm.theme=dark"
               "-Dclojure.storm.instrumentEnable=true"
               "-Dclojure.storm.instrumentAutoPrefixes=true"]}
+
+  :new {:deps {org.babashka/cli {:mvn/version "0.8.67"}
+               io.github.seancorfield/deps-new {:git/tag "v0.11.1"
+                                                :git/sha "dd459f0"}}
+        :ns-default org.corfield.new
+        :exec-args {}
+        :main-opts ["-m" "babashka.cli.exec"]}
 
   :migrate
   {:extra-deps {com.github.paulbutcher/clj-migratus {:git/tag "v1.0.3" :git/sha "46a3ac1"}
@@ -111,37 +111,20 @@
   ;; Running a REPL
 
   :repl
-  {:extra-deps {cider/cider-nrepl          {:mvn/version "RELEASE"}
-                nrepl/nrepl                {:mvn/version "RELEASE"}
-                com.github.gnl/playback    {:mvn/version "RELEASE"}
-                functionalbytes/redelay    {:mvn/version "RELEASE"}
-                io.github.babashka/sci.nrepl {:mvn/version "RELEASE"}
+  {:extra-deps {nrepl/nrepl                   {:mvn/version "RELEASE"}
+                cider/cider-nrepl             {:mvn/version "RELEASE"}
+                functionalbytes/redelay       {:mvn/version "RELEASE"}
+                io.github.babashka/sci.nrepl  {:mvn/version "RELEASE"}
                 io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
                 org.clj-commons/pretty        {:mvn/version "RELEASE"}
                 org.clojure/test.check        {:mvn/version "RELEASE"}
-                org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
-                org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}
-                virgil/virgil                 {:mvn/version "RELEASE"}
-                vvvvalvalval/scope-capture {:mvn/version "RELEASE"}}
+                vvvvalvalval/scope-capture    {:mvn/version "RELEASE"}}
    :jvm-opts   ["-Xmx2g" "-Djdk.attach.allowAttachSelf"]
    :main-opts  ["--main" "nrepl.cmdline"
                 "--port" "9999"
                 "--middleware" "[cider.nrepl/cider-middleware]"
                 "--interactive"]}
-
-  :repl-mcp
-  {:main-opts ["-m" "is.simm.repl-mcp"]
-   :extra-paths ["test"]
-   ;; Option for clj-async-profiler
-   :jvm-opts ["-Djdk.attach.allowAttachSelf"
-              "-XX:+UnlockDiagnosticVMOptions"
-              "-XX:+DebugNonSafepoints"
-              "-XX:+EnableDynamicAgentLoading"
-              "--enable-native-access=ALL-UNNAMED"]
-   :extra-deps {is.simm/repl-mcp {:git/url "https://github.com/simm-is/repl-mcp" :git/sha "d00f661ae6174bf6281d98676f9be21b1e8969c7"}
-                org.slf4j/slf4j-api {:mvn/version "2.0.17"}
-                org.slf4j/slf4j-simple {:mvn/version "2.0.17"}}}
 
   ;; ---------------------------------------------------
   ;; Remote REPL connection
@@ -261,9 +244,9 @@
                 com.cognitect.aws/s3          {:mvn/version "RELEASE"}}}
 
   :lib/core
-  {:extra-deps {org.datalevin/datalevin-embedded {:mvn/version "RELEASE"}
-                com.dean/ordered-collections  {:mvn/version "RELEASE"}
+  {:extra-deps {datalevin/datalevin           {:mvn/version "RELEASE"}
                 com.cnuernber/charred         {:mvn/version "RELEASE"}
+                com.dean/ordered-collections  {:mvn/version "RELEASE"}
                 com.fulcrologic/guardrails    {:mvn/version "RELEASE"}
                 com.taoensso/trove            {:mvn/version "RELEASE"}
                 com.taoensso/truss            {:mvn/version "RELEASE"}
@@ -278,6 +261,19 @@
                 org.replikativ/stratum        {:mvn/version "RELEASE"}}
    :jvm-opts ["--add-modules=jdk.incubator.vector"
               "--enable-native-access=ALL-UNNAMED"]}
+
+  :lib/type
+  {:extra-deps {org.typedclojure/typed.clj.runtime {:mvn/version "RELEASE"}
+                org.typedclojure/typed.clj.checker {:mvn/version "RELEASE"}
+                org.typedclojure/typed.lib.clojure {:mvn/version "RELEASE"}
+                org.typedclojure/typed.lib.spec.alpha {:mvn/version "RELEASE"}
+                org.typedclojure/typed.malli       {:mvn/version "RELEASE"}
+                metosin/malli                      {:mvn/version "RELEASE"}}}
+
+  :lib/java
+  {:extra-deps {virgil/virgil                   {:mvn/version "RELEASE"}
+                org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
+                org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}}}
 
   :lib/web
   {:extra-deps {dev.data-star.clojure/sdk      {:mvn/version "RELEASE"}
