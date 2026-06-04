@@ -1,105 +1,147 @@
 ---
 name: tmux
-description: "Remote control tmux sessions for interactive CLIs (python, gdb, etc.) by sending keystrokes and scraping pane output."
-license: Vibecoded
+description: Control tmux panes and communicate between AI agents. Use this skill whenever the user mentions tmux panes, cross-pane communication, sending messages, reading panes, managing sessions, or interacting with processes running in tmux. Includes a bundled tmux-bridge script for agent-to-agent messaging and raw tmux commands for direct session control.
+metadata:
+  {
+    "openclaw":
+      {
+        "emoji": "🖥️",
+        "os": ["darwin", "linux"],
+        "requires": { "bins": ["tmux"] },
+      },
+  }
 ---
 
-# tmux Skill
+# Tmux SKILL for pane control and cross-pane agent communication.
 
-Use tmux as a programmable terminal multiplexer for interactive work. Works on Linux and macOS with stock tmux; avoid custom config by using a private socket.
+## Command Setup
 
-## Quickstart (isolated socket)
+Do not assume `tmux-bridge` is installed in `PATH`. This skill bundles it in
+`scripts/tmux-bridge`; add the skill's `scripts/` directory to `PATH` before
+using `tmux-bridge`.
 
 ```bash
-SOCKET_DIR=${TMPDIR:-/tmp}/claude-tmux-sockets  # well-known dir for all agent sockets
-mkdir -p "$SOCKET_DIR"
-SOCKET="$SOCKET_DIR/claude.sock"                # keep agent sessions separate from your personal tmux
-SESSION=claude-python                           # slug-like names; avoid spaces
+TMUX_SKILL_DIR="${TMUX_SKILL_DIR:-$HOME/.config/agents/skills/tmux}"
+export PATH="$TMUX_SKILL_DIR/scripts:$PATH"
+tmux-bridge doctor
+```
+
+After the `PATH` export, `tmux-bridge` resolves to the bundled helper when it is
+not otherwise installed. The bundled helper scripts are:
+
+```text
+scripts/tmux-bridge
+scripts/find-sessions.sh
+scripts/wait-for-text.sh
+```
+
+Always use the tmux server socket reported by `tmux display-message -p -F '#{socket_path}'`. Do not synthesize a private fallback socket. The same socket variables are used by raw
+tmux commands and by `tmux-bridge`:
+
+```bash
+SOCKET="$(tmux display-message -p -F '#{socket_path}' 2>/dev/null)"
+export TMUX_BRIDGE_SOCKET="${TMUX_BRIDGE_SOCKET:-$SOCKET}"
+tmux-bridge doctor
+```
+
+## Reference Map
+
+Read only the reference that matches the task:
+
+- For cross-pane agent messaging, labels, read guards, and `TMUX_BRIDGE_SOCKET`,
+  read `references/tmux-bridge.md`.
+- For raw tmux sessions, monitoring, and cleanup, use the Raw Tmux Workflow
+  section below.
+
+## Core Workflow
+
+1. Run the command setup above so the bundled scripts are in `PATH`.
+2. Discover panes before targeting: `tmux-bridge list`, `tmux list-windows -t SESSION`, or `tmux list-panes -a -t SESSION`.
+3. Prefer stable pane IDs like `%3` or bridge labels over assuming pane indexes.
+4. Use `tmux-bridge` for cross-pane interaction. It enforces read-before-act:
+   `read`, then `type` or `keys`; after each action, read again before the next action.
+5. Use raw tmux commands only for session/window/pane management or low-level process control.
+
+## Cross-Pane Messaging
+
+Use `tmux-bridge message` only when the sender process is itself inside tmux,
+because it reads `$TMUX_PANE` to build the reply header. When the sender is
+outside tmux, use `type`, verify with `read`, then submit with `keys Enter`:
+
+```bash
+tmux-bridge read codex 20
+tmux-bridge type codex '[tmux-bridge from:codex] Please review src/auth.ts'
+tmux-bridge read codex 20
+tmux-bridge keys codex Enter
+```
+
+For the full message workflow and examples, read `references/tmux-bridge.md`.
+
+## Raw Tmux Workflow
+
+Use raw tmux when you need session/window/pane management or low-level control.
+Keep the socket explicit so every command targets the same server. Use the live
+tmux server socket reported by `tmux display-message -p -F '#{socket_path}'` and reuse it
+for `tmux-bridge` when you want bridge commands to reach the same panes.
+
+```bash
+SOCKET="$(tmux display-message -p -F '#{socket_path}' 2>/dev/null)"
+export TMUX_BRIDGE_SOCKET="${TMUX_BRIDGE_SOCKET:-$SOCKET}"
+
+SESSION=claude-python
 tmux -S "$SOCKET" new -d -s "$SESSION" -n shell
-tmux -S "$SOCKET" send-keys -t "$SESSION":0.0 -- 'python3 -q' Enter
-tmux -S "$SOCKET" capture-pane -p -J -t "$SESSION":0.0 -S -200  # watch output
-tmux -S "$SOCKET" kill-session -t "$SESSION"                   # clean up
+tmux -S "$SOCKET" send-keys -t "$SESSION":1.1 -- 'python3 -q' Enter
+tmux -S "$SOCKET" capture-pane -p -J -t "$SESSION":1.1 -S -200
+tmux -S "$SOCKET" kill-session -t "$SESSION"
 ```
 
-After starting a session ALWAYS tell the user how to monitor the session by giving them a command to copy paste:
+If you need user config, drop `-f /dev/null`; otherwise keep it clean.
 
-```
-To monitor this session yourself:
-  tmux -S "$SOCKET" attach -t claude-lldb
+### Targeting And Discovery
 
-Or to capture the output once:
-  tmux -S "$SOCKET" capture-pane -p -J -t claude-lldb:0.0 -S -200
-```
+- Prefer explicit targets like `SESSION:1.1` or pane IDs from
+  `tmux -S "$SOCKET" list-panes -a`.
+- Avoid assuming `0`-based indexes. This user's tmux config uses `base-index 1`
+  and `pane-base-index 1`.
+- Inspect with `tmux -S "$SOCKET" list-sessions`, `tmux -S "$SOCKET" list-panes -a`,
+  or `./scripts/find-sessions.sh -S "$SOCKET"`.
 
-This must ALWAYS be printed right after a session was started and once again at the end of the tool loop.  But the earlier you send it, the happier the user will be.
+### Sending Input Safely
 
-## Socket convention
+- Prefer literal sends: `tmux -S "$SOCKET" send-keys -t target -l -- "$cmd"`
+- For inline commands, use single quotes or ANSI C quoting to avoid expansion.
+- Send control keys with `C-c`, `C-d`, `C-z`, `Escape`, or `Enter` as needed.
 
-- Agents MUST place tmux sockets under `CLAUDE_TMUX_SOCKET_DIR` (defaults to `${TMPDIR:-/tmp}/claude-tmux-sockets`) and use `tmux -S "$SOCKET"` so we can enumerate/clean them. Create the dir first: `mkdir -p "$CLAUDE_TMUX_SOCKET_DIR"`.
-- Default socket path to use unless you must isolate further: `SOCKET="$CLAUDE_TMUX_SOCKET_DIR/claude.sock"`.
+### Watching Output
 
-## Targeting panes and naming
+- Capture recent history with `tmux -S "$SOCKET" capture-pane -p -J -t target -S -200`.
+- For prompt synchronization, use `./scripts/wait-for-text.sh -t target -p 'pattern'`.
+- Temporarily attach with `tmux -S "$SOCKET" attach -t "$SESSION"` and detach with `Ctrl+b d`.
 
-- Target format: `{session}:{window}.{pane}`, defaults to `:0.0` if omitted. Keep names short (e.g., `claude-py`, `claude-gdb`).
-- Use `-S "$SOCKET"` consistently to stay on the private socket path. If you need user config, drop `-f /dev/null`; otherwise `-f /dev/null` gives a clean config.
-- Inspect: `tmux -S "$SOCKET" list-sessions`, `tmux -S "$SOCKET" list-panes -a`.
+### Interactive Recipes
 
-## Finding sessions
+- Python REPL: set `PYTHON_BASIC_REPL=1`, start `python3 -q`, wait for `^>>>`, then send code with `-l`.
+- gdb: start `gdb --quiet ./a.out`, run `set pagination off`, and use `C-c` to interrupt.
+- Other TTY apps such as `ipdb`, `psql`, `mysql`, `node`, and `bash` follow the same pattern.
+- When asked to debug, use `lldb` by default.
 
-- List sessions on your active socket with metadata: `./scripts/find-sessions.sh -S "$SOCKET"`; add `-q partial-name` to filter.
-- Scan all sockets under the shared directory: `./scripts/find-sessions.sh --all` (uses `CLAUDE_TMUX_SOCKET_DIR` or `${TMPDIR:-/tmp}/claude-tmux-sockets`).
+### Cleanup
 
-## Sending input safely
+- Kill a session with `tmux -S "$SOCKET" kill-session -t "$SESSION"`.
+- Kill all sessions on a socket with `tmux -S "$SOCKET" list-sessions -F '#{session_name}' | xargs -r -n1 tmux -S "$SOCKET" kill-session -t`.
+- Remove everything on the socket with `tmux -S "$SOCKET" kill-server`.
 
-- Prefer literal sends to avoid shell splitting: `tmux -L "$SOCKET" send-keys -t target -l -- "$cmd"`
-- When composing inline commands, use single quotes or ANSI C quoting to avoid expansion: `tmux ... send-keys -t target -- $'python3 -m http.server 8000'`.
-- To send control keys: `tmux ... send-keys -t target C-c`, `C-d`, `C-z`, `Escape`, etc.
+## Tips
 
-## Watching output
-
-- Capture recent history (joined lines to avoid wrapping artifacts): `tmux -L "$SOCKET" capture-pane -p -J -t target -S -200`.
-- For continuous monitoring, poll with the helper script (below) instead of `tmux wait-for` (which does not watch pane output).
-- You can also temporarily attach to observe: `tmux -L "$SOCKET" attach -t "$SESSION"`; detach with `Ctrl+b d`.
-- When giving instructions to a user, **explicitly print a copy/paste monitor command** alongside the action don't assume they remembered the command.
-
-## Spawning Processes
-
-Some special rules for processes:
-
-- when asked to debug, use lldb by default
-- when starting a python interactive shell, always set the `PYTHON_BASIC_REPL=1` environment variable. This is very important as the non-basic console interferes with your send-keys.
-
-## Synchronizing / waiting for prompts
-
-- Use timed polling to avoid races with interactive tools. Example: wait for a Python prompt before sending code:
-  ```bash
-  ./scripts/wait-for-text.sh -t "$SESSION":0.0 -p '^>>>' -T 15 -l 4000
-  ```
-- For long-running commands, poll for completion text (`"Type quit to exit"`, `"Program exited"`, etc.) before proceeding.
-
-## Interactive tool recipes
-
-- **Python REPL**: `tmux ... send-keys -- 'python3 -q' Enter`; wait for `^>>>`; send code with `-l`; interrupt with `C-c`. Always with `PYTHON_BASIC_REPL`.
-- **gdb**: `tmux ... send-keys -- 'gdb --quiet ./a.out' Enter`; disable paging `tmux ... send-keys -- 'set pagination off' Enter`; break with `C-c`; issue `bt`, `info locals`, etc.; exit via `quit` then confirm `y`.
-- **Other TTY apps** (ipdb, psql, mysql, node, bash): same pattern—start the program, poll for its prompt, then send literal text and Enter.
-
-## Cleanup
-
-- Kill a session when done: `tmux -S "$SOCKET" kill-session -t "$SESSION"`.
-- Kill all sessions on a socket: `tmux -S "$SOCKET" list-sessions -F '#{session_name}' | xargs -r -n1 tmux -S "$SOCKET" kill-session -t`.
-- Remove everything on the private socket: `tmux -S "$SOCKET" kill-server`.
-
-## Helper: wait-for-text.sh
-
-`./scripts/wait-for-text.sh` polls a pane for a regex (or fixed string) with a timeout. Works on Linux/macOS with bash + tmux + grep.
-
-```bash
-./scripts/wait-for-text.sh -t session:0.0 -p 'pattern' [-F] [-T 20] [-i 0.5] [-l 2000]
-```
-
-- `-t`/`--target` pane target (required)
-- `-p`/`--pattern` regex to match (required); add `-F` for fixed string
-- `-T` timeout seconds (integer, default 15)
-- `-i` poll interval seconds (default 0.5)
-- `-l` history lines to search from the pane (integer, default 1000)
-- Exits 0 on first match, 1 on timeout. On failure prints the last captured text to stderr to aid debugging.
+- **Read guard is enforced** — you MUST read before every `type`/`keys`
+- **Every action clears the read mark** — after `type`, read again before `keys`
+- **Never wait or poll** — agent panes reply via tmux-bridge into YOUR pane
+- **Label panes early** — easier than using `%N` IDs. Bridge labels are stored
+  in tmux pane option `@name`; they are distinct from tmux pane titles such as
+  `#{pane_title}`. They appear in `tmux-bridge list` and `resolve`, but only
+  appear in the tmux UI if pane/status formatting renders `#{@name}`.
+- **`type` uses literal mode** — special characters are typed as-is
+- **`read` defaults to 50 lines** — pass a higher number for more context
+- **Non-agent panes** are the exception — you DO need to read them to see output
+- Use `capture-pane -p` to print to stdout (essential for scripting)
+- Target format: `session:window.pane` (e.g., `shared:1.1` in 1-indexed tmux configs)

@@ -86,17 +86,11 @@
               "-Dclojure.storm.instrumentEnable=true"
               "-Dclojure.storm.instrumentAutoPrefixes=true"]}
 
-  :new {:deps {org.babashka/cli {:mvn/version "0.8.67"}
-               io.github.seancorfield/deps-new {:git/tag "v0.11.1"
-                                                :git/sha "dd459f0"}}
-        :ns-default org.corfield.new
-        :exec-args {}
-        :main-opts ["-m" "babashka.cli.exec"]}
-
   :migrate
   {:extra-deps {com.github.paulbutcher/clj-migratus {:git/tag "v1.0.3" :git/sha "46a3ac1"}
                 migratus/migratus {:mvn/version "RELEASE"}
-                org.postgresql/postgresql {:mvn/version "RELEASE"}} :main-opts ["-m" "clj-migratus"]}
+                org.postgresql/postgresql {:mvn/version "RELEASE"}}
+   :main-opts ["-m" "clj-migratus"]}
 
   ;; https://github.com/tonsky/uberdeps
   :uberjar
@@ -117,6 +111,7 @@
                 io.github.babashka/sci.nrepl  {:mvn/version "RELEASE"}
                 io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
+                no.cjohansen/dataspex         {:mvn/version "RELEASE"}
                 org.clj-commons/pretty        {:mvn/version "RELEASE"}
                 org.clojure/test.check        {:mvn/version "RELEASE"}
                 vvvvalvalval/scope-capture    {:mvn/version "RELEASE"}}
