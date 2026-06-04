@@ -2,12 +2,45 @@
 name: tmux-bridge
 description: Agent-agnostic CLI for cross-pane communication — type text, send keys, read output, and interact between tmux panes.
 metadata:
-  { "openclaw": { "emoji": "🌉", "os": ["darwin", "linux"], "requires": { "bins": ["tmux", "tmux-bridge"] } } }
+  {
+    "openclaw":
+      {
+        "emoji": "🌉",
+        "os": ["darwin", "linux"],
+        "requires": { "bins": ["tmux"] },
+      },
+  }
 ---
 
 # tmux-bridge
 
 A single CLI that lets any AI agent (Claude Code, Codex, Gemini CLI, etc.) interact with any other tmux pane. Works via plain bash — any tool that can run shell commands can use it.
+
+## Command Setup
+
+Do not assume `tmux-bridge` is globally installed. This skill bundles it in
+`scripts/tmux-bridge`; add the skill's `scripts/` directory to `PATH` before
+copying examples.
+
+```bash
+TMUX_SKILL_DIR="${TMUX_SKILL_DIR:-$HOME/.config/agents/skills/tmux}"
+export PATH="$TMUX_SKILL_DIR/scripts:$PATH"
+tmux-bridge doctor
+```
+
+After the `PATH` export, the documented `tmux-bridge ...` examples resolve to
+the bundled script when `tmux-bridge` is not otherwise installed.
+
+If the target panes are on a non-default tmux socket, set `TMUX_BRIDGE_SOCKET`
+to that socket path before running `tmux-bridge`. If you are already inside
+tmux, validate the current socket first; otherwise fall back to the shared
+private socket convention from the Raw Tmux Workflow section in `SKILL.md`:
+
+```bash
+export TMUX_BRIDGE_SOCKET="${TMUX_BRIDGE_SOCKET:-$SOCKET}"
+tmux-bridge doctor
+tmux-bridge list
+```
 
 Every command is **atomic**: `type` types text (no Enter), `keys` sends special keys, `read` captures pane content. There is no compound "send" command — you control each step and verify between them.
 
@@ -23,6 +56,7 @@ Every command is **atomic**: `type` types text (no Enter), `keys` sends special 
 **Type your message, press Enter, and move on.** The other agent will type their reply back into your pane. You'll see it arrive.
 
 The ONLY time you need to read a target pane is:
+
 - **Before** interacting with it (enforced — see Read Guard below)
 - **After typing** to verify your text landed correctly before pressing Enter
 - When interacting with a **non-agent pane** (plain shell, running process) where there's no agent to reply back
@@ -32,6 +66,7 @@ The ONLY time you need to read a target pane is:
 The CLI **enforces** read-before-act. You cannot `type` or `keys` to a pane unless you have read it first.
 
 **How it works:**
+
 1. `tmux-bridge read <target>` marks the pane as "read"
 2. `tmux-bridge type/keys <target>` checks for that mark — **errors if you haven't read**
 3. After a successful `type`/`keys`, the mark is **cleared** — you must read again before the next interaction
@@ -62,20 +97,21 @@ error: must read the pane before interacting. Run: tmux-bridge read codex
 
 ## Command Reference
 
-| Command | Description | Example |
-|---|---|---|
-| `tmux-bridge list` | Show all panes with target, pid, command, size, label | `tmux-bridge list` |
-| `tmux-bridge type <target> <text>` | Type text without pressing Enter | `tmux-bridge type codex "hello"` |
-| `tmux-bridge read <target> [lines]` | Read last N lines (default 50) | `tmux-bridge read codex 100` |
-| `tmux-bridge keys <target> <key>...` | Send special keys | `tmux-bridge keys codex Enter` |
-| `tmux-bridge name <target> <label>` | Label a pane (visible in tmux border) | `tmux-bridge name %3 codex` |
-| `tmux-bridge resolve <label>` | Print pane target for a label | `tmux-bridge resolve codex` |
-| `tmux-bridge id` | Print this pane's ID | `tmux-bridge id` |
+| Command                              | Description                                             | Example                          |
+| ------------------------------------ | ------------------------------------------------------- | -------------------------------- |
+| `tmux-bridge list`                   | Show all panes with target, pid, command, size, label   | `tmux-bridge list`               |
+| `tmux-bridge type <target> <text>`   | Type text without pressing Enter                        | `tmux-bridge type codex "hello"` |
+| `tmux-bridge read <target> [lines]`  | Read last N lines (default 50)                          | `tmux-bridge read codex 100`     |
+| `tmux-bridge keys <target> <key>...` | Send special keys                                       | `tmux-bridge keys codex Enter`   |
+| `tmux-bridge name <target> <label>`  | Set a bridge label via tmux `@name`, not the pane title | `tmux-bridge name %3 codex`      |
+| `tmux-bridge resolve <label>`        | Print pane target for a label                           | `tmux-bridge resolve codex`      |
+| `tmux-bridge id`                     | Print this pane's ID                                    | `tmux-bridge id`                 |
 
 ## Target Resolution
 
 Targets can be:
-- **tmux native**: `session:window.pane` (e.g. `shared:0.1`), pane ID (`%3`), or window index (`0`)
+
+- **tmux native**: `session:window.pane` (e.g. `shared:1.1` in 1-indexed configs), pane ID (`%3`), or window index (`1`)
 - **label**: Any string set via `tmux-bridge name` — resolved automatically
 
 This means `tmux-bridge type codex "hello"` works directly if the pane was labeled `codex`.
@@ -89,6 +125,17 @@ The CLI is **format-agnostic** — it types exactly what you give it. The recomm
 ```
 
 You type this framing as part of your message text. This lets the receiving agent know who sent it and how to reply.
+
+The `message` command auto-prepends sender metadata, but it requires the sender
+process to be running inside tmux because it reads `$TMUX_PANE`. If the sender is
+outside tmux, use `type`, verify with `read`, then submit with `keys Enter`:
+
+```bash
+tmux-bridge read codex 20
+tmux-bridge type codex '[tmux-bridge from:codex] Please review src/auth.ts'
+tmux-bridge read codex 20
+tmux-bridge keys codex Enter
+```
 
 ### Receiving messages — IMPORTANT
 
@@ -108,6 +155,7 @@ Keep replies concise (1-3 sentences). They will be typed into the sender's termi
 ### Example conversation
 
 **Agent A (claude) sends:**
+
 ```bash
 tmux-bridge read codex 20       # 1. READ — satisfy read guard
 tmux-bridge type codex '[tmux-bridge from:claude] What is the test coverage for src/auth.ts?'
@@ -119,11 +167,13 @@ tmux-bridge keys codex Enter    # 4. KEYS — press Enter to submit
 ```
 
 **Agent B (codex) sees in their prompt:**
+
 ```
 [tmux-bridge from:claude] What is the test coverage for src/auth.ts?
 ```
 
 **Agent B replies:**
+
 ```bash
 tmux-bridge read claude 20      # 1. READ — satisfy read guard
 tmux-bridge type claude '[tmux-bridge from:codex] src/auth.ts has 87% line coverage. Missing coverage on the OAuth refresh token path (lines 142-168).'
@@ -212,7 +262,10 @@ tmux-bridge keys codex Enter
 - **Read guard is enforced** — you MUST read before every `type`/`keys`. The CLI will error otherwise.
 - **Every action clears the read mark** — after `type`, you must `read` again before `keys`.
 - **Never wait or poll** — agent panes reply to you via tmux-bridge. The response appears in YOUR pane.
-- **Label panes early** — it makes cross-agent communication much easier than using `%N` IDs
+- **Label panes early** — bridge labels are stored in tmux pane option `@name`;
+  they are distinct from tmux pane titles such as `#{pane_title}`. Labels appear
+  in `tmux-bridge list` and `resolve`, and only appear in the tmux UI if
+  pane/status formatting renders `#{@name}`.
 - **`type` uses literal mode** — it uses `-l` so special characters are typed as-is
 - **`read` defaults to 50 lines** — pass a higher number for more context
 - **Non-agent panes** (shells, processes) are the exception — you DO need to read them to see output
