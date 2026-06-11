@@ -111,6 +111,7 @@
                 io.github.babashka/sci.nrepl  {:mvn/version "RELEASE"}
                 io.github.tonsky/clj-reload   {:mvn/version "RELEASE"}
                 io.github.tonsky/clojure-plus {:mvn/version "RELEASE"}
+                virgil/virgil                 {:mvn/version "RELEASE"}
                 no.cjohansen/dataspex         {:mvn/version "RELEASE"}
                 org.clj-commons/pretty        {:mvn/version "RELEASE"}
                 org.clojure/test.check        {:mvn/version "RELEASE"}
@@ -250,7 +251,8 @@
                 is.simm/partial-cps           {:mvn/version "LATEST"}}}
 
   :lib/data
-  {:extra-deps {com.rpl/rama                  {:mvn/version "RELEASE"}
+  {:extra-deps {dev.dbos/transact             {:mvn/version "RELEASE"}
+                com.rpl/rama                  {:mvn/version "RELEASE"}
                 com.rpl/rama-helpers          {:mvn/version "RELEASE"}
                 org.replikativ/datahike       {:mvn/version "RELEASE"}
                 org.replikativ/stratum        {:mvn/version "RELEASE"}}
@@ -264,11 +266,6 @@
                 org.typedclojure/typed.lib.spec.alpha {:mvn/version "RELEASE"}
                 org.typedclojure/typed.malli       {:mvn/version "RELEASE"}
                 metosin/malli                      {:mvn/version "RELEASE"}}}
-
-  :lib/java
-  {:extra-deps {virgil/virgil                   {:mvn/version "RELEASE"}
-                org.junit.jupiter/junit-jupiter {:mvn/version "RELEASE"}
-                org.junit.platform/junit-platform-console {:mvn/version "RELEASE"}}}
 
   :lib/web
   {:extra-deps {dev.data-star.clojure/sdk      {:mvn/version "RELEASE"}
