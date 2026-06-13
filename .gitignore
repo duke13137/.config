@@ -36,7 +36,7 @@ github-copilot/
 nvim/lazy-lock.json
 Typora/
 chromium/
-omarchy/
+**/omarchy
 opencode/
 fcitx/
 fcitx5/
@@ -44,6 +44,7 @@ ibus/
 systemd/
 1Password/
 BraveSoftware/
+Signal/
 google-*/
 microsoft-*/
 vivaldi*/
@@ -52,3 +53,5 @@ obsidian/
 elephant/
 waybar/
 wireplumber/
+revdiff/
+**/spel
